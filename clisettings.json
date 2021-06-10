@@ -1,0 +1,42 @@
+{
+  "projects": null,
+  "path": "C:\\Projects\\Huntress",
+  "solutionName": null,
+  "rootNamespace": null,
+  "domainNamespace": "Huntress.Api",
+  "applicationNamespace": "Huntress.Api",
+  "infrastructureNamespace": "Huntress.Api",
+  "apiNamespace": "Huntress.Api",
+  "domainDirectory": "C:\\Projects\\Huntress\\src\\Huntress.Api",
+  "applicationDirectory": "C:\\Projects\\Huntress\\src\\Huntress.Api",
+  "infrastructureDirectory": "C:\\Projects\\Huntress\\src\\Huntress.Api",
+  "apiDirectory": "C:\\Projects\\Huntress\\src\\Huntress.Api",
+  "appDirectories": [
+    "C:\\Projects\\Huntress\\src\\Huntress.App"
+  ],
+  "buildingBlocksCoreNamespace": "BuildingBlocks.Core",
+  "buildingBlocksEventStoreNamespace": "BuildingBlocks.EventStore",
+  "store": null,
+  "namespace": null,
+  "domain": null,
+  "core": null,
+  "api": null,
+  "entityIdDataType": null,
+  "sourceFolder": "src",
+  "testFolder": null,
+  "dbContext": "HuntressDbContext",
+  "eventSourcing": false,
+  "resources": [
+    "Product",
+    "Collection",
+    "InstagramFeedItem",
+    "InstagramFeed",
+    "HtmlContent",
+    "DigitalAsset",
+    "CollectionItem",
+    "ProductImage",
+    "CustomerCollection",
+    "ImageContent",
+    "ProductCollection"
+  ]
+}
