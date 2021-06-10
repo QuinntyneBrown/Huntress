@@ -1,2 +1,3 @@
-<app-header></app-header>
+<app-header *ngIf="isPublic$ | async"></app-header>
+
 <router-outlet></router-outlet>
