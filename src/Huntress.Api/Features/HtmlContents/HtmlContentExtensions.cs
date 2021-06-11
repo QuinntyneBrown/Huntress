@@ -6,7 +6,7 @@ namespace Huntress.Api.Features
     {
         public static HtmlContentDto ToDto(this HtmlContent htmlContent)
         {
-            return new ()
+            return new()
             {
                 HtmlContentId = htmlContent.HtmlContentId,
                 HtmlContentType = htmlContent.HtmlContentType,
@@ -14,6 +14,6 @@ namespace Huntress.Api.Features
                 Body = htmlContent.Body
             };
         }
-        
+
     }
 }

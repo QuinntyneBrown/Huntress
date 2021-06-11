@@ -10,7 +10,8 @@ namespace Huntress.Api.Features
 {
     public class GetImageContentByType
     {
-        public class Request : IRequest<Response> {
+        public class Request : IRequest<Response>
+        {
             public ImageContentType ImageContentType { get; set; }
         }
 
@@ -23,12 +24,15 @@ namespace Huntress.Api.Features
         {
             private readonly IHuntressDbContext _context;
 
-            public Handler(IHuntressDbContext context){
+            public Handler(IHuntressDbContext context)
+            {
                 _context = context;
             }
 
-            public async Task<Response> Handle(Request request, CancellationToken cancellationToken) {
-			    return new () { 
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+            {
+                return new()
+                {
                     ImageContent = _context.ImageContents
                     .SingleOrDefault(x => x.ImageContentType == request.ImageContentType)
                     .ToDto()

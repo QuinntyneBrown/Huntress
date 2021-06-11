@@ -24,12 +24,15 @@ namespace Huntress.Api.Features
         {
             private readonly IHuntressDbContext _context;
 
-            public Handler(IHuntressDbContext context){
+            public Handler(IHuntressDbContext context)
+            {
                 _context = context;
             }
 
-            public async Task<Response> Handle(Request request, CancellationToken cancellationToken) {
-			    return new () { 
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+            {
+                return new()
+                {
                     ImageContents = _context.ImageContents
                     .Where(x => x.ImageContentType == request.ImageContentType)
                     .Select(x => x.ToDto()).ToList()

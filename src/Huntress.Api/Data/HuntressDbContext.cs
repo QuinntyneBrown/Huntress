@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Huntress.Api.Data
 {
-    public class HuntressDbContext: DbContext, IHuntressDbContext
+    public class HuntressDbContext : DbContext, IHuntressDbContext
     {
         public DbSet<Product> Products { get; private set; }
         public DbSet<Collection> Collections { get; private set; }
@@ -18,14 +18,14 @@ namespace Huntress.Api.Data
         public DbSet<ImageContent> ImageContents { get; private set; }
         public DbSet<ProductCollection> ProductCollections { get; private set; }
         public HuntressDbContext(DbContextOptions options)
-            :base(options) { }
+            : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(HuntressDbContext).Assembly);
         }
-        
+
     }
 }

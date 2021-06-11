@@ -19,6 +19,6 @@ namespace Huntress.Api.Interfaces
         DbSet<ImageContent> ImageContents { get; }
         DbSet<ProductCollection> ProductCollections { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        
+
     }
 }

@@ -6,13 +6,13 @@ namespace Huntress.Api.Features
     {
         public static ProductImageDto ToDto(this ProductImage productImage)
         {
-            return new ()
+            return new()
             {
                 ProductImageId = productImage.ProductImageId,
                 Name = productImage.Name,
                 ImageUrl = productImage.ImageUrl
             };
         }
-        
+
     }
 }

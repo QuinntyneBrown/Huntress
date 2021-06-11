@@ -10,47 +10,47 @@ namespace Huntress.Api.Features
 {
     public class CreateInstagramFeedItem
     {
-        public class Validator: AbstractValidator<Request>
+        public class Validator : AbstractValidator<Request>
         {
             public Validator()
             {
                 RuleFor(request => request.InstagramFeedItem).NotNull();
                 RuleFor(request => request.InstagramFeedItem).SetValidator(new InstagramFeedItemValidator());
             }
-        
+
         }
 
-        public class Request: IRequest<Response>
+        public class Request : IRequest<Response>
         {
             public InstagramFeedItemDto InstagramFeedItem { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public InstagramFeedItemDto InstagramFeedItem { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly IHuntressDbContext _context;
-        
+
             public Handler(IHuntressDbContext context)
                 => _context = context;
-        
+
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
                 var instagramFeedItem = new InstagramFeedItem(request.InstagramFeedItem.ImageUrl, request.InstagramFeedItem.HtmlBody);
-                
+
                 _context.InstagramFeedItems.Add(instagramFeedItem);
-                
+
                 await _context.SaveChangesAsync(cancellationToken);
-                
+
                 return new Response()
                 {
                     InstagramFeedItem = instagramFeedItem.ToDto()
                 };
             }
-            
+
         }
     }
 }

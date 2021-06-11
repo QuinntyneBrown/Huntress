@@ -10,30 +10,31 @@ namespace Huntress.Api.Features
 {
     public class GetImageContentById
     {
-        public class Request: IRequest<Response>
+        public class Request : IRequest<Response>
         {
             public Guid ImageContentId { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public ImageContentDto ImageContent { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly IHuntressDbContext _context;
-        
+
             public Handler(IHuntressDbContext context)
                 => _context = context;
-        
+
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                return new () {
+                return new()
+                {
                     ImageContent = (await _context.ImageContents.SingleOrDefaultAsync(x => x.ImageContentId == request.ImageContentId)).ToDto()
                 };
             }
-            
+
         }
     }
 }

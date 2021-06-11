@@ -6,12 +6,12 @@ namespace Huntress.Api.Features
     {
         public static InstagramFeedItemDto ToDto(this InstagramFeedItem instagramFeedItem)
         {
-            return new ()
+            return new()
             {
                 InstagramFeedItemId = instagramFeedItem.InstagramFeedItemId,
                 HtmlBody = instagramFeedItem.HtmlBody,
                 ImageUrl = instagramFeedItem.ImageUrl
             };
-        }        
+        }
     }
 }

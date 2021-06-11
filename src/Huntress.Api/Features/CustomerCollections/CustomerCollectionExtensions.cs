@@ -6,7 +6,7 @@ namespace Huntress.Api.Features
     {
         public static CustomerCollectionDto ToDto(this CustomerCollection customerCollection)
         {
-            return new ()
+            return new()
             {
                 CustomerCollectionId = customerCollection.CustomerCollectionId,
                 CollectionId = customerCollection.CustomerId,

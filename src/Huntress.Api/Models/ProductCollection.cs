@@ -2,7 +2,7 @@ using System;
 
 namespace Huntress.Api.Models
 {
-    public class ProductCollection: Collection
+    public class ProductCollection : Collection
     {
         public Guid ProductCollectionId { get; set; }
         public ProductCollectionType ProductCollectionType { get; set; } = ProductCollectionType.YouMayAlsoLike;

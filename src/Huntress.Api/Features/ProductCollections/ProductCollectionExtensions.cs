@@ -6,12 +6,12 @@ namespace Huntress.Api.Features
     {
         public static ProductCollectionDto ToDto(this ProductCollection productCollection)
         {
-            return new ()
+            return new()
             {
                 ProductCollectionId = productCollection.ProductCollectionId,
                 ProductCollectionType = productCollection.ProductCollectionType
             };
         }
-        
+
     }
 }

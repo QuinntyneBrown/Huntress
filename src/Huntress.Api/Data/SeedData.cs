@@ -16,7 +16,7 @@ namespace Huntress.Api.Data
             {
                 var imageContent = context.ImageContents.SingleOrDefault(x => x.ImageContentType == Models.ImageContentType.Hero);
 
-                if(imageContent == null)
+                if (imageContent == null)
                 {
                     var digitalAsset = context.DigitalAssets.Single(x => x.Name == "hero-1.jpg");
 

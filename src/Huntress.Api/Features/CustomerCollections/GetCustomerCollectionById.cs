@@ -10,30 +10,31 @@ namespace Huntress.Api.Features
 {
     public class GetCustomerCollectionById
     {
-        public class Request: IRequest<Response>
+        public class Request : IRequest<Response>
         {
             public Guid CustomerCollectionId { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public CustomerCollectionDto CustomerCollection { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly IHuntressDbContext _context;
-        
+
             public Handler(IHuntressDbContext context)
                 => _context = context;
-        
+
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                return new () {
+                return new()
+                {
                     CustomerCollection = (await _context.CustomerCollections.SingleOrDefaultAsync(x => x.CustomerCollectionId == request.CustomerCollectionId)).ToDto()
                 };
             }
-            
+
         }
     }
 }
