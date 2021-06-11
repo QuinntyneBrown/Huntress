@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 
 namespace Huntress.Api.Data
@@ -8,6 +7,7 @@ namespace Huntress.Api.Data
         public static void Seed(HuntressDbContext context)
         {
             DigitalAssetConfiguration.Seed(context);
+            ImageContentConfiguration.Seed(context);
         }
 
         internal static class ImageContentConfiguration

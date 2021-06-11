@@ -38,7 +38,21 @@ namespace Huntress.Api.Controllers
         [ProducesResponseType(typeof(GetImageContents.Response), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<GetImageContents.Response>> Get()
             => await _mediator.Send(new GetImageContents.Request());
-        
+
+        [HttpGet("type/{imageContentType}",Name = "GetImageContentsByTypeRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(GetImageContentsByType.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<GetImageContentsByType.Response>> GetByType([FromRoute] GetImageContentsByType.Request requet)
+            => await _mediator.Send(requet);
+
+        [HttpGet("type/{imageContentType}/single", Name = "GetImageContentByTypeRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(GetImageContentByType.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<GetImageContentByType.Response>> GetSingleByType([FromRoute] GetImageContentByType.Request requet)
+    => await _mediator.Send(requet);
+
         [HttpPost(Name = "CreateImageContentRoute")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]

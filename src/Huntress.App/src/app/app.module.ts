@@ -20,7 +20,7 @@ import { HeaderModule } from '@shared/header/header.module';
     HeaderModule
   ],
   providers: [
-    { provide: baseUrl, useValue: 'http://localhost:5001/'}
+    { provide: baseUrl, useValue: 'https://localhost:5001/'}
   ],
   bootstrap: [AppComponent]
 })

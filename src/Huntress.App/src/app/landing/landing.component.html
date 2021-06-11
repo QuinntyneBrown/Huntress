@@ -1,1 +1,6 @@
-<app-hero></app-hero>
+<ng-container *ngIf="vm$ | async as vm">
+
+
+  <app-hero [style.backgroundImage]="vm.heroUrl" ></app-hero>
+
+</ng-container>

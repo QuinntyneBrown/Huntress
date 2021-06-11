@@ -30,10 +30,11 @@ namespace Huntress.Api.Features
             {
                 return new()
                 {
-                    DigitalAsset = (await _context.DigitalAssets.SingleOrDefaultAsync(x => x.Name == request.Filename).ToDto()
+                    DigitalAsset = (await _context.DigitalAssets
+                    .SingleOrDefaultAsync(x => x.Name == request.Filename))
+                    .ToDto()
                 };
             }
-
         }
     }
 }

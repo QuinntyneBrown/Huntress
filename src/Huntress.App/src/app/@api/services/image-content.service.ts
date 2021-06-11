@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IPagableService } from '@core/ipagable-service';
 import { EntityPage } from '@core/entity-page';
+import { ImageContentType } from '@api/models';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,15 @@ export class ImageContentService implements IPagableService<ImageContent> {
       );
   }
 
+  public getByType(options:{imageContentType: ImageContentType}): Observable<ImageContent> {
+    console.log(`${this._baseUrl}api/imageContent/type/${options.imageContentType}/single`);
+
+    return this._client.get<{ imageContent: ImageContent }>(`${this._baseUrl}api/imageContent/type/${options.imageContentType}/single`)
+      .pipe(
+        map(x => x.imageContent)
+      );
+  }
+
   public getById(options: { imageContentId: string }): Observable<ImageContent> {
     return this._client.get<{ imageContent: ImageContent }>(`${this._baseUrl}api/imageContent/${options.imageContentId}`)
       .pipe(
@@ -44,7 +54,7 @@ export class ImageContentService implements IPagableService<ImageContent> {
   public create(options: { imageContent: ImageContent }): Observable<{ imageContent: ImageContent }> {
     return this._client.post<{ imageContent: ImageContent }>(`${this._baseUrl}api/imageContent`, { imageContent: options.imageContent });
   }
-  
+
   public update(options: { imageContent: ImageContent }): Observable<{ imageContent: ImageContent }> {
     return this._client.put<{ imageContent: ImageContent }>(`${this._baseUrl}api/imageContent`, { imageContent: options.imageContent });
   }
