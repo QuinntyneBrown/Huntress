@@ -19,13 +19,13 @@ namespace Huntress.Api
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "",
-                    Description = "",
+                    Title = "Huntress",
+                    Description = "e-Commerce",
                     TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact
                     {
-                        Name = "",
-                        Email = ""
+                        Name = "Quinntyne Brown",
+                        Email = "quinntynebrown@gmail.com"
                     },
                     License = new OpenApiLicense
                     {

@@ -1,0 +1,11 @@
+<form novalidate autocomplete='off' spellcheck='false' [formGroup]='form'>
+    <mat-tab-group [class.mat-tab-header-hidden]="!form.value.digitalAssetId" [animationDuration]="0">
+        <mat-tab label="DigitalAsset">
+            <mat-form-field appearance="outline" class="digital-asset-editor-name-field">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder='Name'
+                formControlName='name' required>
+            </mat-form-field>
+        </mat-tab>
+    </mat-tab-group>
+</form>

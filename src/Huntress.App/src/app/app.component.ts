@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 export class AppComponent {
 
   public get isPublic$(): Observable<boolean> {
-    return this._activatedRoute.url.pipe(
+    return this._activatedRoute.firstChild?.url.pipe(
       map(urlSegments => urlSegments.map(x => x.path).indexOf("workspace") == -1)
     )
   }

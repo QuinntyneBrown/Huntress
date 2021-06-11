@@ -1,0 +1,15 @@
+<mat-card *ngIf="vm$ | async as vm">
+
+    <h1 *ngIf="(digitalAsset$ | async)">Edit DigitalAsset</h1>
+    <h1 *ngIf="!(digitalAsset$ | async)">Create DigitalAsset</h1>
+    <form [formGroup]="vm.form">
+        <app-digital-asset-editor formControlName="digitalAsset">
+        </app-digital-asset-editor>
+    </form>
+
+    <div class="actions">
+        <button mat-raised-button (click)="save(vm)" color="primary" [disabled]="!vm.form.dirty && vm.form.valid">Save</button>
+
+        <button mat-raised-button (click)="cancel()">Cancel</button>
+    </div>
+</mat-card>

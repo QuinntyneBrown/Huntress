@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Huntress.Api.Controllers
 {
-    [Authorize]
+
     [ApiController]
     [Route("api/[controller]")]
     public class DigitalAssetController
@@ -55,6 +55,21 @@ namespace Huntress.Api.Controllers
         [ProducesResponseType(typeof(FileContentResult), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Serve([FromRoute] GetDigitalAssetById.Request request)
+        {
+            var response = await _mediator.Send(request);
+
+            if (response.DigitalAsset == null)
+                return new NotFoundObjectResult(null);
+
+            return new FileContentResult(response.DigitalAsset.Bytes, response.DigitalAsset.ContentType);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("serve/name/{filename}")]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(FileContentResult), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> ServeByName([FromRoute] GetDigitalAssetByFilename.Request request)
         {
             var response = await _mediator.Send(request);
 

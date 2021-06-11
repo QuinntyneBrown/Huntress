@@ -27,7 +27,7 @@ export class EntityDataSource<T> implements DataSource<T> {
         .next(replace({ items: this.entities$.value, value, key: this._pagableService.uniqueIdentifierName }));
     }
 
-    public getPage(options: { index: number, pageSize: number }) {
+    public getPage(options: { pageIndex: number, pageSize: number }) {
         this._pagableService.getPage(options)
         .pipe(
             takeUntil(this._disconnected$),

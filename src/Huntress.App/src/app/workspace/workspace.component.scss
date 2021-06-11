@@ -1,0 +1,28 @@
+@import 'src/scss/breakpoints';
+
+:host {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+
+  mat-drawer {
+    width: 100%;
+  }
+
+  mat-drawer-container {
+    height: 100%;
+  }
+}
+
+@media only screen and (min-width: $screen-md-min) {
+  :host {
+    display: block;
+    app-mobile-header {
+      display: none;
+    }
+
+    mat-drawer {
+      width: 300px;
+    }
+  }
+}
