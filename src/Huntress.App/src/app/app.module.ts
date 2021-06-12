@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { baseUrl } from '@core';
 import { HeaderModule } from '@shared/header/header.module';
+import { FooterModule } from '@shared';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HeaderModule } from '@shared/header/header.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HeaderModule
+    HeaderModule,
+    FooterModule
   ],
   providers: [
     { provide: baseUrl, useValue: 'https://localhost:5001/'}
