@@ -1,10 +1,14 @@
 .grid {
+  display: grid;
   grid-template-columns: 1fr;
+  gap:22px;
+  width: fit-content;
+  box-sizing: border-box;
 }
 
 
 @media screen and (min-width: 1420px) {
   .grid {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }

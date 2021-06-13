@@ -3,5 +3,8 @@
 
 :host {
  @extend .section;
+ overflow: hidden;
+  max-width: calc(fit-content - 80px);
+
 
 }
