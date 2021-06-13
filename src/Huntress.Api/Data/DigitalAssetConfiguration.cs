@@ -18,17 +18,37 @@ namespace Huntress.Api.Data
 
                 provider.TryGetContentType("hero-1.jpg", out string contentType);
 
-                var d = new DigitalAsset
+                var digitalAsset = new DigitalAsset
                 {
                     Name = "hero-1.jpg",
                     Bytes = StaticFileLocator.Get("hero-1.jpg"),
                     ContentType = contentType
                 };
 
-                context.DigitalAssets.Add(d);
-                context.SaveChanges();
+                context.DigitalAssets.Add(digitalAsset);
 
-                var id = d.DigitalAssetId;
+                context.SaveChanges();
+            }
+        }
+
+        internal static void SeedProductImages(HuntressDbContext context)
+        {
+            for (var i = 1; i <= 5; i++)
+            {
+                var provider = new FileExtensionContentTypeProvider();
+
+                provider.TryGetContentType($"product-{i}.jpg", out string contentType);
+
+                var digitalAsset = new DigitalAsset
+                {
+                    Name = $"product-{i}.jpg",
+                    Bytes = StaticFileLocator.Get($"product-{i}.jpg"),
+                    ContentType = contentType
+                };
+
+                context.DigitalAssets.Add(digitalAsset);
+
+                context.SaveChanges();
             }
         }
     }

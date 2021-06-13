@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Huntress.Api.Models
 {
@@ -8,6 +9,7 @@ namespace Huntress.Api.Models
         public string Name { get; private set; }
         public decimal Price { get; private set; }
         public string Description { get; private set; }
+        public List<ProductImage> ProductImages { get; private set; } = new();
         public Product(string name, decimal price, string description)
         {
             Name = name;

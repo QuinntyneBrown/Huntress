@@ -10,7 +10,7 @@ namespace Huntress.Api.Models
 
         public ImageContent(ImageContentType imageContentType, string url)
         {
-            ImageContentType = ImageContentType;
+            ImageContentType = imageContentType;
             Url = url;
         }
 

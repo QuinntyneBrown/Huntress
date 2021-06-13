@@ -30,7 +30,7 @@ namespace Huntress.Api.Features
             {
                 return new()
                 {
-                    DigitalAsset = (await _context.DigitalAssets.SingleOrDefaultAsync()).ToDto()
+                    DigitalAsset = (await _context.DigitalAssets.SingleOrDefaultAsync(x => x.DigitalAssetId == request.DigitalAssetId)).ToDto()
                 };
             }
 

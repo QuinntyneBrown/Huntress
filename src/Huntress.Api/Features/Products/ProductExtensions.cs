@@ -1,4 +1,5 @@
 using Huntress.Api.Models;
+using System.Linq;
 
 namespace Huntress.Api.Features
 {
@@ -11,7 +12,8 @@ namespace Huntress.Api.Features
                 ProductId = product.ProductId,
                 Name = product.Name,
                 Price = product.Price,
-                Description = product.Description
+                Description = product.Description,
+                ProductImages = product.ProductImages.Select(x => x.ToDto()).ToList()
             };
         }
     }

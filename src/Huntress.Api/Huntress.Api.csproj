@@ -6,10 +6,20 @@
 
   <ItemGroup>
     <None Remove="EmbeddedResources\hero-1.jpg" />
+    <None Remove="EmbeddedResources\product-1.jpg" />
+    <None Remove="EmbeddedResources\product-2.jpg" />
+    <None Remove="EmbeddedResources\product-3.jpg" />
+    <None Remove="EmbeddedResources\product-4.jpg" />
+    <None Remove="EmbeddedResources\product-5.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="EmbeddedResources\hero-1.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\product-1.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\product-2.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\product-3.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\product-4.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\product-5.jpg" />
   </ItemGroup>
 
   <ItemGroup>
