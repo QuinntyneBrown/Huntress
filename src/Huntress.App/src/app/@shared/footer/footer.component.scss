@@ -1,0 +1,17 @@
+@use 'src/scss/breakpoints';
+
+:host {
+  background-color: #f6e9e5;
+  position: relative;
+  box-sizing: border-box;
+  color:#6a635b;
+  display: block;
+  min-height: 400px;
+  padding: 60px 0px;
+  text-align: center;
+
+}
+
+@media only screen and (min-width: breakpoints.$screen-md-min) {
+
+}
