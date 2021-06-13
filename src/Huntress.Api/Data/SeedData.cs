@@ -1,4 +1,5 @@
 using Huntress.Api.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Huntress.Api.Data
@@ -10,6 +11,7 @@ namespace Huntress.Api.Data
             DigitalAssetConfiguration.Seed(context);
             ImageContentConfiguration.Seed(context);            
             ProductConfiguration.Seed(context);
+            HtmlContentConfiguration.Seed(context);
             
         }
 
@@ -34,6 +36,31 @@ namespace Huntress.Api.Data
             }
         }
 
+        internal static class HtmlContentConfiguration
+        {
+            internal static void Seed(HuntressDbContext context)
+            {
+                foreach (var htmlContent in new List<HtmlContent>()
+                {
+                    new (HtmlContentType.About,"","<h1>About</h1>"),
+                    new (HtmlContentType.FollowUs,"","<h1>Follow Us</h1>"),
+                    new (HtmlContentType.Contact,"","<h1>Contact</h1>"),
+                    new (HtmlContentType.ReturnPolicy,"","<h1>Return Policy</h1>")
+            })
+                {
+                    AddIfDoesntExist(htmlContent);
+                }
+
+                context.SaveChanges();
+
+                void AddIfDoesntExist(HtmlContent htmlContent) {
+                    if(context.HtmlContents.FirstOrDefault(x => x.HtmlContentType == htmlContent.HtmlContentType) == null)
+                    {
+                        context.HtmlContents.Add(htmlContent);
+                    }
+                }
+            }
+        }
         internal static class ProductConfiguration
         {
             internal static void Seed(HuntressDbContext context)
