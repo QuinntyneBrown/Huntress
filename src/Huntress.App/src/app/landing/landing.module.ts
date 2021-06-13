@@ -6,6 +6,7 @@ import { LandingComponent } from './landing.component';
 import { HeroModule } from '@shared/hero/hero.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '@shared/material.module';
+import { ProductsSectionModule } from '@shared/sections';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MaterialModule } from '@shared/material.module';
     LandingRoutingModule,
     HeroModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    ProductsSectionModule
   ]
 })
 export class LandingModule { }

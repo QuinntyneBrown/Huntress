@@ -1,8 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { ImageContent, ImageContentType } from '@api';
-import { ImageContentService } from '@api/services';
+import { Component, Inject } from '@angular/core';
+import { ImageContentType, Product } from '@api';
+import { ImageContentService, ProductService } from '@api/services';
 import { baseUrl } from '@core';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -10,20 +10,20 @@ import { map } from 'rxjs/operators';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent {
 
-  public vm$: Observable<{ heroUrl: string}> = this._imageContentService
-  .getByType({ imageContentType: ImageContentType.Hero })
+  public vm$: Observable<{ heroUrl: string, products: Product[] }> = forkJoin([
+    this._imageContentService.getByType({ imageContentType: ImageContentType.Hero }),
+    this._productService.get()
+  ])
   .pipe(
-    map( imageContent => ({ heroUrl: `url(${this._baseUrl}${imageContent.url})` }))
+    map(([imageContent, products ]) => ({ heroUrl: `url(${this._baseUrl}${imageContent.url})`, products }))
   );
 
   constructor(
     private readonly _imageContentService: ImageContentService,
+    private readonly _productService: ProductService,
     @Inject(baseUrl) private readonly _baseUrl: string
   ) { }
-
-  ngOnInit(): void {
-  }
 
 }

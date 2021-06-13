@@ -1,0 +1,7 @@
+@use 'src/scss/breakpoints';
+@use '../sections';
+
+:host {
+ @extend .section;
+
+}
