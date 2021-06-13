@@ -2,9 +2,11 @@
 @use '../sections';
 
 :host {
- @extend .section;
- overflow: hidden;
+  @extend .section;
+  overflow: hidden;
   max-width: calc(fit-content - 80px);
-
+  .grid {
+    margin: 0 auto;
+  }
 
 }

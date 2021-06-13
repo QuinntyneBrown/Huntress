@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IPagableService } from '@core/ipagable-service';
 import { EntityPage } from '@core/entity-page';
+import { HtmlContentType } from '@api/models/html-content-type';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,13 @@ export class HtmlContentService implements IPagableService<HtmlContent> {
       );
   }
 
+  public getByType(options: { htmlContentType: HtmlContentType }): Observable<HtmlContent> {
+    return this._client.get<{ htmlContent: HtmlContent }>(`${this._baseUrl}api/htmlContent/type/${options.htmlContentType}`)
+      .pipe(
+        map(x => x.htmlContent)
+      );
+  }
+
   public remove(options: { htmlContent: HtmlContent }): Observable<void> {
     return this._client.delete<void>(`${this._baseUrl}api/htmlContent/${options.htmlContent.htmlContentId}`);
   }
@@ -44,7 +52,7 @@ export class HtmlContentService implements IPagableService<HtmlContent> {
   public create(options: { htmlContent: HtmlContent }): Observable<{ htmlContent: HtmlContent }> {
     return this._client.post<{ htmlContent: HtmlContent }>(`${this._baseUrl}api/htmlContent`, { htmlContent: options.htmlContent });
   }
-  
+
   public update(options: { htmlContent: HtmlContent }): Observable<{ htmlContent: HtmlContent }> {
     return this._client.put<{ htmlContent: HtmlContent }>(`${this._baseUrl}api/htmlContent`, { htmlContent: options.htmlContent });
   }

@@ -1,0 +1,14 @@
+@use '../sections/sections';
+
+:host {
+  @extend .section;
+  margin-top: 120px;
+  margin-bottom: 120px;
+
+  ::ng-deep {
+    font-family: HomemadeApple;
+    text-align: center;
+    font-size: 5em;
+    color:rgb(106, 99, 91);
+  }
+}

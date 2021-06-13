@@ -7,6 +7,7 @@ import { HeroModule } from '@shared/hero/hero.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '@shared/material.module';
 import { ProductsSectionModule } from '@shared/sections';
+import { QuoteModule } from '@shared';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ProductsSectionModule } from '@shared/sections';
     HeroModule,
     HttpClientModule,
     MaterialModule,
-    ProductsSectionModule
+    ProductsSectionModule,
+    QuoteModule
   ]
 })
 export class LandingModule { }
