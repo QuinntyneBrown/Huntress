@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
-import { HtmlContentService } from '@api';
+import { HtmlContent, HtmlContentService } from '@api';
 import { HtmlContentType } from '@api/models/html-content-type';
 import { forkJoin, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -18,7 +19,7 @@ export class AppComponent {
     )
   }
 
-  public vm$: Observable<{  }> = forkJoin([
+  public vm$: Observable<{ about: HtmlContent }> = forkJoin([
     this._htmlContentService.getByType({ htmlContentType: HtmlContentType.About }),
     this._htmlContentService.getByType({ htmlContentType: HtmlContentType.Contact }),
     this._htmlContentService.getByType({ htmlContentType: HtmlContentType.FollowUs }),
@@ -32,6 +33,7 @@ export class AppComponent {
 
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
+    private readonly _domSanitizer: DomSanitizer,
     private readonly _htmlContentService: HtmlContentService
   ) { }
 

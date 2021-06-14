@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { HtmlContentService } from '@api';
 
 @Component({
@@ -9,7 +10,7 @@ import { HtmlContentService } from '@api';
 export class FooterComponent  {
 
 
-  @Input() public aboutHtmlContent: string | undefined;
+  @Input() public aboutHtmlContent: string;
 
   @Input() public followUsHtmlContent: string | undefined;
 
@@ -18,7 +19,7 @@ export class FooterComponent  {
   @Input() public contactHtmlContent: string | undefined;
 
   constructor(
-    private readonly _htmlContentService: HtmlContentService
+    private readonly _domSanitizer: DomSanitizer
   ) { }
 
 

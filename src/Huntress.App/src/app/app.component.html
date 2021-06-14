@@ -1,5 +1,13 @@
-<app-header *ngIf="isPublic$ | async"></app-header>
+<ng-container *ngIf="vm$ | async as vm">
 
-<router-outlet></router-outlet>
+  <app-header *ngIf="isPublic$ | async"></app-header>
 
-<app-footer></app-footer>
+  <router-outlet></router-outlet>
+
+  <app-footer
+  [aboutHtmlContent]="vm.about.body"
+  [followUsHtmlContent]="vm.followUs.body"
+  [returnPolicyHtmlContent]="vm.returnPolicy.body"
+  [contactHtmlContent]="vm.contact.body"></app-footer>
+
+</ng-container>
