@@ -9,10 +9,11 @@ namespace Huntress.Api.Data
         public static void Seed(HuntressDbContext context)
         {
             DigitalAssetConfiguration.Seed(context);
-            ImageContentConfiguration.Seed(context);            
+            ImageContentConfiguration.Seed(context);
             ProductConfiguration.Seed(context);
             HtmlContentConfiguration.Seed(context);
-            
+            SocialShareConfiguration.Seed(context);
+
         }
 
         internal static class ImageContentConfiguration
@@ -53,8 +54,9 @@ namespace Huntress.Api.Data
 
                 context.SaveChanges();
 
-                void AddIfDoesntExist(HtmlContent htmlContent) {
-                    if(context.HtmlContents.FirstOrDefault(x => x.HtmlContentType == htmlContent.HtmlContentType) == null)
+                void AddIfDoesntExist(HtmlContent htmlContent)
+                {
+                    if (context.HtmlContents.FirstOrDefault(x => x.HtmlContentType == htmlContent.HtmlContentType) == null)
                     {
                         context.HtmlContents.Add(htmlContent);
                     }
@@ -67,13 +69,13 @@ namespace Huntress.Api.Data
             {
                 DigitalAssetConfiguration.SeedProductImages(context);
 
-                for(var i = 1; i <=5; i++)
+                for (var i = 1; i <= 5; i++)
                 {
                     var product = context.Products.SingleOrDefault(x => x.Name == $"");
 
-                    if(product == null)
+                    if (product == null)
                     {
-                        product = new (default, default, default);
+                        product = new(default, default, default);
 
                         var digitalAsset = context.DigitalAssets.Single(x => x.Name == $"product-{i}.jpg");
 
@@ -85,6 +87,31 @@ namespace Huntress.Api.Data
                     }
                 }
 
+            }
+        }
+
+        internal static class SocialShareConfiguration
+        {
+            internal static void Seed(HuntressDbContext context)
+            {
+                foreach (var socialShare in new List<SocialShare> {
+                    new (SocialShareType.Facebook,"https//www.facebook.com"),
+                    new (SocialShareType.Twitter,"https//www.twitter.com"),
+                    new (SocialShareType.Instagram,"https//www.instagram.com")
+                })
+                {
+                    AddIfDoesntExist(socialShare);
+                }
+
+                context.SaveChanges();
+
+                void AddIfDoesntExist(SocialShare socialShare)
+                {
+                    if (context.SocialShares.FirstOrDefault(x => x.ShareType == socialShare.ShareType) == null)
+                    {
+                        context.SocialShares.Add(socialShare);
+                    }
+                }
             }
         }
     }

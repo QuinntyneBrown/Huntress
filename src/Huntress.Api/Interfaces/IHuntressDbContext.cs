@@ -18,6 +18,7 @@ namespace Huntress.Api.Interfaces
         DbSet<CustomerCollection> CustomerCollections { get; }
         DbSet<ImageContent> ImageContents { get; }
         DbSet<ProductCollection> ProductCollections { get; }
+        DbSet<SocialShare> SocialShares { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
     }

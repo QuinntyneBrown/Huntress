@@ -9,3 +9,4 @@ export * from './instagram-feed.service';
 export * from './product-collection.service';
 export * from './product-image.service';
 export * from './product.service';
+export * from './social-share.service';

@@ -2,6 +2,7 @@
 {
     public enum ImageContentType
     {
-        Hero
+        Hero,
+        Unknown
     }
 }

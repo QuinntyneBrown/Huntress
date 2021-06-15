@@ -37,6 +37,7 @@
     "ProductImage",
     "CustomerCollection",
     "ImageContent",
-    "ProductCollection"
+    "ProductCollection",
+    "SocialShare"
   ]
 }

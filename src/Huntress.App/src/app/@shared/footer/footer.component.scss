@@ -5,13 +5,18 @@
   position: relative;
   box-sizing: border-box;
   color:#6a635b;
-  display: block;
+  display: grid;
   min-height: 400px;
   padding: 60px 0px;
   text-align: center;
+  grid-template-columns: 1fr;
+  gap:60px;
 
 }
 
 @media only screen and (min-width: breakpoints.$screen-md-min) {
+  :host {
 
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }

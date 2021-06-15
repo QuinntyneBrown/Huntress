@@ -17,6 +17,7 @@ namespace Huntress.Api.Data
         public DbSet<CustomerCollection> CustomerCollections { get; private set; }
         public DbSet<ImageContent> ImageContents { get; private set; }
         public DbSet<ProductCollection> ProductCollections { get; private set; }
+        public DbSet<SocialShare> SocialShares { get; private set; }
         public HuntressDbContext(DbContextOptions options)
             : base(options) { }
 

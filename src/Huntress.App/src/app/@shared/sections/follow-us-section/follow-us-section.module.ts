@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FollowUsSectionComponent } from './follow-us-section.component';
+import { CreateContactFormModule } from '@shared/create-contact-form';
+import { MaterialModule } from '@shared/material.module';
 
 
 
@@ -12,7 +14,9 @@ import { FollowUsSectionComponent } from './follow-us-section.component';
     FollowUsSectionComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CreateContactFormModule,
+    MaterialModule
   ]
 })
 export class FollowUsSectionModule { }

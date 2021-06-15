@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
-import { HtmlContent, HtmlContentService } from '@api';
+import { ActivatedRoute} from '@angular/router';
+import { HtmlContent, HtmlContentService, SocialShareService } from '@api';
 import { HtmlContentType } from '@api/models/html-content-type';
 import { forkJoin, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -24,16 +23,16 @@ export class AppComponent {
     this._htmlContentService.getByType({ htmlContentType: HtmlContentType.Contact }),
     this._htmlContentService.getByType({ htmlContentType: HtmlContentType.FollowUs }),
     this._htmlContentService.getByType({ htmlContentType: HtmlContentType.ReturnPolicy }),
-
+    this._socialShareService.get()
   ])
   .pipe(
-    map(([about, contact, followUs, returnPolicy ]) =>
-    ({ about, contact, followUs, returnPolicy }))
+    map(([about, contact, followUs, returnPolicy, socials ]) =>
+    ({ about, contact, followUs, returnPolicy, socials }))
   );
 
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
-    private readonly _domSanitizer: DomSanitizer,
+    private readonly _socialShareService: SocialShareService,
     private readonly _htmlContentService: HtmlContentService
   ) { }
 

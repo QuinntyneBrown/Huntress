@@ -1,0 +1,15 @@
+:host {
+  h1 {
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+  }
+
+  ::ng-deep .html-content__body {
+    h1 {
+      font-size:14px;
+    }
+  }
+
+}

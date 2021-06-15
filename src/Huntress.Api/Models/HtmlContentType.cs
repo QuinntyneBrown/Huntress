@@ -5,6 +5,7 @@
         About,
         Contact,
         FollowUs,
-        ReturnPolicy
+        ReturnPolicy,
+        Unknown
     }
 }
