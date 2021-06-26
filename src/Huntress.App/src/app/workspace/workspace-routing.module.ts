@@ -14,10 +14,12 @@ const routes: Routes = [
       },
       {
         path: 'digital-assets', loadChildren: () => import('./digital-assets/digital-assets.module').then(m => m.DigitalAssetsModule)
+      },
+      {
+        path: 'css-variables', loadChildren: () => import('./css-variables/css-variables.module').then(m => m.CssVariablesModule)
       }
     ]
   },
-  {  }
 ];
 
 @NgModule({
