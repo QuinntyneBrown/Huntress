@@ -1,12 +1,29 @@
 <ng-container *ngIf="vm$ | async as vm">
 
-  <app-header *ngIf="isPublic$ | async"></app-header>
+  <app-header *ngIf="isPublic$ | async" (click)="drawer.toggle()"></app-header>
 
-  <router-outlet></router-outlet>
+  <mat-drawer-container autosize>
+    <mat-drawer #drawer mode="over">
+      <ul>
+        <li>
+          <a>HOME</a>
+        </li>
+        <li>
+          <a>LOGIN</a>
+        </li>
+      </ul>
+    </mat-drawer>
 
-  <app-footer
-  [aboutHtmlContent]="vm.about.body"
-  [followUsHtmlContent]="vm.followUs.body"
-  [returnPolicyHtmlContent]="vm.returnPolicy.body"
-  [contactHtmlContent]="vm.contact.body"></app-footer>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+
+    <app-footer
+    [aboutHtmlContent]="vm.about.body"
+    [followUsHtmlContent]="vm.followUs.body"
+    [returnPolicyHtmlContent]="vm.returnPolicy.body"
+    [contactHtmlContent]="vm.contact.body"></app-footer>
+
+  </mat-drawer-container>
+
 </ng-container>

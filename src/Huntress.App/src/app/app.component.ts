@@ -13,6 +13,8 @@ import { map, tap } from 'rxjs/operators';
 })
 export class AppComponent {
 
+  showFiller = false;
+
   public get isPublic$(): Observable<boolean> {
     return this._activatedRoute.firstChild?.url.pipe(
       map(urlSegments => urlSegments.map(x => x.path).indexOf("workspace") == -1)

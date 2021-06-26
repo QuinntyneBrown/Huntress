@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { baseUrl } from '@core';
 import { HeaderModule } from '@shared/header/header.module';
-import { CreateContactFormModule, FooterModule } from '@shared';
+import { CreateContactFormModule, FooterModule, MaterialModule } from '@shared';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { CreateContactFormModule, FooterModule } from '@shared';
     HttpClientModule,
     HeaderModule,
     FooterModule,
-    CreateContactFormModule
+    CreateContactFormModule,
+    MaterialModule
   ],
   providers: [
     { provide: baseUrl, useValue: 'https://localhost:5001/'}
