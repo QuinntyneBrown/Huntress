@@ -13,9 +13,26 @@ namespace Huntress.Api.Data
             ProductConfiguration.Seed(context);
             HtmlContentConfiguration.Seed(context);
             SocialShareConfiguration.Seed(context);
+            CssVariableConfiguration.Seed(context);
 
         }
 
+        internal static class CssVariableConfiguration
+        {
+            internal static void Seed(HuntressDbContext context)
+            {
+                var cssVariable = context.CssVariables.SingleOrDefault(x => x.Name == "--background-color");
+
+                if(cssVariable == null)
+                {
+                    cssVariable = new("--background-color", "#fff");
+
+                    context.CssVariables.Add(cssVariable);
+
+                    context.SaveChanges();
+                }
+            }
+        }
         internal static class ImageContentConfiguration
         {
             internal static void Seed(HuntressDbContext context)

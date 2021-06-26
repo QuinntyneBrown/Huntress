@@ -1,5 +1,6 @@
 export * from './collection-item.service';
 export * from './collection.service';
+export * from './css-variable.service';
 export * from './customer-collection.service';
 export * from './digital-asset.service';
 export * from './html-content.service';

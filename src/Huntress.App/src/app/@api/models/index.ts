@@ -1,5 +1,6 @@
 export * from './collection-item';
 export * from './collection';
+export * from './css-variable';
 export * from './customer-collection';
 export * from './digital-asset';
 export * from './html-content-type';
@@ -11,4 +12,5 @@ export * from './instagram-feed';
 export * from './product-collection';
 export * from './product-image';
 export * from './product';
+export * from './social-share-type';
 export * from './social-share';

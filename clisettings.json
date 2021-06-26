@@ -38,6 +38,7 @@
     "CustomerCollection",
     "ImageContent",
     "ProductCollection",
-    "SocialShare"
+    "SocialShare",
+    "CssVariable"
   ]
 }
