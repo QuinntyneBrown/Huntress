@@ -37,6 +37,14 @@ export class ProductService implements IPagableService<Product> {
       );
   }
 
+  public getByName(options: { name: string }): Observable<Product> {
+    return this._client.get<{ product: Product }>(`${this._baseUrl}api/product/name/${options.name}`)
+      .pipe(
+        map(x => x.product)
+      );
+  }
+
+
   public remove(options: { product: Product }): Observable<void> {
     return this._client.delete<void>(`${this._baseUrl}api/product/${options.product.productId}`);
   }
@@ -44,7 +52,7 @@ export class ProductService implements IPagableService<Product> {
   public create(options: { product: Product }): Observable<{ product: Product }> {
     return this._client.post<{ product: Product }>(`${this._baseUrl}api/product`, { product: options.product });
   }
-  
+
   public update(options: { product: Product }): Observable<{ product: Product }> {
     return this._client.put<{ product: Product }>(`${this._baseUrl}api/product`, { product: options.product });
   }

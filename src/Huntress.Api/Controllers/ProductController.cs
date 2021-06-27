@@ -32,6 +32,23 @@ namespace Huntress.Api.Controllers
             return response;
         }
 
+        [HttpGet("name/{name}", Name = "GetProductByNameRoute")]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(GetProductByName.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<GetProductByName.Response>> GetByName([FromRoute] GetProductByName.Request request)
+        {
+            var response = await _mediator.Send(request);
+
+            if (response.Product == null)
+            {
+                return new NotFoundObjectResult(request.Name);
+            }
+
+            return response;
+        }
+
         [HttpGet(Name = "GetProductsRoute")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
