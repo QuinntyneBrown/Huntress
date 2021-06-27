@@ -1,7 +1,28 @@
-<form novalidate autocomplete='off' spellcheck='false' [formGroup]='form'>
-    <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder='Name'
-        formControlName='name' required>
-    </mat-form-field>
-</form>
+
+<mat-card>
+  <mat-card-title>
+    Sign in to Huntress Workspace
+  </mat-card-title>
+
+  <form novalidate autocomplete='off' spellcheck='false' [formGroup]='form'>
+      <mat-form-field>
+        <input  matInput placeholder='Username'
+               class='username'
+               formControlName='username' required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input cdkFocusInitial matInput
+               placeholder='Password'
+               id='password'
+               formControlName='password'
+               type='password'
+               required>
+      </mat-form-field>
+    </form>
+
+    <button mat-raised-button color='primary'
+    (click)='tryToLogin.emit(form.value)'
+    [disabled]='!form.valid'>Submit</button>
+
+  </mat-card>

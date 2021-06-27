@@ -1,0 +1,11 @@
+:host {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+  width: 100%;
+  background-color: #f0f0f0;
+
+  app-login-form {
+      min-width: 400px;
+  }
+}
