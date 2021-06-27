@@ -1,7 +1,7 @@
 import { Injectable, QueryList } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { RedirectService } from './redirect.service';
+import { NavigationService } from './navigation.service';
 import { LocalStorageService } from './local-storage.service';
 import { accessTokenKey } from './constants';
 
@@ -10,20 +10,20 @@ import { accessTokenKey } from './constants';
 })
 export class AuthGuard implements CanActivate {
   constructor(
-    private localStorageService: LocalStorageService,
-    private redirectService: RedirectService
+    private readonly _localStorageService: LocalStorageService,
+    private readonly _navigationService: NavigationService
   ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const token = this.localStorageService.get({ name: accessTokenKey });
+      const token = this._localStorageService.get({ name: accessTokenKey });
       if (token) {
         return true;
       }
 
-      this.redirectService.lastPath = state.url;
-      this.redirectService.redirectToLogin();
+      this._navigationService.lastPath = state.url;
+      this._navigationService.redirectToLogin();
 
       return false;
   }

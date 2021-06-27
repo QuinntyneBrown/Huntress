@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from './local-storage.service';
 import { map } from 'rxjs/operators';
-import { accessTokenKey, baseUrl, currentProfileKey, storageKey, usernameKey } from './constants';
+import { accessTokenKey, baseUrl, usernameKey } from './constants';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class AuthService {
   ) {}
 
   public logout() {
-    
+
   }
 
   public tryToLogin(options: { username: string; password: string }) {

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RedirectService {
-  constructor(private route: ActivatedRoute, private router: Router) {}
+export class NavigationService {
+  constructor(private router: Router) {}
 
   loginUrl = '/login';
 

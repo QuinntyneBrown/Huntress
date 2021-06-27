@@ -21,8 +21,10 @@
       </mat-form-field>
     </form>
 
-    <button mat-raised-button color='primary'
-    (click)='tryToLogin.emit(form.value)'
-    [disabled]='!form.valid'>Submit</button>
+    <div class="g-actions">
+      <button mat-raised-button (click)='tryToLogin.emit(form.value)' [disabled]='!form.valid'>Sign In</button>
+
+      <button mat-raised-button (click)='tryToLogin.emit(form.value)' [disabled]='!form.valid'>Create Account</button>
+    </div>
 
   </mat-card>

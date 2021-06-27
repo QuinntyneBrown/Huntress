@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AuthService } from '@core/auth.service';
-import { RedirectService } from '@core/redirect.service';
+import { NavigationService } from '@core/navigation.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnDestroy, OnInit {
 
   constructor(
     private readonly _authService: AuthService,
-    private readonly _redirectService: RedirectService
+    private readonly _redirectService: NavigationService
   ) { }
 
   ngOnInit() {
