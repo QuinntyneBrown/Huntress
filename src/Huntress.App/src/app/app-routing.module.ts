@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'collection', loadChildren: () => import('./collection/collection.module').then(m => m.CollectionModule) },
   { path: 'product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
   { path: 'workspace', loadChildren: () => import('./workspace/workspace.module').then(m => m.WorkspaceModule) },
-  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) }];
+  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
+  { path: 'create-account', loadChildren: () => import('./create-account/create-account.module').then(m => m.CreateAccountModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
