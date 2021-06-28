@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '@api';
+import { baseUrl } from '@core';
 import { map, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -19,7 +20,8 @@ export class ProductComponent {
 
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
-    private readonly _productService: ProductService
+    private readonly _productService: ProductService,
+    @Inject(baseUrl) private readonly _baseUrl: string
   ) {
 
   }
