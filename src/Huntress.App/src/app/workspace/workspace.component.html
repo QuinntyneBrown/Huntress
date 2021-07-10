@@ -1,6 +1,6 @@
 
 <app-mobile-header (click)="drawer?.toggle()"></app-mobile-header>
-<mat-drawer-container>
+<mat-drawer-container style="min-height: 100vh;">
   <mat-drawer #drawer [mode]="mode$ | async">
     <app-sidenav></app-sidenav>
   </mat-drawer>

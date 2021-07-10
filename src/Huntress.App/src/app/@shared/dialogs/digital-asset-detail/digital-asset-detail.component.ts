@@ -37,6 +37,8 @@ export class DigitalAssetDetailComponent implements OnDestroy {
   constructor(
     private readonly _dialogRef: MatDialogRef<DigitalAssetDetailComponent>,
     private readonly _digitalAssetService: DigitalAssetService) {
+
+
   }
 
   public save(vm: { form: FormGroup}) {

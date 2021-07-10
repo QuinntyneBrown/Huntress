@@ -1,9 +1,6 @@
 <ng-container *ngIf="vm$ | async as vm">
-
-  <app-header *ngIf="isPublic$ | async" (click)="drawer.toggle()"></app-header>
-
   <mat-drawer-container autosize>
-    <mat-drawer #drawer mode="over">
+    <mat-drawer #drawer mode="over" class="g-drawer">
       <ul>
         <li>
           <a>HOME</a>
@@ -14,11 +11,13 @@
       </ul>
     </mat-drawer>
 
+    <app-header *ngIf="isPublic$ | async" (click)="drawer.toggle()"></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
 
     <app-footer
+    *ngIf="isPublic$ | async"
     [aboutHtmlContent]="vm.about.body"
     [followUsHtmlContent]="vm.followUs.body"
     [returnPolicyHtmlContent]="vm.returnPolicy.body"
