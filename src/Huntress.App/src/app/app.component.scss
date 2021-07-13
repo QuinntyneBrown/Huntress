@@ -3,4 +3,16 @@
     min-height: 100vh;
     display: block;
   }
+
+  .mat-drawer__close-button-container {
+    display: grid;
+    place-items: center end;
+    padding:30px;
+    box-sizing: border-box;
+  }
+
+  mat-divider {
+    margin: 0px auto;
+    max-width: calc(100% - 60px);
+  }
 }
