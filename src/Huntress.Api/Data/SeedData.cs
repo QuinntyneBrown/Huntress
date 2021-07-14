@@ -23,7 +23,7 @@ namespace Huntress.Api.Data
             {
                 var cssVariable = context.CssVariables.SingleOrDefault(x => x.Name == "--background-color");
 
-                if(cssVariable == null)
+                if (cssVariable == null)
                 {
                     cssVariable = new("--background-color", "#fff");
 

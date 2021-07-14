@@ -51,7 +51,7 @@ namespace Huntress.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(GetImageContentByType.Response), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<GetImageContentByType.Response>> GetSingleByType([FromRoute] GetImageContentByType.Request requet)
-    => await _mediator.Send(requet);
+            => await _mediator.Send(requet);
 
         [HttpPost(Name = "CreateImageContentRoute")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]

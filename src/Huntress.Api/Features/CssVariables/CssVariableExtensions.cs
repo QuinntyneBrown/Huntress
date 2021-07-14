@@ -7,13 +7,13 @@ namespace Huntress.Api.Features
     {
         public static CssVariableDto ToDto(this CssVariable cssVariable)
         {
-            return new ()
+            return new()
             {
                 CssVariableId = cssVariable.CssVariableId,
                 Name = cssVariable.Name,
                 Value = cssVariable.Value
             };
         }
-        
+
     }
 }

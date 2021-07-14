@@ -21,6 +21,6 @@ namespace Huntress.Api.Interfaces
         DbSet<SocialShare> SocialShares { get; }
         DbSet<CssVariable> CssVariables { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        
+
     }
 }
