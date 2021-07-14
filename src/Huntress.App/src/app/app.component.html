@@ -1,8 +1,8 @@
 <ng-container *ngIf="vm$ | async as vm">
-  <mat-drawer-container autosize>
+  <mat-drawer-container>
     <mat-drawer #drawer mode="over" class="g-drawer">
       <div class="mat-drawer__close-button-container">
-        <button mat-icon-button>
+        <button mat-icon-button (click)="drawer.close()">
           <mat-icon>
             close
           </mat-icon>
@@ -11,7 +11,7 @@
       <mat-divider></mat-divider>
       <ul>
         <li>
-          <a>HOME</a>
+          <a cdkFocusInitial>HOME</a>
         </li>
         <li>
           <a>SHOP</a>
