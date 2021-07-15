@@ -6,6 +6,6 @@
     What's yours will always find you
   </app-quote>
 
-  <app-products-section [products]="vm.products"></app-products-section>
+  <app-products-section [products]="vm.products" (productClick)="handleProductClick($event)"></app-products-section>
 
 </ng-container>

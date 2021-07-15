@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '@api';
 
 @Component({
@@ -9,5 +9,7 @@ import { Product } from '@api';
 export class ProductsSectionComponent {
 
   @Input() public products: Product[] = [];
+
+  @Output() public readonly productClick: EventEmitter<Product> = new EventEmitter();
 
 }

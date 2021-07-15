@@ -92,7 +92,7 @@ namespace Huntress.Api.Data
 
                     if (product == null)
                     {
-                        product = new(default, default, default);
+                        product = new("Name", 99.99m, "Description");
 
                         var digitalAsset = context.DigitalAssets.Single(x => x.Name == $"product-{i}.jpg");
 

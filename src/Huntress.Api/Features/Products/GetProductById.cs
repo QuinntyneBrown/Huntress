@@ -31,7 +31,9 @@ namespace Huntress.Api.Features
             {
                 return new()
                 {
-                    Product = (await _context.Products.SingleOrDefaultAsync(x => x.ProductId == request.ProductId)).ToDto()
+                    Product = (await _context.Products
+                    .Include(x => x.ProductImages)
+                    .SingleOrDefaultAsync(x => x.ProductId == request.ProductId)).ToDto()
                 };
             }
 

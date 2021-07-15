@@ -1,1 +1,13 @@
-<p>product works!</p>
+<ng-container *ngIf="vm$ | async as vm">
+
+  <div class="product__description-container">
+    <h1>{{ vm.product.name }}</h1>
+    <span>{{ vm.product.price }}</span>
+    <button mat-stroked-button>Add to Cart</button>
+  </div>
+
+  <div class="product__image-container">
+    <img [src]="vm.product.imageUrl">
+  </div>
+
+</ng-container>

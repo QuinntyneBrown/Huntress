@@ -13,9 +13,13 @@ export class ProductComponent {
 
   public readonly vm$ = this._activatedRoute.paramMap
   .pipe(
-    map(paramMap => paramMap.get("name")),
-    switchMap(name => this._productService.getByName({ name })),
-    map(product => ({ product }))
+    map(paramMap => paramMap.get("productId")),
+    switchMap(productId => this._productService.getById({ productId })),
+    map(product => {
+      return {
+        product: Object.assign(product, {imageUrl:`${this._baseUrl}${product.productImages[0].imageUrl}`})
+      }
+    })
   );
 
   constructor(
@@ -25,5 +29,4 @@ export class ProductComponent {
   ) {
 
   }
-
 }

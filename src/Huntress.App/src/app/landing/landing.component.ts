@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { ImageContentType, Product } from '@api';
 import { ImageContentService, ProductService } from '@api/services';
 import { baseUrl } from '@core';
@@ -25,7 +26,11 @@ export class LandingComponent {
   constructor(
     private readonly _imageContentService: ImageContentService,
     private readonly _productService: ProductService,
+    private readonly _router: Router,
     @Inject(baseUrl) private readonly _baseUrl: string
   ) { }
 
+  public handleProductClick(product: Product) {
+    this._router.navigate(['products', product.productId]);
+  }
 }

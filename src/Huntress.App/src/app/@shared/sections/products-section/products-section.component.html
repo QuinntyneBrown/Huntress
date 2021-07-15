@@ -8,7 +8,7 @@
 
 <div class="grid">
 
-  <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+  <app-product-card (click)="productClick.emit(product)" *ngFor="let product of products" [product]="product"></app-product-card>
 
 </div>
 
