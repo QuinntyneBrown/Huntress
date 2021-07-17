@@ -12,7 +12,9 @@ const routes: Routes = [
   { path: 'checkout', loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule) }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: "top"
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
