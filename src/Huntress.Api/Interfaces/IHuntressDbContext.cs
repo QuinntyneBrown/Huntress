@@ -20,7 +20,9 @@ namespace Huntress.Api.Interfaces
         DbSet<ProductCollection> ProductCollections { get; }
         DbSet<SocialShare> SocialShares { get; }
         DbSet<CssVariable> CssVariables { get; }
+        DbSet<Order> Orders { get; }
+        DbSet<OrderItem> OrderItems { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-
+        
     }
 }

@@ -39,6 +39,8 @@
     "ImageContent",
     "ProductCollection",
     "SocialShare",
-    "CssVariable"
+    "CssVariable",
+    "Order",
+    "OrderItem"
   ]
 }
