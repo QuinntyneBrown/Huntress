@@ -1,3 +1,11 @@
-.g-overlay {
+.cdk-overlay-pane.g-overlay {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  width: 100%;
+  min-height: 100vh;
 
+  > * {
+    grid-column: 2;
+    background-color: #FFF;
+  }
 }

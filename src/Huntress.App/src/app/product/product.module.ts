@@ -4,6 +4,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product.component';
 import { MatButtonModule } from '@angular/material/button';
+import { CartModule } from '../cart';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     ProductRoutingModule,
     MatButtonModule,
-    OverlayModule
+    OverlayModule,
+    CartModule
   ]
 })
 export class ProductModule { }

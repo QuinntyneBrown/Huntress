@@ -1,8 +1,9 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { CssVariableService, HtmlContent, HtmlContentService, SocialShareService } from '@api';
 import { HtmlContentType } from '@api/models/html-content-type';
+import { NavigationService } from '@core';
 import { forkJoin, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
@@ -50,8 +51,12 @@ export class AppComponent {
     private readonly _socialShareService: SocialShareService,
     private readonly _htmlContentService: HtmlContentService,
     private readonly _cssVariableService: CssVariableService,
+    private readonly _navigationService: NavigationService,
     @Inject(DOCUMENT) private readonly _document: Document
   ) { }
 
 
+  public handleTitleClick() {
+    this._navigationService.redirectToPublicDefault();
+  }
 }

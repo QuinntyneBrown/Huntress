@@ -25,6 +25,10 @@ export class NavigationService {
     this.router.navigate([this.loginUrl]);
   }
 
+  public redirectToPublicDefault(): void {
+    this.router.navigate(['']);
+  }
+
   public redirectPreLogin(): void {
     if (this.lastPath && this.lastPath !== this.loginUrl) {
       this.router.navigateByUrl(this.lastPath);

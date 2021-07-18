@@ -22,7 +22,7 @@
       </ul>
     </mat-drawer>
 
-    <app-header *ngIf="isPublic$ | async" (click)="drawer.toggle()"></app-header>
+    <app-header *ngIf="isPublic$ | async" (click)="handleTitleClick()"></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
