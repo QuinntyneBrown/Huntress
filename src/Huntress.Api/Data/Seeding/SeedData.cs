@@ -98,6 +98,8 @@ namespace Huntress.Api.Data
 
                         product.ProductImages.Add(new(default, $"api/DigitalAsset/serve/{digitalAsset.DigitalAssetId}"));
 
+                        product.AddStock(1);
+
                         context.Products.Add(product);
 
                         context.SaveChanges();

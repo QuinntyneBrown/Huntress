@@ -5,4 +5,7 @@ export type Product = {
     name: string,
     description: string,
     productImages: ProductImage[]
+    quantityInStock: number,
+    onReOrder: boolean,
+    inventoryCount: number;
 };
