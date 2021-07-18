@@ -1,9 +1,8 @@
+using FluentValidation;
 using Huntress.Api.Core;
 using Huntress.Api.Interfaces;
-using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Stripe;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

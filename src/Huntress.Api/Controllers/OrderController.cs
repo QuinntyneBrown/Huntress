@@ -15,6 +15,13 @@ namespace Huntress.Api.Controllers
         public OrderController(IMediator mediator)
             => _mediator = mediator;
 
+        [HttpPost("checkout", Name = "CheckoutOrderRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(CheckoutOrder.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<CheckoutOrder.Response>> Create([FromBody] CheckoutOrder.Request request)
+            => await _mediator.Send(request);
+
         [HttpGet("{orderId}", Name = "GetOrderByIdRoute")]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
