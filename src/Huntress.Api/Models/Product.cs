@@ -11,6 +11,7 @@ namespace Huntress.Api.Models
         public string Description { get; private set; }
         public int QuantityInStock { get; set; }
         public bool OnReOrder { get; set; }
+        public bool OnPreOrder { get; set; }
         public int InventoryCount { get; set; } = 0;
         public List<ProductImage> ProductImages { get; private set; } = new();
         public Product(string name, decimal price, string description)

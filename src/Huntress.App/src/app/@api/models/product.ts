@@ -7,5 +7,6 @@ export type Product = {
     productImages: ProductImage[]
     quantityInStock: number,
     onReOrder: boolean,
+    onPreOrder: boolean,
     inventoryCount: number;
 };
