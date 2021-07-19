@@ -22,6 +22,7 @@ namespace Huntress.Api.Interfaces
         DbSet<CssVariable> CssVariables { get; }
         DbSet<Order> Orders { get; }
         DbSet<OrderItem> OrderItems { get; }
+        DbSet<ProductUpdateRequest> ProductUpdateRequests { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         
     }

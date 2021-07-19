@@ -21,6 +21,7 @@ namespace Huntress.Api.Data
         public DbSet<CssVariable> CssVariables { get; private set; }
         public DbSet<Order> Orders { get; private set; }
         public DbSet<OrderItem> OrderItems { get; private set; }
+        public DbSet<ProductUpdateRequest> ProductUpdateRequests { get; private set; }
         public HuntressDbContext(DbContextOptions options)
             :base(options) { }
 

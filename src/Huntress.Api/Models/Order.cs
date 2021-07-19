@@ -9,8 +9,7 @@ namespace Huntress.Api.Models
         public Guid CustomerId { get; set; }
         public decimal Cost { get; set; }
         public OrderStatus Status { get; set; } = OrderStatus.Draft;
-        public List<OrderItem> OrderItems { get; set; }
-            = new List<OrderItem>();
+        public List<OrderItem> OrderItems { get; set; } = new ();
         public DateTime OrderDate { get; set; }
         public Address ShippingAddress { get; set; }
         public Address BillingAddress { get; set; }
@@ -45,6 +44,16 @@ namespace Huntress.Api.Models
             }
 
             Status = OrderStatus.ProcessingPayment;
+            return this;
+        }
+
+        public Order SetPreOrderStatus()
+        {
+            if (Status != OrderStatus.Draft)
+            {
+                throw new Exception($"Unable to change to PreOrder Status $({OrderStatus.PreOrder}) due to current status of {Status}");
+            }
+            Status = OrderStatus.PreOrder;
             return this;
         }
 
