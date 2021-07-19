@@ -4,23 +4,23 @@ import { takeUntil, tap } from 'rxjs/operators';
 import { fromEvent, Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-quanity',
-  templateUrl: './quanity.component.html',
-  styleUrls: ['./quanity.component.scss'],
+  selector: 'app-quantity',
+  templateUrl: './quantity.component.html',
+  styleUrls: ['./quantity.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => QuanityComponent),
+      useExisting: forwardRef(() => QuantityComponent),
       multi: true
     },
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => QuanityComponent),
+      useExisting: forwardRef(() => QuantityComponent),
       multi: true
     }
   ]
 })
-export class QuanityComponent implements ControlValueAccessor,  Validator, OnDestroy  {
+export class QuantityComponent implements ControlValueAccessor,  Validator, OnDestroy  {
   private readonly _destroyed$: Subject<void> = new Subject();
 
   public formControl = new FormControl(0, [Validators.required])

@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CartOverlayComponent } from './cart-overlay.component';
-import { QuanityModule } from '@shared/quanity/quanity.module';
+import { QuantityComponent } from './quantity.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    CartOverlayComponent
+    QuantityComponent
+  ],
+  exports: [
+    QuantityComponent
   ],
   imports: [
     CommonModule,
-    QuanityModule,
     ReactiveFormsModule
   ]
 })
-export class CartOverlayModule { }
+export class QuantityModule { }

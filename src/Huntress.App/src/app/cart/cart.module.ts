@@ -5,7 +5,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { QuanityModule } from '@shared/quanity/quanity.module';
+import { QuantityModule } from '@shared';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import { QuanityModule } from '@shared/quanity/quanity.module';
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
-    QuanityModule
+    QuantityModule
   ]
 })
 export class CartModule { }
