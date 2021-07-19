@@ -49,6 +49,7 @@ namespace Huntress.Api.Models
 
         public Order SetPreOrderStatus()
         {
+            
             if (Status != OrderStatus.Draft)
             {
                 throw new Exception($"Unable to change to PreOrder Status $({OrderStatus.PreOrder}) due to current status of {Status}");

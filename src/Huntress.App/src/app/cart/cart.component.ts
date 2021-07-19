@@ -10,6 +10,9 @@ import { CartService } from './cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
+
+  public readonly products$ = this._cartService.products$;
+
   constructor(
     private readonly _cartService: CartService,
     private readonly _overlayRef: OverlayRef,

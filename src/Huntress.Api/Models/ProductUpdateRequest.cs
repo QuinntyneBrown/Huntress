@@ -8,7 +8,7 @@ namespace Huntress.Api.Models
         public string Email { get; private set; }
         public Guid ProductId { get; private set; }
         public DateTime Created { get; private set; } = DateTime.UtcNow;
-        public DateTime Updated { get; private set; }
+        public DateTime? Updated { get; private set; }
         public ProductUpdateRequest(string email, Guid productId)
         {
             Email = email;

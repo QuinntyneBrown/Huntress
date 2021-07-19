@@ -1,12 +1,29 @@
 
 <div class="cart__header">
-
-</div>
-
-<div class="cart__content"></div>
-
-<div class="cart__footer">
-  <button mat-raised-button color="primary" (click)="checkout$.next()">
-    CHECK OUT
+  <h1>Cart</h1>
+  <button mat-icon-button>
+    <mat-icon>
+      close
+    </mat-icon>
   </button>
 </div>
+
+<ng-container *ngIf="products$ | async as products">
+
+  <div class="cart__content" *ngIf="products.length > 0; else empty">
+
+  </div>
+
+  <ng-template #empty>
+    <div class="cart__content--empty">
+      <p>Your cart is currently empty.</p>
+    </div>
+  </ng-template>
+
+  <div class="cart__footer" *ngIf="products.length > 0">
+    <button mat-raised-button color="primary" (click)="checkout$.next()">
+      CHECK OUT
+    </button>
+  </div>
+</ng-container>
+
