@@ -64,6 +64,13 @@ export class ProductComponent implements OnDestroy {
       })
     ).subscribe();
 
+    cartComponent.close$
+    .pipe(
+      tap(_ => {
+        overlayRef.dispose();
+      })
+    ).subscribe();
+
   }
 
   ngOnDestroy() {

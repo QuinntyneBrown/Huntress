@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { QuantityModule } from '@shared';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
-    QuantityModule
+    QuantityModule,
+    MatFormFieldModule
   ]
 })
 export class CartModule { }

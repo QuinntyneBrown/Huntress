@@ -1,7 +1,6 @@
-<form novalidate autocomplete='off' spellcheck='false' [formGroup]='form'>
-    <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder='Name'
-        formControlName='name' required>
-    </mat-form-field>
+<form [formGroup]="form">
+  <h1>{{ form.value.name }}</h1>
+
+  <app-quantity formControlName="quantity"></app-quantity>
+
 </form>

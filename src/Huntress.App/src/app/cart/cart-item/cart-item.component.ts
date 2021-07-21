@@ -17,20 +17,21 @@ import { fromEvent, Subject } from 'rxjs';
       provide: NG_VALIDATORS,
       useExisting: forwardRef(() => CartItemComponent),
       multi: true
-    }       
+    }
   ]
 })
 export class CartItemComponent implements ControlValueAccessor,  Validator, OnDestroy  {
   private readonly _destroyed$: Subject<void> = new Subject();
-  
+
   public form = new FormGroup({
     name: new FormControl(null, [Validators.required]),
+    quantity: new FormControl(0,[Validators.required])
   });
 
   constructor(
     private readonly _elementRef: ElementRef
   ) { }
-  
+
   validate(control: AbstractControl): ValidationErrors | null {
       return this.form.valid ? null
       : Object.keys(this.form.controls).reduce(
@@ -48,13 +49,13 @@ export class CartItemComponent implements ControlValueAccessor,  Validator, OnDe
           {}
         );
   }
-    
-  writeValue(obj: any): void {   
+
+  writeValue(obj: any): void {
     if(obj == null) {
       this.form.reset();
     }
     else {
-        this.form.patchValue(obj, { emitEvent: false });    
+        this.form.patchValue(obj, { emitEvent: false });
     }
   }
 
