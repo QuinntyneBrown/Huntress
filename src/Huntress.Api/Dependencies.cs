@@ -1,6 +1,7 @@
 using Huntress.Api.Data;
 using Huntress.Api.Extensions;
 using Huntress.Api.Interfaces;
+using Huntress.Api.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -52,6 +53,8 @@ namespace Huntress.Api
             services.AddMediatR(typeof(IHuntressDbContext));
 
             services.AddTransient<IHuntressDbContext, HuntressDbContext>();
+
+            services.AddTransient<IStripeClient, StripeClient>();
 
             services.AddDbContext<HuntressDbContext>(options =>
             {

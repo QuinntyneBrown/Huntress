@@ -8,6 +8,6 @@ namespace Huntress.Api.Features
         public string Email { get; set; }
         public Guid ProductId { get; set; }
         public DateTime Created { get; set; }
-        public DateTime Updated { get; set; }
+        public DateTime? Updated { get; set; }
     }
 }

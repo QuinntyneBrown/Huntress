@@ -1,3 +1,10 @@
 :host {
   grid-column: 2;
+  padding: 30px;
+  box-sizing: border-box;
+
+  .cart__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
 }

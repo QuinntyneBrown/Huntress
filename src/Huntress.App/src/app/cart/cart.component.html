@@ -11,7 +11,10 @@
 <ng-container *ngIf="products$ | async as products">
 
   <div class="cart__content" *ngIf="products.length > 0; else empty">
-
+    <div *ngFor="let product of products">
+      <h2>{{ product.name }}</h2>
+      <app-quantity></app-quantity>
+    </div>
   </div>
 
   <ng-template #empty>

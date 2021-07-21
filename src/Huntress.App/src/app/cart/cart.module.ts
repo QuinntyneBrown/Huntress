@@ -6,14 +6,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { QuantityModule } from '@shared';
+import { CartItemComponent } from './cart-item/cart-item.component';
 
 
 @NgModule({
   declarations: [
-    CartComponent
+    CartComponent,
+    CartItemComponent
   ],
   exports: [
-    CartComponent
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     CommonModule,
