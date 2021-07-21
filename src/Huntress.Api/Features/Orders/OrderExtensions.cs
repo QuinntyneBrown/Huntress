@@ -1,4 +1,3 @@
-using System;
 using Huntress.Api.Models;
 
 namespace Huntress.Api.Features
@@ -7,11 +6,11 @@ namespace Huntress.Api.Features
     {
         public static OrderDto ToDto(this Order order)
         {
-            return new ()
+            return new()
             {
                 OrderId = order.OrderId
             };
         }
-        
+
     }
 }

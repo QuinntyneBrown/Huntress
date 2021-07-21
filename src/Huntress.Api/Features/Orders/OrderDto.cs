@@ -6,7 +6,7 @@ namespace Huntress.Api.Features
 {
     public class OrderDto
     {
-        public System.Guid OrderId { get; set; }
+        public Guid OrderId { get; set; }
         public Address ShippingAddress { get; set; }
         public Address BillingAddress { get; set; }
         public System.Guid CustomerId { get; set; }

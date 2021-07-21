@@ -7,11 +7,11 @@ namespace Huntress.Api.Features
     {
         public static OrderItemDto ToDto(this OrderItem orderItem)
         {
-            return new ()
+            return new()
             {
                 OrderItemId = orderItem.OrderItemId
             };
         }
-        
+
     }
 }

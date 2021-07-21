@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { CssVariableService, HtmlContent, HtmlContentService, SocialShareService } from '@api';
 import { HtmlContentType } from '@api/models/html-content-type';
 import { NavigationService } from '@core';
@@ -43,8 +43,6 @@ export class AppComponent {
     map(([about, contact, followUs, returnPolicy, socials ]) =>
     ({ about, contact, followUs, returnPolicy, socials }))
   );
-
-
 
   constructor(
     private readonly _activatedRoute: ActivatedRoute,

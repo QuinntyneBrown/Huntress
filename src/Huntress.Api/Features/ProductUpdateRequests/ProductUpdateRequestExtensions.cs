@@ -6,7 +6,7 @@ namespace Huntress.Api.Features
     {
         public static ProductUpdateRequestDto ToDto(this ProductUpdateRequest productUpdateRequest)
         {
-            return new ()
+            return new()
             {
                 ProductUpdateRequestId = productUpdateRequest.ProductUpdateRequestId,
                 Email = productUpdateRequest.Email,
@@ -15,6 +15,6 @@ namespace Huntress.Api.Features
                 Created = productUpdateRequest.Created
             };
         }
-        
+
     }
 }

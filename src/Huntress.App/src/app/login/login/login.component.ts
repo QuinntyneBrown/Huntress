@@ -15,7 +15,7 @@ export class LoginComponent implements OnDestroy, OnInit {
 
   constructor(
     private readonly _authService: AuthService,
-    private readonly _redirectService: NavigationService
+    private readonly _navigationService: NavigationService
   ) { }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class LoginComponent implements OnDestroy, OnInit {
     )
     .subscribe(
       () => {
-        this._redirectService.redirectPreLogin();
+        this._navigationService.redirectPreLogin();
       },
       errorResponse => {
         // handle error response

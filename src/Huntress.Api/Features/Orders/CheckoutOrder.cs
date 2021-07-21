@@ -50,7 +50,8 @@ namespace Huntress.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var order = await _context.Orders.Include(x => x.OrderItems).SingleAsync(x => x.OrderId == request.OrderId);
+                var order = await _context.Orders.Include(x => x.OrderItems)
+                    .SingleAsync(x => x.OrderId == request.OrderId, cancellationToken);
 
                 order.SetProcessingPaymentStatus();
 

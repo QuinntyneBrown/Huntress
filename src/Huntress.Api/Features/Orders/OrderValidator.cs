@@ -2,5 +2,5 @@ using FluentValidation;
 
 namespace Huntress.Api.Features
 {
-    public class OrderValidator: AbstractValidator<OrderDto> { }
+    public class OrderValidator : AbstractValidator<OrderDto> { }
 }

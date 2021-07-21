@@ -1,11 +1,10 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { Route } from '@angular/compiler/src/core';
 import { Component, Inject, Injector, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product, ProductService } from '@api';
 import { baseUrl } from '@core';
-import { Subject } from 'rxjs';
+import { merge, Subject } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { CartService, CartComponent } from '../cart';
 
@@ -55,22 +54,19 @@ export class ProductComponent implements OnDestroy {
 
     const cartComponent: CartComponent = overlayRef.attach(cartPortal).instance;
 
-
-    cartComponent.checkout$
+    merge([
+      cartComponent.checkout$.pipe(map(_ => true)),
+      cartComponent.close$.pipe(map(_ => false))
+    ])
     .pipe(
-      tap(_ => {
+      tap(navigateToCheckout => {
         overlayRef.dispose();
-        this._router.navigate(['checkout']);
+
+        if(navigateToCheckout) {
+          this._router.navigate(['checkout']);
+        }
       })
     ).subscribe();
-
-    cartComponent.close$
-    .pipe(
-      tap(_ => {
-        overlayRef.dispose();
-      })
-    ).subscribe();
-
   }
 
   ngOnDestroy() {
