@@ -1,4 +1,6 @@
+using Huntress.Api.Core;
 using Huntress.Api.Models;
+using Microsoft.AspNetCore.StaticFiles;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,15 +10,60 @@ namespace Huntress.Api.Data
     {
         public static void Seed(HuntressDbContext context)
         {
+            RoleConfiguration.Seed(context);
+            UserConfiguration.Seed(context);
             DigitalAssetConfiguration.Seed(context);
             ImageContentConfiguration.Seed(context);
             ProductConfiguration.Seed(context);
             HtmlContentConfiguration.Seed(context);
             SocialShareConfiguration.Seed(context);
             CssVariableConfiguration.Seed(context);
-
         }
 
+        internal static class DigitalAssetConfiguration
+        {
+            internal static void Seed(HuntressDbContext context)
+            {
+                if (context.DigitalAssets.SingleOrDefault(x => x.Name == "hero-1.jpg") == null)
+                {
+                    var provider = new FileExtensionContentTypeProvider();
+
+                    provider.TryGetContentType("hero-1.jpg", out string contentType);
+
+                    var digitalAsset = new DigitalAsset
+                    {
+                        Name = "hero-1.jpg",
+                        Bytes = StaticFileLocator.Get("hero-1.jpg"),
+                        ContentType = contentType
+                    };
+
+                    context.DigitalAssets.Add(digitalAsset);
+
+                    context.SaveChanges();
+                }
+            }
+
+            internal static void SeedProductImages(HuntressDbContext context)
+            {
+                for (var i = 1; i <= 5; i++)
+                {
+                    var provider = new FileExtensionContentTypeProvider();
+
+                    provider.TryGetContentType($"product-{i}.jpg", out string contentType);
+
+                    var digitalAsset = new DigitalAsset
+                    {
+                        Name = $"product-{i}.jpg",
+                        Bytes = StaticFileLocator.Get($"product-{i}.jpg"),
+                        ContentType = contentType
+                    };
+
+                    context.DigitalAssets.Add(digitalAsset);
+
+                    context.SaveChanges();
+                }
+            }
+        }
         internal static class CssVariableConfiguration
         {
             internal static void Seed(HuntressDbContext context)
@@ -53,7 +100,6 @@ namespace Huntress.Api.Data
                 context.ChangeTracker.Clear();
             }
         }
-
         internal static class HtmlContentConfiguration
         {
             internal static void Seed(HuntressDbContext context)
@@ -108,7 +154,6 @@ namespace Huntress.Api.Data
 
             }
         }
-
         internal static class SocialShareConfiguration
         {
             internal static void Seed(HuntressDbContext context)
@@ -130,6 +175,61 @@ namespace Huntress.Api.Data
                     {
                         context.SocialShares.Add(socialShare);
                     }
+                }
+            }
+        }
+
+        internal static class RoleConfiguration
+        {
+            internal static void Seed(HuntressDbContext context)
+            {
+                foreach(var role in new List<Role>
+                {
+                    new (Constants.Roles.Default),
+                    new (Constants.Roles.Admin),
+                })
+                {
+                    if(context.Roles.FirstOrDefault(x => x.Name == role.Name) == null)
+                    {
+                        foreach(var aggregate in Constants.Aggregates.All)
+                        {
+                            var accessRights = role.Name == Constants.Roles.Admin ? Constants.AccessRights.FullAccess : Constants.AccessRights.ReadWrite;
+
+                            foreach(var accessWrite in accessRights)
+                            {
+                                role.Privileges.Add(new(accessWrite, aggregate));
+                            }
+                        }
+                        context.Roles.Add(role);
+                    }
+
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        internal static class UserConfiguration
+        {
+            internal static void Seed(HuntressDbContext context)
+            {
+                var passwordHasher = new PasswordHasher();
+
+                foreach (var user in new List<User>
+                {
+                    new ("Default", "P@ssw0rd", passwordHasher),
+                    new ("Admin", "P@ssw0rd", passwordHasher),
+                })
+                {
+                    if (context.Users.FirstOrDefault(x => x.Username == user.Username) == null)
+                    {
+                        var role = context.Roles.Single(x => x.Name == user.Username);
+
+                        user.Roles.Add(role);
+
+                        context.Users.Add(user);
+                    }
+
+                    context.SaveChanges();
                 }
             }
         }

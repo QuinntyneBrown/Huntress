@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Huntress.Api.Data
 {
-    public class HuntressDbContext : DbContext, IHuntressDbContext
+    public class HuntressDbContext: DbContext, IHuntressDbContext
     {
         public DbSet<Product> Products { get; private set; }
         public DbSet<Collection> Collections { get; private set; }
@@ -22,15 +22,18 @@ namespace Huntress.Api.Data
         public DbSet<Order> Orders { get; private set; }
         public DbSet<OrderItem> OrderItems { get; private set; }
         public DbSet<ProductUpdateRequest> ProductUpdateRequests { get; private set; }
+        public DbSet<User> Users { get; private set; }
+        public DbSet<Role> Roles { get; private set; }
+        public DbSet<Privilege> Privileges { get; private set; }
         public HuntressDbContext(DbContextOptions options)
-            : base(options) { }
+            :base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+            
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(HuntressDbContext).Assembly);
         }
-
+        
     }
 }

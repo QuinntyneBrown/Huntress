@@ -1,3 +1,4 @@
+using Huntress.Api.Core;
 using Huntress.Api.Data;
 using Huntress.Api.Extensions;
 using Huntress.Api.Interfaces;
@@ -53,6 +54,12 @@ namespace Huntress.Api
             services.AddMediatR(typeof(IHuntressDbContext));
 
             services.AddTransient<IHuntressDbContext, HuntressDbContext>();
+            
+            services.AddTransient<IPasswordHasher, PasswordHasher>();
+            
+            services.AddTransient<ITokenBuilder, TokenBuilder>();
+
+            services.AddTransient<ITokenProvider, TokenProvider>();
 
             services.AddTransient<IStripeClient, StripeClient>();
 

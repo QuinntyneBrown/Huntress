@@ -54,10 +54,10 @@ export class ProductComponent implements OnDestroy {
 
     const cartComponent: CartComponent = overlayRef.attach(cartPortal).instance;
 
-    merge([
+    merge(
       cartComponent.checkout$.pipe(map(_ => true)),
       cartComponent.close$.pipe(map(_ => false))
-    ])
+    )
     .pipe(
       tap(navigateToCheckout => {
         overlayRef.dispose();

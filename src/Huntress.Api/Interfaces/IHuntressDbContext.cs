@@ -23,7 +23,10 @@ namespace Huntress.Api.Interfaces
         DbSet<Order> Orders { get; }
         DbSet<OrderItem> OrderItems { get; }
         DbSet<ProductUpdateRequest> ProductUpdateRequests { get; }
+        DbSet<User> Users { get; }
+        DbSet<Role> Roles { get; }
+        DbSet<Privilege> Privileges { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-
+        
     }
 }
