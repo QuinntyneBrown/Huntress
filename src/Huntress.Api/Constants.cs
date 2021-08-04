@@ -25,7 +25,7 @@ namespace Huntress.Api
 
         public static class Roles
         {
-            public static readonly string Default = nameof(Default);
+            public static readonly string Customer = nameof(Customer);
             public static readonly string Admin = nameof(Admin);
         }
 

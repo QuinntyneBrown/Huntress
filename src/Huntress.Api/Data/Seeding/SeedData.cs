@@ -185,7 +185,7 @@ namespace Huntress.Api.Data
             {
                 foreach (var role in new List<Role>
                 {
-                    new (Constants.Roles.Default),
+                    new (Constants.Roles.Customer),
                     new (Constants.Roles.Admin),
                 })
                 {
