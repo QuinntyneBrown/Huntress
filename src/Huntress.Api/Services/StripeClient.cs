@@ -1,4 +1,4 @@
-﻿using Stripe;
+using Stripe;
 using System.Threading;
 using System.Threading.Tasks;
 using IStripeClient = Huntress.Api.Services.IStripeClient;

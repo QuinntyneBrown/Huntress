@@ -1,4 +1,4 @@
-﻿namespace Huntress.Api.Models
+namespace Huntress.Api.Models
 {
     public enum CustomerCollectionType
     {

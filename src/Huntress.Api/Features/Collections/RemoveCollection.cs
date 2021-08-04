@@ -37,7 +37,7 @@ namespace Huntress.Api.Features
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new Response()
+                return new()
                 {
                     Collection = collection.ToDto()
                 };

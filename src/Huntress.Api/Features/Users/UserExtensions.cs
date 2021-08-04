@@ -1,5 +1,5 @@
-using System;
 using Huntress.Api.Models;
+using System.Linq;
 
 namespace Huntress.Api.Features
 {
@@ -9,7 +9,9 @@ namespace Huntress.Api.Features
         {
             return new()
             {
-                UserId = user.UserId
+                UserId = user.UserId,
+                Username = user.Username,
+                Roles = user.Roles.Select(x => x.ToDto()).ToList()
             };
         }
 

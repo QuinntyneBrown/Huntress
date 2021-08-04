@@ -1,4 +1,4 @@
-﻿namespace Huntress.Api.Core
+namespace Huntress.Api.Core
 {
     public class Authentication
     {

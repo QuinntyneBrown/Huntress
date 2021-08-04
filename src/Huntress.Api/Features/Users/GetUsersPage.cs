@@ -39,6 +39,8 @@ namespace Huntress.Api.Features
                 var length = await _context.Users.CountAsync();
 
                 var users = await query.Page(request.Index, request.PageSize)
+                    .Include(x => x.Roles)
+                    .Include("Roles.Privileges")
                     .Select(x => x.ToDto()).ToListAsync();
 
                 return new()

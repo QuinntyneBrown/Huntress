@@ -1,4 +1,4 @@
-﻿using Huntress.Api.Models;
+using Huntress.Api.Models;
 using System.Collections.Generic;
 
 namespace Huntress.Api
@@ -17,6 +17,7 @@ namespace Huntress.Api
 
         public static class AccessRights
         {
+            public static List<AccessRight> Read => new() { AccessRight.ReadAccess };
             public static List<AccessRight> ReadWrite => new() { AccessRight.ReadAccess, AccessRight.WriteAccess };
 
             public static List<AccessRight> FullAccess => new() { AccessRight.ReadAccess, AccessRight.WriteAccess, AccessRight.CreateAccess, AccessRight.DeleteAccess };

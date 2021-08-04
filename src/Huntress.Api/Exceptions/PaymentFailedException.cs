@@ -1,4 +1,4 @@
-﻿namespace Huntress.Api.Exceptions
+namespace Huntress.Api.Exceptions
 {
     public class PaymentFailedException : DomainException
     {

@@ -183,19 +183,19 @@ namespace Huntress.Api.Data
         {
             internal static void Seed(HuntressDbContext context)
             {
-                foreach(var role in new List<Role>
+                foreach (var role in new List<Role>
                 {
                     new (Constants.Roles.Default),
                     new (Constants.Roles.Admin),
                 })
                 {
-                    if(context.Roles.FirstOrDefault(x => x.Name == role.Name) == null)
+                    if (context.Roles.FirstOrDefault(x => x.Name == role.Name) == null)
                     {
-                        foreach(var aggregate in Constants.Aggregates.All)
+                        foreach (var aggregate in Constants.Aggregates.All)
                         {
-                            var accessRights = role.Name == Constants.Roles.Admin ? Constants.AccessRights.FullAccess : Constants.AccessRights.ReadWrite;
+                            var accessRights = role.Name == Constants.Roles.Admin ? Constants.AccessRights.FullAccess : Constants.AccessRights.Read;
 
-                            foreach(var accessWrite in accessRights)
+                            foreach (var accessWrite in accessRights)
                             {
                                 role.Privileges.Add(new(accessWrite, aggregate));
                             }

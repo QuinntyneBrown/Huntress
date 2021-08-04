@@ -54,9 +54,9 @@ namespace Huntress.Api
             services.AddMediatR(typeof(IHuntressDbContext));
 
             services.AddTransient<IHuntressDbContext, HuntressDbContext>();
-            
+
             services.AddTransient<IPasswordHasher, PasswordHasher>();
-            
+
             services.AddTransient<ITokenBuilder, TokenBuilder>();
 
             services.AddTransient<ITokenProvider, TokenProvider>();

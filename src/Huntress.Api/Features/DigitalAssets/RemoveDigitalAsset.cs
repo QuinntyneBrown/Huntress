@@ -1,4 +1,4 @@
-﻿using Huntress.Api.Core;
+using Huntress.Api.Core;
 using Huntress.Api.Interfaces;
 using Huntress.Api.Models;
 using MediatR;

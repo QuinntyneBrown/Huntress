@@ -45,7 +45,7 @@ namespace Huntress.Api.Features
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new ()
+                return new()
                 {
                     Role = role.ToDto()
                 };

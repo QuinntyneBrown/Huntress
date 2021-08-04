@@ -27,6 +27,6 @@ namespace Huntress.Api.Interfaces
         DbSet<Role> Roles { get; }
         DbSet<Privilege> Privileges { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        
+
     }
 }

@@ -35,7 +35,8 @@ namespace Huntress.Api.Features
             private readonly IHuntressDbContext _context;
             private readonly IPasswordHasher _passwordHasher;
 
-            public Handler(IHuntressDbContext context, IPasswordHasher passwordHasher) {
+            public Handler(IHuntressDbContext context, IPasswordHasher passwordHasher)
+            {
 
                 _context = context;
                 _passwordHasher = passwordHasher;

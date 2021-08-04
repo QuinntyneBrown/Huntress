@@ -48,7 +48,7 @@ namespace Huntress.Api.Features
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new ()
+                return new()
                 {
                     Privilege = privilege.ToDto()
                 };
