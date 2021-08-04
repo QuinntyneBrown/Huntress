@@ -1,10 +1,10 @@
 using FluentValidation;
+using Huntress.Api.Core;
+using Huntress.Api.Interfaces;
+using Huntress.Api.Models;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using Huntress.Api.Models;
-using Huntress.Api.Core;
-using Huntress.Api.Interfaces;
 
 namespace Huntress.Api.Features
 {
@@ -17,7 +17,6 @@ namespace Huntress.Api.Features
                 RuleFor(request => request.Privilege).NotNull();
                 RuleFor(request => request.Privilege).SetValidator(new PrivilegeValidator());
             }
-
         }
 
         public class Request : IRequest<Response>

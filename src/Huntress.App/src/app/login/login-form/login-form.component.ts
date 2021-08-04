@@ -8,8 +8,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class LoginFormComponent implements AfterContentInit {
   public form = new FormGroup({
-    username: new FormControl("admin", [Validators.required]),
-    password: new FormControl("admin", [Validators.required])
+    username: new FormControl("Admin", [Validators.required]),
+    password: new FormControl("P@ssw0rd", [Validators.required])
   });
 
   @Output() public tryToLogin: EventEmitter<{ username: string, password: string }> = new EventEmitter();

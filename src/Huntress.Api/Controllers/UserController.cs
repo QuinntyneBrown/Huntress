@@ -1,8 +1,9 @@
-using System.Net;
-using System.Threading.Tasks;
 using Huntress.Api.Features;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Huntress.Api.Controllers
 {
@@ -67,5 +68,13 @@ namespace Huntress.Api.Controllers
         public async Task<ActionResult<RemoveUser.Response>> Remove([FromRoute] RemoveUser.Request request)
             => await _mediator.Send(request);
 
+        [AllowAnonymous]
+        [HttpPost("token", Name = "AuthenticateRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Authenticate.Response), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<Authenticate.Response>> Authenticate([FromBody] Authenticate.Request request)
+            => await _mediator.Send(request);
     }
 }
