@@ -4,6 +4,7 @@ import { filter, map, tap } from 'rxjs/operators';
 import { MatDrawer } from '@angular/material/sidenav';
 import { merge } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
+import { AuthService, NavigationService } from '@core';
 
 
 @Component({
@@ -33,7 +34,9 @@ export class WorkspaceComponent implements OnInit {
 
   constructor(
     public breakpointObserver: BreakpointObserver,
-    private readonly _router: Router
+    private readonly _authService: AuthService,
+    private readonly _router: Router,
+    private readonly _navigationService: NavigationService
   ) { }
 
   ngOnInit() {
@@ -44,5 +47,9 @@ export class WorkspaceComponent implements OnInit {
     ).subscribe();
   }
 
+  public handleLogoutClick() {
+    this._authService.logout();
+    this._navigationService.redirectToPublicDefault();
+  }
 
 }

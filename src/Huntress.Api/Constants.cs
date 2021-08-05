@@ -19,7 +19,6 @@ namespace Huntress.Api
         {
             public static List<AccessRight> Read => new() { AccessRight.ReadAccess };
             public static List<AccessRight> ReadWrite => new() { AccessRight.ReadAccess, AccessRight.WriteAccess };
-
             public static List<AccessRight> FullAccess => new() { AccessRight.ReadAccess, AccessRight.WriteAccess, AccessRight.CreateAccess, AccessRight.DeleteAccess };
         }
 

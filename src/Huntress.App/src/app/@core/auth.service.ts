@@ -15,7 +15,8 @@ export class AuthService {
   ) {}
 
   public logout() {
-
+    this._localStorageService.put({ name: accessTokenKey, value: null});
+    this._localStorageService.put({ name: usernameKey, value: null });
   }
 
   public tryToLogin(options: { username: string; password: string }) {

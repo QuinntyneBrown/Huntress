@@ -1,29 +1,29 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { RoleDetailComponent } from '../role-detail/role-detail.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
-import { DigitalAsset, DigitalAssetService } from '@api';
-import { EntityDataSource, DigitalAssetDetailComponent } from '@shared';
+import { EntityDataSource } from '@shared';
+import { RoleService, Role } from '@api';
 
 @Component({
-  selector: 'app-digital-asset-list',
-  templateUrl: './digital-assets.component.html',
-  styleUrls: ['./digital-assets.component.scss'],
+  selector: 'app-role-list',
+  templateUrl: './role-list.component.html',
+  styleUrls: ['./role-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DigitalAssetsComponent implements OnDestroy {
+export class RoleListComponent implements OnDestroy {
 
   private readonly _destroyed$: Subject<void> = new Subject();
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  protected readonly _pageIndex$: BehaviorSubject<number> = new BehaviorSubject(0);
-  protected readonly _pageSize$: BehaviorSubject<number> = new BehaviorSubject(5);
-  protected readonly _dataSource: EntityDataSource<DigitalAsset> = new EntityDataSource(this._digitalAssetService);
+  private readonly _pageIndex$: BehaviorSubject<number> = new BehaviorSubject(0);
+  private readonly _pageSize$: BehaviorSubject<number> = new BehaviorSubject(5);
+  private readonly _dataSource: EntityDataSource<Role> = new EntityDataSource(this._roleService);
 
   public readonly vm$: Observable<{
-    dataSource: EntityDataSource<DigitalAsset>,
+    dataSource: EntityDataSource<Role>,
     columnsToDisplay: string[],
     length$: Observable<number>,
     pageNumber: number,
@@ -53,36 +53,33 @@ export class DigitalAssetsComponent implements OnDestroy {
   );
 
   constructor(
-    private readonly _digitalAssetService: DigitalAssetService,
-    private readonly _matDialog: MatDialog,
+    private readonly _roleService: RoleService,
+    private readonly _dialog: MatDialog,
   ) { }
 
-  public edit(digitalAsset: DigitalAsset) {
-    this._matDialog.open<DigitalAssetDetailComponent>(DigitalAssetDetailComponent, {
-      data: {
-        digitalAsset
-      }
-    }).afterClosed()
+  public edit(role: Role) {
+    const component = this._dialog.open<RoleDetailComponent>(RoleDetailComponent);
+    component.role$.next(role);
+    component.saved
     .pipe(
       takeUntil(this._destroyed$),
       tap(x => this._dataSource.update(x))
-    )
-    .subscribe();
-  }
-
-  public create() {
-    this._matDialog.open<DigitalAssetDetailComponent>(DigitalAssetDetailComponent)
-    .afterClosed()
-    .pipe(
-      takeUntil(this._destroyed$),
-      tap(x => this._pageIndex$.next(this._pageIndex$.value))
     ).subscribe();
   }
 
-  public delete(digitalAsset: DigitalAsset) {
-    this._digitalAssetService.remove({ digitalAsset }).pipe(
+  public create() {
+    this._dialog.open<RoleDetailComponent>(RoleDetailComponent)
+    .saved
+    .pipe(
       takeUntil(this._destroyed$),
-      tap(_ => this._pageIndex$.next(this._pageIndex$.value))
+      tap(x => this.index$.next(this.index$.value))
+    ).subscribe();
+  }
+
+  public delete(role: Role) {
+    this._roleService.remove({ role }).pipe(
+      takeUntil(this._destroyed$),
+      tap(x => this.index$.next(this.index$.value))
     ).subscribe();
   }
 

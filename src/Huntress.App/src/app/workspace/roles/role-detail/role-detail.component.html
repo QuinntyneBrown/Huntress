@@ -1,0 +1,15 @@
+<mat-card *ngIf="vm$ | async as vm">
+
+    <h1 *ngIf="(role$ | async)">Edit Role</h1>
+    <h1 *ngIf="!(role$ | async)">Create Role</h1>
+    <form [formGroup]="vm.form">
+        <app-role-editor formControlName="role">
+        </app-role-editor>
+    </form>
+
+    <div class="actions">
+        <button mat-raised-button (click)="save(vm)" color="primary" [disabled]="!vm.form.dirty && vm.form.valid">Save</button>
+
+        <button mat-raised-button (click)="cancel()">Cancel</button>
+    </div>
+</mat-card>

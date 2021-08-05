@@ -200,6 +200,7 @@ namespace Huntress.Api.Data
                                 role.Privileges.Add(new(accessWrite, aggregate));
                             }
                         }
+
                         context.Roles.Add(role);
                     }
 
@@ -216,8 +217,8 @@ namespace Huntress.Api.Data
 
                 foreach (var user in new List<User>
                 {
-                    new ("Default", "P@ssw0rd", passwordHasher),
-                    new ("Admin", "P@ssw0rd", passwordHasher),
+                    new (Constants.Roles.Customer, "P@ssw0rd", passwordHasher),
+                    new (Constants.Roles.Admin, "P@ssw0rd", passwordHasher),
                 })
                 {
                     if (context.Users.FirstOrDefault(x => x.Username == user.Username) == null)

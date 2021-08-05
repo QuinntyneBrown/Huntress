@@ -1,10 +1,13 @@
 <div *ngIf="vm$ | async as vm">
 
-  <h1 class="mat-headline">DigitalAsset List</h1>
+  <div style="display: grid; grid-template-columns: auto 1fr;">
+    <h2>Digital Asset List</h2>
+    <div class="digital-assets-list__button-container">
+      <button mat-raised-button (click)='create()' class="g-create-button">Create</button>
+    </div>
+  </div>
 
-  <button mat-raised-button (click)='create()'>Create</button>
-
-  <table mat-table [dataSource]="vm.dataSource" class="mat-elevation-z8">
+  <table mat-table [dataSource]="vm.dataSource" class="g-table">
 
       <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -13,7 +16,7 @@
 
       <ng-container matColumnDef="edit">
           <th mat-header-cell *matHeaderCellDef></th>
-          <td style="width:100px" mat-cell *matCellDef="let digitalAsset">
+          <td mat-cell *matCellDef="let digitalAsset">
             <button mat-icon-button (click)="edit(digitalAsset)">
               <mat-icon>edit</mat-icon>
             </button>
@@ -25,7 +28,7 @@
 
   </table>
 
-  <mat-paginator #paginator [length]="vm.length$ | async" [pageSize]="vm.pageSize" [pageSizeOptions]="[5, 10, 20]" class="mat-elevation-z8" (page)="vm.dataSource.getPage({ index: paginator.pageIndex, pageSize: vm.pageSize })"></mat-paginator>
+  <mat-paginator #paginator [length]="vm.length$ | async" [pageSize]="vm.pageSize" [pageSizeOptions]="[5, 10, 20]" class="mat-elevation-z8 g-paginator" (page)="vm.dataSource.getPage({ pageIndex: paginator.pageIndex, pageSize: vm.pageSize })"></mat-paginator>
 
 </div>
 
