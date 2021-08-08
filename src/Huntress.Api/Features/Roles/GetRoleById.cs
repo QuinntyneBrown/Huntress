@@ -31,7 +31,9 @@ namespace Huntress.Api.Features
             {
                 return new()
                 {
-                    Role = (await _context.Roles.SingleOrDefaultAsync(x => x.RoleId == request.RoleId)).ToDto()
+                    Role = (await _context.Roles
+                    .Include(x => x.Privileges)
+                    .SingleOrDefaultAsync(x => x.RoleId == request.RoleId)).ToDto()
                 };
             }
 

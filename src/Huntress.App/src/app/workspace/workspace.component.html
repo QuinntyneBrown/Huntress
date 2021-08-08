@@ -1,7 +1,7 @@
 
-<app-mobile-header (click)="drawer?.toggle()"></app-mobile-header>
+<app-mobile-header></app-mobile-header>
 <mat-drawer-container style="min-height: 100vh;">
-  <mat-drawer #drawer [mode]="mode$ | async">
+  <mat-drawer mode="side" [opened]="true">
     <app-sidenav (logoutClicked)="handleLogoutClick()">
 
     </app-sidenav>

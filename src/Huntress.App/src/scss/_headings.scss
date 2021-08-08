@@ -1,0 +1,11 @@
+.g-heading-group {
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  .g-heading-group__actions-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}

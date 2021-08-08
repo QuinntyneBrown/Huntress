@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { EntityDataSource } from '@shared';
 import { RoleService, Role } from '@api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-role-list',
@@ -55,31 +56,24 @@ export class RoleListComponent implements OnDestroy {
   constructor(
     private readonly _roleService: RoleService,
     private readonly _dialog: MatDialog,
+    private readonly _router: Router
   ) { }
 
   public edit(role: Role) {
-    const component = this._dialog.open<RoleDetailComponent>(RoleDetailComponent);
-    component.role$.next(role);
-    component.saved
-    .pipe(
-      takeUntil(this._destroyed$),
-      tap(x => this._dataSource.update(x))
-    ).subscribe();
+    this._router.navigate(['/','workspace','roles','edit',role.roleId ])
   }
 
   public create() {
     this._dialog.open<RoleDetailComponent>(RoleDetailComponent)
-    .saved
+    .afterClosed()
     .pipe(
       takeUntil(this._destroyed$),
-      tap(x => this.index$.next(this.index$.value))
     ).subscribe();
   }
 
   public delete(role: Role) {
     this._roleService.remove({ role }).pipe(
-      takeUntil(this._destroyed$),
-      tap(x => this.index$.next(this.index$.value))
+      takeUntil(this._destroyed$)
     ).subscribe();
   }
 

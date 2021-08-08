@@ -38,7 +38,7 @@ namespace Huntress.Api
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Huntress.Api.Api");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Huntress.Api");
                 c.RoutePrefix = string.Empty;
             });
         }
