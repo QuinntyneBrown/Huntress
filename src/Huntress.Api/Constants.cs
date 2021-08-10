@@ -12,7 +12,9 @@ namespace Huntress.Api
         public static class ClaimTypes
         {
             public static readonly string UserId = nameof(UserId);
+            public static readonly string Privilege = nameof(Privilege);
             public static readonly string Username = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name";
+            public static readonly string Role = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
         }
 
         public static class AccessRights

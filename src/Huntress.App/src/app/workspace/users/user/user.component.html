@@ -1,0 +1,36 @@
+<ng-container *ngIf="vm$ | async as vm">
+
+  <app-bento-box>
+    <div [main]>
+      <h2>User: {{ vm.user.username }}</h2>
+    </div>
+  </app-bento-box>
+
+  <a class="g-link" [routerLink]="['/','workspace','users']">Users</a>
+
+  <h3>Roles</h3>
+
+  <ul class="g-list">
+    <li *ngFor="let role of roles" (click)="handleRoleClick(vm.user,role)">
+      <mat-icon *ngIf="has(vm.user,role)">radio_button_checked</mat-icon>
+      <mat-icon *ngIf="!has(vm.user,role)">radio_button_unchecked</mat-icon>
+      <a>{{ role }}</a>
+    </li>
+  </ul>
+
+  <h3>Change Password</h3>
+
+  <form>
+    <mat-form-field appearance="outline" class="g-form-field">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder='Pasword' required>
+    </mat-form-field>
+  </form>
+
+  <div class="g-actions">
+    <button mat-stroked-button class="g-button">Save</button>
+  </div>
+
+
+
+</ng-container>

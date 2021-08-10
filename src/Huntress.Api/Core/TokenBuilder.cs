@@ -7,6 +7,7 @@ namespace Huntress.Api.Core
     public interface ITokenBuilder
     {
         TokenBuilder AddOrUpdateClaim(Claim claim);
+        TokenBuilder AddClaim(Claim claim);
         TokenBuilder AddUsername(string username);
         string Build();
         TokenBuilder FromClaimsPrincipal(ClaimsPrincipal claimsPrincipal);
@@ -46,6 +47,13 @@ namespace Huntress.Api.Core
         public TokenBuilder RemoveClaim(Claim claim)
         {
             _claims.Remove(_claims.SingleOrDefault(x => x.Type == claim.Type));
+
+            return this;
+        }
+
+        public TokenBuilder AddClaim(Claim claim)
+        {
+            _claims.Add(claim);
 
             return this;
         }

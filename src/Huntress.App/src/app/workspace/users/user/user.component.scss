@@ -1,13 +1,11 @@
 :host {
-  .role__privileges-container {
-    display: flex;
-    gap:30px
-  }
 
-  .role__roles-link {
+
+  .user__users-link {
     text-decoration: none;
     color: #000;
     margin-bottom: 30px;
     display: block;
   }
+
 }

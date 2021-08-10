@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { baseUrl } from '@core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { baseUrl, HeadersInterceptor, JwtInterceptor } from '@core';
 import { HeaderModule } from '@shared/header/header.module';
 import { CreateContactFormModule, FooterModule, MaterialModule } from '@shared';
 
@@ -24,7 +24,17 @@ import { CreateContactFormModule, FooterModule, MaterialModule } from '@shared';
     MaterialModule
   ],
   providers: [
-    { provide: baseUrl, useValue: 'https://localhost:5001/'}
+    { provide: baseUrl, useValue: 'https://localhost:5001/'},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeadersInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

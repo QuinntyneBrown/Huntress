@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { UserDetailComponent } from '../user-detail/user-detail.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { EntityDataSource } from '@shared';
 import { UserService, User } from '@api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -16,6 +16,9 @@ import { UserService, User } from '@api';
 export class UserListComponent implements OnDestroy {
 
   private readonly _destroyed$: Subject<void> = new Subject();
+
+  private readonly _refresh$: BehaviorSubject<void> = new BehaviorSubject(null);
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   private readonly _pageIndex$: BehaviorSubject<number> = new BehaviorSubject(0);
@@ -36,10 +39,10 @@ export class UserListComponent implements OnDestroy {
         'edit'
       ]),
       of(pageIndex),
-      of(pageSize)  
+      of(pageSize)
     ])
     .pipe(
-      map(([columnsToDisplay, pageNumber, pageSize]) => { 
+      map(([columnsToDisplay, pageNumber, pageSize]) => {
         this._dataSource.getPage({ pageIndex, pageSize });
         return {
           dataSource: this._dataSource,
@@ -51,35 +54,27 @@ export class UserListComponent implements OnDestroy {
       })
     ))
   );
-  
+
   constructor(
     private readonly _userService: UserService,
     private readonly _dialog: MatDialog,
+    private readonly _router: Router
   ) { }
 
   public edit(user: User) {
-    const component = this._dialog.open<UserDetailComponent>(UserDetailComponent)
-    .afterClosed()
-    .pipe(
-      takeUntil(this._destroyed$),
-      tap(x => this._dataSource.update(x))
-    ).subscribe();
+    this._router.navigate(["/","workspace","users","edit", user.userId])
   }
 
   public create() {
-    this._dialog.open<UserDetailComponent>(UserDetailComponent)
-    .afterClosed()
-    .pipe(
-      takeUntil(this._destroyed$)
-    ).subscribe();
+    this._router.navigate(["/","workspace","users","create"])
   }
 
-  public delete(user: User) {    
+  public delete(user: User) {
     this._userService.remove({ user }).pipe(
       takeUntil(this._destroyed$)
     ).subscribe();
   }
-  
+
   ngOnDestroy() {
     this._destroyed$.next();
     this._destroyed$.complete();

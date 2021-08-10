@@ -1,26 +1,30 @@
 <ng-container *ngIf="vm$ | async as vm">
 
-
   <app-bento-box>
     <div [main]>
-      <h1>Role: {{ vm.role.name }}</h1>
+      <h2>Role: {{ vm.role.name }}</h2>
     </div>
   </app-bento-box>
 
+  <a class="g-link" [routerLink]="['/','workspace','roles']">Roles</a>
 
-  <h2>Privileges</h2>
+  <h3>Privileges</h3>
 
   <div class="role__privileges-container">
 
-    <app-aggregate-privileges *ngFor="let aggregatePrivileges of vm.aggregatePrivileges"
+    <app-aggregate-privilege *ngFor="let aggregatePrivilege of vm.role.aggregatePrivileges"
 
-    [aggregatePrivileges]="aggregatePrivileges"
+    [aggregatePrivilege]="aggregatePrivilege"
+
+    [accessRights]="accessRights"
+
+    [aggregates]="aggregates"
 
     (add)="handleAdd($event)"
 
     (remove)="handleRemove($event)">
 
-    </app-aggregate-privileges>
+    </app-aggregate-privilege>
   </div>
 
 

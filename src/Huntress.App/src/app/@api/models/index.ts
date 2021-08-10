@@ -1,3 +1,5 @@
+export * from './access-right';
+export * from './aggregate-privilege';
 export * from './collection-item';
 export * from './collection';
 export * from './css-variable';

@@ -20,13 +20,21 @@ const routes: Routes = [
       },
       {
         path: 'roles', loadChildren: () => import('./roles/roles.module').then(m => m.RolesModule)
+      },
+      {
+        path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+      },
+      {
+        path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+      },
+      {
+        path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+      },
+      {
+        path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
       }
     ]
-  },
-  { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
-  { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
-  { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
-  { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) }
+  }
 ];
 
 @NgModule({
