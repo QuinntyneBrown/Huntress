@@ -31,8 +31,7 @@ export class ProductDetailComponent implements OnDestroy {
   )
 
   constructor(
-    private readonly _overlayRef: OverlayRef,
-    private readonly _productService: ProductService) {     
+    private readonly _productService: ProductService) {
   }
 
   public save(vm: { form: FormGroup}) {
@@ -40,22 +39,21 @@ export class ProductDetailComponent implements OnDestroy {
     let obs$: Observable<{ product: Product }>;
     if(product.productId) {
       obs$ = this._productService.update({ product })
-    }   
+    }
     else {
       obs$ = this._productService.create({ product })
-    } 
+    }
 
     obs$.pipe(
-      takeUntil(this._destroyed),      
+      takeUntil(this._destroyed),
       tap(x => {
         this.saved.next(x.product);
-        this._overlayRef.dispose();
       })
     ).subscribe();
   }
 
   public cancel() {
-    this._overlayRef.dispose();
+
   }
 
   ngOnDestroy() {
