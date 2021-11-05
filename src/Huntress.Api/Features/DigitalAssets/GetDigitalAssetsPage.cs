@@ -1,19 +1,19 @@
+using Huntress.Api.Core;
+using Huntress.Api.Extensions;
+using Huntress.Api.Interfaces;
+using Huntress.Api.Models;
 using MediatR;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using Huntress.Api.Extensions;
-using Huntress.Api.Core;
-using Huntress.Api.Interfaces;
-using Huntress.Api.Extensions;
-using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Huntress.Api.Features
 {
     public class GetDigitalAssetsPage
     {
+        [AuthorizeResourceOperation(nameof(AccessRight.Read), nameof(Constants.Aggregates.DigitalAsset))]
         public class Request : IRequest<Response>
         {
             public int PageSize { get; set; }

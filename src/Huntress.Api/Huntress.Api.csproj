@@ -40,10 +40,16 @@
     <PackageReference Include="Stripe.net" Version="39.59.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.11" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Innofactor.EfCoreJsonValueConverter" Version="2.0.2" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Data\EntityConfiguration\" />
+    <Folder Include="DomainEvents\" />
   </ItemGroup>
 
 </Project>

@@ -58,13 +58,13 @@ namespace Huntress.Api.Features
                     .AddClaim(new System.Security.Claims.Claim(Constants.ClaimTypes.UserId, $"{user.UserId}"))
                     .AddClaim(new System.Security.Claims.Claim(Constants.ClaimTypes.Username, $"{user.Username}"));
 
-                foreach(var role in user.Roles)
+                foreach (var role in user.Roles)
                 {
                     _tokenBuilder.AddClaim(new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Role, role.Name));
 
-                    foreach(var privilege in role.Privileges)
+                    foreach (var privilege in role.Privileges)
                     {
-                        _tokenBuilder.AddClaim(new System.Security.Claims.Claim(Constants.ClaimTypes.Privilege, $"{privilege.Aggregate}-{privilege.AccessRight}"));
+                        _tokenBuilder.AddClaim(new System.Security.Claims.Claim(Constants.ClaimTypes.Privilege, $"{privilege.AccessRight}{privilege.Aggregate}"));
                     }
                 }
                 return new(_tokenBuilder.Build(), user.UserId);

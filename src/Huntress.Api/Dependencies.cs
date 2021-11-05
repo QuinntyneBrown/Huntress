@@ -5,6 +5,7 @@ using Huntress.Api.Interfaces;
 using Huntress.Api.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -79,11 +80,16 @@ namespace Huntress.Api
                 .EnableSensitiveDataLogging();
             });
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson();
         }
 
         public static void ConfigureAuth(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment webHostEnvironment)
         {
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ResourceOperationAuthorizationBehavior<,>));
+
+            services.AddSingleton<IAuthorizationHandler, ResourceOperationAuthorizationHandler>();
+
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
             services.AddSingleton<ITokenProvider, TokenProvider>();
@@ -125,23 +131,23 @@ namespace Huntress.Api
         }
 
 
-            public static TokenValidationParameters GetTokenValidationParameters(IConfiguration configuration)
+        public static TokenValidationParameters GetTokenValidationParameters(IConfiguration configuration)
+        {
+            var tokenValidationParameters = new TokenValidationParameters
             {
-                var tokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration[$"{nameof(Authentication)}:{nameof(Authentication.JwtKey)}"])),
-                    ValidateIssuer = true,
-                    ValidIssuer = configuration[$"{nameof(Authentication)}:{nameof(Authentication.JwtIssuer)}"],
-                    ValidateAudience = true,
-                    ValidAudience = configuration[$"{nameof(Authentication)}:{nameof(Authentication.JwtAudience)}"],
-                    ValidateLifetime = true,
-                    ClockSkew = TimeSpan.Zero,
-                    NameClaimType = JwtRegisteredClaimNames.UniqueName
-                };
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration[$"{nameof(Authentication)}:{nameof(Authentication.JwtKey)}"])),
+                ValidateIssuer = true,
+                ValidIssuer = configuration[$"{nameof(Authentication)}:{nameof(Authentication.JwtIssuer)}"],
+                ValidateAudience = true,
+                ValidAudience = configuration[$"{nameof(Authentication)}:{nameof(Authentication.JwtAudience)}"],
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero,
+                NameClaimType = JwtRegisteredClaimNames.UniqueName
+            };
 
-                return tokenValidationParameters;
-            }
+            return tokenValidationParameters;
         }
     }
+}
 

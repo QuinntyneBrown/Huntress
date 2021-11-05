@@ -45,6 +45,10 @@
     "ProductUpdateRequest",
     "User",
     "Role",
-    "Privilege"
+    "Privilege",
+    "Theme",
+    "JsonContent",
+    "StoredEvent",
+    "DashboardCard"
   ]
 }

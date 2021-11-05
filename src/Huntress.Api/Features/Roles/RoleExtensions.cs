@@ -16,7 +16,8 @@ namespace Huntress.Api.Features
                 .OrderBy(x => x.Aggregate)
                 .ThenBy(x => x.AccessRight)
                 .GroupBy(x => x.Aggregate)
-                .Select(g => new AggregatePrivilegeDto { 
+                .Select(g => new AggregatePrivilegeDto
+                {
                     Aggregate = g.Key,
                     Privileges = g.Select(x => x.ToDto()).ToList()
                 })

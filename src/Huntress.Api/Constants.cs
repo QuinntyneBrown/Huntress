@@ -19,9 +19,9 @@ namespace Huntress.Api
 
         public static class AccessRights
         {
-            public static List<AccessRight> Read => new() { AccessRight.ReadAccess };
-            public static List<AccessRight> ReadWrite => new() { AccessRight.ReadAccess, AccessRight.WriteAccess };
-            public static List<AccessRight> FullAccess => new() { AccessRight.ReadAccess, AccessRight.WriteAccess, AccessRight.CreateAccess, AccessRight.DeleteAccess };
+            public static List<AccessRight> Read => new() { AccessRight.Read };
+            public static List<AccessRight> ReadWrite => new() { AccessRight.Read, AccessRight.Write };
+            public static List<AccessRight> FullAccess => new() { AccessRight.Read, AccessRight.Write, AccessRight.Create, AccessRight.Delete };
         }
 
         public static class Roles
@@ -33,12 +33,15 @@ namespace Huntress.Api
         public static class Aggregates
         {
             public static readonly string Customer = nameof(Customer);
+            public static readonly string DigitalAsset = nameof(DigitalAsset);
             public static readonly string Order = nameof(Order);
             public static readonly string Product = nameof(Product);
             public static readonly string User = nameof(User);
+            
             public static List<string> All => new()
             {
                 Customer,
+                DigitalAsset,
                 Order,
                 Product,
                 User
