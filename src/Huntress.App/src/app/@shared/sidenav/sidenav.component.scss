@@ -1,8 +1,11 @@
 :host {
   display: block;
-  width: 100%;
   box-sizing: border-box;
-  padding: 60px 30px 30px 30px;
+  padding: 45px 30px 30px 30px;
+
+  .g-panel-heading {
+    margin-bottom: 60px;
+  }
 
   h1 {
     user-select: none;

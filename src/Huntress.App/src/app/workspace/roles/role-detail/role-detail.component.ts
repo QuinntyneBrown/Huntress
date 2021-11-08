@@ -4,15 +4,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
 import { Role, RoleService } from '@api';
+import { Cache, Destroyable, Dispatcher } from '@core';
 
 @Component({
   selector: 'app-role-detail',
   templateUrl: './role-detail.component.html',
   styleUrls: ['./role-detail.component.scss']
 })
-export class RoleDetailComponent implements OnDestroy {
-
-  private readonly _destroyed: Subject<void> = new Subject();
+export class RoleDetailComponent extends Destroyable implements OnDestroy {
 
   public role$: BehaviorSubject<Role> = new BehaviorSubject(null as any);
 
@@ -31,8 +30,10 @@ export class RoleDetailComponent implements OnDestroy {
   );
 
   constructor(
-    private readonly _overlayRef: OverlayRef,
-    private readonly _roleService: RoleService) {
+    private readonly _roleService: RoleService,
+    private readonly _dispatcher: Dispatcher,
+    private readonly _cache: Cache) {
+      super();
   }
 
   public save(vm: { form: FormGroup}) {
@@ -46,20 +47,15 @@ export class RoleDetailComponent implements OnDestroy {
     }
 
     obs$.pipe(
-      takeUntil(this._destroyed),
+      takeUntil(this._destroyed$),
       tap(x => {
         this.saved.next(x.role);
-        this._overlayRef.dispose();
+        this._dispatcher.emit("ROLE");
       })
     ).subscribe();
   }
 
   public cancel() {
-    this._overlayRef.dispose();
-  }
 
-  ngOnDestroy() {
-    this._destroyed.complete();
-    this._destroyed.next();
   }
 }

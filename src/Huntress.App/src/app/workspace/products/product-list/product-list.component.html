@@ -4,9 +4,12 @@
 
     <h2>Product List</h2>
 
-    <button mat-raised-button (click)='create()' class="g-button">Create</button>
+    <div class="g-heading-group__actions-container">
+      <button mat-raised-button (click)='create()' class="g-button">Create</button>
+    </div>
 
   </div>
+
 
 
   <table mat-table [dataSource]="vm.dataSource" class="g-table">

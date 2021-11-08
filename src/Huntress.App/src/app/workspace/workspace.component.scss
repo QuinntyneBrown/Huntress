@@ -1,8 +1,6 @@
 @import 'src/scss/breakpoints';
 
 :host {
-  display: grid;
-  grid-template-rows: auto 1fr;
   height: 100%;
   min-height: 100vh;
 
@@ -17,7 +15,7 @@
 
   mat-drawer-content {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
   }
 
   main {
@@ -32,8 +30,16 @@
       display: none;
     }
 
+    mat-drawer-content {
+      grid-template-columns: auto 1fr;
+    }
+
+    div[appWorkspacePanel],
     mat-drawer {
-      width: 300px;
+      width: 325px;
+      box-sizing: border-box;
+      height: 100vh;
+      overflow-y: auto;
     }
   }
 }

@@ -12,4 +12,6 @@ export class SidenavComponent {
   public logout() {
     this.logoutClicked.emit();
   }
+
+  @Output() public closeClick: EventEmitter<any> = new EventEmitter();
 }

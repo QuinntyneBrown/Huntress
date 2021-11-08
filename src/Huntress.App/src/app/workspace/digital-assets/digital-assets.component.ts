@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { DigitalAsset, DigitalAssetService } from '@api';
 import { EntityDataSource, DigitalAssetDetailComponent } from '@shared';
+import { GetDigitalAssetPage } from './get-digital-asset-page';
 
 @Component({
   selector: 'app-digital-asset-list',
@@ -55,6 +56,7 @@ export class DigitalAssetsComponent implements OnDestroy {
   constructor(
     private readonly _digitalAssetService: DigitalAssetService,
     private readonly _matDialog: MatDialog,
+    private readonly _getDigitalAssetPage: GetDigitalAssetPage
   ) { }
 
   public edit(digitalAsset: DigitalAsset) {
