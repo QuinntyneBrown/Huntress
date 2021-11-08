@@ -1,18 +1,16 @@
-import { OverlayRef } from '@angular/cdk/overlay';
-import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
 import { ProductService, Product } from '@api';
+import { Destroyable } from '@core/destroyable';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent implements OnDestroy {
-
-  private readonly _destroyed: Subject<void> = new Subject();
+export class ProductDetailComponent extends Destroyable {
 
   public product$: BehaviorSubject<Product> = new BehaviorSubject(null as any);
 
@@ -32,6 +30,7 @@ export class ProductDetailComponent implements OnDestroy {
 
   constructor(
     private readonly _productService: ProductService) {
+      super();
   }
 
   public save(vm: { form: FormGroup}) {
@@ -45,7 +44,7 @@ export class ProductDetailComponent implements OnDestroy {
     }
 
     obs$.pipe(
-      takeUntil(this._destroyed),
+      takeUntil(this._destroyed$),
       tap(x => {
         this.saved.next(x.product);
       })
@@ -54,10 +53,5 @@ export class ProductDetailComponent implements OnDestroy {
 
   public cancel() {
 
-  }
-
-  ngOnDestroy() {
-    this._destroyed.complete();
-    this._destroyed.next();
   }
 }

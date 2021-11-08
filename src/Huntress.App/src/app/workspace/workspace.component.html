@@ -1,12 +1,22 @@
 
 <app-mobile-header></app-mobile-header>
 <mat-drawer-container>
-  <mat-drawer mode="side" [opened]="true">
+  <mat-drawer mode="side">
     <app-sidenav (logoutClicked)="handleLogoutClick()">
 
     </app-sidenav>
   </mat-drawer>
   <mat-drawer-content>
+    <div appWorkspacePanel>
+      <div class="g-panel-heading">
+        <h1 class="g-brand">Huntress</h1>
+        <button mat-icon-button>
+          <mat-icon>
+            menu
+          </mat-icon>
+        </button>
+      </div>
+    </div>
     <main>
       <router-outlet></router-outlet>
     </main>

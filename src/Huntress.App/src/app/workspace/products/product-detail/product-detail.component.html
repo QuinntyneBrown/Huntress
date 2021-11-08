@@ -2,9 +2,9 @@
 
     <h1 *ngIf="(product$ | async)">Edit Product</h1>
     <h1 *ngIf="!(product$ | async)">Create Product</h1>
+
     <form [formGroup]="vm.form">
-        <app-product-editor formControlName="product">
-        </app-product-editor>
+
     </form>
 
     <div class="actions">

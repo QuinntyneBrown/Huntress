@@ -5,6 +5,7 @@ import { WorkspaceComponent } from './workspace.component';
 import { SidenavModule } from '@shared/sidenav/sidenav.module';
 import { MaterialModule } from '@shared';
 import { MobileHeaderModule } from '@shared/mobile-header/mobile-header.module';
+import { WorkspacePanelModule } from '@shared/workspace-panel/workspace-panel.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MobileHeaderModule } from '@shared/mobile-header/mobile-header.module';
     SidenavModule,
     WorkspaceRoutingModule,
     MaterialModule,
-    MobileHeaderModule
+    MobileHeaderModule,
+    WorkspacePanelModule
   ]
 })
 export class WorkspaceModule { }

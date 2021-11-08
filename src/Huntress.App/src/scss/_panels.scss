@@ -1,0 +1,18 @@
+.g-workspace-panel {
+  display: block;
+  width: 325px;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #fff;
+  padding:45px 30px;
+  box-sizing: border-box;
+}
+
+.g-panel-heading {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  place-items: center start;
+}
+
+
+

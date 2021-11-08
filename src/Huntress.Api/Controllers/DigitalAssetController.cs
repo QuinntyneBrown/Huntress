@@ -1,6 +1,4 @@
-using Huntress.Api.Core;
 using Huntress.Api.Features;
-using Huntress.Api.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +7,6 @@ using System.Threading.Tasks;
 
 namespace Huntress.Api.Controllers
 {
-
-    
     [ApiController]
     [Route("api/[controller]")]
     public class DigitalAssetController
@@ -21,7 +17,7 @@ namespace Huntress.Api.Controllers
         {
             _mediator = mediator;
         }
-        
+
         [HttpGet("page/{pageSize}/{index}", Name = "GetDigitalAssetsPageRoute")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
