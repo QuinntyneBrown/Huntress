@@ -35,12 +35,12 @@ export class Cache {
     return this._inner.get(key);
   }
 
-  public fromCacheOrServiceWithRefresh$(key: string, func: any, action: string) {
-    this.register(key, action);
+  public fromCacheOrServiceWithRefresh$(key: string, func: any, token: string) {
+    this.register(key, token);
 
     return this._dispatcher.refreshStream$.pipe(
       filter(action => action == action),
-      startWith(action),
+      startWith(token),
       switchMap(_ => {
         if (this._processing.get(key) != null) return this._processing.get(key);
 
@@ -51,12 +51,12 @@ export class Cache {
     );
   }
 
-  public register(key: string, invalidateOn: string) {
-    var keys = this._invalidations.get(invalidateOn);
+  public register(key: string, token: string) {
+    var keys = this._invalidations.get(token);
     keys = keys || [];
     if (keys.filter(x => x == key)[0] == null) {
       keys.push(key);
     }
-    this._invalidations.set(invalidateOn, keys);
+    this._invalidations.set(token, keys);
   }
 }
