@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DigitalAssetDetailComponent } from './digital-asset-detail.component';
-import { DigitalAssetEditorModule } from '@shared/editors';
+import { DigitalAssetEditorModule } from '@shared/components/digital-asset-editor';
+
 
 
 

@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { EntityDataSource } from '@shared';
 import { RoleService, Role } from '@api';
 import { Router } from '@angular/router';
-import { Cache, Destroyable, Dispatcher } from '@core';
+import { Destroyable } from '@core';
 
 @Component({
   selector: 'app-role-list',
@@ -55,9 +55,7 @@ export class RoleListComponent extends Destroyable {
 
   constructor(
     private readonly _roleService: RoleService,
-    private readonly _router: Router,
-    private readonly _cache: Cache,
-    private readonly _dispatcher: Dispatcher
+    private readonly _router: Router
   ) {
     super();
   }
@@ -73,7 +71,6 @@ export class RoleListComponent extends Destroyable {
   public delete(role: Role) {
     this._roleService.remove({ role }).pipe(
       takeUntil(this._destroyed$),
-      tap(_ => this._dispatcher.emit("ROLE"))
     ).subscribe();
   }
 }

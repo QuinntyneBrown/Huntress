@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatDrawer } from '@angular/material/sidenav';
-
 import { AuthService, Destroyable, NavigationService } from '@core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, takeUntil, tap } from 'rxjs/operators';

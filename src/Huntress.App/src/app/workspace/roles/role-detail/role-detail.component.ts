@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
 import { Role, RoleService } from '@api';
-import { Cache, Destroyable, Dispatcher } from '@core';
+import { Destroyable } from '@core';
 
 @Component({
   selector: 'app-role-detail',
@@ -30,9 +30,7 @@ export class RoleDetailComponent extends Destroyable implements OnDestroy {
   );
 
   constructor(
-    private readonly _roleService: RoleService,
-    private readonly _dispatcher: Dispatcher,
-    private readonly _cache: Cache) {
+    private readonly _roleService: RoleService) {
       super();
   }
 
@@ -50,7 +48,6 @@ export class RoleDetailComponent extends Destroyable implements OnDestroy {
       takeUntil(this._destroyed$),
       tap(x => {
         this.saved.next(x.role);
-        this._dispatcher.emit("ROLE");
       })
     ).subscribe();
   }

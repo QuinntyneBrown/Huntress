@@ -21,11 +21,14 @@
     "@angular/platform-browser": "~12.0.0",
     "@angular/platform-browser-dynamic": "~12.0.0",
     "@angular/router": "~12.0.0",
+    "@quinntyne/query-store": "^1.0.0-alpha.13",
+    "ckeditor4-angular": "^2.3.0",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "ngx-summernote": "^0.8.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
+    "uuid": "^8.3.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

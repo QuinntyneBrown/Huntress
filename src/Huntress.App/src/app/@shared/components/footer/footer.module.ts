@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer.component';
 import { MaterialModule } from '@shared/material.module';
-import { HtmlContentSectionModule } from '@shared/sections/html-content-section/html-content-section.module';
-
+import { HtmlContentSectionModule } from '@shared/components/sections/html-content-section/html-content-section.module';
 
 
 @NgModule({

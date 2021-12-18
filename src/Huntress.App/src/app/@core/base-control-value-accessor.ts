@@ -9,11 +9,6 @@ export abstract class BaseControlValueAccessor implements ControlValueAccessor, 
 
   private control!: AbstractControl;
 
-  constructor(
-    private readonly _elementRef: ElementRef
-  ) {
-
-  }
   writeValue(obj: any): void {
 
   }
