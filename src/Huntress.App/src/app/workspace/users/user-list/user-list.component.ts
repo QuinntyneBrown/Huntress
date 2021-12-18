@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angul
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
 import { EntityDataSource } from '@shared';
 import { UserService, User } from '@api';
 import { Router } from '@angular/router';
+import { Destroyable, pageSizeOptions } from '@core';
 
 @Component({
   selector: 'app-user-list',
@@ -13,9 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserListComponent implements OnDestroy {
-
-  private readonly _destroyed$: Subject<void> = new Subject();
+export class UserListComponent extends Destroyable {
 
   private readonly _refresh$: BehaviorSubject<void> = new BehaviorSubject(null);
 
@@ -55,11 +53,14 @@ export class UserListComponent implements OnDestroy {
     ))
   );
 
+  readonly pageSizeOptions: typeof pageSizeOptions = pageSizeOptions;
+
   constructor(
     private readonly _userService: UserService,
-    private readonly _dialog: MatDialog,
     private readonly _router: Router
-  ) { }
+  ) {
+    super();
+  }
 
   public edit(user: User) {
     this._router.navigate(["/","workspace","users","edit", user.userId])
@@ -73,10 +74,5 @@ export class UserListComponent implements OnDestroy {
     this._userService.remove({ user }).pipe(
       takeUntil(this._destroyed$)
     ).subscribe();
-  }
-
-  ngOnDestroy() {
-    this._destroyed$.next();
-    this._destroyed$.complete();
   }
 }

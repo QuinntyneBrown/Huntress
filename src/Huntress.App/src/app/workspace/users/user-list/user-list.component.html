@@ -31,7 +31,7 @@
 
   </table>
 
-  <mat-paginator #paginator [length]="vm.length$ | async" [pageSize]="vm.pageSize" [pageSizeOptions]="[5, 10, 20]" class="g-paginator" (page)="vm.dataSource.getPage({ pageIndex: paginator.pageIndex, pageSize: vm.pageSize })"></mat-paginator>
+  <mat-paginator #paginator [length]="vm.length$ | async" [pageSize]="vm.pageSize" [pageSizeOptions]="pageSizeOptions" class="g-paginator" (page)="vm.dataSource.getPage({ pageIndex: paginator.pageIndex, pageSize: vm.pageSize })"></mat-paginator>
 
 </div>
 
