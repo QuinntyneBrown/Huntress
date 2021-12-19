@@ -1,6 +1,7 @@
 using Huntress.Api.Core;
 using Huntress.Api.Models;
 using Microsoft.AspNetCore.StaticFiles;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,6 +17,7 @@ namespace Huntress.Api.Data
             ProductConfiguration.Seed(context);
             SocialShareConfiguration.Seed(context);
             CssVariableConfiguration.Seed(context);
+            ContentConfiguration.Seed(context);
         }
 
         internal static class DigitalAssetConfiguration
@@ -62,6 +64,7 @@ namespace Huntress.Api.Data
                 }
             }
         }
+
         internal static class CssVariableConfiguration
         {
             internal static void Seed(HuntressDbContext context)
@@ -107,6 +110,7 @@ namespace Huntress.Api.Data
 
             }
         }
+
         internal static class SocialShareConfiguration
         {
             internal static void Seed(HuntressDbContext context)
@@ -181,6 +185,48 @@ namespace Huntress.Api.Data
                         user.Roles.Add(role);
 
                         context.Users.Add(user);
+                    }
+
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        internal static class ContentConfiguration
+        {
+            internal static void Seed(HuntressDbContext context)
+            {
+                foreach (var name in new List<string> { "landing", "shell" })
+                {
+                    if (context.Contents.FirstOrDefault(x => x.Name == name) == null)
+                    {
+                        var content = new Content()
+                        {
+                            Name = name
+                        };
+
+                        switch (name)
+                        {
+                            case "landing":
+                                var hero = context.DigitalAssets.Single(x => x.Name == "hero-1.jpg");
+                                content.Json = JObject.FromObject(new
+                                {
+                                    heroUrl = $"api/DigitalAsset/serve/{hero.DigitalAssetId}"
+                                });
+                                break;
+
+                            case "shell":
+                                content.Json = JObject.FromObject(new
+                                {
+                                    about = "<h1>About</h1>",
+                                    returnPolicy = "<h1>Return Policy</h1>",
+                                    contact = "<h1>Contact</h1>",
+                                    followUs = "<h1>Follow</h1>"
+                                });
+                                break;
+                        }
+
+                        context.Contents.Add(content);
                     }
 
                     context.SaveChanges();

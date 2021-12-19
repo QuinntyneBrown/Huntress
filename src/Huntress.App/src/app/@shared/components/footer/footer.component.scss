@@ -11,12 +11,10 @@
   text-align: center;
   grid-template-columns: 1fr;
   gap:60px;
-
 }
 
 @media only screen and (min-width: breakpoints.$screen-md-min) {
   :host {
-
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

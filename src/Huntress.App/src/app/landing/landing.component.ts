@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { ImageContentType, Product } from '@api';
-import { ImageContentService, ProductService } from '@api/services';
+import { Product } from '@api';
+import { ProductService } from '@api/services';
 import { baseUrl } from '@core';
+import { ContentStore } from '@core/stores';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -14,17 +15,19 @@ import { map } from 'rxjs/operators';
 export class LandingComponent {
 
   public vm$: Observable<{ heroUrl: string, products: Product[] }> = forkJoin([
-    this._imageContentService.getByType({ imageContentType: ImageContentType.Hero }),
+    this._contentStore.getByName({ name: 'landing' }),
     this._productService.get()
 
   ])
   .pipe(
-    map(([imageContent, products ]) =>
-    ({ heroUrl: `url(${this._baseUrl}${imageContent.url})`, products }))
+    map(([content, products ]) => {
+      return { heroUrl: `url(${this._baseUrl}${content.json.heroUrl})`, products };
+    }
+    )
   );
 
   constructor(
-    private readonly _imageContentService: ImageContentService,
+    private readonly _contentStore: ContentStore,
     private readonly _productService: ProductService,
     private readonly _router: Router,
     @Inject(baseUrl) private readonly _baseUrl: string

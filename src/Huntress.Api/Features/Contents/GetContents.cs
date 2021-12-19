@@ -2,22 +2,21 @@ using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Collections.Generic;
 using Huntress.Api.Core;
 using Huntress.Api.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Huntress.Api.Features
 {
-    public class GetJsonContentById
+    public class GetContents
     {
-        public class Request: IRequest<Response>
-        {
-            public Guid JsonContentId { get; set; }
-        }
+        public class Request: IRequest<Response> { }
 
         public class Response: ResponseBase
         {
-            public JsonContentDto JsonContent { get; set; }
+            public List<ContentDto> Contents { get; set; }
         }
 
         public class Handler: IRequestHandler<Request, Response>
@@ -30,7 +29,7 @@ namespace Huntress.Api.Features
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
                 return new () {
-                    JsonContent = (await _context.JsonContents.SingleOrDefaultAsync(x => x.JsonContentId == request.JsonContentId)).ToDto()
+                    Contents = await _context.Contents.Select(x => x.ToDto()).ToListAsync()
                 };
             }
             

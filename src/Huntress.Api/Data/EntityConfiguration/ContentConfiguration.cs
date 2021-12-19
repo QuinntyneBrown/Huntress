@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Huntress.Api.Data
 {
-    public class JsonContentConfiguration : IEntityTypeConfiguration<JsonContent>
+    public class ContentConfiguration : IEntityTypeConfiguration<Content>
     {
-        public void Configure(EntityTypeBuilder<JsonContent> builder)
+        public void Configure(EntityTypeBuilder<Content> builder)
         {
-            builder.Property(e => e.Json).HasJsonValueConversion();
+            builder.Property(content => content.Json).HasJsonValueConversion();
         }
     }
 }

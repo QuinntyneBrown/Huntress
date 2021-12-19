@@ -45,8 +45,8 @@
     "Role",
     "Privilege",
     "Theme",
-    "JsonContent",
     "StoredEvent",
-    "DashboardCard"
+    "DashboardCard",
+    "Content"
   ]
 }

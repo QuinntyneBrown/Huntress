@@ -8,26 +8,26 @@ using Huntress.Api.Interfaces;
 
 namespace Huntress.Api.Features
 {
-    public class CreateJsonContent
+    public class CreateContent
     {
         public class Validator: AbstractValidator<Request>
         {
             public Validator()
             {
-                RuleFor(request => request.JsonContent).NotNull();
-                RuleFor(request => request.JsonContent).SetValidator(new JsonContentValidator());
+                RuleFor(request => request.Content).NotNull();
+                RuleFor(request => request.Content).SetValidator(new ContentValidator());
             }
         
         }
 
         public class Request: IRequest<Response>
         {
-            public JsonContentDto JsonContent { get; set; }
+            public ContentDto Content { get; set; }
         }
 
         public class Response: ResponseBase
         {
-            public JsonContentDto JsonContent { get; set; }
+            public ContentDto Content { get; set; }
         }
 
         public class Handler: IRequestHandler<Request, Response>
@@ -39,15 +39,15 @@ namespace Huntress.Api.Features
         
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var jsonContent = new JsonContent();
+                var content = new Content();
                 
-                _context.JsonContents.Add(jsonContent);
+                _context.Contents.Add(content);
                 
                 await _context.SaveChangesAsync(cancellationToken);
                 
                 return new Response()
                 {
-                    JsonContent = jsonContent.ToDto()
+                    Content = content.ToDto()
                 };
             }
             

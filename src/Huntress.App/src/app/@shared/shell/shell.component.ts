@@ -1,11 +1,10 @@
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { CssVariableService, HtmlContent, HtmlContentService, HtmlContentType, SocialShareService } from '@api';
+import { Component, Inject } from '@angular/core';
+import { CssVariableService, SocialShareService } from '@api';
 import { NavigationService } from '@core';
-import { forkJoin, Observable } from 'rxjs';
+import { ContentStore } from '@core/stores';
+import { combineLatest, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-
 
 
 @Component({
@@ -14,7 +13,6 @@ import { map, tap } from 'rxjs/operators';
   styleUrls: ['./shell.component.scss']
 })
 export class ShellComponent {
-
 
   public setCssVariables$ = this._cssVariableService.get()
   .pipe(
@@ -25,27 +23,29 @@ export class ShellComponent {
     })
   )
 
-  public vm$: Observable<{ about: HtmlContent }> = forkJoin([
-    this._htmlContentService.getByType({ htmlContentType: HtmlContentType.About }),
-    this._htmlContentService.getByType({ htmlContentType: HtmlContentType.Contact }),
-    this._htmlContentService.getByType({ htmlContentType: HtmlContentType.FollowUs }),
-    this._htmlContentService.getByType({ htmlContentType: HtmlContentType.ReturnPolicy }),
+  public vm$: Observable<any> = combineLatest([
+    this._contentStore.getByName({ name: 'shell'}),
     this._socialShareService.get(),
     this.setCssVariables$
   ])
   .pipe(
-    map(([about, contact, followUs, returnPolicy, socials ]) =>
-    ({ about, contact, followUs, returnPolicy, socials }))
+    map(([content,socials]) => {
+      return {
+      about: content.json.about,
+      contact: content.json.contact,
+      followUs: content.json.followUs,
+      returnPolicy: content.json.returnPolicy,
+      socials
+      };
+    })
   );
 
   constructor(
-    private readonly _activatedRoute: ActivatedRoute,
     private readonly _socialShareService: SocialShareService,
-    private readonly _htmlContentService: HtmlContentService,
+    private readonly _contentStore: ContentStore,
     private readonly _cssVariableService: CssVariableService,
     private readonly _navigationService: NavigationService,
-    @Inject(DOCUMENT) private readonly _document: Document,
-    private readonly _changeDetectorRef: ChangeDetectorRef
+    @Inject(DOCUMENT) private readonly _document: Document
   ) { }
 
   public handleTitleClick() {

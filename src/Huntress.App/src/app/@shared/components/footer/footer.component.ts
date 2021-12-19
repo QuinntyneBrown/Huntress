@@ -1,6 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { HtmlContentService } from '@api';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -8,8 +6,6 @@ import { HtmlContentService } from '@api';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent  {
-
-
   @Input() public aboutHtmlContent: string;
 
   @Input() public followUsHtmlContent: string | undefined;
@@ -17,10 +13,4 @@ export class FooterComponent  {
   @Input() public returnPolicyHtmlContent: string | undefined;
 
   @Input() public contactHtmlContent: string | undefined;
-
-  constructor(
-    private readonly _domSanitizer: DomSanitizer
-  ) { }
-
-
 }

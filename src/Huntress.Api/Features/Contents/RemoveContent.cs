@@ -10,16 +10,16 @@ using Huntress.Api.Interfaces;
 
 namespace Huntress.Api.Features
 {
-    public class RemoveJsonContent
+    public class RemoveContent
     {
         public class Request: IRequest<Response>
         {
-            public Guid JsonContentId { get; set; }
+            public Guid ContentId { get; set; }
         }
 
         public class Response: ResponseBase
         {
-            public JsonContentDto JsonContent { get; set; }
+            public ContentDto Content { get; set; }
         }
 
         public class Handler: IRequestHandler<Request, Response>
@@ -31,15 +31,15 @@ namespace Huntress.Api.Features
         
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var jsonContent = await _context.JsonContents.SingleAsync(x => x.JsonContentId == request.JsonContentId);
+                var content = await _context.Contents.SingleAsync(x => x.ContentId == request.ContentId);
                 
-                _context.JsonContents.Remove(jsonContent);
+                _context.Contents.Remove(content);
                 
                 await _context.SaveChangesAsync(cancellationToken);
                 
                 return new Response()
                 {
-                    JsonContent = jsonContent.ToDto()
+                    Content = content.ToDto()
                 };
             }
             

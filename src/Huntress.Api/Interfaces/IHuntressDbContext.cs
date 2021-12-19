@@ -25,9 +25,9 @@ namespace Huntress.Api.Interfaces
         DbSet<Role> Roles { get; }
         DbSet<Privilege> Privileges { get; }
         DbSet<Theme> Themes { get; }
-        DbSet<JsonContent> JsonContents { get; }
         DbSet<StoredEvent> StoredEvents { get; }
         DbSet<DashboardCard> DashboardCards { get; }
+        DbSet<Content> Contents { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
     }

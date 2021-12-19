@@ -3,9 +3,9 @@ using System;
 
 namespace Huntress.Api.Features
 {
-    public class JsonContentDto
+    public class ContentDto
     {
-        public Guid JsonContentId { get; set; }
+        public Guid ContentId { get; set; }
         public string Name { get; set; }
         public JObject Json { get; set; }
     }
