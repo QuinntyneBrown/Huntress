@@ -10,7 +10,10 @@ import { pageSizeOptions } from '@core';
   selector: 'or-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class:'or-list-detail-container--list'
+  }
 })
 export class UserListComponent implements AfterViewInit {
 

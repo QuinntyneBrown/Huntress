@@ -9,7 +9,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 @Component({
   selector: 'or-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss']
+  styleUrls: ['./user-detail.component.scss'],
+  host: {
+    class:'or-list-detail-container--detail'
+  }
 })
 export class UserDetailComponent {
 

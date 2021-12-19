@@ -1,38 +1,77 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '@api';
+import { Destroyable } from '@core';
 import { UserStore } from '@core/stores/user.store';
-import { combineLatest } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { combineLatest, of } from 'rxjs';
+import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
+
+const listViewCssClass = 'or-list-detail-container--list-view';
 
 @Component({
   selector: 'or-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent {
+export class UsersComponent extends Destroyable {
 
-  readonly vm$ = combineLatest([this._userStore.get$(), this._userStore.selected$])
+
+  listViewActive$ = this._activatedRoute.url
   .pipe(
-    map(([users, selected]) => {
+    map(url => url.length == 0)
+  );
 
-      console.log(selected);
+  readonly vm$ = combineLatest([
+    this._userStore.get$(),
+    this._activatedRoute
+    .paramMap
+    .pipe(
+      map(p => p.get("userId")),
+      switchMap(userId => userId ? this._userStore.getById({ userId }) : of({ }))
+      ),
+      this.listViewActive$
+  ])
+  .pipe(
+    map(([users, selected, listView]) => {
 
-      return { users, selected };
+      if(listView && !this._elementRef.nativeElement.classList.contains(listViewCssClass)) {
+        this._elementRef.nativeElement.classList.add(listViewCssClass);
+      }
+
+      if(!listView) {
+        this._elementRef.nativeElement.classList.remove(listViewCssClass)
+      }
+
+      return { users, selected, listView };
     })
   );
 
   constructor(
+    private readonly _activatedRoute: ActivatedRoute,
+    private readonly _elementRef: ElementRef<HTMLElement>,
+    private readonly _router: Router,
     private readonly _userStore: UserStore
-  ) { }
+  ) {
+    super();
+  }
 
   public handleSelect(user: User) {
-    this._userStore.setSelected(user);
+    if(user.userId) {
+      this._router.navigate(["/","workspace","users","edit", user.userId]);
+    } else {
+      this._router.navigate(["/","workspace","users","create"]);
+    }
   }
 
   public handleSave(user: User) {
     const obs$  = user.userId ? this._userStore.update$(user) : this._userStore.create$(user);
     obs$
-    .pipe(tap(_ => this._userStore.clearSelected()))
+    .pipe(
+      takeUntil(this._destroyed$),
+      tap(_ => {
+      this._userStore.clearSelected();
+      this._router.navigate(["/","workspace","users"]);
+    }))
     .subscribe();
   }
 }

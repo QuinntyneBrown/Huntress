@@ -1,4 +1,4 @@
-@import 'src/scss/breakpoints';
+@use 'src/scss/breakpoints';
 
 :host {
   height: 100%;
@@ -23,7 +23,7 @@
   }
 }
 
-@media only screen and (min-width: $screen-md-min) {
+@media only screen and (min-width: breakpoints.$screen-md-min) {
   :host {
     display: block;
     app-mobile-header {
