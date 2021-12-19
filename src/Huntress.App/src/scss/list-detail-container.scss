@@ -22,11 +22,14 @@
   .or-list-detail-container--list-view.or-list-detail-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 40px;
 
     & > *:nth-child(1),
     & > *:nth-child(2) {
       display: block;
+      overflow: auto;
+      padding: 0px 20px 20px 0px;
+      box-sizing: border-box;
     }
   }
 }

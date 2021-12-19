@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Content } from '@api';

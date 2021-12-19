@@ -10,10 +10,12 @@ import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 @Component({
   selector: 'or-contents',
   templateUrl: './contents.component.html',
-  styleUrls: ['./contents.component.scss']
+  styleUrls: ['./contents.component.scss'],
+  host: {
+    class: 'or-page'
+  }
 })
 export class ContentsComponent extends Destroyable {
-
 
   readonly vm$ = combineLatest([
     this._contentStore.get$(),

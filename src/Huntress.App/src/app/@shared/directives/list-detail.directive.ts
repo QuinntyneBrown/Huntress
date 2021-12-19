@@ -31,7 +31,7 @@ export class ListDetailDirective extends Destroyable {
         }
 
         if(!listView) {
-          this._elementRef.nativeElement.parentElement.classList.remove(listViewCssClass)
+          this._elementRef.nativeElement.classList.remove(listViewCssClass)
         }
       })
       ).subscribe();

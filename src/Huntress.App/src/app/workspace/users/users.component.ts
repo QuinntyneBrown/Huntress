@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '@api';
+import { User, UserService } from '@api';
 import { Destroyable } from '@core';
-import { UserStore } from '@core/stores/user.store';
 import { combineLatest, of } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
@@ -15,12 +14,12 @@ import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 export class UsersComponent extends Destroyable {
 
   readonly vm$ = combineLatest([
-    this._userStore.get$(),
+    this._userService.get(),
     this._activatedRoute
     .paramMap
     .pipe(
       map(p => p.get("userId")),
-      switchMap(userId => userId ? this._userStore.getById({ userId }) : of({ }))
+      switchMap(userId => userId ? this._userService.getById({ userId }) : of({ }))
       )
   ])
   .pipe(
@@ -30,21 +29,21 @@ export class UsersComponent extends Destroyable {
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
     private readonly _router: Router,
-    private readonly _userStore: UserStore
+    private readonly _userService: UserService
   ) {
     super();
   }
 
   public handleSelect(user: User) {
     if(user.userId) {
-      this._router.navigate(["/","workspace","users","edit", user.userId]);
+      this._router.navigate(["../","workspace","roles"]);
     } else {
       this._router.navigate(["/","workspace","users","create"]);
     }
   }
 
   public handleSave(user: User) {
-    const obs$  = user.userId ? this._userStore.update$(user) : this._userStore.create$(user);
+    const obs$  = user.userId ? this._userService.update({user}) : this._userService.create({user});
     obs$
     .pipe(
       takeUntil(this._destroyed$),

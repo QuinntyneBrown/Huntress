@@ -8,6 +8,8 @@ export * from './digital-asset-detail';
 export * from './digital-asset-editor';
 export * from './digital-asset-list';
 export * from './footer';
+export * from './order-detail';
+export * from './order-list';
 export * from './product-detail';
 export * from './product-list';
 export * from './quantity';

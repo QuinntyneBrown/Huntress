@@ -17,10 +17,6 @@
     display: grid;
     grid-template-rows: auto 1fr;
   }
-
-  main {
-    padding: 60px 40px 30px 40px;
-  }
 }
 
 @media only screen and (min-width: breakpoints.$screen-md-min) {

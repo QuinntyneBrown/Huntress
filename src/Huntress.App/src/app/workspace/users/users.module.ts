@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UserDetailModule, UserListModule, ListDetailModule } from '@shared';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
-import { UserDetailModule, UserListModule } from '@shared';
-import { ListDetailModule } from '@shared/directives/list-detail.directive';
 
 
 
