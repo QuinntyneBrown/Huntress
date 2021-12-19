@@ -1,0 +1,9 @@
+<ng-container *ngIf="vm$ | async as vm">
+
+  <h1>Content Management</h1>
+
+  <div orListDetail>
+    <or-content-list [contents]="vm.contents" (select)="handleSelect($event)"></or-content-list>
+    <or-content-detail [content]="vm.selected" (save)="handleSave($event)"></or-content-detail>
+  </div>
+</ng-container>

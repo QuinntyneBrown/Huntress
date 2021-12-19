@@ -24,7 +24,7 @@ export class ContentStore extends queryStore(ContentService) {
   }
 
   public getByName$(options:{ name: string }): Observable<Content> {
-    return super.from$(() => super.getByName(options), [CONTENTS]);
+    return super.from$(() => super.getByName(options), [CONTENTS, `CONTENT_${options.name}`]);
   }
 
   public create$(content: Content) {
