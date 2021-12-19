@@ -11,7 +11,7 @@
 
   <ng-container matColumnDef="username">
     <th mat-header-cell *matHeaderCellDef> Username </th>
-    <td mat-cell *matCellDef="let user" (click)="select.emit(user)"> {{ user.username }}</td>
+    <td mat-cell *matCellDef="let user" (click)="select.emit(user)" class="or-router-link-cell"> {{ user.username }}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

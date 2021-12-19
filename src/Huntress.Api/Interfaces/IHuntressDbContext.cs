@@ -1,7 +1,7 @@
 using Huntress.Api.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Huntress.Api.Interfaces
 {
@@ -11,12 +11,10 @@ namespace Huntress.Api.Interfaces
         DbSet<Collection> Collections { get; }
         DbSet<InstagramFeedItem> InstagramFeedItems { get; }
         DbSet<InstagramFeed> InstagramFeeds { get; }
-        DbSet<HtmlContent> HtmlContents { get; }
         DbSet<DigitalAsset> DigitalAssets { get; }
         DbSet<CollectionItem> CollectionItems { get; }
         DbSet<ProductImage> ProductImages { get; }
         DbSet<CustomerCollection> CustomerCollections { get; }
-        DbSet<ImageContent> ImageContents { get; }
         DbSet<ProductCollection> ProductCollections { get; }
         DbSet<SocialShare> SocialShares { get; }
         DbSet<CssVariable> CssVariables { get; }
@@ -31,6 +29,6 @@ namespace Huntress.Api.Interfaces
         DbSet<StoredEvent> StoredEvents { get; }
         DbSet<DashboardCard> DashboardCards { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        
+
     }
 }

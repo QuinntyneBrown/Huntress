@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon';
 import { User } from '@api';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -9,10 +7,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 @Component({
   selector: 'or-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss'],
-  host: {
-    class:'or-list-detail-container--detail'
-  }
+  styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent {
 

@@ -11,6 +11,5 @@ namespace Huntress.Api.Data
         {
             builder.Property(e => e.Json).HasJsonValueConversion();
         }
-
     }
 }

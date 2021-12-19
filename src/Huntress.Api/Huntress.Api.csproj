@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DomainEvents\**" />
+    <Content Remove="DomainEvents\**" />
+    <EmbeddedResource Remove="DomainEvents\**" />
+    <None Remove="DomainEvents\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="EmbeddedResources\hero-1.jpg" />
     <None Remove="EmbeddedResources\product-1.jpg" />
     <None Remove="EmbeddedResources\product-2.jpg" />
@@ -49,7 +56,6 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Data\EntityConfiguration\" />
-    <Folder Include="DomainEvents\" />
   </ItemGroup>
 
 </Project>

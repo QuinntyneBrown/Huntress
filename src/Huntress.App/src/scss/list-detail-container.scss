@@ -2,30 +2,30 @@
 
 .or-list-detail-container {
   display: block;
-
-  .or-list-detail-container--list {
+  & > *:nth-child(1) {
     display: none;
-  }
-
-  &--list-view {
-    .or-list-detail-container--detail {
-      display: none;
-    }
-    .or-list-detail-container--list {
-      display: block;
-    }
   }
 }
 
+.or-list-detail-container--list-view.or-list-detail-container {
+  & > *:nth-child(1) {
+    display: block;
+  }
 
-@media screen and (min-width: breakpoints.$screen-md-min) {
-  .or-list-detail-container {
+  & > *:nth-child(2) {
+    display: none;
+  }
+}
+
+@media screen and (min-width: breakpoints.$screen-lg-min) {
+  .or-list-detail-container,
+  .or-list-detail-container--list-view.or-list-detail-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
 
-    .or-list-detail-container--list,
-    .or-list-detail-container--detail {
+    & > *:nth-child(1),
+    & > *:nth-child(2) {
       display: block;
     }
   }

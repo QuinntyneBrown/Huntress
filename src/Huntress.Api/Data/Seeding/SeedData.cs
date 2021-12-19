@@ -13,9 +13,7 @@ namespace Huntress.Api.Data
             RoleConfiguration.Seed(context);
             UserConfiguration.Seed(context);
             DigitalAssetConfiguration.Seed(context);
-            ImageContentConfiguration.Seed(context);
             ProductConfiguration.Seed(context);
-            HtmlContentConfiguration.Seed(context);
             SocialShareConfiguration.Seed(context);
             CssVariableConfiguration.Seed(context);
         }
@@ -80,52 +78,7 @@ namespace Huntress.Api.Data
                 }
             }
         }
-        internal static class ImageContentConfiguration
-        {
-            internal static void Seed(HuntressDbContext context)
-            {
-                var imageContent = context.ImageContents.SingleOrDefault(x => x.ImageContentType == Models.ImageContentType.Hero);
 
-                if (imageContent == null)
-                {
-                    var digitalAsset = context.DigitalAssets.Single(x => x.Name == "hero-1.jpg");
-
-                    imageContent = new(Models.ImageContentType.Hero, $"api/DigitalAsset/serve/{digitalAsset.DigitalAssetId}");
-
-                    context.ImageContents.Add(imageContent);
-
-                    context.SaveChanges();
-                }
-
-                context.ChangeTracker.Clear();
-            }
-        }
-        internal static class HtmlContentConfiguration
-        {
-            internal static void Seed(HuntressDbContext context)
-            {
-                foreach (var htmlContent in new List<HtmlContent>()
-                {
-                    new (HtmlContentType.About,"","<h1>About</h1>"),
-                    new (HtmlContentType.FollowUs,"","<h1>Follow Us</h1>"),
-                    new (HtmlContentType.Contact,"","<h1>Contact</h1>"),
-                    new (HtmlContentType.ReturnPolicy,"","<h1>Return Policy</h1>")
-            })
-                {
-                    AddIfDoesntExist(htmlContent);
-                }
-
-                context.SaveChanges();
-
-                void AddIfDoesntExist(HtmlContent htmlContent)
-                {
-                    if (context.HtmlContents.FirstOrDefault(x => x.HtmlContentType == htmlContent.HtmlContentType) == null)
-                    {
-                        context.HtmlContents.Add(htmlContent);
-                    }
-                }
-            }
-        }
         internal static class ProductConfiguration
         {
             internal static void Seed(HuntressDbContext context)

@@ -12,7 +12,7 @@ import { pageSizeOptions } from '@core';
   styleUrls: ['./user-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class:'or-list-detail-container--list'
+    class:'or-panel or-panel--right'
   }
 })
 export class UserListComponent implements AfterViewInit {

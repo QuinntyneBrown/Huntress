@@ -13,12 +13,10 @@ namespace Huntress.Api.Data
         public DbSet<Collection> Collections { get; private set; }
         public DbSet<InstagramFeedItem> InstagramFeedItems { get; private set; }
         public DbSet<InstagramFeed> InstagramFeeds { get; private set; }
-        public DbSet<HtmlContent> HtmlContents { get; private set; }
         public DbSet<DigitalAsset> DigitalAssets { get; private set; }
         public DbSet<CollectionItem> CollectionItems { get; private set; }
         public DbSet<ProductImage> ProductImages { get; private set; }
         public DbSet<CustomerCollection> CustomerCollections { get; private set; }
-        public DbSet<ImageContent> ImageContents { get; private set; }
         public DbSet<ProductCollection> ProductCollections { get; private set; }
         public DbSet<SocialShare> SocialShares { get; private set; }
         public DbSet<CssVariable> CssVariables { get; private set; }

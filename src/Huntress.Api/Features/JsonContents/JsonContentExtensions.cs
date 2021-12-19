@@ -1,4 +1,3 @@
-using System;
 using Huntress.Api.Models;
 
 namespace Huntress.Api.Features
@@ -7,11 +6,13 @@ namespace Huntress.Api.Features
     {
         public static JsonContentDto ToDto(this JsonContent jsonContent)
         {
-            return new ()
+            return new()
             {
-                JsonContentId = jsonContent.JsonContentId
+                JsonContentId = jsonContent.JsonContentId,
+                Name = jsonContent.Name,
+                Json = jsonContent.Json
             };
         }
-        
+
     }
 }

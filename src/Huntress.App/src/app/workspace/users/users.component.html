@@ -2,7 +2,7 @@
 
   <h1>Users</h1>
 
-  <div class="or-list-detail-container">
+  <div orListDetail>
     <or-user-list [users]="vm.users" (select)="handleSelect($event)"></or-user-list>
     <or-user-detail [user]="vm.selected" (save)="handleSave($event)"></or-user-detail>
   </div>

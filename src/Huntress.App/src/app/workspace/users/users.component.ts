@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '@api';
 import { Destroyable } from '@core';
@@ -6,7 +6,6 @@ import { UserStore } from '@core/stores/user.store';
 import { combineLatest, of } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
-const listViewCssClass = 'or-list-detail-container--list-view';
 
 @Component({
   selector: 'or-users',
@@ -16,11 +15,6 @@ const listViewCssClass = 'or-list-detail-container--list-view';
 export class UsersComponent extends Destroyable {
 
 
-  listViewActive$ = this._activatedRoute.url
-  .pipe(
-    map(url => url.length == 0)
-  );
-
   readonly vm$ = combineLatest([
     this._userStore.get$(),
     this._activatedRoute
@@ -28,27 +22,14 @@ export class UsersComponent extends Destroyable {
     .pipe(
       map(p => p.get("userId")),
       switchMap(userId => userId ? this._userStore.getById({ userId }) : of({ }))
-      ),
-      this.listViewActive$
+      )
   ])
   .pipe(
-    map(([users, selected, listView]) => {
-
-      if(listView && !this._elementRef.nativeElement.classList.contains(listViewCssClass)) {
-        this._elementRef.nativeElement.classList.add(listViewCssClass);
-      }
-
-      if(!listView) {
-        this._elementRef.nativeElement.classList.remove(listViewCssClass)
-      }
-
-      return { users, selected, listView };
-    })
+    map(([users, selected]) => ({ users, selected }))
   );
 
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
-    private readonly _elementRef: ElementRef<HTMLElement>,
     private readonly _router: Router,
     private readonly _userStore: UserStore
   ) {
@@ -68,10 +49,7 @@ export class UsersComponent extends Destroyable {
     obs$
     .pipe(
       takeUntil(this._destroyed$),
-      tap(_ => {
-      this._userStore.clearSelected();
-      this._router.navigate(["/","workspace","users"]);
-    }))
+      tap(_ => this._router.navigate(["/","workspace","users"])))
     .subscribe();
   }
 }

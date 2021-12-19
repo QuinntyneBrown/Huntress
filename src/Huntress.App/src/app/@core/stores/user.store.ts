@@ -7,7 +7,6 @@ import { User, UserService } from "@api";
 import { v4 as uuidv4 } from 'uuid';
 
 const USERS = "USERS";
-const SELECTED_USER = "USER";
 
 @Injectable({
   providedIn: "root"
@@ -35,14 +34,4 @@ export class UserStore extends queryStore(UserService) {
   public remove$(user:User) {
     return super.withRefresh(super.remove({ user }),[USERS])
   }
-
-  public setSelected(user:User) {
-    super.setState<User>(SELECTED_USER,of(user));
-  }
-
-  public clearSelected() {
-    super.setState<User>(SELECTED_USER,of({ } as User));
-  }
-
-  public selected$ = this.select<User>(SELECTED_USER)
 }
