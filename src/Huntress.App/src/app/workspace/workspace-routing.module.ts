@@ -9,11 +9,7 @@ const routes: Routes = [
     component: WorkspaceComponent,
     canActivate:[AuthGuard],
     children: [
-      {
-        path:'',
-        redirectTo: 'digital-assets',
-        pathMatch: 'full'
-      },
+      { path:'', redirectTo: 'users', pathMatch: 'full' },
       {
         path: 'digital-assets', loadChildren: () => import('./digital-assets/digital-assets.module').then(m => m.DigitalAssetsModule)
       },
@@ -24,20 +20,20 @@ const routes: Routes = [
         path: 'roles', loadChildren: () => import('./roles/roles.module').then(m => m.RolesModule)
       },
       {
-        path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+        path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
       },
       {
         path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
       },
       {
-        path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+        path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
-        path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+        path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
       }
     ]
   },
-  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }
+
 ];
 
 @NgModule({

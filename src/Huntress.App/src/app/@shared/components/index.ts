@@ -8,3 +8,5 @@ export * from './quantity';
 export * from './quote';
 export * from './sections';
 export * from './sidenav';
+export * from './user-detail';
+export * from './user-list';

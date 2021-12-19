@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ACTION_EFFECT_LOOKUP, baseUrl, HeadersInterceptor, JwtInterceptor } from '@core';
+import { ACTION_EFFECT_LOOKUP, baseUrl, BASE_URL, HeadersInterceptor, JwtInterceptor } from '@core';
 import { CreateContactFormModule, FooterModule, MaterialModule } from '@shared';
 import { HeaderModule } from '@shared/components/header/header.module';
 
@@ -24,10 +24,7 @@ import { HeaderModule } from '@shared/components/header/header.module';
   ],
   providers: [
     { provide: baseUrl, useValue: 'https://localhost:5001/'},
-    {
-      provide: ACTION_EFFECT_LOOKUP,
-      useValue: {}
-    },
+    { provide: BASE_URL, useValue: 'https://localhost:5001/'},
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HeadersInterceptor,

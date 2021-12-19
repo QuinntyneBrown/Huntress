@@ -1,11 +1,22 @@
 .g-heading-group {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1ft auto;
 
   .g-heading-group__actions-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    display: grid;
+    place-items: center;
   }
 }
+
+
+.or-heading-group {
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  .or-heading-group__actions-container {
+    display: grid;
+    place-items: center;
+  }
+}
+
+

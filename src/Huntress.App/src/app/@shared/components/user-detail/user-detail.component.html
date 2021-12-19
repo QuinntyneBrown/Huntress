@@ -1,0 +1,16 @@
+<h1 *ngIf="!user.userId" class="or-panel-heading">Create User</h1>
+<h1 *ngIf="user.userId" class="or-panel-heading">Edit User</h1>
+
+
+<form [formGroup]="form" class="or-form">
+  <div class="or-field">
+    <label class="or-label">Username</label>
+    <input type="text" formControlName="username" autocomplete="off" class="or-input">
+  </div>
+</form>
+
+<div class="or-actions">
+  <button class="or-button" (click)="save.emit(form.value)" [disabled]="!form.valid || form.pristine">
+    Save
+  </button>
+</div>
