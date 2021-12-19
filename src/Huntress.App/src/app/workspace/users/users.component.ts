@@ -14,7 +14,6 @@ import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 })
 export class UsersComponent extends Destroyable {
 
-
   readonly vm$ = combineLatest([
     this._userStore.get$(),
     this._activatedRoute

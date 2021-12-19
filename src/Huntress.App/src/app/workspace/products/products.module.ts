@@ -1,21 +1,21 @@
-import { COMMON_FORMS_MODULES, COMMON_TABLE_MODULES } from '@shared';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsRoutingModule } from './products-routing.module';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductsComponent } from './products.component';
+import { ProductDetailModule, ProductListModule } from '@shared';
+import { ListDetailModule } from '@shared/directives/list-detail.directive';
 
 
 @NgModule({
   declarations: [
-    ProductListComponent,
-    ProductDetailComponent
+    ProductsComponent
   ],
   imports: [
-    COMMON_FORMS_MODULES,
-    COMMON_TABLE_MODULES,
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    ProductDetailModule,
+    ProductListModule,
+    ListDetailModule
   ]
 })
 export class ProductsModule { }

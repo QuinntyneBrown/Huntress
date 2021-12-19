@@ -1,0 +1,16 @@
+<h1 *ngIf="!role.roleId" class="or-panel-heading">Create Role</h1>
+<h1 *ngIf="role.roleId" class="or-panel-heading">Edit Role</h1>
+
+
+<form [formGroup]="form" class="or-form">
+  <div class="or-field">
+    <label class="or-label">Name</label>
+    <input type="text" formControlName="name" autocomplete="off" class="or-input">
+  </div>
+</form>
+
+<div class="or-actions">
+  <button class="or-button" (click)="save.emit(form.value)" [disabled]="!form.valid || form.pristine">
+    Save
+  </button>
+</div>

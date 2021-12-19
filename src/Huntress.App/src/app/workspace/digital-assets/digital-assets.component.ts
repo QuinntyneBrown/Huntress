@@ -1,95 +1,53 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
-import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DigitalAsset, DigitalAssetService } from '@api';
-import { EntityDataSource, DigitalAssetDetailComponent } from '@shared';
-import { GetDigitalAssetPage } from './get-digital-asset-page';
+import { Destroyable } from '@core';
+import { combineLatest, of } from 'rxjs';
+import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
+
 
 @Component({
-  selector: 'app-digital-asset-list',
+  selector: 'or-digital-assets',
   templateUrl: './digital-assets.component.html',
-  styleUrls: ['./digital-assets.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./digital-assets.component.scss']
 })
-export class DigitalAssetsComponent implements OnDestroy {
+export class DigitalAssetsComponent extends Destroyable {
 
-  private readonly _destroyed$: Subject<void> = new Subject();
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  protected readonly _pageIndex$: BehaviorSubject<number> = new BehaviorSubject(0);
-  protected readonly _pageSize$: BehaviorSubject<number> = new BehaviorSubject(5);
-  protected readonly _dataSource: EntityDataSource<DigitalAsset> = new EntityDataSource(this._digitalAssetService);
-
-  public readonly vm$: Observable<{
-    dataSource: EntityDataSource<DigitalAsset>,
-    columnsToDisplay: string[],
-    length$: Observable<number>,
-    pageNumber: number,
-    pageSize: number
-  }> = combineLatest([this._pageIndex$, this._pageSize$ ])
-  .pipe(
-    switchMap(([pageIndex,pageSize]) => combineLatest([
-      of([
-        'name',
-        'edit'
-      ]),
-      of(pageIndex),
-      of(pageSize)
-    ])
+  readonly vm$ = combineLatest([
+    this._digitalAssetService.get(),
+    this._activatedRoute
+    .paramMap
     .pipe(
-      map(([columnsToDisplay, pageNumber, pageSize]) => {
-        this._dataSource.getPage({ pageIndex, pageSize });
-        return {
-          dataSource: this._dataSource,
-          columnsToDisplay,
-          length$: this._dataSource.length$,
-          pageSize,
-          pageNumber
-        }
-      })
-    ))
+      map(p => p.get("digitalAssetId")),
+      switchMap(digitalAssetId => digitalAssetId ? this._digitalAssetService.getById({ digitalAssetId }) : of({ }))
+      )
+  ])
+  .pipe(
+    map(([digitalAssets, selected]) => ({ digitalAssets, selected }))
   );
 
   constructor(
-    private readonly _digitalAssetService: DigitalAssetService,
-    private readonly _matDialog: MatDialog,
-    private readonly _getDigitalAssetPage: GetDigitalAssetPage
-  ) { }
+    private readonly _activatedRoute: ActivatedRoute,
+    private readonly _router: Router,
+    private readonly _digitalAssetService: DigitalAssetService
+  ) {
+    super();
+  }
 
-  public edit(digitalAsset: DigitalAsset) {
-    this._matDialog.open<DigitalAssetDetailComponent>(DigitalAssetDetailComponent, {
-      data: {
-        digitalAsset
-      }
-    }).afterClosed()
+  public handleSelect(digitalAsset: DigitalAsset) {
+    if(digitalAsset.digitalAssetId) {
+      this._router.navigate(["/","workspace","digital-assets","edit", digitalAsset.digitalAssetId]);
+    } else {
+      this._router.navigate(["/","workspace","digital-assets","create"]);
+    }
+  }
+
+  public handleSave(digitalAsset: DigitalAsset) {
+    const obs$  = digitalAsset.digitalAssetId ? this._digitalAssetService.update({ digitalAsset }) : this._digitalAssetService.create({ digitalAsset });
+    obs$
     .pipe(
       takeUntil(this._destroyed$),
-      tap(x => this._dataSource.update(x))
-    )
+      tap(_ => this._router.navigate(["/","workspace","digital-assets"])))
     .subscribe();
-  }
-
-  public create() {
-    this._matDialog.open<DigitalAssetDetailComponent>(DigitalAssetDetailComponent)
-    .afterClosed()
-    .pipe(
-      takeUntil(this._destroyed$),
-      tap(x => this._pageIndex$.next(this._pageIndex$.value))
-    ).subscribe();
-  }
-
-  public delete(digitalAsset: DigitalAsset) {
-    this._digitalAssetService.remove({ digitalAsset }).pipe(
-      takeUntil(this._destroyed$),
-      tap(_ => this._pageIndex$.next(this._pageIndex$.value))
-    ).subscribe();
-  }
-
-  ngOnDestroy() {
-    this._destroyed$.next();
-    this._destroyed$.complete();
   }
 }

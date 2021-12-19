@@ -1,0 +1,25 @@
+<div class="or-heading-group">
+  <h1 class="or-panel-heading">Digital Asset List</h1>
+  <div class="or-heading-group__actions-container">
+    <button class="or-button" (click)="select.emit({ })">
+      Create
+    </button>
+  </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="or-table">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let digitalAsset" (click)="select.emit(digitalAsset)" class="or-router-link-cell"> {{ digitalAsset.name }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let digitalAsset; columns: displayedColumns;"></tr>
+
+</table>
+
+<mat-paginator class="or-paginator">
+  showFirstLastButtons
+  [pageSizeOptions]="pageSizeOptions"
+</mat-paginator>

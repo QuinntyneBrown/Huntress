@@ -42,6 +42,11 @@ namespace Huntress.Api.Controllers
             return response;
         }
 
+        [HttpGet(Name = "GetDigitalAssetsRoute")]
+        public async Task<ActionResult<GetDigitalAssets.Response>> Get([FromQuery] GetDigitalAssets.Request request)
+        => await _mediator.Send(request);
+
+
         [HttpGet("range")]
         public async Task<ActionResult<GetDigitalAssetsByIds.Response>> GetByIds([FromQuery] GetDigitalAssetsByIds.Request request)
             => await _mediator.Send(request);

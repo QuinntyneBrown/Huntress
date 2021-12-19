@@ -9,7 +9,7 @@
 
 <ul>
   <li>
-    <a cdkFocusInitial>Home</a>
+    <a cdkFocusInitial [routerLink]="['/','workspace']">Home</a>
   </li>
   <li>
     <a [routerLink]="['/','workspace','contents']">Content Management</a>
@@ -25,9 +25,6 @@
   </li>
   <li>
     <a [routerLink]="['/','workspace','roles']">Roles</a>
-  </li>
-  <li>
-    <a>Themeing</a>
   </li>
   <li>
     <a (click)="logout()">Logout</a>

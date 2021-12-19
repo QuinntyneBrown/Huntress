@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RoleListComponent } from './role-list/role-list.component';
-import { RoleComponent } from './role/role.component';
+import { RolesComponent } from './roles.component';
+
 
 
 const routes: Routes = [
-  { path: '', component: RoleListComponent },
-  { path: 'create', component: RoleComponent },
-  { path: 'edit/:id', component: RoleComponent }
+  { path: '', component: RolesComponent },
+  { path: 'create', component: RolesComponent },
+  { path: 'edit/:roleId', component: RolesComponent }
 ];
 
 @NgModule({

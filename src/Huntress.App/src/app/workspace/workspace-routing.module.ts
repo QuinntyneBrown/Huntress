@@ -20,12 +20,6 @@ const routes: Routes = [
         path: 'roles', loadChildren: () => import('./roles/roles.module').then(m => m.RolesModule)
       },
       {
-        path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
-      },
-      {
-        path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
-      },
-      {
         path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
@@ -33,6 +27,9 @@ const routes: Routes = [
       },
       {
         path: 'contents', loadChildren: () => import('./contents/contents.module').then(m => m.ContentsModule)
+      },
+      {
+        path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
       }
     ]
   }
