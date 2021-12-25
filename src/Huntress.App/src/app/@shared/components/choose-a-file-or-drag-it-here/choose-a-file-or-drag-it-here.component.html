@@ -1,0 +1,14 @@
+<div class="choose-a-file-or-drag-it-here__content">
+  <mat-icon>
+    upload
+  </mat-icon>
+  <h1 class="choose-a-file-or-drag-it-here__cta" (click)="handleChooseAFileClick()">
+    Choose a file
+    <span>
+      or drag it here
+    </span>
+  </h1>
+
+  <input #input type="file" accept="image/*" (change)="handleFileInput($event.target.files)">
+
+</div>

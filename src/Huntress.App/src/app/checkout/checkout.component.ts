@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { CartService } from '../cart';
+import { Component } from '@angular/core';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-checkout',
+  selector: 'or-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent {
+
+  readonly vm$ = of({ })
+  .pipe(
+    map(model => ({ model }))
+  );
+
   constructor(
-    private readonly _cartService: CartService
+
   ) {
 
   }
-
-
 }

@@ -5,7 +5,7 @@ import { Subject } from "rxjs";
 @Injectable()
 export abstract class BaseControlValueAccessor implements ControlValueAccessor, OnDestroy {
 
-  private readonly _destroyed$ = new Subject();
+  protected readonly _destroyed$ = new Subject();
 
   private control!: AbstractControl;
 

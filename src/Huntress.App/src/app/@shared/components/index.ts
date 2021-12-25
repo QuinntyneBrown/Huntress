@@ -1,6 +1,7 @@
 export * from './aggregate-privileges';
 export * from './bento-box';
 export * from './cards';
+export * from './choose-a-file-or-drag-it-here';
 export * from './content-detail';
 export * from './content-list';
 export * from './create-contact-form';

@@ -1,10 +1,10 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { Component, Inject, Injector, OnDestroy } from '@angular/core';
+import { Component, Inject, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product, ProductService } from '@api';
-import { baseUrl } from '@core';
-import { merge, Subject } from 'rxjs';
+import { BASE_URL, Destroyable } from '@core';
+import { merge } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { CartService, CartComponent } from '../cart';
 
@@ -13,11 +13,9 @@ import { CartService, CartComponent } from '../cart';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnDestroy {
+export class ProductComponent extends Destroyable {
 
-  private readonly _destroyed$: Subject<void> = new Subject();
-
-  public readonly vm$ = this._activatedRoute.paramMap
+  readonly vm$ = this._activatedRoute.paramMap
   .pipe(
     map(paramMap => paramMap.get("productId")),
     switchMap(productId => this._productService.getById({ productId })),
@@ -34,14 +32,16 @@ export class ProductComponent implements OnDestroy {
     private readonly _overlay: Overlay,
     private readonly _cartService: CartService,
     private readonly _router: Router,
-    @Inject(baseUrl) private readonly _baseUrl: string
-  ) { }
+    @Inject(BASE_URL) private readonly _baseUrl: string
+  ) {
+    super();
+  }
 
-  public addToCart(product: Product) {
+  addToCart(product: Product) {
     this._cartService.addProduct(product);
 
     const overlayRef = this._overlay.create({
-      panelClass:"g-overlay",
+      panelClass:"or-overlay-pane",
       hasBackdrop: true,
       scrollStrategy: this._overlay.scrollStrategies.block()
     });
@@ -67,10 +67,5 @@ export class ProductComponent implements OnDestroy {
         }
       })
     ).subscribe();
-  }
-
-  ngOnDestroy() {
-    this._destroyed$.next();
-    this._destroyed$.complete();
   }
 }

@@ -19,6 +19,11 @@ export class DigitalAssetService implements IPagableService<DigitalAsset> {
     private readonly _client: HttpClient
   ) { }
 
+  public upload(options: { data: FormData }): Observable<{ digitalAssetIds: string[] }> {
+    return this._client.post<{ digitalAssetIds: string[] }>(`${this._baseUrl}api/DigitalAsset/upload`,
+      options.data);
+  }
+
   getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<DigitalAsset>> {
     return this._client.get<EntityPage<DigitalAsset>>(`${this._baseUrl}api/digitalAsset/page/${options.pageSize}/${options.pageIndex}`)
   }
@@ -44,7 +49,7 @@ export class DigitalAssetService implements IPagableService<DigitalAsset> {
   public create(options: { digitalAsset: DigitalAsset }): Observable<{ digitalAsset: DigitalAsset }> {
     return this._client.post<{ digitalAsset: DigitalAsset }>(`${this._baseUrl}api/digitalAsset`, { digitalAsset: options.digitalAsset });
   }
-  
+
   public update(options: { digitalAsset: DigitalAsset }): Observable<{ digitalAsset: DigitalAsset }> {
     return this._client.put<{ digitalAsset: DigitalAsset }>(`${this._baseUrl}api/digitalAsset`, { digitalAsset: options.digitalAsset });
   }

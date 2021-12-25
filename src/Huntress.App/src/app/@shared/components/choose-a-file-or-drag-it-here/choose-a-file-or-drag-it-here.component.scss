@@ -1,0 +1,38 @@
+:host {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 275px;
+  border: 1px #DDD dashed;
+  padding:10px;
+
+  &:hover {
+
+  }
+
+  .choose-a-file-or-drag-it-here__content {
+    text-align: center;
+  }
+
+  mat-icon.mat-icon {
+    --icon-size: 65px;
+    color: #BBB;
+    font-size: var(--icon-size);
+    height: var(--icon-size);
+    width: var(--icon-size);
+    margin-bottom: 15px;
+  }
+
+  .choose-a-file-or-drag-it-here__cta {
+    font-weight: 500;
+    cursor: pointer;
+    span {
+      font-weight: 400;
+    }
+  }
+
+  input {
+    opacity: 0;
+  }
+}

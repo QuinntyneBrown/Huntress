@@ -2,9 +2,9 @@ import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '@api';
 import { ProductService } from '@api/services';
-import { baseUrl } from '@core';
+import { BASE_URL } from '@core';
 import { ContentStore } from '@core/stores';
-import { forkJoin, Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -14,26 +14,22 @@ import { map } from 'rxjs/operators';
 })
 export class LandingComponent {
 
-  public vm$: Observable<{ heroUrl: string, products: Product[] }> = forkJoin([
+  readonly vm$: Observable<{ heroUrl: string, products: Product[] }> = combineLatest([
     this._contentStore.getByName({ name: 'landing' }),
     this._productService.get()
-
   ])
   .pipe(
-    map(([content, products ]) => {
-      return { heroUrl: `url(${this._baseUrl}${content.json.heroUrl})`, products };
-    }
-    )
+    map(([content, products ]) => ({ heroUrl: `url(${this._baseUrl}${content.json.heroUrl})`, products }))
   );
 
   constructor(
     private readonly _contentStore: ContentStore,
     private readonly _productService: ProductService,
     private readonly _router: Router,
-    @Inject(baseUrl) private readonly _baseUrl: string
+    @Inject(BASE_URL) private readonly _baseUrl: string
   ) { }
 
-  public handleProductClick(product: Product) {
+  handleProductClick(product: Product) {
     this._router.navigate(['products', product.productId]);
   }
 }
