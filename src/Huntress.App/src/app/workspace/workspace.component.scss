@@ -28,6 +28,12 @@
 
     mat-drawer-content {
       grid-template-columns: auto 1fr;
+
+      main {
+        box-sizing: border-box;
+        height: 100vh;
+        overflow-y: auto;
+      }
     }
 
     div[appWorkspacePanel],

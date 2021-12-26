@@ -1,7 +1,22 @@
 @use 'src/scss/breakpoints';
 
+
+.or-list-detail-container,
+.or-list-detail-container--list-view.or-list-detail-container{
+  & > *:nth-child(1),
+  & > *:nth-child(2) {
+    display: grid;
+    padding: 40px 20px;
+  }
+
+  & > *:nth-child(1) {
+    background-color: rgb(240,240,240);
+  }
+}
+
 .or-list-detail-container {
   display: block;
+  height: 100%;
   & > *:nth-child(1) {
     display: none;
   }
@@ -21,15 +36,19 @@
   .or-list-detail-container,
   .or-list-detail-container--list-view.or-list-detail-container{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
 
     & > *:nth-child(1),
     & > *:nth-child(2) {
       display: block;
       overflow: auto;
-      padding: 0px 20px 20px 0px;
+      padding: 40px 20px;
       box-sizing: border-box;
+
+      mat-icon.or-back {
+        display: none;
+      }
     }
   }
 }

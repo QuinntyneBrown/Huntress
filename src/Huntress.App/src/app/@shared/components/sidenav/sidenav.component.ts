@@ -14,4 +14,6 @@ export class SidenavComponent {
   }
 
   @Output() public closeClick: EventEmitter<any> = new EventEmitter();
+
+  @Output() public titleClick: EventEmitter<void> = new EventEmitter();
 }

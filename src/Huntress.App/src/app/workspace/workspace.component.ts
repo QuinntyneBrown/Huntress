@@ -24,12 +24,16 @@ export class WorkspaceComponent extends Destroyable implements OnInit {
 
   @ViewChild("drawer", { static: true }) public drawer: MatDrawer | undefined;
 
-  public handleLogoutClick() {
+  handleLogoutClick() {
     this._authService.logout();
     this._navigationService.redirectToPublicDefault();
   }
 
-  public ngOnInit() {
+  handleTitleClick() {
+    this._navigationService.redirectToPublicDefault();
+  }
+
+  ngOnInit() {
     this._router.events
       .pipe(
         takeUntil(this._destroyed$),

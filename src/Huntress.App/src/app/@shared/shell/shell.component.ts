@@ -24,7 +24,7 @@ export class ShellComponent {
   )
 
   public vm$: Observable<any> = combineLatest([
-    this._contentStore.getByName({ name: 'shell'}),
+    this._contentStore.getByName$({ name: 'shell'}),
     this._socialShareService.get(),
     this.setCssVariables$
   ])

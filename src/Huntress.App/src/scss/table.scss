@@ -1,60 +1,67 @@
-table.or-table.mat-table {
-  width: 100%;
-  background-color: rgba(0,0,0,0);
-  box-sizing: border-box;
+.or-root {
 
-  thead[role="rowgroup"] {
+  .or-table {
+    width: 100%;
     background-color: rgba(0,0,0,0);
-    .mat-header-row.cdk-header-row {
+    box-sizing: border-box;
+
+    thead[role="rowgroup"] {
       background-color: rgba(0,0,0,0);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      .mat-header-row.cdk-header-row {
+        background-color: red;
+        background-color: rgba(0,0,0,0);
+        display: grid;
+        padding: 0px 20px;
+        grid-template-columns:var(--grid-template-columns, 1fr);
+        th {
+          background-color: rgba(0,0,0,0);
+          padding:0;
+        }
+      }
+
       th {
+        display: grid;
+        place-items: center start;
+        border:none;
         background-color: rgba(0,0,0,0);
       }
     }
 
-    th {
-      display: grid;
-      place-items: center start;
-      border:none;
-      background-color: rgba(0,0,0,0);
-    }
-  }
-
-  tbody[role="rowgroup"] {
-    background-color: white;
-    border:1px solid #E5E5E5;
-    border-radius: 10px;
-    display: block;
-
-    .mat-row.cdk-row  {
-      display: grid;
-      grid-template-columns: 1fr 40px;
+    tbody[role="rowgroup"] {
+      background-color: white;
+      border:1px solid #E5E5E5;
       border-radius: 10px;
-      box-sizing: border-box;
-      padding:0px 20px 0 20px;
-      user-select: none;
-    }
+      display: block;
 
-    td {
-      display: grid;
-      place-items: center start;
-      border:none;
-      border-bottom: 1px solid #E5E5E5;
-      padding:0;
-    }
+      .mat-row.cdk-row  {
+        display: grid;
+        grid-template-columns: var(--grid-template-columns, 1fr);
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding:0px 20px 0 20px;
+        user-select: none;
+      }
 
-    tr.mat-row.cdk-row:last-of-type {
       td {
+        display: grid;
+        place-items: center start;
         border:none;
+        border-bottom: 1px solid #E5E5E5;
+        padding:0;
+      }
+
+      tr.mat-row.cdk-row:last-of-type {
+        td {
+          border:none;
+        }
       }
     }
   }
-}
 
 
-.mat-paginator.or-paginator {
-  background-color: initial;
-  box-shadow:none;
+  .or-paginator {
+    background-color: initial;
+    box-shadow:none;
+  }
 }

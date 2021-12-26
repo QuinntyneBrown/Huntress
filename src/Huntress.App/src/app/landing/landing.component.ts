@@ -15,7 +15,7 @@ import { map } from 'rxjs/operators';
 export class LandingComponent {
 
   readonly vm$: Observable<{ heroUrl: string, products: Product[] }> = combineLatest([
-    this._contentStore.getByName({ name: 'landing' }),
+    this._contentStore.getByName$({ name: 'landing' }),
     this._productService.get()
   ])
   .pipe(

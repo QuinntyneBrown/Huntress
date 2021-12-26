@@ -1,25 +1,24 @@
-import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
+import { Component, EventEmitter, Injectable, Input, NgModule, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Content } from '@api';
 import { HtmlEditorModule } from '@shared';
+import { LandingContentDetailModule, ShellContentDetailModule } from '.';
+import { DefaultContentDetailModule } from './default-content-detail';
 
-@Component({
-  selector: 'or-content-detail',
-  templateUrl: './content-detail.component.html',
-  styleUrls: ['./content-detail.component.scss']
-})
-export class ContentDetailComponent {
+@Injectable()
+export abstract class BaseContentDetailComponent {
 
-  readonly form: FormGroup = new FormGroup({
-    contentId: new FormControl(null, []),
-    name: new FormControl(null, [Validators.required])
-  });
+  form: FormGroup;
 
-  public get content(): Content { return this.form.value as Content; }
+  get content(): Content { return this.form.value as Content; }
 
-  @Input("content") public set user(value: Content) {
+  @Output() save: EventEmitter<Content> = new EventEmitter();
+
+  @Output() backButtonClick: EventEmitter<void>  = new EventEmitter();
+
+  setContent(value: Content) {
     if(!value?.contentId) {
       this.form.reset({
         name: null
@@ -29,7 +28,22 @@ export class ContentDetailComponent {
     }
   }
 
-  @Output() save: EventEmitter<Content> = new EventEmitter();
+}
+
+@Component({
+  selector: 'or-content-detail',
+  templateUrl: './content-detail.component.html',
+  styleUrls: ['./content-detail.component.scss']
+})
+export class ContentDetailComponent extends BaseContentDetailComponent {
+  form: FormGroup = new FormGroup({
+    contentId: new FormControl(null, []),
+    name: new FormControl(null, [Validators.required])
+  });
+
+  @Input("content") set content(value: Content) {
+    this.setContent(value);
+  }
 }
 
 @NgModule({
@@ -43,7 +57,10 @@ export class ContentDetailComponent {
     CommonModule,
     MatIconModule,
     ReactiveFormsModule,
-    HtmlEditorModule
+    HtmlEditorModule,
+    ShellContentDetailModule,
+    LandingContentDetailModule,
+    DefaultContentDetailModule
   ]
 })
 export class ContentDetailModule { }

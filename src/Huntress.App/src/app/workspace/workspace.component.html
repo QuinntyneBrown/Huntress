@@ -1,6 +1,9 @@
 <mat-drawer-container>
   <mat-drawer mode="over" #drawer>
-    <app-sidenav (logoutClicked)="handleLogoutClick()" (closeClick)="handleSidenavCloseClick()">
+    <app-sidenav
+    (logoutClicked)="handleLogoutClick()"
+    (closeClick)="handleSidenavCloseClick()"
+    (titleClick)="handleTitleClick()">
 
     </app-sidenav>
   </mat-drawer>
@@ -12,7 +15,7 @@
   <mat-drawer-content>
     <div appWorkspacePanel>
       <div class="g-panel-heading">
-        <h1 class="g-brand">Huntress</h1>
+        <h1 class="g-brand" (click)="handleTitleClick()">Huntress</h1>
         <button mat-icon-button (click)="handleSidenavMenuClick()">
           <mat-icon>
             menu

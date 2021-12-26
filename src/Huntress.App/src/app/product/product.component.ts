@@ -9,7 +9,7 @@ import { map, switchMap, tap } from 'rxjs/operators';
 import { CartService, CartComponent } from '../cart';
 
 @Component({
-  selector: 'app-product',
+  selector: 'or-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
