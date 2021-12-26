@@ -10,10 +10,7 @@ import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 @Component({
   selector: 'or-contents',
   templateUrl: './contents.component.html',
-  styleUrls: ['./contents.component.scss'],
-  host: {
-    class: 'or-page'
-  }
+  styleUrls: ['./contents.component.scss']
 })
 export class ContentsComponent extends Destroyable {
 

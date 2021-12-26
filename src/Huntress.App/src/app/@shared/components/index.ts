@@ -5,6 +5,8 @@ export * from './choose-a-file-or-drag-it-here';
 export * from './content-detail';
 export * from './content-list';
 export * from './create-contact-form';
+export * from './css-variable-detail';
+export * from './css-variable-list';
 export * from './digital-asset-detail';
 export * from './digital-asset-editor';
 export * from './digital-asset-list';

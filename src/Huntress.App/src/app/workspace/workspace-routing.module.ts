@@ -36,6 +36,7 @@ const routes: Routes = [
       }
     ]
   },
+  { path: 'css-variables', loadChildren: () => import('./css-variables/css-variables.module').then(m => m.CssVariablesModule) },
 
 ];
 

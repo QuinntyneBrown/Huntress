@@ -1,0 +1,4 @@
+<div orListDetail *ngIf="vm$ | async as vm">
+  <or-css-variable-list [cssVariables]="vm.cssVariables" (select)="handleSelect($event)"></or-css-variable-list>
+  <or-css-variable-detail [cssVariable]="vm.selected" (save)="handleSave($event)"></or-css-variable-detail>
+</div>

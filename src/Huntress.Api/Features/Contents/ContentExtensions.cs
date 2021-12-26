@@ -1,3 +1,4 @@
+using Huntress.Api.Extensions;
 using Huntress.Api.Models;
 
 namespace Huntress.Api.Features
@@ -10,7 +11,8 @@ namespace Huntress.Api.Features
             {
                 ContentId = content.ContentId,
                 Name = content.Name,
-                Json = content.Json
+                Json = content.Json,
+                Slug = content.Name.Slugify()
             };
         }
     }

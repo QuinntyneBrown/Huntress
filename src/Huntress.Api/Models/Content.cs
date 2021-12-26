@@ -8,5 +8,6 @@ namespace Huntress.Api.Models
         public Guid ContentId { get; set; }
         public string Name { get; set; }
         public JObject Json { get; set; }
+        public string Slug { get; set; }
     }
 }
