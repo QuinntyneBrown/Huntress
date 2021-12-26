@@ -1,9 +1,4 @@
-<ng-container *ngIf="vm$ | async as vm">
-
-  <h1>Orders</h1>
-
-  <div orListDetail>
-    <or-order-list [orders]="vm.orders" (select)="handleSelect($event)"></or-order-list>
-    <or-order-detail [order]="vm.selected" (save)="handleSave($event)"></or-order-detail>
-  </div>
-</ng-container>
+<div orListDetail *ngIf="vm$ | async as vm">
+  <or-order-list [orders]="vm.orders" (select)="handleSelect($event)"></or-order-list>
+  <or-order-detail [order]="vm.selected" (save)="handleSave($event)"></or-order-detail>
+</div>

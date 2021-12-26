@@ -1,9 +1,4 @@
-<ng-container *ngIf="vm$ | async as vm">
-
-  <h1>Digital Assets</h1>
-
-  <div orListDetail>
-    <or-digital-asset-list [digitalAssets]="vm.digitalAssets" (select)="handleSelect($event)"></or-digital-asset-list>
-    <or-digital-asset-detail [digitalAsset]="vm.selected" (save)="handleSave($event)"></or-digital-asset-detail>
-  </div>
-</ng-container>
+<div orListDetail *ngIf="vm$ | async as vm">
+  <or-digital-asset-list [digitalAssets]="vm.digitalAssets" (select)="handleSelect($event)"></or-digital-asset-list>
+  <or-digital-asset-detail [digitalAsset]="vm.selected" (save)="handleSave($event)"></or-digital-asset-detail>
+</div>

@@ -1,9 +1,4 @@
-<ng-container *ngIf="vm$ | async as vm">
-
-  <h1>Users</h1>
-
-  <div orListDetail>
-    <or-user-list [users]="vm.users" (select)="handleSelect($event)"></or-user-list>
-    <or-user-detail [user]="vm.selected" (save)="handleSave($event)"></or-user-detail>
-  </div>
-</ng-container>
+<div orListDetail *ngIf="vm$ | async as vm">
+  <or-user-list [users]="vm.users" (select)="handleSelect($event)"></or-user-list>
+  <or-user-detail [user]="vm.selected" (save)="handleSave($event)"></or-user-detail>
+</div>

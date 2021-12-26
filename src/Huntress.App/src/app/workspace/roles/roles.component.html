@@ -1,9 +1,4 @@
-<ng-container *ngIf="vm$ | async as vm">
-
-  <h1>Roles</h1>
-
-  <div orListDetail>
-    <or-role-list [roles]="vm.roles" (select)="handleSelect($event)"></or-role-list>
-    <or-role-detail [role]="vm.selected" (save)="handleSave($event)"></or-role-detail>
-  </div>
-</ng-container>
+<div orListDetail *ngIf="vm$ | async as vm">
+  <or-role-list [roles]="vm.roles" (select)="handleSelect($event)"></or-role-list>
+  <or-role-detail [role]="vm.selected" (save)="handleSave($event)"></or-role-detail>
+</div>
