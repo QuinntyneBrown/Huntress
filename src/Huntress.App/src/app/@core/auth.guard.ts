@@ -1,4 +1,4 @@
-import { Injectable, QueryList } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { NavigationService } from './navigation.service';
@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
         return true;
       }
 
-      this._navigationService.lastPath = state.url;
+      this._navigationService.setLastPath(state.url);
       this._navigationService.redirectToLogin();
 
       return false;

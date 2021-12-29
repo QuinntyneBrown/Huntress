@@ -12,10 +12,10 @@ import { accessTokenKey } from './constants';
 @Injectable()
 export class HeadersInterceptor implements HttpInterceptor {
 
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(private readonly _localStorageService: LocalStorageService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = this.localStorageService.get({ name: accessTokenKey }) || '';
+    const token = this._localStorageService.get({ name: accessTokenKey }) || '';
     return next.handle(request.clone({
       headers: request.headers
         .set('Authorization', `Bearer ${token}`)

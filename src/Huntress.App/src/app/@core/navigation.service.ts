@@ -5,36 +5,42 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class NavigationService {
-  constructor(private router: Router) {}
+  constructor(
+    private readonly _router: Router
+    ) { }
 
-  loginUrl = '/login';
+  private _loginUrl = '/login';
 
-  lastPath: string = '';
+  private _lastPath: string = '';
 
-  defaultPath = '/workspace';
+  private _defaultPath = '/workspace';
+
+  setLastPath(value: string): void {
+    this._lastPath = value;
+  }
 
   setLoginUrl(value: string): void {
-    this.loginUrl = value;
+    this._loginUrl = value;
   }
 
   setDefaultUrl(value: string): void {
-    this.defaultPath = value;
+    this._defaultPath = value;
   }
 
-  public redirectToLogin(): void {
-    this.router.navigate([this.loginUrl]);
+  redirectToLogin(): void {
+    this._router.navigate([this._loginUrl]);
   }
 
-  public redirectToPublicDefault(): void {
-    this.router.navigate(['']);
+  redirectToPublicDefault(): void {
+    this._router.navigate(['']);
   }
 
-  public redirectPreLogin(): void {
-    if (this.lastPath && this.lastPath !== this.loginUrl) {
-      this.router.navigateByUrl(this.lastPath);
-      this.lastPath = '';
+  redirectPreLogin(): void {
+    if (this._lastPath && this._lastPath !== this._loginUrl) {
+      this._router.navigateByUrl(this._lastPath);
+      this._lastPath = '';
     } else {
-      this.router.navigate([this.defaultPath]);
+      this._router.navigate([this._defaultPath]);
     }
   }
 }

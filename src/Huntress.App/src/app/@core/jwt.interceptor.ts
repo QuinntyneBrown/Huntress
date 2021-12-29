@@ -18,8 +18,8 @@ import { accessTokenKey } from './constants';
 export class JwtInterceptor implements HttpInterceptor {
 
   constructor(
-    private localStorageService: LocalStorageService,
-    private redirectService: NavigationService
+    private readonly _localStorageService: LocalStorageService,
+    private readonly _redirectService: NavigationService
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -28,8 +28,8 @@ export class JwtInterceptor implements HttpInterceptor {
         (httpEvent: HttpEvent<any>) => httpEvent,
         error => {
           if (error instanceof HttpErrorResponse && error.status === 401) {
-            this.localStorageService.put({ name: accessTokenKey, value: null });
-            this.redirectService.redirectToLogin();
+            this._localStorageService.put({ name: accessTokenKey, value: null });
+            this._redirectService.redirectToLogin();
           }
         }
       )

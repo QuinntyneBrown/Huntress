@@ -8,10 +8,11 @@ import { takeUntil, tap } from "rxjs/operators";
 export class EntityDataSource<T> implements DataSource<T> {
     private readonly _disconnected$: Subject<void> = new Subject();
 
-    public entities$: BehaviorSubject<any[]> = new BehaviorSubject([]);
-    public length$: BehaviorSubject<number> = new BehaviorSubject(0);
+    readonly entities$: BehaviorSubject<any[]> = new BehaviorSubject([]);
+    readonly length$: BehaviorSubject<number> = new BehaviorSubject(0);
 
-    constructor(private _pagableService: IPagableService<T>) { }
+    constructor(
+      private readonly _pagableService: IPagableService<T>) { }
 
     connect(collectionViewer: CollectionViewer): Observable<T[] | readonly T[]> {
         return this.entities$.asObservable();

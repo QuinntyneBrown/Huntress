@@ -10,8 +10,8 @@ import { accessTokenKey, baseUrl, usernameKey } from './constants';
 export class AuthService {
   constructor(
     @Inject(baseUrl) private _baseUrl: string,
-    private _httpClient: HttpClient,
-    private _localStorageService: LocalStorageService
+    private readonly _httpClient: HttpClient,
+    private readonly _localStorageService: LocalStorageService
   ) {}
 
   public logout() {

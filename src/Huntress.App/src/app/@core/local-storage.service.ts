@@ -7,7 +7,7 @@ import { storageKey } from './constants';
 export class LocalStorageService {
   private _items?: any[] | null | undefined = null;
 
-  public get items(): any[] | null | undefined {
+  get items(): any[] | null | undefined {
     if (this._items === null) {
       let storageItems = localStorage.getItem(storageKey);
       if (storageItems === 'null') {
@@ -18,13 +18,13 @@ export class LocalStorageService {
     return this._items;
   }
 
-  public set items(value: Array<any> | null | undefined) {
+  set items(value: Array<any> | null | undefined) {
     this._items = value;
   }
 
-  public get = (options: { name: string }) => {
+  get = (options: { name: string }) => {
     let storageItem = null;
-    
+
     if(!this.items)
       return null;
 
@@ -35,10 +35,10 @@ export class LocalStorageService {
     return storageItem;
   }
 
-  public put = (options: { name: string; value: any }) => {
+  put = (options: { name: string; value: any }) => {
     let itemExists = false;
 
-    if(!this.items) 
+    if(!this.items)
       return;
 
     this.items.forEach((item: any) => {
@@ -57,8 +57,8 @@ export class LocalStorageService {
 
     this.updateLocalStorage();
   };
-  
-  public updateLocalStorage(): void {
+
+  updateLocalStorage(): void {
     localStorage.setItem(storageKey, JSON.stringify(this._items));
   }
 }

@@ -17,7 +17,6 @@ namespace Huntress.Api.Features
                 RuleFor(request => request.Content).NotNull();
                 RuleFor(request => request.Content).SetValidator(new ContentValidator());
             }
-
         }
 
         public class Request : IRequest<Response>
@@ -50,7 +49,6 @@ namespace Huntress.Api.Features
                     Content = content.ToDto()
                 };
             }
-
         }
     }
 }

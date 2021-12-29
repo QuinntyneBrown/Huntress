@@ -35,6 +35,7 @@ export class UsersComponent extends Destroyable {
   }
 
   public handleSelect(user: User) {
+
     if(user.userId) {
       this._router.navigate(["../","workspace","roles"]);
     } else {
