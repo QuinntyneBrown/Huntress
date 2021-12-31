@@ -16,9 +16,9 @@ export class ProductDetailComponent {
     name: new FormControl(null, [Validators.required])
   });
 
-  public get product(): Product { return this.form.value as Product; }
+  get product(): Product { return this.form.value as Product; }
 
-  @Input("product") public set product(value: Product) {
+  @Input("product") set product(value: Product) {
     if(!value?.productId) {
       this.form.reset({
         name: null

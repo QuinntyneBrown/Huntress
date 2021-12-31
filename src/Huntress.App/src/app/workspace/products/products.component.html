@@ -1,4 +1,4 @@
 <div orListDetail *ngIf="vm$ | async as vm">
-  <or-product-list [products]="vm.products" (select)="handleSelect($event)"></or-product-list>
-  <or-product-detail [product]="vm.selected" (save)="handleSave($event)"></or-product-detail>
+  <or-product-list [products]="vm.products" [selected]="vm.selected" (delete)="onDelete($event)" (select)="onSelect($event)" (create)="onCreate()"></or-product-list>
+  <or-product-detail [product]="vm.selected" (save)="onSave($event)"></or-product-detail>
 </div>

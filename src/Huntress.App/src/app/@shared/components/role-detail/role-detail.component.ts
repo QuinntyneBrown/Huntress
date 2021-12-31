@@ -16,9 +16,9 @@ export class RoleDetailComponent {
     name: new FormControl(null, [Validators.required])
   });
 
-  public get role(): Role { return this.form.value as Role; }
+  get role(): Role { return this.form.value as Role; }
 
-  @Input("role") public set role(value: Role) {
+  @Input("role") set role(value: Role) {
     if(!value?.roleId) {
       this.form.reset({
         name: null

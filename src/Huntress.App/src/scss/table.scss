@@ -21,7 +21,7 @@
       }
 
       th {
-        display: grid;
+        display: flex;
         place-items: center start;
         border:none;
         background-color: rgba(0,0,0,0);
@@ -44,7 +44,7 @@
       }
 
       td {
-        display: grid;
+        display: flex;
         place-items: center start;
         border:none;
         border-bottom: 1px solid #E5E5E5;

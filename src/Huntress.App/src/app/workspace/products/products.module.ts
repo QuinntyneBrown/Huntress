@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ProductDetailModule, ProductListModule, ListDetailModule } from '@shared';
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products.component';
-import { ProductDetailModule, ProductListModule } from '@shared';
-import { ListDetailModule } from '@shared/directives/list-detail.directive';
+
 
 
 @NgModule({
@@ -13,8 +13,8 @@ import { ListDetailModule } from '@shared/directives/list-detail.directive';
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    ProductDetailModule,
     ProductListModule,
+    ProductDetailModule,
     ListDetailModule
   ]
 })

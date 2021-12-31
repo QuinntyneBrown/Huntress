@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,27 +12,31 @@ import { pageSizeOptions } from '@core';
   styleUrls: ['./order-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OrderListComponent implements AfterViewInit {
+export class OrderListComponent {
+
+  @Input() selected: Order;
 
   private _dataSource: MatTableDataSource<Order>;
 
   readonly pageSizeOptions: typeof pageSizeOptions = pageSizeOptions;
 
-  readonly displayedColumns: string[] = ["name"];
+  readonly displayedColumns: string[] = ["name", "actions"];
 
   @ViewChild(MatPaginator, { static: true }) private _paginator: MatPaginator;
 
   @Input("orders") set orders(value: Order[]) {
     this._dataSource = new MatTableDataSource(value);
+    this.dataSource.paginator = this._paginator;
   }
 
   get dataSource() { return this._dataSource; }
 
   @Output() select: EventEmitter<Order> = new EventEmitter();
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this._paginator;
-  }
+  @Output() create: EventEmitter<void> = new EventEmitter();
+
+  @Output() delete: EventEmitter<Order> = new EventEmitter();
+
 }
 
 @NgModule({

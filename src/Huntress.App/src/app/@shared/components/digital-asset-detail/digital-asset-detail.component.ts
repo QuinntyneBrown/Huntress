@@ -16,9 +16,9 @@ export class DigitalAssetDetailComponent {
     name: new FormControl(null, [Validators.required])
   });
 
-  public get digitalAsset(): DigitalAsset { return this.form.value as DigitalAsset; }
+  get digitalAsset(): DigitalAsset { return this.form.value as DigitalAsset; }
 
-  @Input("digitalAsset") public set digitalAsset(value: DigitalAsset) {
+  @Input("digitalAsset") set digitalAsset(value: DigitalAsset) {
     if(!value?.digitalAssetId) {
       this.form.reset({
         name: null

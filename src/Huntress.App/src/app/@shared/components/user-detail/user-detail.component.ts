@@ -16,9 +16,9 @@ export class UserDetailComponent {
     username: new FormControl(null, [Validators.required])
   });
 
-  public get user(): User { return this.form.value as User; }
+  get user(): User { return this.form.value as User; }
 
-  @Input("user") public set user(value: User) {
+  @Input("user") set user(value: User) {
     if(!value?.userId) {
       this.form.reset({
         username: null

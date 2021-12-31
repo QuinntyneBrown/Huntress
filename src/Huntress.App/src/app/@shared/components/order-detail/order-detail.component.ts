@@ -16,9 +16,9 @@ export class OrderDetailComponent {
     name: new FormControl(null, [Validators.required])
   });
 
-  public get order(): Order { return this.form.value as Order; }
+  get order(): Order { return this.form.value as Order; }
 
-  @Input("order") public set order(value: Order) {
+  @Input("order") set order(value: Order) {
     if(!value?.orderId) {
       this.form.reset({
         name: null

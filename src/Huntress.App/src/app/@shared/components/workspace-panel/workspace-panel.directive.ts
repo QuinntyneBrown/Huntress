@@ -3,7 +3,7 @@ import { Directive, ElementRef } from '@angular/core';
 @Directive({
   selector: '[appWorkspacePanel]',
   host: {
-    'class': 'g-workspace-panel'
+    'class': 'or-workspace-panel'
   }
 })
 export class WorkspacePanelDirective { }

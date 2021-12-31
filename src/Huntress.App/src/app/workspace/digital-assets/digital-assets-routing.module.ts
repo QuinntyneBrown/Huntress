@@ -4,8 +4,8 @@ import { DigitalAssetsComponent } from './digital-assets.component';
 
 const routes: Routes = [
   { path: '', component: DigitalAssetsComponent },
-  { path: 'edit/:digitalAssetId', component: DigitalAssetsComponent },
-  { path: 'create', component: DigitalAssetsComponent }
+  { path: 'create', component: DigitalAssetsComponent },
+  { path: 'edit/:digitalAssetId', component: DigitalAssetsComponent }
 ];
 
 @NgModule({

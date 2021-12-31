@@ -1,4 +1,4 @@
 <div orListDetail *ngIf="vm$ | async as vm">
-  <or-order-list [orders]="vm.orders" (select)="handleSelect($event)"></or-order-list>
-  <or-order-detail [order]="vm.selected" (save)="handleSave($event)"></or-order-detail>
+  <or-order-list [orders]="vm.orders" [selected]="vm.selected" (delete)="onDelete($event)" (select)="onSelect($event)" (create)="onCreate()"></or-order-list>
+  <or-order-detail [order]="vm.selected" (save)="onSave($event)"></or-order-detail>
 </div>

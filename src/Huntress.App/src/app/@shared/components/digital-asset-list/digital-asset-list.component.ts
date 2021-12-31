@@ -1,10 +1,12 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { DigitalAsset } from '@api';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { pageSizeOptions } from '@core';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @Component({
   selector: 'or-digital-asset-list',
@@ -12,27 +14,31 @@ import { pageSizeOptions } from '@core';
   styleUrls: ['./digital-asset-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DigitalAssetListComponent implements AfterViewInit {
+export class DigitalAssetListComponent {
+
+  @Input() selected: DigitalAsset;
 
   private _dataSource: MatTableDataSource<DigitalAsset>;
 
   readonly pageSizeOptions: typeof pageSizeOptions = pageSizeOptions;
 
-  readonly displayedColumns: string[] = ["name"];
+  readonly displayedColumns: string[] = ["name", "actions"];
 
   @ViewChild(MatPaginator, { static: true }) private _paginator: MatPaginator;
 
   @Input("digitalAssets") set digitalAssets(value: DigitalAsset[]) {
     this._dataSource = new MatTableDataSource(value);
+    this.dataSource.paginator = this._paginator;
   }
 
   get dataSource() { return this._dataSource; }
 
   @Output() select: EventEmitter<DigitalAsset> = new EventEmitter();
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this._paginator;
-  }
+  @Output() create: EventEmitter<void> = new EventEmitter();
+
+  @Output() delete: EventEmitter<DigitalAsset> = new EventEmitter();
+
 }
 
 @NgModule({
@@ -46,7 +52,8 @@ export class DigitalAssetListComponent implements AfterViewInit {
     CommonModule,
     MatTableModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonModule
   ]
 })
 export class DigitalAssetListModule { }

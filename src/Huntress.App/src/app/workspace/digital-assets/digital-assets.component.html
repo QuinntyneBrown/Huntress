@@ -1,4 +1,4 @@
 <div orListDetail *ngIf="vm$ | async as vm">
-  <or-digital-asset-list [digitalAssets]="vm.digitalAssets" (select)="handleSelect($event)"></or-digital-asset-list>
-  <or-digital-asset-detail [digitalAsset]="vm.selected" (save)="handleSave($event)"></or-digital-asset-detail>
+  <or-digital-asset-list [digitalAssets]="vm.digitalAssets" [selected]="vm.selected" (delete)="onDelete($event)" (select)="onSelect($event)" (create)="onCreate()"></or-digital-asset-list>
+  <or-digital-asset-detail [digitalAsset]="vm.selected" (save)="onSave($event)"></or-digital-asset-detail>
 </div>
