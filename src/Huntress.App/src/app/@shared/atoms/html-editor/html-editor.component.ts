@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule, CKEditor4  } from 'ckeditor4-angular';
-import { BaseControlValueAccessor } from '@core/base-control-value-accessor';
-import { baseUrl } from '@core';
+import { BaseControl } from '@core/base-control';
+import { BASE_URL } from '@core';
 
 
 @Component({
@@ -29,7 +29,7 @@ import { baseUrl } from '@core';
     }
   ]
 })
-export class HtmlEditorComponent extends BaseControlValueAccessor {
+export class HtmlEditorComponent extends BaseControl {
 
   data:any;
 
@@ -39,7 +39,7 @@ export class HtmlEditorComponent extends BaseControlValueAccessor {
   };
 
   constructor(
-    @Inject(baseUrl)private readonly _baseUrl: string
+    @Inject(BASE_URL)private readonly _baseUrl: string
   ) {
     super();
   }

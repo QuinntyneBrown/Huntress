@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { baseUrl } from '@core/constants';
+import { BASE_URL } from '@core/constants';
 import { HttpClient } from '@angular/common/http';
 import { ProductCollection } from '@api';
 import { Observable } from 'rxjs';
@@ -15,7 +15,7 @@ export class ProductCollectionService implements IPagableService<ProductCollecti
   uniqueIdentifierName: string = "productCollectionId";
 
   constructor(
-    @Inject(baseUrl) private readonly _baseUrl: string,
+    @Inject(BASE_URL) private readonly _baseUrl: string,
     private readonly _client: HttpClient
   ) { }
 

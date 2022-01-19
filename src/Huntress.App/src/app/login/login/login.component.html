@@ -1,1 +1,3 @@
-<app-login-form (tryToLogin)='handleTryToLogin($event)'></app-login-form>
+<ng-container *ngIf="vm$ | async as vm">
+    <or-login-form (tryToLogin)='onTryToLogin($event)'></or-login-form>
+</ng-container>

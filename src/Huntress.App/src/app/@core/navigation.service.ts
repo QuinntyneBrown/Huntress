@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { from, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -35,12 +37,11 @@ export class NavigationService {
     this._router.navigate(['']);
   }
 
-  redirectPreLogin(): void {
-    if (this._lastPath && this._lastPath !== this._loginUrl) {
-      this._router.navigateByUrl(this._lastPath);
-      this._lastPath = '';
-    } else {
-      this._router.navigate([this._defaultPath]);
-    }
+  redirectPreLogin(): Observable<boolean> {
+    const url = (this._lastPath && this._lastPath !== this._loginUrl) ? this._lastPath : this._defaultPath;
+    return from(this._router.navigateByUrl(url))
+      .pipe(
+        tap(_ => (this._lastPath = undefined))
+      )
   }
 }

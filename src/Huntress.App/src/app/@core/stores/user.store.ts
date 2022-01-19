@@ -1,10 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { queryStore } from "@quinntyne/query-store";
-import { Observable, of } from "rxjs";
-import { baseUrl } from "@core";
+import { Observable } from "rxjs";
+import { BASE_URL } from "@core";
 import { User, UserService } from "@api";
-import { v4 as uuidv4 } from 'uuid';
+
 
 const USERS = "USERS";
 
@@ -13,7 +13,7 @@ const USERS = "USERS";
 })
 export class UserStore extends queryStore(UserService) {
   constructor(
-    @Inject(baseUrl) _baseUrl:string,
+    @Inject(BASE_URL) _baseUrl:string,
     _client: HttpClient
   ) {
     super(_baseUrl, _client);

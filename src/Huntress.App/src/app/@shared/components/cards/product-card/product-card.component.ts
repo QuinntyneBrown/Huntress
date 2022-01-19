@@ -1,6 +1,7 @@
 import { Component, Inject, Input } from '@angular/core';
 import { Product } from '@api';
-import { baseUrl } from '@core';
+import { BASE_URL } from '@core';
+
 
 @Component({
   selector: 'app-product-card',
@@ -16,7 +17,7 @@ export class ProductCardComponent {
   }
 
   constructor(
-    @Inject(baseUrl) private readonly _baseUrl: string
+    @Inject(BASE_URL) private readonly _baseUrl: string
   ) {
 
   }

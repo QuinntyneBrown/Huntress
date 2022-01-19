@@ -1,20 +1,25 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, ComponentFactoryResolver, Inject, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { CssVariableService, SocialShareService } from '@api';
-import { NavigationService } from '@core';
+import { combine, NavigationService } from '@core';
 import { ContentStore } from '@core/stores';
-import { combineLatest, Observable } from 'rxjs';
+import { CartService } from '@shared/components/cart/cart.service';
+import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 
 @Component({
-  selector: 'app-shell',
+  selector: 'or-shell',
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss']
 })
-export class ShellComponent {
+export class ShellComponent  {
 
-  public setCssVariables$ = this._cssVariableService.get()
+  readonly opened$ = this._cartService.opened$;
+  
+  @ViewChild(TemplateRef, { read: ViewContainerRef, static: true }) viewContainerRef: ViewContainerRef;
+
+  setCssVariables$ = this._cssVariableService.get()
   .pipe(
     tap(cssVariables => {
       for(var i = 0; i < cssVariables.length; i++) {
@@ -23,24 +28,26 @@ export class ShellComponent {
     })
   )
 
-  public vm$: Observable<any> = combineLatest([
+  readonly vm$: Observable<any> = combine([
     this._contentStore.getByName$({ name: 'shell'}),
     this._socialShareService.get(),
-    this.setCssVariables$
+    this.setCssVariables$,
   ])
   .pipe(
-    map(([content,socials]) => {
+    map(([content, socials, _]) => {
+      
       return {
-      about: content.json.about,
-      contact: content.json.contact,
-      followUs: content.json.followUs,
-      returnPolicy: content.json.returnPolicy,
+      about: content?.json?.about,
+      contact: content?.json?.contact,
+      followUs: content?.json?.followUs,
+      returnPolicy: content?.json?.returnPolicy,
       socials
       };
     })
   );
 
   constructor(
+    private readonly _cartService: CartService,
     private readonly _socialShareService: SocialShareService,
     private readonly _contentStore: ContentStore,
     private readonly _cssVariableService: CssVariableService,
@@ -48,7 +55,7 @@ export class ShellComponent {
     @Inject(DOCUMENT) private readonly _document: Document
   ) { }
 
-  public handleTitleClick() {
+  handleTitleClick() {
     this._navigationService.redirectToPublicDefault();
   }
 }

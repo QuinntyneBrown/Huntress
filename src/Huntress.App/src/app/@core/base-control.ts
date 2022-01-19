@@ -1,13 +1,11 @@
-import { ElementRef, Injectable, OnDestroy } from "@angular/core";
+import { Injectable, OnDestroy } from "@angular/core";
 import { AbstractControl, ControlValueAccessor } from "@angular/forms";
 import { Subject } from "rxjs";
 
 @Injectable()
-export abstract class BaseControlValueAccessor implements ControlValueAccessor, OnDestroy {
+export abstract class BaseControl implements ControlValueAccessor, OnDestroy {
 
   protected readonly _destroyed$ = new Subject();
-
-  private control!: AbstractControl;
 
   writeValue(obj: any): void {
 

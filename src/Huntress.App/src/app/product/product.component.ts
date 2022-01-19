@@ -3,10 +3,11 @@ import { ComponentPortal } from '@angular/cdk/portal';
 import { Component, Inject, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product, ProductService } from '@api';
-import { BASE_URL, Destroyable } from '@core';
-import { merge } from 'rxjs';
+import { BASE_URL, combine, Destroyable } from '@core';
+import { CartService } from '@shared/components/cart/cart.service';
+import { merge, Subject } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { CartService, CartComponent } from '../cart';
+
 
 @Component({
   selector: 'or-product',
@@ -15,9 +16,20 @@ import { CartService, CartComponent } from '../cart';
 })
 export class ProductComponent extends Destroyable {
 
-  readonly vm$ = this._activatedRoute.paramMap
+  private _addProductActionSubject: Subject<Product> = new Subject();
+
+  readonly vm$ = combine([
+    this._activatedRoute.paramMap,
+    this._addProductActionSubject
+    .pipe(
+      switchMap(product => this._cartService.addProduct(product)),
+      tap(result => {
+
+      })
+    )
+  ])
   .pipe(
-    map(paramMap => paramMap.get("productId")),
+    map(([paramMap]) => paramMap.get("productId")),
     switchMap(productId => this._productService.getById({ productId })),
     map(product => {
       return {
@@ -29,43 +41,13 @@ export class ProductComponent extends Destroyable {
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
     private readonly _productService: ProductService,
-    private readonly _overlay: Overlay,
     private readonly _cartService: CartService,
-    private readonly _router: Router,
     @Inject(BASE_URL) private readonly _baseUrl: string
   ) {
     super();
   }
 
   addToCart(product: Product) {
-    this._cartService.addProduct(product);
-
-    const overlayRef = this._overlay.create({
-      panelClass:"or-overlay-pane",
-      hasBackdrop: true,
-      scrollStrategy: this._overlay.scrollStrategies.block()
-    });
-
-    const cartPortal = new ComponentPortal(CartComponent, null, Injector.create({
-      providers:[
-        { provide: OverlayRef, useValue: overlayRef }
-      ]
-    }));
-
-    const cartComponent: CartComponent = overlayRef.attach(cartPortal).instance;
-
-    merge(
-      cartComponent.checkout$.pipe(map(_ => true)),
-      cartComponent.close$.pipe(map(_ => false))
-    )
-    .pipe(
-      tap(navigateToCheckout => {
-        overlayRef.dispose();
-
-        if(navigateToCheckout) {
-          this._router.navigate(['checkout']);
-        }
-      })
-    ).subscribe();
+    this._addProductActionSubject.next(product);
   }
 }

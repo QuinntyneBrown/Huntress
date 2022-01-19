@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { Role, RoleService } from "@api";
-import { baseUrl } from "@core";
+import { BASE_URL } from "@core";
 import { queryStore } from "@quinntyne/query-store";
 import { Observable } from "rxjs";
 import { v4 as uuidv4 } from 'uuid';
@@ -13,7 +13,7 @@ const ROLES = uuidv4();
 })
 export class RoleStore extends queryStore(RoleService) {
   constructor(
-    @Inject(baseUrl) _baseUrl:string,
+    @Inject(BASE_URL) _baseUrl:string,
     _client: HttpClient
   ) {
     super(_baseUrl, _client);

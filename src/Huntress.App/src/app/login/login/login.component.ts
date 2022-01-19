@@ -1,48 +1,46 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { map, switchMap } from 'rxjs/operators';
+import { of, Subject } from 'rxjs';
 import { AuthService } from '@core/auth.service';
 import { NavigationService } from '@core/navigation.service';
+import { combine } from '@core';
 
 @Component({
-  selector: 'app-login',
+  selector: 'or-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginComponent implements OnDestroy, OnInit {
+export class LoginComponent  {
 
-  private readonly _destroyed: Subject<void> = new Subject();
+  private readonly _loginSubject: Subject<{ username: string, password:string}> = new Subject();
+
+  readonly vm$ = combine([
+    of(this._authService.logout()),
+    this._loginSubject
+    .pipe(
+      switchMap(credentials => this._handleTryToLogin(credentials)),
+      switchMap(_ => this._navigationService.redirectPreLogin())
+    )
+  ])
+  .pipe(
+    map(_ => ({ }))
+  );
 
   constructor(
     private readonly _authService: AuthService,
     private readonly _navigationService: NavigationService
   ) { }
 
-  ngOnInit() {
-    this._authService.logout();
-  }
-
-  public handleTryToLogin($event: { username: string, password: string }) {
-    this._authService
+  private _handleTryToLogin($event: { username: string, password: string }) {
+    return this._authService
     .tryToLogin({
       username: $event.username,
       password: $event.password
-    })
-    .pipe(
-      takeUntil(this._destroyed),
-    )
-    .subscribe(
-      () => {
-        this._navigationService.redirectPreLogin();
-      },
-      errorResponse => {
-        // handle error response
-      }
-    );
+    });    
   }
 
-  ngOnDestroy(): void {
-    this._destroyed.next();
-    this._destroyed.complete();
+  onTryToLogin($event: { username: string, password: string }) {
+    this._loginSubject.next($event)
   }
 }

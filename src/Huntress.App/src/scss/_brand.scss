@@ -1,7 +1,7 @@
-@use 'src/scss/colors' as *;
+@use 'src/scss/variables';
 
 .or-typography  .or-brand {
-  border: 2px solid $color-primary;
+  border: 2px solid variables.$color-primary;
   display: inline-block;
   padding: 3px 10px;
   margin: 0;
@@ -10,5 +10,5 @@
   font-weight: 500;
   cursor: pointer;
   letter-spacing: 1.5px;
-  color: $color-primary;
+  color: variables.$color-primary;
 }

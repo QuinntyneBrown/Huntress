@@ -2,14 +2,14 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from './local-storage.service';
 import { map } from 'rxjs/operators';
-import { accessTokenKey, baseUrl, usernameKey } from './constants';
+import { accessTokenKey, BASE_URL, usernameKey } from './constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   constructor(
-    @Inject(baseUrl) private _baseUrl: string,
+    @Inject(BASE_URL) private _baseUrl: string,
     private readonly _httpClient: HttpClient,
     private readonly _localStorageService: LocalStorageService
   ) {}

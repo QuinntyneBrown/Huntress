@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { of } from 'rxjs';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormArray, FormControl } from '@angular/forms';
+import { CartService } from '@shared/components/cart/cart.service';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -9,14 +10,5 @@ import { map } from 'rxjs/operators';
 })
 export class CheckoutComponent {
 
-  readonly vm$ = of({ })
-  .pipe(
-    map(model => ({ model }))
-  );
-
-  constructor(
-
-  ) {
-
-  }
+  
 }

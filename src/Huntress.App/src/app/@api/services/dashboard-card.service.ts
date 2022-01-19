@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { DashboardCard } from '@api';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { baseUrl, EntityPage, IPagableService } from '@core';
+import { BASE_URL, EntityPage, IPagableService } from '@core';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class DashboardCardService implements IPagableService<DashboardCard> {
   uniqueIdentifierName: string = "dashboardCardId";
 
   constructor(
-    @Inject(baseUrl) private readonly _baseUrl: string,
+    @Inject(BASE_URL) private readonly _baseUrl: string,
     private readonly _client: HttpClient
   ) { }
 

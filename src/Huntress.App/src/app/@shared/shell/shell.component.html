@@ -1,6 +1,10 @@
+
+
 <ng-container *ngIf="vm$ | async as vm">
+
+  
   <mat-drawer-container>
-    <mat-drawer #drawer mode="over" class="g-drawer">
+    <mat-drawer #drawer mode="over" class="or-drawer">
       <div class="mat-drawer__close-button-container">
         <button mat-icon-button (click)="drawer.close()">
           <mat-icon>
@@ -22,16 +26,28 @@
       </ul>
     </mat-drawer>
 
-    <app-header (click)="drawer.open()"></app-header>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
+    
+    
+    <mat-drawer #auxDrawer mode="over" class="or-aux-drawer" [opened]="opened$ | async" position="end">
+      <or-cart></or-cart>      
+    </mat-drawer>
 
-    <app-footer
-    [aboutHtmlContent]="vm.about"
-    [followUsHtmlContent]="vm.followUs"
-    [returnPolicyHtmlContent]="vm.returnPolicy"
-    [contactHtmlContent]="vm.contact"></app-footer>
+    <mat-drawer-content>
+
+
+      <app-header (click)="drawer.open()"></app-header>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+  
+      <app-footer
+      [aboutHtmlContent]="vm.about"
+      [followUsHtmlContent]="vm.followUs"
+      [returnPolicyHtmlContent]="vm.returnPolicy"
+      [contactHtmlContent]="vm.contact"></app-footer>
+    </mat-drawer-content>
+
+
 
   </mat-drawer-container>
 

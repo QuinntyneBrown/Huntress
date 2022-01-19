@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CartItemComponent } from './cart-item.component';
+import { WorkspaceFooterComponent } from './workspace-footer.component';
 
-describe('CartItemComponent', () => {
-  let component: CartItemComponent;
-  let fixture: ComponentFixture<CartItemComponent>;
+describe('WorkspaceFooterComponent', () => {
+  let component: WorkspaceFooterComponent;
+  let fixture: ComponentFixture<WorkspaceFooterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartItemComponent ]
+      declarations: [ WorkspaceFooterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CartItemComponent);
+    fixture = TestBed.createComponent(WorkspaceFooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

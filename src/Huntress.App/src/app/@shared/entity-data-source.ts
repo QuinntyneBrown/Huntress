@@ -23,12 +23,12 @@ export class EntityDataSource<T> implements DataSource<T> {
         this._disconnected$.complete();
     }
 
-    public update(value: T) {
+    update(value: T) {
         this.entities$
         .next(replace({ items: this.entities$.value, value, key: this._pagableService.uniqueIdentifierName }));
     }
 
-    public getPage(options: { pageIndex: number, pageSize: number }) {
+    getPage(options: { pageIndex: number, pageSize: number }) {
         this._pagableService.getPage(options)
         .pipe(
             takeUntil(this._disconnected$),

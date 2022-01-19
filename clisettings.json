@@ -1,8 +1,8 @@
 {
   "projects": null,
   "path": "C:\\Projects\\Huntress",
-  "solutionName": null,
-  "rootNamespace": null,
+  "solutionName": "Huntress.sln",
+  "rootNamespace": "Huntress",
   "domainNamespace": "Huntress.Api",
   "applicationNamespace": "Huntress.Api",
   "infrastructureNamespace": "Huntress.Api",

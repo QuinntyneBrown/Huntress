@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, ElementRef, forwardRef, Input, NgModule, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { switchMap, takeUntil, tap } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 import { fromEvent, Subject } from 'rxjs';
 import { DigitalAsset, DigitalAssetService } from '@api';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { BaseControlValueAccessor } from '@core/base-control-value-accessor';
+import { BaseControl } from '@core/base-control';
 
 const packageFiles = function (fileList: FileList): FormData {
   const formData = new FormData();
@@ -27,7 +27,7 @@ const packageFiles = function (fileList: FileList): FormData {
     }
   ]
 })
-export class ChooseAFileOrDragItHereComponent extends BaseControlValueAccessor implements AfterViewInit  {
+export class ChooseAFileOrDragItHereComponent extends BaseControl implements AfterViewInit  {
 
   private readonly _digitalAssetIds$: Subject<string[]> = new Subject();
 

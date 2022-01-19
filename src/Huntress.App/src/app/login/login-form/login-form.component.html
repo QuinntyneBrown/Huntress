@@ -5,24 +5,23 @@
 <form novalidate autocomplete='off' spellcheck='false' [formGroup]='form'>
   <mat-form-field>
     <input  matInput placeholder='Username'
-           class='username'
+           class='login-form__username'
            formControlName='username' required>
   </mat-form-field>
 
   <mat-form-field>
     <input cdkFocusInitial matInput
            placeholder='Password'
-           id='password'
            formControlName='password'
            type='password'
            required>
   </mat-form-field>
 </form>
 
-<div class="g-actions">
+<div class="or-actions">
 
   <button mat-stroked-button (click)='tryToLogin.emit(form.value)' [disabled]='!form.valid'>Create Account</button>
 
-  <button mat-stroked-button (click)='tryToLogin.emit(form.value)' [disabled]='!form.valid'>Sign In</button>
+  <button mat-stroked-button (click)='tryToLogin.emit(form.value)' [disabled]='!form.valid || form.pristine'>Sign In</button>
 
 </div>

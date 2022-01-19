@@ -3,17 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Theme } from '@api';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { baseUrl, EntityPage, IPagableService } from '@core';
+import { BASE_URL, EntityPage, IPagableService } from '@core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService implements IPagableService<Theme> {
 
-  uniqueIdentifierName: string = "themeId";
+  readonly uniqueIdentifierName: string = "themeId";
 
   constructor(
-    @Inject(baseUrl) private readonly _baseUrl: string,
+    @Inject(BASE_URL) private readonly _baseUrl: string,
     private readonly _client: HttpClient
   ) { }
 

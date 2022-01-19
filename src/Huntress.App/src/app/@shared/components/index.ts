@@ -1,6 +1,7 @@
 export * from './aggregate-privileges';
 export * from './bento-box';
 export * from './cards';
+export * from './cart';
 export * from './choose-a-file-or-drag-it-here';
 export * from './content-detail';
 export * from './content-list';
@@ -23,3 +24,4 @@ export * from './sections';
 export * from './sidenav';
 export * from './user-detail';
 export * from './user-list';
+export * from './workspace-footer';
