@@ -20,7 +20,7 @@ export class WorkspaceComponent extends Destroyable implements OnInit {
     super();
   }
 
-  @ViewChild("drawer", { static: true }) public drawer: MatDrawer | undefined;
+  @ViewChild("drawer", { static: true }) drawer: MatDrawer | undefined;
 
   handleLogoutClick() {
     this._authService.logout();
@@ -43,11 +43,11 @@ export class WorkspaceComponent extends Destroyable implements OnInit {
       .subscribe();
   }
 
-  public handleSidenavMenuClick() {
+  handleSidenavMenuClick() {
     this.drawer.open();
   }
 
-  public handleSidenavCloseClick() {
+  handleSidenavCloseClick() {
     this.drawer.close();
   }
 }
