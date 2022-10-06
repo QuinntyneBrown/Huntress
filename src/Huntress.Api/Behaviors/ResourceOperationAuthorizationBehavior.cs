@@ -5,7 +5,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Huntress.Api.Core
+namespace Huntress.Domain.Common
 {
     public class ResourceOperationAuthorizationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IRequest<TResponse>
@@ -20,7 +20,7 @@ namespace Huntress.Api.Core
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+        public async Task<TResponse> Handle(TRequest request,  RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
             if (Attribute.GetCustomAttribute(request.GetType(), typeof(AuthorizeResourceOperationAttribute)) is AuthorizeResourceOperationAttribute attribute)
             {

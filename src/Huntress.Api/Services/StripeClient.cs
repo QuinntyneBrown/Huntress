@@ -1,7 +1,6 @@
 using Stripe;
 using System.Threading;
 using System.Threading.Tasks;
-using IStripeClient = Huntress.Api.Services.IStripeClient;
 
 namespace Huntress.Api.Services
 {
@@ -14,8 +13,8 @@ namespace Huntress.Api.Services
                 Card = new AnyOf<string, TokenCardOptions>(new TokenCardOptions
                 {
                     Number = number,
-                    ExpYear = expYear,
-                    ExpMonth = expMonth,
+                    ExpYear = $"{expYear}",
+                    ExpMonth = $"{expMonth}",
                     Cvc = cvc
                 })
             };

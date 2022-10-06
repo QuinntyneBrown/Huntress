@@ -1,5 +1,5 @@
-﻿using Huntress.Api.Core;
-using static Huntress.Api.Core.NamingConvention;
+﻿using Huntress.Domain.Common;
+using static Huntress.Domain.Common.NamingConvention;
 
 namespace Huntress.Api.Extensions
 {

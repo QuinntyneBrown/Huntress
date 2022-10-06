@@ -1,4 +1,4 @@
-using Huntress.Api.Models;
+using Huntress.Domain.Entities;
 using System.Collections.Generic;
 
 namespace Huntress.Api

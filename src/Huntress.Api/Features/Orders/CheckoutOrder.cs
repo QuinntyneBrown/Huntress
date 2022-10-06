@@ -1,6 +1,6 @@
 using FluentValidation;
-using Huntress.Api.Core;
-using Huntress.Api.Interfaces;
+using Huntress.Domain.Common;
+using Huntress.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;

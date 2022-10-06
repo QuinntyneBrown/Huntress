@@ -1,8 +1,8 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Huntress.Api.Core;
+using Huntress.Domain.Common;
 using Huntress.Api.Extensions;
-using Huntress.Api.Interfaces;
+using Huntress.Domain.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;

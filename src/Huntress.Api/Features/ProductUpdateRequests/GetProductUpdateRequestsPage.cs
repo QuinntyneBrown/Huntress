@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using Huntress.Api.Extensions;
-using Huntress.Api.Core;
-using Huntress.Api.Interfaces;
+using Huntress.Domain.Common;
+using Huntress.Domain.Interfaces;
 using Huntress.Api.Extensions;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,6 +1,6 @@
 using Huntress.Api.Helpers;
-using Huntress.Api.Interfaces;
-using Huntress.Api.Models;
+using Huntress.Domain.Interfaces;
+using Huntress.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;

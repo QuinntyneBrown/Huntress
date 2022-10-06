@@ -1,4 +1,4 @@
-using Huntress.Api.Interfaces;
+using Huntress.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;

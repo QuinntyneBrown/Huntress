@@ -1,4 +1,4 @@
-using Huntress.Api.Data;
+using Huntress.Infrastructure.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

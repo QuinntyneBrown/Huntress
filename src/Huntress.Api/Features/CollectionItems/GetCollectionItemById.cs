@@ -2,9 +2,10 @@ using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Huntress.Api.Core;
-using Huntress.Api.Interfaces;
+using Huntress.Domain.Common;
+using Huntress.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Huntress.Domain.Interfaces;
 
 namespace Huntress.Api.Features
 {

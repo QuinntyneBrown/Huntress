@@ -1,5 +1,5 @@
 using Huntress.Api.Extensions;
-using Huntress.Api.Models;
+using Huntress.Domain.Entities;
 
 namespace Huntress.Api.Features
 {

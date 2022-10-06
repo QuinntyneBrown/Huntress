@@ -1,7 +1,7 @@
 using FluentValidation;
-using Huntress.Api.Core;
-using Huntress.Api.Interfaces;
-using Huntress.Api.Models;
+using Huntress.Domain.Common;
+using Huntress.Domain.Interfaces;
+using Huntress.Domain.Entities;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

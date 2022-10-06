@@ -1,8 +1,9 @@
-using Huntress.Api.Core;
-using Huntress.Api.Data;
+using Huntress.Domain.Common;
+using Huntress.Infrastructure.Data;
 using Huntress.Api.Extensions;
-using Huntress.Api.Interfaces;
+using Huntress.Domain.Interfaces;
 using Huntress.Api.Services;
+using Kaell.Security;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;

@@ -1,12 +1,13 @@
-using Huntress.Api.Core;
-using Huntress.Api.Interfaces;
-using Huntress.Api.Models;
+using Huntress.Domain.Common;
+using Huntress.Domain.Interfaces;
+using Huntress.Domain.Entities;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Kaell.Security;
 
 namespace Huntress.Api.Features
 {
