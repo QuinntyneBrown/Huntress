@@ -2,8 +2,6 @@
 
 package BasketService {
 
-
-
 }
 
 
@@ -14,54 +12,65 @@ package CatalogService {
 
 
 package ContentService {
-
 	class Content {
-		Guid ContentId
-		string Name
-		Newtonsoft.Json.Linq.JObject Json
-		string Slug
+		+Guid ContentId
+		+string Name
+		+Newtonsoft.Json.Linq.JObject Json
+		+string Slug
 	}
-
 }
 
 package CustomerService {
-
+	class Customer {
+		+Guid CustomerId
+	}
 }
+
 
 package DashboardService {
 
+	class Dashboard {
+		+Guid DashboardId
+	}
+	
+	class DashboardCard {
+		+Guid DashboardCardId
+	}
+	
+	class Dashboard {
+		+Guid CardId
+		+string Name
+	}
 }
 
 
 package IdentityService {
 
-class User { 
-+Guid UserId
-+string Username
-+string Password
-+byte[] Salt
-+List<Role> Roles
-}
+	class User { 
+		+Guid UserId
+		+string Username
+		+string Password
+		+byte[] Salt
+		+List<Role> Roles
+	}
 
-class Role {
-+Guid RoleId
-+string Name
-+List<User> Users
-+List<Priviledge> Priviledges
+	class Role {
+		+Guid RoleId
+		+string Name
+		+List<User> Users
+		+List<Priviledge> Priviledges
+	}
 
-}
+	class Priviledge
+	{
+		+Guid PrivilegeId
+		+Guid RoleId
+		+Security.AccessRight AccessRight
+		+string Aggregate
+	}
 
-class Priviledge
-{
-Guid PrivilegeId
-Guid RoleId
-Security.AccessRight AccessRight
-string Aggregate
-}
-
-User *--* Role
-Role --* Priviledge
-
+	User *--* Role
+	Role --* Priviledge
 }
 
 package OtpService {
@@ -82,7 +91,10 @@ package PaymentService {
 }
 
 package ThemeService {
-
+	class Theme {
+		+Guid ThemeId
+		+string Name
+	}
 }
 
 
