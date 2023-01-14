@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\Messaging\Messaging.Udp\Messaging.Udp.csproj" />
-    <ProjectReference Include="..\IdentityService.Core\IdentityService.Core.csproj" />
+    <ProjectReference Include="..\BasketService.Core\BasketService.Core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
