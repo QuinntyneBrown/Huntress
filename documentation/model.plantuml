@@ -65,7 +65,7 @@ package CustomerService {
 
 package DashboardService {
 
-	class User {
+	class DashboardService.User {
 		+Guid UserId
 		+string Username
 	}
@@ -120,7 +120,7 @@ package IdentityService {
 		+string Aggregate
 	}
 
-	User *--* Role
+	IdentityService.User *--* Role
 	Role --* Priviledge
 }
 
