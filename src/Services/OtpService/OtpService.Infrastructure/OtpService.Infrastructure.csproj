@@ -1,12 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
-  </ItemGroup>
+<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\Messaging\Messaging.Udp\Messaging.Udp.csproj" />
-    <ProjectReference Include="..\..\..\BuildingBlocks\Security\Security\Security.csproj" />
+    <ProjectReference Include="..\OtpService.Core\OtpService.Core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
