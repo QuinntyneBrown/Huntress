@@ -1,8 +1,8 @@
+using IdentityService.Core.AggregateModel.RoleAggregate;
 using Security;
 using System.Security.Cryptography;
 
-namespace IdentityService.Core.Entities;
-
+namespace IdentityService.Core.AggregateModel.UserAggregate;
 public class User
 {
     public User(string username, string password, IPasswordHasher passwordHasher)
@@ -23,3 +23,5 @@ public class User
     public byte[] Salt { get; init; }
     public List<Role> Roles { get; init; }
 }
+
+

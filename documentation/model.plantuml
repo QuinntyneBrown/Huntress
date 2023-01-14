@@ -1,0 +1,89 @@
+@startuml
+
+package BasketService {
+
+
+
+}
+
+
+package CatalogService {
+
+}
+
+
+
+package ContentService {
+
+	class Content {
+		Guid ContentId
+		string Name
+		Newtonsoft.Json.Linq.JObject Json
+		string Slug
+	}
+
+}
+
+package CustomerService {
+
+}
+
+package DashboardService {
+
+}
+
+
+package IdentityService {
+
+class User { 
++Guid UserId
++string Username
++string Password
++byte[] Salt
++List<Role> Roles
+}
+
+class Role {
++Guid RoleId
++string Name
++List<User> Users
++List<Priviledge> Priviledges
+
+}
+
+class Priviledge
+{
+Guid PrivilegeId
+Guid RoleId
+Security.AccessRight AccessRight
+string Aggregate
+}
+
+User *--* Role
+Role --* Priviledge
+
+}
+
+package OtpService {
+
+}
+
+package CustomerService {
+
+}
+
+
+package InventoryService {
+
+}
+
+package PaymentService {
+
+}
+
+package ThemeService {
+
+}
+
+
+@enduml

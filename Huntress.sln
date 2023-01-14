@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF6EA90D-5932-46BD-9AA7-15E485122792}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{912C6A8E-9F11-4790-B9CE-01FD83CB8D87}"
+	ProjectSection(SolutionItems) = preProject
+		documentation\model.plantuml = documentation\model.plantuml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{E8250C1F-3938-4A88-B390-CA6736E5F936}"
 EndProject
@@ -59,143 +62,171 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messaging.Udp", "src\Buildi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityService", "IdentityService", "{90835BE1-0FB4-4425-9743-59AE0A7FC92F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.Core", "src\Services\IdentityService\IdentityService.Core\IdentityService.Core.csproj", "{63CBD848-6586-44DE-A391-138E9CA785FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService.Core", "src\Services\IdentityService\IdentityService.Core\IdentityService.Core.csproj", "{63CBD848-6586-44DE-A391-138E9CA785FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.Core.Tests", "src\Services\IdentityService\IdentityService.Core.Tests\IdentityService.Core.Tests.csproj", "{584D8721-59DE-4AA0-9A5E-20A72D52A845}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService.Core.Tests", "src\Services\IdentityService\IdentityService.Core.Tests\IdentityService.Core.Tests.csproj", "{584D8721-59DE-4AA0-9A5E-20A72D52A845}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.Infrastructure", "src\Services\IdentityService\IdentityService.Infrastructure\IdentityService.Infrastructure.csproj", "{F3331CFD-3078-4706-B4F6-2600946A85CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService.Infrastructure", "src\Services\IdentityService\IdentityService.Infrastructure\IdentityService.Infrastructure.csproj", "{F3331CFD-3078-4706-B4F6-2600946A85CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.Infrastructure.Tests", "src\Services\IdentityService\IdentityService.Infrastructure.Tests\IdentityService.Infrastructure.Tests.csproj", "{A7808FE1-E96D-4981-B8FB-823A813342D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService.Infrastructure.Tests", "src\Services\IdentityService\IdentityService.Infrastructure.Tests\IdentityService.Infrastructure.Tests.csproj", "{A7808FE1-E96D-4981-B8FB-823A813342D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.Api", "src\Services\IdentityService\IdentityService.Api\IdentityService.Api.csproj", "{08ECB453-6303-4373-9CAD-4CAB86906DB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService.Api", "src\Services\IdentityService\IdentityService.Api\IdentityService.Api.csproj", "{08ECB453-6303-4373-9CAD-4CAB86906DB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.Api.Tests", "src\Services\IdentityService\IdentityService.Api.Tests\IdentityService.Api.Tests.csproj", "{6F972526-623A-45EF-8249-8504A149221A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService.Api.Tests", "src\Services\IdentityService\IdentityService.Api.Tests\IdentityService.Api.Tests.csproj", "{6F972526-623A-45EF-8249-8504A149221A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderService", "OrderService", "{746D5828-24A8-4C53-97BA-025CAF1C3C39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Core", "src\Services\OrderService\OrderService.Core\OrderService.Core.csproj", "{3A073914-AA59-457F-B597-2AE239C3073D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Core", "src\Services\OrderService\OrderService.Core\OrderService.Core.csproj", "{3A073914-AA59-457F-B597-2AE239C3073D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Core.Tests", "src\Services\OrderService\OrderService.Core.Tests\OrderService.Core.Tests.csproj", "{F330E12A-A2A3-4AE9-B755-78873CF52AB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Core.Tests", "src\Services\OrderService\OrderService.Core.Tests\OrderService.Core.Tests.csproj", "{F330E12A-A2A3-4AE9-B755-78873CF52AB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Infrastructure", "src\Services\OrderService\OrderService.Infrastructure\OrderService.Infrastructure.csproj", "{0706943F-92DB-46DC-AB6F-EE453F97C411}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Infrastructure", "src\Services\OrderService\OrderService.Infrastructure\OrderService.Infrastructure.csproj", "{0706943F-92DB-46DC-AB6F-EE453F97C411}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Infrastructure.Tests", "src\Services\OrderService\OrderService.Infrastructure.Tests\OrderService.Infrastructure.Tests.csproj", "{D171F04B-C0FD-4144-9EB8-DBB089328925}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Infrastructure.Tests", "src\Services\OrderService\OrderService.Infrastructure.Tests\OrderService.Infrastructure.Tests.csproj", "{D171F04B-C0FD-4144-9EB8-DBB089328925}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Api", "src\Services\OrderService\OrderService.Api\OrderService.Api.csproj", "{CCCF2322-6F8F-4528-811E-60429417B0CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Api", "src\Services\OrderService\OrderService.Api\OrderService.Api.csproj", "{CCCF2322-6F8F-4528-811E-60429417B0CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Api.Tests", "src\Services\OrderService\OrderService.Api.Tests\OrderService.Api.Tests.csproj", "{20A01736-F5DD-4EF6-8F7F-E70EA24BBABC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Api.Tests", "src\Services\OrderService\OrderService.Api.Tests\OrderService.Api.Tests.csproj", "{20A01736-F5DD-4EF6-8F7F-E70EA24BBABC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThemeService", "ThemeService", "{06A4E620-9243-40AB-8B47-2F21500730D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeService.Core", "src\Services\ThemeService\ThemeService.Core\ThemeService.Core.csproj", "{47EEFBDC-C701-46A9-B43B-1043C859645A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThemeService.Core", "src\Services\ThemeService\ThemeService.Core\ThemeService.Core.csproj", "{47EEFBDC-C701-46A9-B43B-1043C859645A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeService.Core.Tests", "src\Services\ThemeService\ThemeService.Core.Tests\ThemeService.Core.Tests.csproj", "{815A2814-FAC3-45DF-95AD-D73AA66AE598}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThemeService.Core.Tests", "src\Services\ThemeService\ThemeService.Core.Tests\ThemeService.Core.Tests.csproj", "{815A2814-FAC3-45DF-95AD-D73AA66AE598}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeService.Infrastructure", "src\Services\ThemeService\ThemeService.Infrastructure\ThemeService.Infrastructure.csproj", "{C3613D82-4501-43F2-BA29-BC31F07AAC1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThemeService.Infrastructure", "src\Services\ThemeService\ThemeService.Infrastructure\ThemeService.Infrastructure.csproj", "{C3613D82-4501-43F2-BA29-BC31F07AAC1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeService.Infrastructure.Tests", "src\Services\ThemeService\ThemeService.Infrastructure.Tests\ThemeService.Infrastructure.Tests.csproj", "{D7B3D5CB-89FD-48B0-B98A-E0B9A0066C55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThemeService.Infrastructure.Tests", "src\Services\ThemeService\ThemeService.Infrastructure.Tests\ThemeService.Infrastructure.Tests.csproj", "{D7B3D5CB-89FD-48B0-B98A-E0B9A0066C55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeService.Api", "src\Services\ThemeService\ThemeService.Api\ThemeService.Api.csproj", "{6AA5808C-FEF0-4A1D-BB49-F01F68091727}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThemeService.Api", "src\Services\ThemeService\ThemeService.Api\ThemeService.Api.csproj", "{6AA5808C-FEF0-4A1D-BB49-F01F68091727}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeService.Api.Tests", "src\Services\ThemeService\ThemeService.Api.Tests\ThemeService.Api.Tests.csproj", "{DEC62D22-6914-4AE3-9E84-D224C29B18B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThemeService.Api.Tests", "src\Services\ThemeService\ThemeService.Api.Tests\ThemeService.Api.Tests.csproj", "{DEC62D22-6914-4AE3-9E84-D224C29B18B8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CatalogService", "CatalogService", "{0BAD8C48-98A2-4DF8-95EB-78B8B7AA0D97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogService.Core", "src\Services\CatalogService\CatalogService.Core\CatalogService.Core.csproj", "{D1135A38-29D8-45EB-A1DA-0E187B332F82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService.Core", "src\Services\CatalogService\CatalogService.Core\CatalogService.Core.csproj", "{D1135A38-29D8-45EB-A1DA-0E187B332F82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogService.Core.Tests", "src\Services\CatalogService\CatalogService.Core.Tests\CatalogService.Core.Tests.csproj", "{4C529200-34E5-4249-8215-57CAB65F3CA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService.Core.Tests", "src\Services\CatalogService\CatalogService.Core.Tests\CatalogService.Core.Tests.csproj", "{4C529200-34E5-4249-8215-57CAB65F3CA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogService.Infrastructure", "src\Services\CatalogService\CatalogService.Infrastructure\CatalogService.Infrastructure.csproj", "{4D7B8FF7-6872-4180-8EB5-0C8D52EBA399}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService.Infrastructure", "src\Services\CatalogService\CatalogService.Infrastructure\CatalogService.Infrastructure.csproj", "{4D7B8FF7-6872-4180-8EB5-0C8D52EBA399}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogService.Infrastructure.Tests", "src\Services\CatalogService\CatalogService.Infrastructure.Tests\CatalogService.Infrastructure.Tests.csproj", "{FA145F04-9F5C-407F-80C1-33016FCFAD3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService.Infrastructure.Tests", "src\Services\CatalogService\CatalogService.Infrastructure.Tests\CatalogService.Infrastructure.Tests.csproj", "{FA145F04-9F5C-407F-80C1-33016FCFAD3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogService.Api", "src\Services\CatalogService\CatalogService.Api\CatalogService.Api.csproj", "{49B0F1FE-CA2F-4FEA-8E6B-0AE10646E76D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService.Api", "src\Services\CatalogService\CatalogService.Api\CatalogService.Api.csproj", "{49B0F1FE-CA2F-4FEA-8E6B-0AE10646E76D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogService.Api.Tests", "src\Services\CatalogService\CatalogService.Api.Tests\CatalogService.Api.Tests.csproj", "{2DCDF57B-33C3-4564-AF3A-1E61D64D2C8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService.Api.Tests", "src\Services\CatalogService\CatalogService.Api.Tests\CatalogService.Api.Tests.csproj", "{2DCDF57B-33C3-4564-AF3A-1E61D64D2C8F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryService", "InventoryService", "{B28AA2A1-6347-4BC8-A6A6-DBA8AC479384}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService.Core", "src\Services\InventoryService\InventoryService.Core\InventoryService.Core.csproj", "{2CD4EC85-999E-4476-B822-3223BD9704EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryService.Core", "src\Services\InventoryService\InventoryService.Core\InventoryService.Core.csproj", "{2CD4EC85-999E-4476-B822-3223BD9704EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService.Core.Tests", "src\Services\InventoryService\InventoryService.Core.Tests\InventoryService.Core.Tests.csproj", "{3B8EC11C-FCCC-4716-8830-7213B74C1240}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryService.Core.Tests", "src\Services\InventoryService\InventoryService.Core.Tests\InventoryService.Core.Tests.csproj", "{3B8EC11C-FCCC-4716-8830-7213B74C1240}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService.Infrastructure", "src\Services\InventoryService\InventoryService.Infrastructure\InventoryService.Infrastructure.csproj", "{70F496F3-A34F-46C8-8D20-8DD732089BA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryService.Infrastructure", "src\Services\InventoryService\InventoryService.Infrastructure\InventoryService.Infrastructure.csproj", "{70F496F3-A34F-46C8-8D20-8DD732089BA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService.Infrastructure.Tests", "src\Services\InventoryService\InventoryService.Infrastructure.Tests\InventoryService.Infrastructure.Tests.csproj", "{AC0DCE60-FCF0-4DFA-97CF-689CC61554BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryService.Infrastructure.Tests", "src\Services\InventoryService\InventoryService.Infrastructure.Tests\InventoryService.Infrastructure.Tests.csproj", "{AC0DCE60-FCF0-4DFA-97CF-689CC61554BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService.Api", "src\Services\InventoryService\InventoryService.Api\InventoryService.Api.csproj", "{E0D993B2-95EA-4BC1-95C2-D0EC0797B7C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryService.Api", "src\Services\InventoryService\InventoryService.Api\InventoryService.Api.csproj", "{E0D993B2-95EA-4BC1-95C2-D0EC0797B7C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService.Api.Tests", "src\Services\InventoryService\InventoryService.Api.Tests\InventoryService.Api.Tests.csproj", "{329A0808-3932-4AED-AD09-3257211FED65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryService.Api.Tests", "src\Services\InventoryService\InventoryService.Api.Tests\InventoryService.Api.Tests.csproj", "{329A0808-3932-4AED-AD09-3257211FED65}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DashboardService", "DashboardService", "{0B1DD857-D244-4084-8585-B6DD76D2C9B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashboardService.Core", "src\Services\DashboardService\DashboardService.Core\DashboardService.Core.csproj", "{41AE2DB4-4C8B-4FA5-968D-DE3F4B7F62F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DashboardService.Core", "src\Services\DashboardService\DashboardService.Core\DashboardService.Core.csproj", "{41AE2DB4-4C8B-4FA5-968D-DE3F4B7F62F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashboardService.Core.Tests", "src\Services\DashboardService\DashboardService.Core.Tests\DashboardService.Core.Tests.csproj", "{D3BC6415-7E2A-4A9E-ABBB-C08AC4C66075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DashboardService.Core.Tests", "src\Services\DashboardService\DashboardService.Core.Tests\DashboardService.Core.Tests.csproj", "{D3BC6415-7E2A-4A9E-ABBB-C08AC4C66075}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashboardService.Infrastructure", "src\Services\DashboardService\DashboardService.Infrastructure\DashboardService.Infrastructure.csproj", "{320BBC66-053B-451C-8A8D-72701C8BDE6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DashboardService.Infrastructure", "src\Services\DashboardService\DashboardService.Infrastructure\DashboardService.Infrastructure.csproj", "{320BBC66-053B-451C-8A8D-72701C8BDE6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashboardService.Infrastructure.Tests", "src\Services\DashboardService\DashboardService.Infrastructure.Tests\DashboardService.Infrastructure.Tests.csproj", "{093D7999-9C1D-4E70-A6DA-81D011ED88CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DashboardService.Infrastructure.Tests", "src\Services\DashboardService\DashboardService.Infrastructure.Tests\DashboardService.Infrastructure.Tests.csproj", "{093D7999-9C1D-4E70-A6DA-81D011ED88CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashboardService.Api", "src\Services\DashboardService\DashboardService.Api\DashboardService.Api.csproj", "{4D977994-935B-4633-8983-FD8AB19DD245}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DashboardService.Api", "src\Services\DashboardService\DashboardService.Api\DashboardService.Api.csproj", "{4D977994-935B-4633-8983-FD8AB19DD245}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashboardService.Api.Tests", "src\Services\DashboardService\DashboardService.Api.Tests\DashboardService.Api.Tests.csproj", "{6263D110-773A-44A6-AAC3-B719EB853F2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DashboardService.Api.Tests", "src\Services\DashboardService\DashboardService.Api.Tests\DashboardService.Api.Tests.csproj", "{6263D110-773A-44A6-AAC3-B719EB853F2F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomerService", "CustomerService", "{E15723AD-A383-477F-ABA9-56412E72598F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService.Core", "src\Services\CustomerService\CustomerService.Core\CustomerService.Core.csproj", "{51296F98-1EE1-42CE-B922-1B06AA00DEBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerService.Core", "src\Services\CustomerService\CustomerService.Core\CustomerService.Core.csproj", "{51296F98-1EE1-42CE-B922-1B06AA00DEBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService.Core.Tests", "src\Services\CustomerService\CustomerService.Core.Tests\CustomerService.Core.Tests.csproj", "{67A927B3-E54F-43C4-8E52-5E2F665DCC7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerService.Core.Tests", "src\Services\CustomerService\CustomerService.Core.Tests\CustomerService.Core.Tests.csproj", "{67A927B3-E54F-43C4-8E52-5E2F665DCC7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService.Infrastructure", "src\Services\CustomerService\CustomerService.Infrastructure\CustomerService.Infrastructure.csproj", "{FBAACC16-0922-47FF-8301-18036530AFAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerService.Infrastructure", "src\Services\CustomerService\CustomerService.Infrastructure\CustomerService.Infrastructure.csproj", "{FBAACC16-0922-47FF-8301-18036530AFAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService.Infrastructure.Tests", "src\Services\CustomerService\CustomerService.Infrastructure.Tests\CustomerService.Infrastructure.Tests.csproj", "{53C6E8AB-64C5-4A2C-9571-A0DC0BD6AB95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerService.Infrastructure.Tests", "src\Services\CustomerService\CustomerService.Infrastructure.Tests\CustomerService.Infrastructure.Tests.csproj", "{53C6E8AB-64C5-4A2C-9571-A0DC0BD6AB95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService.Api", "src\Services\CustomerService\CustomerService.Api\CustomerService.Api.csproj", "{B08D4665-D3FC-4E00-BF96-9A71A1A47F0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerService.Api", "src\Services\CustomerService\CustomerService.Api\CustomerService.Api.csproj", "{B08D4665-D3FC-4E00-BF96-9A71A1A47F0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService.Api.Tests", "src\Services\CustomerService\CustomerService.Api.Tests\CustomerService.Api.Tests.csproj", "{09D49A01-10D5-4162-AF04-2DAF95022C57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerService.Api.Tests", "src\Services\CustomerService\CustomerService.Api.Tests\CustomerService.Api.Tests.csproj", "{09D49A01-10D5-4162-AF04-2DAF95022C57}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PaymentService", "PaymentService", "{792B70B1-F71F-4F23-808A-A166611E4AA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.Core", "src\Services\PaymentService\PaymentService.Core\PaymentService.Core.csproj", "{C20BFDB9-E26A-4656-A4A7-7344ACCD7764}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService.Core", "src\Services\PaymentService\PaymentService.Core\PaymentService.Core.csproj", "{C20BFDB9-E26A-4656-A4A7-7344ACCD7764}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.Core.Tests", "src\Services\PaymentService\PaymentService.Core.Tests\PaymentService.Core.Tests.csproj", "{827E778A-E3BF-4A95-83EA-F5C70A4A31DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService.Core.Tests", "src\Services\PaymentService\PaymentService.Core.Tests\PaymentService.Core.Tests.csproj", "{827E778A-E3BF-4A95-83EA-F5C70A4A31DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.Infrastructure", "src\Services\PaymentService\PaymentService.Infrastructure\PaymentService.Infrastructure.csproj", "{2FDD0BC6-2CE7-457D-99DE-AB691D00D5E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService.Infrastructure", "src\Services\PaymentService\PaymentService.Infrastructure\PaymentService.Infrastructure.csproj", "{2FDD0BC6-2CE7-457D-99DE-AB691D00D5E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.Infrastructure.Tests", "src\Services\PaymentService\PaymentService.Infrastructure.Tests\PaymentService.Infrastructure.Tests.csproj", "{FB470C52-BED1-44F6-9E07-23A4F056CD8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService.Infrastructure.Tests", "src\Services\PaymentService\PaymentService.Infrastructure.Tests\PaymentService.Infrastructure.Tests.csproj", "{FB470C52-BED1-44F6-9E07-23A4F056CD8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.Api", "src\Services\PaymentService\PaymentService.Api\PaymentService.Api.csproj", "{FC3FE907-A6C5-4E2D-A11C-79F9987BF6DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService.Api", "src\Services\PaymentService\PaymentService.Api\PaymentService.Api.csproj", "{FC3FE907-A6C5-4E2D-A11C-79F9987BF6DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.Api.Tests", "src\Services\PaymentService\PaymentService.Api.Tests\PaymentService.Api.Tests.csproj", "{C61D9F99-4DBC-437D-9800-A379672324A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService.Api.Tests", "src\Services\PaymentService\PaymentService.Api.Tests\PaymentService.Api.Tests.csproj", "{C61D9F99-4DBC-437D-9800-A379672324A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BasketService", "BasketService", "{1A090FF1-5145-4F2F-BFF8-BF20E7025172}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketService.Core", "src\Services\BasketService\BasketService.Core\BasketService.Core.csproj", "{FB7F5A9F-356F-4C2D-9696-3925EA95A9F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketService.Core", "src\Services\BasketService\BasketService.Core\BasketService.Core.csproj", "{FB7F5A9F-356F-4C2D-9696-3925EA95A9F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketService.Core.Tests", "src\Services\BasketService\BasketService.Core.Tests\BasketService.Core.Tests.csproj", "{EEB5D851-EF63-4824-A422-34C62115BCAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketService.Core.Tests", "src\Services\BasketService\BasketService.Core.Tests\BasketService.Core.Tests.csproj", "{EEB5D851-EF63-4824-A422-34C62115BCAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketService.Infrastructure", "src\Services\BasketService\BasketService.Infrastructure\BasketService.Infrastructure.csproj", "{769EAC4B-577B-4432-948A-84AB6675EBEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketService.Infrastructure", "src\Services\BasketService\BasketService.Infrastructure\BasketService.Infrastructure.csproj", "{769EAC4B-577B-4432-948A-84AB6675EBEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketService.Infrastructure.Tests", "src\Services\BasketService\BasketService.Infrastructure.Tests\BasketService.Infrastructure.Tests.csproj", "{B4D4D90E-32EF-490C-89BF-7441DA11BE9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketService.Infrastructure.Tests", "src\Services\BasketService\BasketService.Infrastructure.Tests\BasketService.Infrastructure.Tests.csproj", "{B4D4D90E-32EF-490C-89BF-7441DA11BE9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketService.Api", "src\Services\BasketService\BasketService.Api\BasketService.Api.csproj", "{3A53B572-A1D9-47E5-8C0B-4E81ABF69EEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketService.Api", "src\Services\BasketService\BasketService.Api\BasketService.Api.csproj", "{3A53B572-A1D9-47E5-8C0B-4E81ABF69EEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketService.Api.Tests", "src\Services\BasketService\BasketService.Api.Tests\BasketService.Api.Tests.csproj", "{F1DC4D1F-FD8E-4F69-8467-F16E949572EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketService.Api.Tests", "src\Services\BasketService\BasketService.Api.Tests\BasketService.Api.Tests.csproj", "{F1DC4D1F-FD8E-4F69-8467-F16E949572EE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OtpService", "OtpService", "{10451DC4-92BC-48A0-A729-529C7CB1AE4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtpService.Core", "src\Services\OtpService\OtpService.Core\OtpService.Core.csproj", "{9AC4963A-C2EC-4B60-B638-75DAF3BA6B20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtpService.Core", "src\Services\OtpService\OtpService.Core\OtpService.Core.csproj", "{9AC4963A-C2EC-4B60-B638-75DAF3BA6B20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtpService.Core.Tests", "src\Services\OtpService\OtpService.Core.Tests\OtpService.Core.Tests.csproj", "{690F0ABE-3453-461C-AE20-91C34E89B0F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtpService.Core.Tests", "src\Services\OtpService\OtpService.Core.Tests\OtpService.Core.Tests.csproj", "{690F0ABE-3453-461C-AE20-91C34E89B0F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtpService.Infrastructure", "src\Services\OtpService\OtpService.Infrastructure\OtpService.Infrastructure.csproj", "{A45A8955-5B66-4580-A394-40B4F08C85B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtpService.Infrastructure", "src\Services\OtpService\OtpService.Infrastructure\OtpService.Infrastructure.csproj", "{A45A8955-5B66-4580-A394-40B4F08C85B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtpService.Infrastructure.Tests", "src\Services\OtpService\OtpService.Infrastructure.Tests\OtpService.Infrastructure.Tests.csproj", "{A77EF326-4C3D-4D25-883B-E599D2C24BEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtpService.Infrastructure.Tests", "src\Services\OtpService\OtpService.Infrastructure.Tests\OtpService.Infrastructure.Tests.csproj", "{A77EF326-4C3D-4D25-883B-E599D2C24BEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtpService.Api", "src\Services\OtpService\OtpService.Api\OtpService.Api.csproj", "{651C79BA-2F96-4092-9AD6-E96D5214872B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtpService.Api", "src\Services\OtpService\OtpService.Api\OtpService.Api.csproj", "{651C79BA-2F96-4092-9AD6-E96D5214872B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtpService.Api.Tests", "src\Services\OtpService\OtpService.Api.Tests\OtpService.Api.Tests.csproj", "{21D3A992-FD55-45CD-A84F-9F9ABE0B5A50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtpService.Api.Tests", "src\Services\OtpService\OtpService.Api.Tests\OtpService.Api.Tests.csproj", "{21D3A992-FD55-45CD-A84F-9F9ABE0B5A50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContentService", "ContentService", "{7E840EC0-ECD4-42E1-A428-992D71673108}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentService.Api", "src\Services\ContentService\ContentService.Api\ContentService.Api.csproj", "{58AFD987-287A-43D0-AD2B-652B8B900EF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentService.Api.Tests", "src\Services\ContentService\ContentService.Api.Tests\ContentService.Api.Tests.csproj", "{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentService.Core", "src\Services\ContentService\ContentService.Core\ContentService.Core.csproj", "{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentService.Core.Tests", "src\Services\ContentService\ContentService.Core.Tests\ContentService.Core.Tests.csproj", "{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentService.Infrastructure", "src\Services\ContentService\ContentService.Infrastructure\ContentService.Infrastructure.csproj", "{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentService.Infrastructure.Tests", "src\Services\ContentService\ContentService.Infrastructure.Tests\ContentService.Infrastructure.Tests.csproj", "{2E24297A-9EEE-40A0-8476-06153C2A595E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DigitalAssetService", "DigitalAssetService", "{51AEA05C-FEBF-40D1-A2B7-8A6AF2FC38FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAssetService.Core", "src\Services\DigitalAssetService\DigitalAssetService.Core\DigitalAssetService.Core.csproj", "{1582D31B-513D-4BD5-BA30-A45E8BD23E54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAssetService.Core.Tests", "src\Services\DigitalAssetService\DigitalAssetService.Core.Tests\DigitalAssetService.Core.Tests.csproj", "{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAssetService.Infrastructure", "src\Services\DigitalAssetService\DigitalAssetService.Infrastructure\DigitalAssetService.Infrastructure.csproj", "{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAssetService.Infrastructure.Tests", "src\Services\DigitalAssetService\DigitalAssetService.Infrastructure.Tests\DigitalAssetService.Infrastructure.Tests.csproj", "{503EF330-023B-48BC-9773-5ED067865C51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAssetService.Api", "src\Services\DigitalAssetService\DigitalAssetService.Api\DigitalAssetService.Api.csproj", "{084C8BA4-1C03-4501-B93C-A79828A409CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAssetService.Api.Tests", "src\Services\DigitalAssetService\DigitalAssetService.Api.Tests\DigitalAssetService.Api.Tests.csproj", "{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1107,6 +1138,150 @@ Global
 		{21D3A992-FD55-45CD-A84F-9F9ABE0B5A50}.Release|x64.Build.0 = Release|Any CPU
 		{21D3A992-FD55-45CD-A84F-9F9ABE0B5A50}.Release|x86.ActiveCfg = Release|Any CPU
 		{21D3A992-FD55-45CD-A84F-9F9ABE0B5A50}.Release|x86.Build.0 = Release|Any CPU
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8}.Debug|x64.Build.0 = Debug|Any CPU
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8}.Debug|x86.Build.0 = Debug|Any CPU
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8}.Release|x64.ActiveCfg = Release|Any CPU
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8}.Release|x64.Build.0 = Release|Any CPU
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8}.Release|x86.ActiveCfg = Release|Any CPU
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8}.Release|x86.Build.0 = Release|Any CPU
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}.Debug|x64.Build.0 = Debug|Any CPU
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}.Debug|x86.Build.0 = Debug|Any CPU
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}.Release|x64.ActiveCfg = Release|Any CPU
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}.Release|x64.Build.0 = Release|Any CPU
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}.Release|x86.ActiveCfg = Release|Any CPU
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}.Release|x86.Build.0 = Release|Any CPU
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}.Debug|x64.Build.0 = Debug|Any CPU
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}.Debug|x86.Build.0 = Debug|Any CPU
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}.Release|x64.ActiveCfg = Release|Any CPU
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}.Release|x64.Build.0 = Release|Any CPU
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}.Release|x86.ActiveCfg = Release|Any CPU
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}.Release|x86.Build.0 = Release|Any CPU
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}.Debug|x64.Build.0 = Debug|Any CPU
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}.Debug|x86.Build.0 = Debug|Any CPU
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}.Release|x64.ActiveCfg = Release|Any CPU
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}.Release|x64.Build.0 = Release|Any CPU
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}.Release|x86.ActiveCfg = Release|Any CPU
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}.Release|x86.Build.0 = Release|Any CPU
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}.Debug|x64.Build.0 = Debug|Any CPU
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}.Debug|x86.Build.0 = Debug|Any CPU
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}.Release|x64.ActiveCfg = Release|Any CPU
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}.Release|x64.Build.0 = Release|Any CPU
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}.Release|x86.ActiveCfg = Release|Any CPU
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}.Release|x86.Build.0 = Release|Any CPU
+		{2E24297A-9EEE-40A0-8476-06153C2A595E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E24297A-9EEE-40A0-8476-06153C2A595E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E24297A-9EEE-40A0-8476-06153C2A595E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2E24297A-9EEE-40A0-8476-06153C2A595E}.Debug|x64.Build.0 = Debug|Any CPU
+		{2E24297A-9EEE-40A0-8476-06153C2A595E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2E24297A-9EEE-40A0-8476-06153C2A595E}.Debug|x86.Build.0 = Debug|Any CPU
+		{2E24297A-9EEE-40A0-8476-06153C2A595E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E24297A-9EEE-40A0-8476-06153C2A595E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E24297A-9EEE-40A0-8476-06153C2A595E}.Release|x64.ActiveCfg = Release|Any CPU
+		{2E24297A-9EEE-40A0-8476-06153C2A595E}.Release|x64.Build.0 = Release|Any CPU
+		{2E24297A-9EEE-40A0-8476-06153C2A595E}.Release|x86.ActiveCfg = Release|Any CPU
+		{2E24297A-9EEE-40A0-8476-06153C2A595E}.Release|x86.Build.0 = Release|Any CPU
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54}.Debug|x64.Build.0 = Debug|Any CPU
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54}.Debug|x86.Build.0 = Debug|Any CPU
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54}.Release|x64.ActiveCfg = Release|Any CPU
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54}.Release|x64.Build.0 = Release|Any CPU
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54}.Release|x86.ActiveCfg = Release|Any CPU
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54}.Release|x86.Build.0 = Release|Any CPU
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}.Debug|x64.Build.0 = Debug|Any CPU
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}.Debug|x86.Build.0 = Debug|Any CPU
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}.Release|x64.ActiveCfg = Release|Any CPU
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}.Release|x64.Build.0 = Release|Any CPU
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}.Release|x86.ActiveCfg = Release|Any CPU
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}.Release|x86.Build.0 = Release|Any CPU
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}.Debug|x64.Build.0 = Debug|Any CPU
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}.Debug|x86.Build.0 = Debug|Any CPU
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}.Release|x64.ActiveCfg = Release|Any CPU
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}.Release|x64.Build.0 = Release|Any CPU
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}.Release|x86.ActiveCfg = Release|Any CPU
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}.Release|x86.Build.0 = Release|Any CPU
+		{503EF330-023B-48BC-9773-5ED067865C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{503EF330-023B-48BC-9773-5ED067865C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{503EF330-023B-48BC-9773-5ED067865C51}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{503EF330-023B-48BC-9773-5ED067865C51}.Debug|x64.Build.0 = Debug|Any CPU
+		{503EF330-023B-48BC-9773-5ED067865C51}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{503EF330-023B-48BC-9773-5ED067865C51}.Debug|x86.Build.0 = Debug|Any CPU
+		{503EF330-023B-48BC-9773-5ED067865C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{503EF330-023B-48BC-9773-5ED067865C51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{503EF330-023B-48BC-9773-5ED067865C51}.Release|x64.ActiveCfg = Release|Any CPU
+		{503EF330-023B-48BC-9773-5ED067865C51}.Release|x64.Build.0 = Release|Any CPU
+		{503EF330-023B-48BC-9773-5ED067865C51}.Release|x86.ActiveCfg = Release|Any CPU
+		{503EF330-023B-48BC-9773-5ED067865C51}.Release|x86.Build.0 = Release|Any CPU
+		{084C8BA4-1C03-4501-B93C-A79828A409CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{084C8BA4-1C03-4501-B93C-A79828A409CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{084C8BA4-1C03-4501-B93C-A79828A409CA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{084C8BA4-1C03-4501-B93C-A79828A409CA}.Debug|x64.Build.0 = Debug|Any CPU
+		{084C8BA4-1C03-4501-B93C-A79828A409CA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{084C8BA4-1C03-4501-B93C-A79828A409CA}.Debug|x86.Build.0 = Debug|Any CPU
+		{084C8BA4-1C03-4501-B93C-A79828A409CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{084C8BA4-1C03-4501-B93C-A79828A409CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{084C8BA4-1C03-4501-B93C-A79828A409CA}.Release|x64.ActiveCfg = Release|Any CPU
+		{084C8BA4-1C03-4501-B93C-A79828A409CA}.Release|x64.Build.0 = Release|Any CPU
+		{084C8BA4-1C03-4501-B93C-A79828A409CA}.Release|x86.ActiveCfg = Release|Any CPU
+		{084C8BA4-1C03-4501-B93C-A79828A409CA}.Release|x86.Build.0 = Release|Any CPU
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}.Debug|x64.Build.0 = Debug|Any CPU
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}.Debug|x86.Build.0 = Debug|Any CPU
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}.Release|x64.ActiveCfg = Release|Any CPU
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}.Release|x64.Build.0 = Release|Any CPU
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}.Release|x86.ActiveCfg = Release|Any CPU
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1207,6 +1382,20 @@ Global
 		{A77EF326-4C3D-4D25-883B-E599D2C24BEE} = {10451DC4-92BC-48A0-A729-529C7CB1AE4E}
 		{651C79BA-2F96-4092-9AD6-E96D5214872B} = {10451DC4-92BC-48A0-A729-529C7CB1AE4E}
 		{21D3A992-FD55-45CD-A84F-9F9ABE0B5A50} = {10451DC4-92BC-48A0-A729-529C7CB1AE4E}
+		{7E840EC0-ECD4-42E1-A428-992D71673108} = {21660304-2B32-4952-BA80-1AADCB259B75}
+		{58AFD987-287A-43D0-AD2B-652B8B900EF8} = {7E840EC0-ECD4-42E1-A428-992D71673108}
+		{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43} = {7E840EC0-ECD4-42E1-A428-992D71673108}
+		{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C} = {7E840EC0-ECD4-42E1-A428-992D71673108}
+		{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F} = {7E840EC0-ECD4-42E1-A428-992D71673108}
+		{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5} = {7E840EC0-ECD4-42E1-A428-992D71673108}
+		{2E24297A-9EEE-40A0-8476-06153C2A595E} = {7E840EC0-ECD4-42E1-A428-992D71673108}
+		{51AEA05C-FEBF-40D1-A2B7-8A6AF2FC38FA} = {21660304-2B32-4952-BA80-1AADCB259B75}
+		{1582D31B-513D-4BD5-BA30-A45E8BD23E54} = {51AEA05C-FEBF-40D1-A2B7-8A6AF2FC38FA}
+		{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9} = {51AEA05C-FEBF-40D1-A2B7-8A6AF2FC38FA}
+		{BD31053D-97E0-4ADA-ACE4-9467288CEB9F} = {51AEA05C-FEBF-40D1-A2B7-8A6AF2FC38FA}
+		{503EF330-023B-48BC-9773-5ED067865C51} = {51AEA05C-FEBF-40D1-A2B7-8A6AF2FC38FA}
+		{084C8BA4-1C03-4501-B93C-A79828A409CA} = {51AEA05C-FEBF-40D1-A2B7-8A6AF2FC38FA}
+		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863} = {51AEA05C-FEBF-40D1-A2B7-8A6AF2FC38FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6F3ADF19-E247-4D2F-B311-85CA2629334D}

@@ -2,11 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\Messaging\Messaging.Udp\Messaging.Udp.csproj" />
-    <ProjectReference Include="..\IdentityService.Core\IdentityService.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\" />
+    <ProjectReference Include="..\DigitalAssetService.Core\DigitalAssetService.Core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
