@@ -7,7 +7,7 @@ package BasketService {
 
 package CatalogService {
 
-	class Product {
+	class CatalogService.Product {
 		+Guid ProductId
 		+Guid? BrandId
 		+Guid? ProductCategoryId
@@ -57,8 +57,12 @@ package ContentService {
 }
 
 package CustomerService {
-	class Customer {
+	class CustomerService.Customer {
 		+Guid CustomerId
+		+string FirstName
+		+string LastName
+		+string Email
+		+string PhoneNumber
 	}
 }
 
@@ -128,13 +132,62 @@ package OtpService {
 
 }
 
-package CustomerService {
+package OrderService {
+	class Tax {
+		+double Rate
+		+TaxRateType Type
+		+DateTime Effective
+	}
+	
+	class Order {
+		+Guid OrderId
+		+float Cost
+		+OrderStatus Status
+		+List<OrderLineItem> LineItems		
+	}
+	
+	class OrderLineItem {
+	
+	}
+	
+	enum OrderStatus {
+		New
+		Paid
+	}
 
 }
 
 
 package InventoryService {
-
+	class InventoryItem {
+	        +Guid InventoryItemId
+        	+Guid ProductId
+        	+Guid? WarehouseId
+		+Guid? BinId
+		+int Quantity
+		+DateTime Modified
+		+Warehouse Warehouse
+		+Product Product
+		+Bin Bin
+	}
+	
+	class InventoryService.Product {
+		+Guid ProductId
+		+string Name
+		+string Description
+	}
+	
+	class Bin {
+		+Guid BinId
+		+string Name
+		+string Description
+	}
+	
+	class Warehouse {
+		+Guid WarehouseId
+		+string Name
+		+string Description	
+	}
 }
 
 package PaymentService {
