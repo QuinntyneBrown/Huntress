@@ -1,9 +1,0 @@
-<h4>{{ aggregatePrivilege.aggregate }}</h4>
-
-<ul>
-  <li *ngFor="let accessRight of accessRights" (click)="handleAccessRightClick(accessRight)">
-    <mat-icon *ngIf="!hasAccessRight(accessRight)">radio_button_unchecked</mat-icon>
-    <mat-icon *ngIf="hasAccessRight(accessRight)">radio_button_checked</mat-icon>
-    <a>{{ translateAccessRight(accessRight) }}</a>
-  </li>
-</ul>

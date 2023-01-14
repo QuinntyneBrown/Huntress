@@ -1,4 +1,0 @@
-<div orListDetail *ngIf="vm$ | async as vm">
-  <or-content-list [contents]="vm.contents" (select)="handleSelect($event)"></or-content-list>
-  <or-content-detail [content]="vm.selected" (save)="handleSave($event)"></or-content-detail>
-</div>

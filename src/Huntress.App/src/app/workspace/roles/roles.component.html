@@ -1,4 +1,0 @@
-<div orListDetail *ngIf="vm$ | async as vm">
-  <or-role-list [roles]="vm.roles" [selected]="vm.selected" (delete)="onDelete($event)" (select)="onSelect($event)" (create)="onCreate()"></or-role-list>
-  <or-role-detail [role]="vm.selected" (save)="onSave($event)"></or-role-detail>
-</div>
