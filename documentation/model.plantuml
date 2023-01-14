@@ -7,6 +7,42 @@ package BasketService {
 
 package CatalogService {
 
+	class Product {
+		+Guid ProductId
+		+Guid? BrandId
+		+Guid? ProductCategoryId
+		+string Name
+		+ICollection<ProductImage> ProductImages
+		+string Description
+		+ProductCategory ProductCategory
+		+Brand Brand
+		+int Price
+		+ProductType Type		
+	}
+	
+	class Brand {
+		+Guid BrandId
+		+string Name
+		+string Description
+	}
+	
+	class ProductType {
+		+Guid ProductTypeId
+		+string Name
+		+string Description
+	}
+	
+	class ProductCategory {
+		+Guid ProductCategoryId
+		+string Name
+		+string Description
+	}	
+	
+	class ProductImage {
+		+Guid ProductImageId
+		+string Name
+		+string Url
+	}
 }
 
 
@@ -29,18 +65,33 @@ package CustomerService {
 
 package DashboardService {
 
+	class User {
+		+Guid UserId
+		+string Username
+	}
+
 	class Dashboard {
 		+Guid DashboardId
+		+string Name
+		+Guid? UserId
 	}
 	
 	class DashboardCard {
 		+Guid DashboardCardId
+		+Guid DashboardId
+		+JObject Options
 	}
 	
-	class Dashboard {
+	class Card {
 		+Guid CardId
 		+string Name
+		+string Description
 	}
+	
+	class CardLayout {
+		+Guid CardLayoutId
+		+string Name
+	}	
 }
 
 
