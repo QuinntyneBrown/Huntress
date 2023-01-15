@@ -1,7 +1,16 @@
 @startuml
 
-package BasketService {
+package DigitalAssetService {
 
+
+	class DigitalAsset {
+        	-Guid DigitalAssetId
+		-string Name
+		-byte[] Bytes
+		-string ContentType
+		-float Height
+		-float Width	
+	}
 }
 
 
@@ -72,17 +81,24 @@ package DashboardService {
 	class DashboardService.User {
 		-Guid UserId
 		-string Username
+		-List<Dashboard> Dashboards
 	}
 
 	class Dashboard {
 		-Guid DashboardId
 		-string Name
 		-Guid? UserId
+		-List<DashboardCard> DashboardCards
 	}
 	
 	class DashboardCard {
 		-Guid DashboardCardId
 		-Guid DashboardId
+		-Guid CardId
+		-Guid CardLayoutId
+		-Dashboard Dashboard
+		-Card Card
+		-CardLayout CardLayout
 		-JObject Options
 	}
 	
@@ -95,7 +111,8 @@ package DashboardService {
 	class CardLayout {
 		-Guid CardLayoutId
 		-string Name
-	}	
+		-string Description
+	}
 }
 
 
@@ -198,6 +215,7 @@ package ThemeService {
 	class Theme {
 		-Guid ThemeId
 		-string Name
+		-JObject CssCustomProperties
 	}
 }
 
