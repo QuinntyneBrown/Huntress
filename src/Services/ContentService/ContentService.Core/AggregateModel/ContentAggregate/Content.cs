@@ -7,4 +7,11 @@ public class Content {
     public string Name { get; set; }
     public string Slug { get; set; }
     public JObject Json { get; set; }
+
+    public Content(string name, string slug, JObject json)
+    {
+        Name = name;
+        Slug = slug;
+        Json = json;
+    }
 }

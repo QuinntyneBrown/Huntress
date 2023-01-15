@@ -1,12 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.4.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\Messaging\Messaging.Udp\Messaging.Udp.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Security\Security\Security.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AggregateModel\PrivilegeAggregate\Commands\" />
+    <Folder Include="AggregateModel\PrivilegeAggregate\Queries\" />
+    <Folder Include="AggregateModel\RoleAggregate\Commands\" />
+    <Folder Include="AggregateModel\RoleAggregate\Queries\" />
+    <Folder Include="AggregateModel\UserAggregate\Commands\" />
+    <Folder Include="AggregateModel\UserAggregate\Queries\" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -13,7 +13,6 @@ public static class UserExtensions
             Roles = user.Roles.Select(x => new RoleDto()).ToList()
         };
     }
-
 }
 
 

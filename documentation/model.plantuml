@@ -8,40 +8,40 @@ package BasketService {
 package CatalogService {
 
 	class CatalogService.Product {
-		+Guid ProductId
-		+Guid? BrandId
-		+Guid? ProductCategoryId
-		+string Name
-		+ICollection<ProductImage> ProductImages
-		+string Description
-		+ProductCategory ProductCategory
-		+Brand Brand
-		+int Price
-		+ProductType Type		
+		-Guid ProductId
+		-Guid? BrandId
+		-Guid? ProductCategoryId
+		-string Name
+		-ICollection<ProductImage> ProductImages
+		-string Description
+		-ProductCategory ProductCategory
+		-Brand Brand
+		-int Price
+		-ProductType Type		
 	}
 	
 	class Brand {
-		+Guid BrandId
-		+string Name
-		+string Description
+		-Guid BrandId
+		-string Name
+		-string Description
 	}
 	
 	class ProductType {
-		+Guid ProductTypeId
-		+string Name
-		+string Description
+		-Guid ProductTypeId
+		-string Name
+		-string Description
 	}
 	
 	class ProductCategory {
-		+Guid ProductCategoryId
-		+string Name
-		+string Description
+		-Guid ProductCategoryId
+		-string Name
+		-string Description
 	}	
 	
 	class ProductImage {
-		+Guid ProductImageId
-		+string Name
-		+string Url
+		-Guid ProductImageId
+		-string Name
+		-string Url
 	}
 }
 
@@ -49,20 +49,20 @@ package CatalogService {
 
 package ContentService {
 	class Content {
-		+Guid ContentId
-		+string Name
-		+Newtonsoft.Json.Linq.JObject Json
-		+string Slug
+		-Guid ContentId
+		-string Name
+		-Newtonsoft.Json.Linq.JObject Json
+		-string Slug
 	}
 }
 
 package CustomerService {
 	class CustomerService.Customer {
-		+Guid CustomerId
-		+string FirstName
-		+string LastName
-		+string Email
-		+string PhoneNumber
+		-Guid CustomerId
+		-string FirstName
+		-string LastName
+		-string Email
+		-string PhoneNumber
 	}
 }
 
@@ -70,31 +70,31 @@ package CustomerService {
 package DashboardService {
 
 	class DashboardService.User {
-		+Guid UserId
-		+string Username
+		-Guid UserId
+		-string Username
 	}
 
 	class Dashboard {
-		+Guid DashboardId
-		+string Name
-		+Guid? UserId
+		-Guid DashboardId
+		-string Name
+		-Guid? UserId
 	}
 	
 	class DashboardCard {
-		+Guid DashboardCardId
-		+Guid DashboardId
-		+JObject Options
+		-Guid DashboardCardId
+		-Guid DashboardId
+		-JObject Options
 	}
 	
 	class Card {
-		+Guid CardId
-		+string Name
-		+string Description
+		-Guid CardId
+		-string Name
+		-string Description
 	}
 	
 	class CardLayout {
-		+Guid CardLayoutId
-		+string Name
+		-Guid CardLayoutId
+		-string Name
 	}	
 }
 
@@ -102,26 +102,26 @@ package DashboardService {
 package IdentityService {
 
 	class User { 
-		+Guid UserId
-		+string Username
-		+string Password
-		+byte[] Salt
-		+List<Role> Roles
+		-Guid UserId
+		-string Username
+		-string Password
+		-byte[] Salt
+		-List<Role> Roles
 	}
 
 	class Role {
-		+Guid RoleId
-		+string Name
-		+List<User> Users
-		+List<Priviledge> Priviledges
+		-Guid RoleId
+		-string Name
+		-List<User> Users
+		-List<Priviledge> Priviledges
 	}
 
 	class Priviledge
 	{
-		+Guid PrivilegeId
-		+Guid RoleId
-		+Security.AccessRight AccessRight
-		+string Aggregate
+		-Guid PrivilegeId
+		-Guid RoleId
+		-Security.AccessRight AccessRight
+		-string Aggregate
 	}
 
 	IdentityService.User *--* Role
@@ -134,16 +134,16 @@ package OtpService {
 
 package OrderService {
 	class Tax {
-		+double Rate
-		+TaxRateType Type
-		+DateTime Effective
+		-double Rate
+		-TaxRateType Type
+		-DateTime Effective
 	}
 	
 	class Order {
-		+Guid OrderId
-		+float Cost
-		+OrderStatus Status
-		+List<OrderLineItem> LineItems		
+		-Guid OrderId
+		-float Cost
+		-OrderStatus Status
+		-List<OrderLineItem> LineItems		
 	}
 	
 	class OrderLineItem {
@@ -160,33 +160,33 @@ package OrderService {
 
 package InventoryService {
 	class InventoryItem {
-	        +Guid InventoryItemId
-        	+Guid ProductId
-        	+Guid? WarehouseId
-		+Guid? BinId
-		+int Quantity
-		+DateTime Modified
-		+Warehouse Warehouse
-		+Product Product
-		+Bin Bin
+	        -Guid InventoryItemId
+        	-Guid ProductId
+        	-Guid? WarehouseId
+		-Guid? BinId
+		-int Quantity
+		-DateTime Modified
+		-Warehouse Warehouse
+		-Product Product
+		-Bin Bin
 	}
 	
 	class InventoryService.Product {
-		+Guid ProductId
-		+string Name
-		+string Description
+		-Guid ProductId
+		-string Name
+		-string Description
 	}
 	
 	class Bin {
-		+Guid BinId
-		+string Name
-		+string Description
+		-Guid BinId
+		-string Name
+		-string Description
 	}
 	
 	class Warehouse {
-		+Guid WarehouseId
-		+string Name
-		+string Description	
+		-Guid WarehouseId
+		-string Name
+		-string Description	
 	}
 }
 
@@ -196,8 +196,8 @@ package PaymentService {
 
 package ThemeService {
 	class Theme {
-		+Guid ThemeId
-		+string Name
+		-Guid ThemeId
+		-string Name
 	}
 }
 
