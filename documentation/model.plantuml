@@ -118,7 +118,7 @@ package DashboardService {
 
 package IdentityService {
 
-	class User { 
+	class IdentityService.User { 
 		-Guid UserId
 		-string Username
 		-string Password
