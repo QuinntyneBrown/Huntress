@@ -4,21 +4,25 @@ using System.Net;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using CustomerService.Core;
 
 namespace CustomerService.Api.Controllers;
 
+[ApiController]
+[Route("api/[controller]")]
 public class CustomerController
 {
     private readonly IMediator _mediator;
 
     private readonly ILogger<CustomerController> _logger;
 
-    public CustomerController(IMediator mediator,ILogger<CustomerController> logger){
+    public CustomerController(IMediator mediator,ILogger<CustomerController> logger)
+    {
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task<ActionResult<UpdateCustomerResponse>> Update(UpdateCustomerRequest  request,CancellationToken cancellationToken)
+/*    public async Task<ActionResult<UpdateCustomerResponse>> Update(UpdateCustomerRequest  request,CancellationToken cancellationToken)
     {
         return await _mediator.Send(request, cancellationToken);
     }
@@ -26,13 +30,14 @@ public class CustomerController
     public async Task<ActionResult<CreateCustomerResponse>> Create(CreateCustomerRequest  request,CancellationToken cancellationToken)
     {
         return await _mediator.Send(request, cancellationToken);
-    }
+    }*/
 
+    [HttpGet]
     public async Task<ActionResult<GetCustomersResponse>> Get(CancellationToken cancellationToken)
     {
         return await _mediator.Send(new GetCustomersRequest(), cancellationToken);
     }
-
+/*
     public async Task<ActionResult<GetCustomerByIdResponse>> GetById(Guid customerId,CancellationToken cancellationToken)
     {
         var request = new GetCustomerByIdRequest(){CustomerId = customerId};
@@ -52,7 +57,7 @@ public class CustomerController
         var request = new DeleteCustomerRequest() {CustomerId = customerId };
 
         return await _mediator.Send(request, cancellationToken);
-    }
+    }*/
 
 }
 

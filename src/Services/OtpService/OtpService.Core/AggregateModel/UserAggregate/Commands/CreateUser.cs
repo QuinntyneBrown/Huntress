@@ -1,3 +1,5 @@
+using MediatR;
+
 namespace OtpService.Core.AggregateModel.UserAggregate.Commands;
 
 public class CreateUserRequestValidator: AbstractValidator<CreateUserRequest> { }
