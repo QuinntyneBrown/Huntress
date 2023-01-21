@@ -129,6 +129,11 @@ package IdentityService {
 }
 
 package OtpService {
+	class OtpService {
+		-Guid UserId
+		-string Username
+		-byte[] Salt
+	}
 
 }
 

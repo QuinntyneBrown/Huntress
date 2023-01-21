@@ -1,11 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\Messaging\Messaging.Udp\Messaging.Udp.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Validation\Validation\Validation.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AggregateModel\" />
+    <PackageReference Include="Mediatr" Version="11.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
   <PropertyGroup>
