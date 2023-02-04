@@ -1,3 +1,6 @@
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 using Newtonsoft.Json.Linq;
 
 namespace System;
@@ -18,3 +21,4 @@ public static class StringExtensions {
         return typeof(T).Name == typeName;
     }
 }
+

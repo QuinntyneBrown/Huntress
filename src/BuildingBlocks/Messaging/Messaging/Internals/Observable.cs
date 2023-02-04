@@ -1,4 +1,7 @@
-﻿namespace Messaging.Internals;
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+namespace Messaging.Internals;
 
 public class Observable<T> : IObservable<T>
 {
@@ -84,3 +87,4 @@ public class Observable<T> : IObservable<T>
     }
 
 }
+
