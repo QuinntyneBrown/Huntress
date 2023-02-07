@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+using Microsoft.AspNetCore.Authorization;
 
 namespace Security;
 
@@ -23,3 +26,4 @@ public class AuthorizeResourceOperationAttribute : System.Attribute
         _ => null,
     };
 }
+

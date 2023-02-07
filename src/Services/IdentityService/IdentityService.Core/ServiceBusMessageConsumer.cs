@@ -3,22 +3,26 @@
 
 using MediatR;
 using Messaging;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace IdentityService.Api;
 
-public class Foo: BackgroundService
+public class ServiceBusMessageConsumer: BackgroundService
 {
     private readonly ILogger<ServiceBusMessageConsumer> _logger;
-
     private readonly IMediator _mediator;
-
     private readonly IMessagingClient _messagingClient;
 
-    public Foo(ILogger<ServiceBusMessageConsumer> logger,IMediator mediator,IMessagingClient messagingClient){
+    public ServiceBusMessageConsumer(
+        ILogger<ServiceBusMessageConsumer> logger,
+        IMessagingClient messagingClient,
+        IMediator mediator)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         _messagingClient = messagingClient ?? throw new ArgumentNullException(nameof(messagingClient));
+        _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -49,7 +53,6 @@ public class Foo: BackgroundService
             }
         }
     }
-
 }
 
 

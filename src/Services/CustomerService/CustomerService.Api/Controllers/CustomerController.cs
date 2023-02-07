@@ -1,3 +1,6 @@
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 using CustomerService.Core.AggregateModel.CustomerAggregate.Commands;
 using CustomerService.Core.AggregateModel.CustomerAggregate.Queries;
 using System.Net;
@@ -60,4 +63,5 @@ public class CustomerController
     }*/
 
 }
+
 

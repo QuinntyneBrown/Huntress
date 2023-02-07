@@ -1,3 +1,6 @@
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace CustomerService.Core.AggregateModel.CustomerAggregate.Queries;
 
 public class GetCustomersRequest: IRequest<GetCustomersResponse> { }
@@ -28,5 +31,6 @@ public class GetCustomersRequestHandler: IRequestHandler<GetCustomersRequest,Get
     }
 
 }
+
 
 

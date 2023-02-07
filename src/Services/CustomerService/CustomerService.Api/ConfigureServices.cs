@@ -1,4 +1,6 @@
-using CustomerService.Api;
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 using Microsoft.OpenApi.Models;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -6,19 +8,18 @@ namespace Microsoft.Extensions.DependencyInjection;
 public static class ConfigureServices
 {
     public static void AddApiServices(this IServiceCollection services){
-        services.AddHostedService<ServiceBusMessageConsumer>();
         services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new OpenApiInfo
             {
                 Version = "v1",
                 Title = "CustomerService",
-                Description = "",
+                Description = "Customer Service",
                 TermsOfService = new Uri("https://example.com/terms"),
                 Contact = new OpenApiContact
                 {
-                    Name = "",
-                    Email = ""
+                    Name = "Quinntyne Brown",
+                    Email = "quinntynebrown@gmail.com"
                 },
                 License = new OpenApiLicense
                 {
@@ -47,5 +48,6 @@ public static class ConfigureServices
     }
 
 }
+
 
 

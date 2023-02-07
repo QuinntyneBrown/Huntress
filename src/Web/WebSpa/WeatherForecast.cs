@@ -1,3 +1,6 @@
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace WebSpa;
 
 public class WeatherForecast
@@ -10,3 +13,4 @@ public class WeatherForecast
 
     public string? Summary { get; set; }
 }
+

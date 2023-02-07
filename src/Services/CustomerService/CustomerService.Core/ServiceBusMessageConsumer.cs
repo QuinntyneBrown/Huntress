@@ -1,8 +1,8 @@
 // Copyright (c) Quinntyne Brown. All Rights Reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using MediatR;
 using Messaging;
+using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 
 namespace CustomerService.Api;
@@ -10,9 +10,7 @@ namespace CustomerService.Api;
 public class ServiceBusMessageConsumer: BackgroundService
 {
     private readonly ILogger<ServiceBusMessageConsumer> _logger;
-
     private readonly IMediator _mediator;
-
     private readonly IMessagingClient _messagingClient;
 
     public ServiceBusMessageConsumer(ILogger<ServiceBusMessageConsumer> logger,IMediator mediator,IMessagingClient messagingClient){

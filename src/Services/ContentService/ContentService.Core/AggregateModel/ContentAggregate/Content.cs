@@ -1,3 +1,6 @@
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 using Newtonsoft.Json.Linq;
 
 namespace ContentService.Core.AggregateModel.ContentAggregate;
@@ -15,3 +18,4 @@ public class Content {
         Json = json;
     }
 }
+

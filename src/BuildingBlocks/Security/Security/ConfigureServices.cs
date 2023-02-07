@@ -1,4 +1,7 @@
-﻿using MediatR;
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -71,3 +74,4 @@ public static class ServiceCollectionExtensions
         }
     }
 }
+

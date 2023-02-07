@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebSpa.Controllers;
 
@@ -30,3 +33,4 @@ public class WeatherForecastController : ControllerBase
         .ToArray();
     }
 }
+

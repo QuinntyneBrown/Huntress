@@ -1,3 +1,6 @@
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace OtpService.Core.AggregateModel.UserAggregate.Commands;
 
 public class DeleteUserRequestValidator: AbstractValidator<DeleteUserRequest> { }
@@ -40,5 +43,6 @@ public class DeleteUserRequestHandler: IRequestHandler<DeleteUserRequest,DeleteU
     }
 
 }
+
 
 

@@ -1,3 +1,6 @@
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CounterComponent } from './counter.component';
@@ -6,6 +9,7 @@ describe('CounterComponent', () => {
   let fixture: ComponentFixture<CounterComponent>;
 
   beforeEach(async(() => {
+    // ARRANGE
     TestBed.configureTestingModule({
       declarations: [ CounterComponent ]
     })
@@ -13,6 +17,7 @@ describe('CounterComponent', () => {
   }));
 
   beforeEach(() => {
+    // ARRANGE
     fixture = TestBed.createComponent(CounterComponent);
     fixture.detectChanges();
   });
@@ -32,3 +37,5 @@ describe('CounterComponent', () => {
     expect(countElement.textContent).toEqual('1');
   }));
 });
+
+

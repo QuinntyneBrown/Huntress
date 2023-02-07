@@ -1,3 +1,6 @@
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 // This script sets up HTTPS for the application using the ASP.NET Core HTTPS certificate
 const fs = require('fs');
 const spawn = require('child_process').spawn;
@@ -31,3 +34,4 @@ if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
   ], { stdio: 'inherit', })
   .on('exit', (code) => process.exit(code));
 }
+

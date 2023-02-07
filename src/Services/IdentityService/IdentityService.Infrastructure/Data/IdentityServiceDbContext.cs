@@ -1,3 +1,6 @@
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 using IdentityService.Core;
 using IdentityService.Core.AggregateModel.PrivilegeAggregate;
 using IdentityService.Core.AggregateModel.RoleAggregate;
@@ -19,4 +22,5 @@ public class IdentityServiceDbContext: DbContext, IIdentityServiceDbContext
     public DbSet<User> Users { get; set; }
 
 }
+
 

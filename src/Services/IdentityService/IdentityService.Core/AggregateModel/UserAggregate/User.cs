@@ -1,3 +1,6 @@
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 using IdentityService.Core.AggregateModel.RoleAggregate;
 using Security;
 using System.Security.Cryptography;
@@ -23,5 +26,6 @@ public class User
     public byte[] Salt { get; init; }
     public List<Role> Roles { get; init; }
 }
+
 
 

@@ -1,4 +1,7 @@
-﻿using static Security.SecurityConstants;
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+using static Security.SecurityConstants;
 using System.Collections.Generic;
 
 namespace Security;
@@ -20,3 +23,4 @@ public static class SecurityConstants
         public static List<AccessRight> FullAccess => new() { AccessRight.Read, AccessRight.Write, AccessRight.Create, AccessRight.Delete };
     }
 }
+

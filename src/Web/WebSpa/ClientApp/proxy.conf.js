@@ -1,3 +1,6 @@
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 const { env } = require('process');
 
 const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
@@ -17,3 +20,4 @@ const PROXY_CONFIG = [
 ]
 
 module.exports = PROXY_CONFIG;
+
