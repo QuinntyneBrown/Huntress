@@ -3,10 +3,7 @@
 
 namespace Messaging;
 
-public interface IServiceBusMessageListener: IObservable<IServiceBusMessage>
+public interface IServiceBusMessageListener : IObservable<IServiceBusMessage>
 {
-     Task StartAsync(CancellationToken cancellationToken = default);
-
+    Task StartAsync(CancellationToken cancellationToken = default);
 }
-
-

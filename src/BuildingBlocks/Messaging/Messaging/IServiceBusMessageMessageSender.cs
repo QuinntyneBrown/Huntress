@@ -5,6 +5,5 @@ namespace Messaging;
 
 public interface IServiceBusMessageSender
 {
-    Task Send<T>(T message)
-       where T : class, IServiceBusMessage;
+    Task Send(object message);
 }

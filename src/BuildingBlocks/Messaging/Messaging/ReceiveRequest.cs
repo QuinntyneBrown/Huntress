@@ -1,11 +1,7 @@
 // Copyright (c) Quinntyne Brown. All Rights Reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-namespace Messaging.Udp;
+namespace Messaging;
 
-public interface IByteArraySerializerProvider
-{
-    IByteArraySerializer Get(dynamic input);
-}
-
+public class ReceiveRequest { }
 

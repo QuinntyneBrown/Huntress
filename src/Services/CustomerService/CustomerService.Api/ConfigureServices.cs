@@ -1,3 +1,4 @@
+using CustomerService.Api;
 using Microsoft.OpenApi.Models;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -5,6 +6,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 public static class ConfigureServices
 {
     public static void AddApiServices(this IServiceCollection services){
+        services.AddHostedService<ServiceBusMessageConsumer>();
         services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new OpenApiInfo
@@ -45,4 +47,5 @@ public static class ConfigureServices
     }
 
 }
+
 

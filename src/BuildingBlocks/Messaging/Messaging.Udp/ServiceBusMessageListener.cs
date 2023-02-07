@@ -3,6 +3,7 @@
 
 using Messaging.Internals;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System.Net.Sockets;
 
 namespace Messaging.Udp;
@@ -11,16 +12,13 @@ public class ServiceBusMessageListener: Observable<IServiceBusMessage>, IService
 {
     private readonly ILogger<ServiceBusMessageListener> _logger;
     private readonly UdpClient _client;
-    private IByteArraySerializerProvider _byteArraySerializerProvider;
     
     public ServiceBusMessageListener(
         ILogger<ServiceBusMessageListener> logger,
-        IUdpClientFactory udpClientFactory,
-        IByteArraySerializerProvider byteArraySerializerProvider
+        IUdpClientFactory udpClientFactory
         ){
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _client = udpClientFactory.Create();
-        _byteArraySerializerProvider = byteArraySerializerProvider ?? throw new ArgumentNullException(nameof(byteArraySerializerProvider));
     }
 
     public async Task StartAsync(CancellationToken cancellationToken = default)
@@ -29,9 +27,13 @@ public class ServiceBusMessageListener: Observable<IServiceBusMessage>, IService
         {
             var result = await _client.ReceiveAsync(cancellationToken);
 
-            var serializer = _byteArraySerializerProvider.Get(result.Buffer);
+            var json = System.Text.Encoding.UTF8.GetString(result.Buffer);
 
-            Broadcast(serializer.Deserialize(result.Buffer));
+            var serviceBusMessage = JsonConvert.DeserializeObject<IServiceBusMessage>(json)!;
+
+            Broadcast(serviceBusMessage);
+
+            await Task.Delay(300);
         }        
     }
 }

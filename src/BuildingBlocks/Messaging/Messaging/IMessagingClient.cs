@@ -3,9 +3,8 @@
 
 namespace Messaging;
 
-public class MessageTypeNotSupported: Exception {
-	public MessageTypeNotSupported(Type messageType)
-		:base($"Message type not supported: {messageType.Name}")
-	{ }
+public interface IMessagingClient
+{
+    Task<IServiceBusMessage> ReceiveAsync(ReceiveRequest receiveRequest);
+    Task StartAsync(CancellationToken cancellationToken);
 }
-
