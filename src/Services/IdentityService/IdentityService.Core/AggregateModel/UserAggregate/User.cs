@@ -8,6 +8,11 @@ using System.Security.Cryptography;
 namespace IdentityService.Core.AggregateModel.UserAggregate;
 public class User
 {
+    public User()
+    {
+        
+    }
+
     public User(string username, string password, IPasswordHasher passwordHasher)
     {
         Roles = new List<Role>();

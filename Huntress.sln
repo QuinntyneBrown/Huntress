@@ -20,8 +20,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventSourcing.Tests", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", "{CD5E3C4E-66C8-46DB-A5CE-8D8747B43745}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validation.Tests", "src\BuildingBlocks\Validation\Validation.Tests\Validation.Tests.csproj", "{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templating", "Templating", "{A2DB8DBA-A4F0-4C0C-8521-5396B9C21A44}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Templating", "src\BuildingBlocks\Templating\Templating\Templating.csproj", "{90E22D71-4842-4549-B6E1-2F7A1D4C3C3F}"
@@ -202,33 +200,35 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtpService.Api.Tests", "src
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContentService", "ContentService", "{7E840EC0-ECD4-42E1-A428-992D71673108}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentService.Api", "src\Services\ContentService\ContentService.Api\ContentService.Api.csproj", "{58AFD987-287A-43D0-AD2B-652B8B900EF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentService.Api", "src\Services\ContentService\ContentService.Api\ContentService.Api.csproj", "{58AFD987-287A-43D0-AD2B-652B8B900EF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentService.Api.Tests", "src\Services\ContentService\ContentService.Api.Tests\ContentService.Api.Tests.csproj", "{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentService.Api.Tests", "src\Services\ContentService\ContentService.Api.Tests\ContentService.Api.Tests.csproj", "{6FB9158F-F060-4661-BDF3-5CAA0F6B9C43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentService.Core", "src\Services\ContentService\ContentService.Core\ContentService.Core.csproj", "{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentService.Core", "src\Services\ContentService\ContentService.Core\ContentService.Core.csproj", "{BE91ED09-CB7C-415D-8AA3-D751AA40DC1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentService.Core.Tests", "src\Services\ContentService\ContentService.Core.Tests\ContentService.Core.Tests.csproj", "{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentService.Core.Tests", "src\Services\ContentService\ContentService.Core.Tests\ContentService.Core.Tests.csproj", "{450E3F2F-84AA-4F93-BAE5-151DBBF2F77F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentService.Infrastructure", "src\Services\ContentService\ContentService.Infrastructure\ContentService.Infrastructure.csproj", "{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentService.Infrastructure", "src\Services\ContentService\ContentService.Infrastructure\ContentService.Infrastructure.csproj", "{D083BD6E-D8BD-4E67-AD6F-5F4C0C0DD7E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentService.Infrastructure.Tests", "src\Services\ContentService\ContentService.Infrastructure.Tests\ContentService.Infrastructure.Tests.csproj", "{2E24297A-9EEE-40A0-8476-06153C2A595E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentService.Infrastructure.Tests", "src\Services\ContentService\ContentService.Infrastructure.Tests\ContentService.Infrastructure.Tests.csproj", "{2E24297A-9EEE-40A0-8476-06153C2A595E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DigitalAssetService", "DigitalAssetService", "{51AEA05C-FEBF-40D1-A2B7-8A6AF2FC38FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAssetService.Core", "src\Services\DigitalAssetService\DigitalAssetService.Core\DigitalAssetService.Core.csproj", "{1582D31B-513D-4BD5-BA30-A45E8BD23E54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalAssetService.Core", "src\Services\DigitalAssetService\DigitalAssetService.Core\DigitalAssetService.Core.csproj", "{1582D31B-513D-4BD5-BA30-A45E8BD23E54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAssetService.Core.Tests", "src\Services\DigitalAssetService\DigitalAssetService.Core.Tests\DigitalAssetService.Core.Tests.csproj", "{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalAssetService.Core.Tests", "src\Services\DigitalAssetService\DigitalAssetService.Core.Tests\DigitalAssetService.Core.Tests.csproj", "{6AFCBBE0-1FEF-406B-9670-D9DC50796BC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAssetService.Infrastructure", "src\Services\DigitalAssetService\DigitalAssetService.Infrastructure\DigitalAssetService.Infrastructure.csproj", "{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalAssetService.Infrastructure", "src\Services\DigitalAssetService\DigitalAssetService.Infrastructure\DigitalAssetService.Infrastructure.csproj", "{BD31053D-97E0-4ADA-ACE4-9467288CEB9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAssetService.Infrastructure.Tests", "src\Services\DigitalAssetService\DigitalAssetService.Infrastructure.Tests\DigitalAssetService.Infrastructure.Tests.csproj", "{503EF330-023B-48BC-9773-5ED067865C51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalAssetService.Infrastructure.Tests", "src\Services\DigitalAssetService\DigitalAssetService.Infrastructure.Tests\DigitalAssetService.Infrastructure.Tests.csproj", "{503EF330-023B-48BC-9773-5ED067865C51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAssetService.Api", "src\Services\DigitalAssetService\DigitalAssetService.Api\DigitalAssetService.Api.csproj", "{084C8BA4-1C03-4501-B93C-A79828A409CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalAssetService.Api", "src\Services\DigitalAssetService\DigitalAssetService.Api\DigitalAssetService.Api.csproj", "{084C8BA4-1C03-4501-B93C-A79828A409CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAssetService.Api.Tests", "src\Services\DigitalAssetService\DigitalAssetService.Api.Tests\DigitalAssetService.Api.Tests.csproj", "{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalAssetService.Api.Tests", "src\Services\DigitalAssetService\DigitalAssetService.Api.Tests\DigitalAssetService.Api.Tests.csproj", "{C9B8B701-59E2-4C6C-9559-BDDADCC6F863}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messaging.Udp.Tests", "src\BuildingBlocks\Messaging\Messaging.Udp.Tests\Messaging.Udp.Tests.csproj", "{C4EF42DE-0BBC-42D2-8E76-0DB97F8AD56C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messaging.Udp.Tests", "src\BuildingBlocks\Messaging\Messaging.Udp.Tests\Messaging.Udp.Tests.csproj", "{C4EF42DE-0BBC-42D2-8E76-0DB97F8AD56C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kernel", "src\BuildingBlocks\Kernel\Kernel.csproj", "{D203D7D7-E4C9-4311-8A78-76C431562DF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -264,18 +264,6 @@ Global
 		{46A878D4-5537-4581-A888-0E30B5154F43}.Release|x64.Build.0 = Release|Any CPU
 		{46A878D4-5537-4581-A888-0E30B5154F43}.Release|x86.ActiveCfg = Release|Any CPU
 		{46A878D4-5537-4581-A888-0E30B5154F43}.Release|x86.Build.0 = Release|Any CPU
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}.Debug|x64.Build.0 = Debug|Any CPU
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}.Debug|x86.Build.0 = Debug|Any CPU
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}.Release|x64.ActiveCfg = Release|Any CPU
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}.Release|x64.Build.0 = Release|Any CPU
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}.Release|x86.ActiveCfg = Release|Any CPU
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6}.Release|x86.Build.0 = Release|Any CPU
 		{90E22D71-4842-4549-B6E1-2F7A1D4C3C3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90E22D71-4842-4549-B6E1-2F7A1D4C3C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90E22D71-4842-4549-B6E1-2F7A1D4C3C3F}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -1296,6 +1284,18 @@ Global
 		{C4EF42DE-0BBC-42D2-8E76-0DB97F8AD56C}.Release|x64.Build.0 = Release|Any CPU
 		{C4EF42DE-0BBC-42D2-8E76-0DB97F8AD56C}.Release|x86.ActiveCfg = Release|Any CPU
 		{C4EF42DE-0BBC-42D2-8E76-0DB97F8AD56C}.Release|x86.Build.0 = Release|Any CPU
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4}.Debug|x64.Build.0 = Debug|Any CPU
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4}.Debug|x86.Build.0 = Debug|Any CPU
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4}.Release|x64.ActiveCfg = Release|Any CPU
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4}.Release|x64.Build.0 = Release|Any CPU
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4}.Release|x86.ActiveCfg = Release|Any CPU
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1306,7 +1306,6 @@ Global
 		{B9370ED4-5CCD-451C-B341-ABAAE7322E9A} = {D46A7A86-E089-403C-86DF-2CFBB5BC7C1E}
 		{46A878D4-5537-4581-A888-0E30B5154F43} = {D46A7A86-E089-403C-86DF-2CFBB5BC7C1E}
 		{CD5E3C4E-66C8-46DB-A5CE-8D8747B43745} = {E8250C1F-3938-4A88-B390-CA6736E5F936}
-		{5DF39BBD-445C-4935-A9AD-56A82E72B1F6} = {CD5E3C4E-66C8-46DB-A5CE-8D8747B43745}
 		{A2DB8DBA-A4F0-4C0C-8521-5396B9C21A44} = {E8250C1F-3938-4A88-B390-CA6736E5F936}
 		{90E22D71-4842-4549-B6E1-2F7A1D4C3C3F} = {A2DB8DBA-A4F0-4C0C-8521-5396B9C21A44}
 		{8E25EA15-3778-4ED3-BDB3-B60BD18D5E20} = {A2DB8DBA-A4F0-4C0C-8521-5396B9C21A44}
@@ -1411,6 +1410,7 @@ Global
 		{084C8BA4-1C03-4501-B93C-A79828A409CA} = {51AEA05C-FEBF-40D1-A2B7-8A6AF2FC38FA}
 		{C9B8B701-59E2-4C6C-9559-BDDADCC6F863} = {51AEA05C-FEBF-40D1-A2B7-8A6AF2FC38FA}
 		{C4EF42DE-0BBC-42D2-8E76-0DB97F8AD56C} = {48C5F52B-2D22-4DF8-8D12-4BA33BB4FD4F}
+		{D203D7D7-E4C9-4311-8A78-76C431562DF4} = {E8250C1F-3938-4A88-B390-CA6736E5F936}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6F3ADF19-E247-4D2F-B311-85CA2629334D}

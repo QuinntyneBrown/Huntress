@@ -14,13 +14,18 @@ public class IdentityServiceDbContext: DbContext, IIdentityServiceDbContext
     public IdentityServiceDbContext(DbContextOptions<IdentityServiceDbContext> options)
         :base(options)
     {
-        
+
     }
 
-    public DbSet<Privilege> Privileges { get; set; }
-    public DbSet<Role> Roles { get; set; }
-    public DbSet<User> Users { get; set; }
+    public DbSet<Privilege> Privileges { get; private set; }
+    public DbSet<Role> Roles { get; private set; }
+    public DbSet<User> Users { get; private set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.HasDefaultSchema("Identity");
+
+        base.OnModelCreating(modelBuilder);
+    }
 
 }
-
-

@@ -7,7 +7,7 @@ namespace IdentityService.Core.AggregateModel.UserAggregate;
 
 public static class UserExtensions
 {
-    public static UserDto ToDo(this User user)
+    public static UserDto ToDto(this User user)
     {
         return new UserDto
         {
@@ -15,6 +15,16 @@ public static class UserExtensions
             Username = user.Username,
             Roles = user.Roles.Select(x => new RoleDto()).ToList()
         };
+    }
+
+    public static async Task<List<UserDto>> ToDtosAsync(this IQueryable<User> users, CancellationToken cancellationToken)
+    {
+        return await users.Select(x => x.ToDto()).ToListAsync(cancellationToken);
+    }
+
+    public static List<UserDto> ToDtos(this IEnumerable<User> users)
+    {
+        return users.Select(x => x.ToDto()).ToList();
     }
 }
 

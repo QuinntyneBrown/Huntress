@@ -2,12 +2,16 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using System;
 
 namespace Security;
 
 public class PasswordHasher : IPasswordHasher
 {
+    public PasswordHasher()
+    {
+        
+    }
+
     public string HashPassword(Byte[] salt, string password)
     {
         return Convert.ToBase64String(KeyDerivation.Pbkdf2(

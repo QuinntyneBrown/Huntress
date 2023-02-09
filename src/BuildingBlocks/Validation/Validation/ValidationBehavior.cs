@@ -2,18 +2,10 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using FluentValidation;
+using Kernel;
 using MediatR;
 
 namespace Validation;
-
-public class ResponseBase
-{
-    public ResponseBase()
-    {
-        Errors = new List<string>();
-    }
-    public List<string> Errors { get; set; }
-}
 
 public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>

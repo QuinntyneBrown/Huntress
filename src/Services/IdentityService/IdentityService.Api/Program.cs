@@ -1,6 +1,8 @@
 // Copyright (c) Quinntyne Brown. All Rights Reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using IdentityService.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
 
@@ -16,8 +18,9 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
+    builder.Services.AddCoreServices(builder.Environment, builder.Configuration);
 
-    builder.Services.AddInfrastructureServices();
+    builder.Services.AddInfrastructureServices("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Huntress;Integrated Security=SSPI;");
 
     builder.Services.AddApiServices();
 
@@ -25,18 +28,48 @@ try
 
     app.UseSwagger(options => options.SerializeAsV2 = true);
 
-    app.UseCors("CorsPolicy");
-
-    app.UseRouting();
-
-    app.MapControllers();
-
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "IdentityService");
         options.RoutePrefix = string.Empty;
         options.DisplayOperationId();
     });
+
+    app.UseCors("CorsPolicy");
+
+    app.UseHttpsRedirection();
+
+    app.UseAuthorization();
+
+    app.MapControllers();
+
+    var services = (IServiceScopeFactory)app.Services.GetRequiredService(typeof(IServiceScopeFactory));
+
+    using (var scope = services.CreateScope())
+    {
+        var context = scope.ServiceProvider.GetRequiredService<IdentityServiceDbContext>();
+
+        if (args.Contains("ci"))
+            args = new string[4] { "dropdb", "migratedb", "seeddb", "stop" };
+
+        if (args.Contains("dropdb"))
+        {
+            context.Database.EnsureDeleted();
+        }
+
+        if (args.Contains("migratedb"))
+        {
+            context.Database.Migrate();
+        }
+
+        if (args.Contains("seeddb"))
+        {
+            context.Seed();
+        }
+
+        if (args.Contains("stop"))
+            Environment.Exit(0);
+    }
 
     app.Run();
 
