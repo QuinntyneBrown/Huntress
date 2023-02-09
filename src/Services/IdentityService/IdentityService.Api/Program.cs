@@ -20,7 +20,7 @@ try
 
     builder.Services.AddCoreServices(builder.Environment, builder.Configuration);
 
-    builder.Services.AddInfrastructureServices("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Huntress;Integrated Security=SSPI;");
+    builder.Services.AddInfrastructureServices(builder.Configuration["ConnectionStrings:DefualtConnection"]!);
 
     builder.Services.AddApiServices();
 
@@ -77,7 +77,6 @@ try
 catch (Exception ex)
 {
     Log.Fatal(ex, "Host terminated unexpectedly");
-
 }
 finally
 {

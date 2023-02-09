@@ -17,9 +17,9 @@ public class User
     {
         Roles = new List<Role>();
         Salt = new byte[128 / 8];
-        using (var rng = RandomNumberGenerator.Create())
+        using (var randomNumberGenerator = RandomNumberGenerator.Create())
         {
-            rng.GetBytes(Salt);
+            randomNumberGenerator.GetBytes(Salt);
         }
         Username = username;
         Password = passwordHasher.HashPassword(Salt, password);
@@ -31,6 +31,3 @@ public class User
     public byte[] Salt { get; init; }
     public List<Role> Roles { get; init; }
 }
-
-
-
