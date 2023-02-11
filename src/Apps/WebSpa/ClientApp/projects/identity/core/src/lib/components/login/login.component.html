@@ -1,0 +1,32 @@
+<div>
+  <div>
+    <h1 class="g-brand">
+      Login
+    </h1>
+  </div>
+  <form novalidate autocomplete='off' spellcheck='false' [formGroup]='form'>
+    <mat-form-field class="g-form-field">
+      <input matInput placeholder='Username'
+             class='login__username'
+             formControlName='username' required>
+    </mat-form-field>
+
+    <mat-form-field class="g-form-field">
+      <input cdkFocusInitial matInput
+             placeholder='Password'
+             autocomplete="off"
+             class="login__password"
+             formControlName='password'
+             type='password'
+             required>
+    </mat-form-field>
+  </form>
+
+  <div>
+    <button class="g-button" (click)="tryToLogin(form.value)" [disabled]="!form.valid">
+      Login
+    </button>
+  </div>
+
+
+</div>

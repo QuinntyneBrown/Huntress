@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 // Copyright (c) Quinntyne Brown. All Rights Reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -16,5 +17,9 @@ import { RouterModule } from '@angular/router';
   ]
 })
 export class AppComponent {
+  constructor(private readonly _translateService: TranslateService) {
+    _translateService.setDefaultLang("en");
+    _translateService.use(localStorage.getItem("currentLanguage") || "en");
+  }
   title = 'app';
 }

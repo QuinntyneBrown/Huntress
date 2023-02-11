@@ -130,10 +130,10 @@ package IdentityService {
 		-Guid RoleId
 		-string Name
 		-List<User> Users
-		-List<Priviledge> Priviledges
+		-List<Privilege> Privileges
 	}
 
-	class Priviledge
+	class Privilege
 	{
 		-Guid PrivilegeId
 		-Guid RoleId
@@ -142,7 +142,7 @@ package IdentityService {
 	}
 
 	IdentityService.User *--* Role
-	Role --* Priviledge
+	Role --* Privilege
 }
 
 package OtpService {
