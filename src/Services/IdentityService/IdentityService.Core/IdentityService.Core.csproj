@@ -14,6 +14,7 @@
     <ProjectReference Include="..\..\..\BuildingBlocks\Kernel\Kernel.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Messaging\Messaging.Udp\Messaging.Udp.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Security\Security\Security.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Telemetry\Telemetry\Telemetry.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Validation\Validation\Validation.csproj" />
   </ItemGroup>
 
@@ -24,6 +25,7 @@
     <Folder Include="AggregateModel\RoleAggregate\Queries\" />
     <Folder Include="AggregateModel\UserAggregate\Commands\" />
     <Folder Include="AggregateModel\UserAggregate\Queries\" />
+    <Folder Include="Messages\" />
   </ItemGroup>
 
   <PropertyGroup>

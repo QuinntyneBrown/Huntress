@@ -10,26 +10,34 @@ namespace Messaging.Udp;
 public class ServiceBusMessageSender: IServiceBusMessageSender
 {
     private readonly ILogger<ServiceBusMessageSender> _logger;
+    private readonly UdpClient _client;
+
     public ServiceBusMessageSender(
-        ILogger<ServiceBusMessageSender> logger)
+        ILogger<ServiceBusMessageSender> logger, IUdpClientFactory udpClientFactory)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _client = udpClientFactory.Create();
     }
 
     public async Task Send(object message)
     {
-        _logger.LogInformation("Send Message");
+        var messageType = message.GetType().Name;
+
+        _logger.LogInformation("Send Message: {messageType}", messageType);
 
         var serviceBusMessage = new ServiceBusMessage(new Dictionary<string, string>()
         {
-            { "MessageType", message.GetType().Name }
-          
-        },JsonConvert.SerializeObject(message));
+            { "MessageType", messageType }
+        
+        }, JsonConvert.SerializeObject(message));
 
         var json = JsonConvert.SerializeObject(serviceBusMessage);
 
         var bytesToSend = System.Text.Encoding.UTF8.GetBytes(json);
 
-        await new UdpClient().SendAsync(bytesToSend, bytesToSend.Length, UdpClientFactory.MultiCastGroupIp, UdpClientFactory.BroadcastPort);
+        _logger.LogInformation("Sending to Ip and Port: {multiCastGroupIp}:{broadcastPort}", UdpClientFactory.MultiCastGroupIp, UdpClientFactory.BroadcastPort);
+
+        await _client.SendAsync(bytesToSend, UdpClientFactory.MultiCastGroupIp, UdpClientFactory.BroadcastPort);
+
     }
 }

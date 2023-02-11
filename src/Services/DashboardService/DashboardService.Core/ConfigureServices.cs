@@ -16,6 +16,7 @@ public static class ConfigureServices
         services.AddMediatR(typeof(IDashboardServiceDbContext));
         services.AddSecurity(webHostEnvironment, configuration);
         services.AddValidation(typeof(IDashboardServiceDbContext));
+        services.AddTelemetryServices();
     }
 
 }

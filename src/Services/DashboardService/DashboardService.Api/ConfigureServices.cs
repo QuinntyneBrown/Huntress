@@ -13,6 +13,8 @@ public static class ConfigureServices {
 
         services.AddEndpointsApiExplorer();
 
+        services.AddHttpContextAccessor();
+
         services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new OpenApiInfo

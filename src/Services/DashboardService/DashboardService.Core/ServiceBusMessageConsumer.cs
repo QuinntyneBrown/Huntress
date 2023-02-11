@@ -1,54 +1,54 @@
 // Copyright (c) Quinntyne Brown. All Rights Reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using MediatR;
 using Messaging;
-using Newtonsoft.Json;
+using Messaging.Udp;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace DashboardService.Core;
 
-public class ServiceBusMessageConsumer: BackgroundService
+public class ServiceBusMessageConsumer : BackgroundService
 {
     private readonly ILogger<ServiceBusMessageConsumer> _logger;
-
+    private readonly IUdpClientFactory _udpClientFactory;
     private readonly IMediator _mediator;
 
-    private readonly IMessagingClient _messagingClient;
+    public ServiceBusMessageConsumer(
+        ILogger<ServiceBusMessageConsumer> logger,
+        IUdpClientFactory udpClientFactory,
+        IMediator mediator)
+    {
 
-    public ServiceBusMessageConsumer(ILogger<ServiceBusMessageConsumer> logger,IMediator mediator,IMessagingClient messagingClient){
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _udpClientFactory = udpClientFactory ?? throw new ArgumentNullException(nameof(udpClientFactory));
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-        _messagingClient = messagingClient ?? throw new ArgumentNullException(nameof(messagingClient));
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        await _messagingClient.StartAsync(stoppingToken);
+        var client = _udpClientFactory.Create();
 
-        while(!stoppingToken.IsCancellationRequested) {
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            var result = await client.ReceiveAsync(stoppingToken);
 
-            try
+            var json = System.Text.Encoding.UTF8.GetString(result.Buffer);
+
+            var message = JsonConvert.DeserializeObject<ServiceBusMessage>(json);
+
+            var messageType = message.MessageAttributes["MessageType"];
+
+            if (messageType == "")
             {
-                var message = await _messagingClient.ReceiveAsync(new ReceiveRequest());
-
-                var messageType = message.MessageAttributes["MessageType"];
-
                 var type = Type.GetType($"DashboardService.Core.Messages.{messageType}");
 
-                var request = JsonConvert.DeserializeObject(message.Body, type!) as IRequest;
+                var request = (IRequest)JsonConvert.DeserializeObject(message.Body, type!)!;
 
-                await _mediator.Send(request!);
-
-                await Task.Delay(100);
+                await _mediator.Send(request, stoppingToken);
             }
-            catch(Exception exception)
-            {
-                _logger.LogError(exception.Message);
 
-                continue;
-            }
+            await Task.Delay(300);
         }
     }
 

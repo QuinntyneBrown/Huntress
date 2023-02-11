@@ -12,7 +12,7 @@ public class UdpClientFactory : IUdpClientFactory
     private readonly ILogger<UdpClientFactory> _logger;
 
     public static readonly string MultiCastGroupIp = "224.0.0.1";
-    public const int BroadcastPort = 80;
+    public const int BroadcastPort = 4681;
 
     public UdpClientFactory(ILogger<UdpClientFactory> logger)
     {

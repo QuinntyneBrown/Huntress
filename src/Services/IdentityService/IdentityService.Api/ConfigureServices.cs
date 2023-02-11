@@ -8,7 +8,8 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ConfigureServices { 
     public static void AddApiServices(this IServiceCollection services) {
-        
+        services.AddHttpContextAccessor();
+
         services.AddControllers();
 
         services.AddEndpointsApiExplorer();
