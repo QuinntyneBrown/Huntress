@@ -3,7 +3,6 @@
 
 using Messaging.Internals;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System.Net.Sockets;
 
 namespace Messaging.Udp;
@@ -29,7 +28,7 @@ public class ServiceBusMessageListener: Observable<IServiceBusMessage>, IService
 
             var json = System.Text.Encoding.UTF8.GetString(result.Buffer);
 
-            var serviceBusMessage = JsonConvert.DeserializeObject<IServiceBusMessage>(json)!;
+            var serviceBusMessage = System.Text.Json.JsonSerializer.Deserialize<IServiceBusMessage>(json)!;
 
             Broadcast(serviceBusMessage);
 

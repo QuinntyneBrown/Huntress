@@ -39,7 +39,7 @@ public class ServiceBusMessageConsumer: BackgroundService
 
             var json = System.Text.Encoding.UTF8.GetString(result.Buffer);
 
-            var message = JsonConvert.DeserializeObject<ServiceBusMessage>(json)!;
+            var message = System.Text.Json.JsonSerializer.Deserialize<ServiceBusMessage>(json)!;
 
             if (message.MessageAttributes["MessageType"] == "TelemetryMessage")
             {

@@ -2,8 +2,8 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System.Net.Sockets;
+using System.Text.Json;
 
 namespace Messaging.Udp;
 
@@ -29,15 +29,15 @@ public class ServiceBusMessageSender: IServiceBusMessageSender
         {
             { "MessageType", messageType }
         
-        }, JsonConvert.SerializeObject(message));
+        }, JsonSerializer.Serialize(message));
 
-        var json = JsonConvert.SerializeObject(serviceBusMessage);
+        var json = JsonSerializer.Serialize(serviceBusMessage);
 
         var bytesToSend = System.Text.Encoding.UTF8.GetBytes(json);
 
         _logger.LogInformation("Sending to Ip and Port: {multiCastGroupIp}:{broadcastPort}", UdpClientFactory.MultiCastGroupIp, UdpClientFactory.BroadcastPort);
 
-        await _client.SendAsync(bytesToSend, UdpClientFactory.MultiCastGroupIp, UdpClientFactory.BroadcastPort);
+        await _client.SendAsync(bytesToSend, bytesToSend.Length, UdpClientFactory.MultiCastGroupIp, UdpClientFactory.BroadcastPort);
 
     }
 }

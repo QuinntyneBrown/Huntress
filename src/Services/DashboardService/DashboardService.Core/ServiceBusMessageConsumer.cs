@@ -35,7 +35,7 @@ public class ServiceBusMessageConsumer : BackgroundService
 
             var json = System.Text.Encoding.UTF8.GetString(result.Buffer);
 
-            var message = JsonConvert.DeserializeObject<ServiceBusMessage>(json);
+            var message = System.Text.Json.JsonSerializer.Deserialize<ServiceBusMessage>(json);
 
             var messageType = message.MessageAttributes["MessageType"];
 
@@ -43,7 +43,7 @@ public class ServiceBusMessageConsumer : BackgroundService
             {
                 var type = Type.GetType($"DashboardService.Core.Messages.{messageType}");
 
-                var request = (IRequest)JsonConvert.DeserializeObject(message.Body, type!)!;
+                var request = (IRequest)System.Text.Json.JsonSerializer.Deserialize(message.Body, type!)!;
 
                 await _mediator.Send(request, stoppingToken);
             }

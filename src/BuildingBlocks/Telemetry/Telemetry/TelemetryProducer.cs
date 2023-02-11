@@ -28,7 +28,7 @@ public class TelemetryProducer: BackgroundService
 
             await _serviceBusMessageSender.Send(new TelemetryMessage());
 
-            await Task.Delay(1000, stoppingToken);
+            await Task.Delay(300, stoppingToken);
         }
 
     }

@@ -3,7 +3,6 @@
 
 using Messaging;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
 
 namespace CustomerService.Api;
 
@@ -33,7 +32,7 @@ public class ServiceBusMessageConsumer: BackgroundService
 
                 var type = Type.GetType($"CustomerService.Core.Messages.{messageType}");
 
-                var request = JsonConvert.DeserializeObject(message.Body, type!) as IRequest;
+                var request = System.Text.Json.JsonSerializer.Deserialize(message.Body, type!) as IRequest;
 
                 await _mediator.Send(request!);
 

@@ -4,7 +4,8 @@
 using Messaging;
 using Messaging.Udp;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
+using System.Text;
+using static System.Text.Json.JsonSerializer;
 
 namespace IdentityService.Core;
 
@@ -13,10 +14,7 @@ public class ServiceBusMessageConsumer : BackgroundService
     private readonly ILogger<ServiceBusMessageConsumer> _logger;
     private readonly IUdpClientFactory _udpClientFactory;
     private readonly IMediator _mediator;
-    private readonly string[] _supportedMessageTypes = new string[] { 
-    
-    
-    };
+    private readonly string[] _supportedMessageTypes = new string[] { };
 
     public ServiceBusMessageConsumer(
         ILogger<ServiceBusMessageConsumer> logger,
@@ -37,9 +35,9 @@ public class ServiceBusMessageConsumer : BackgroundService
         {
             var result = await client.ReceiveAsync(stoppingToken);
 
-            var json = System.Text.Encoding.UTF8.GetString(result.Buffer);
+            var json = Encoding.UTF8.GetString(result.Buffer);
 
-            var message = JsonConvert.DeserializeObject<ServiceBusMessage>(json)!;
+            var message = Deserialize<ServiceBusMessage>(json)!;
 
             var messageType = message.MessageAttributes["MessageType"];
 
@@ -47,7 +45,7 @@ public class ServiceBusMessageConsumer : BackgroundService
             {
                 var type = Type.GetType($"IdentityService.Core.Messages.{messageType}");
 
-                var request = (IRequest)JsonConvert.DeserializeObject(message.Body, type!)!;
+                var request = (IRequest)Deserialize(message.Body, type!)!;
 
                 await _mediator.Send(request, stoppingToken);
             }
