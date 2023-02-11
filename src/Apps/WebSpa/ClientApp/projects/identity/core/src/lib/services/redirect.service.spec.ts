@@ -3,24 +3,17 @@
 
 import { TestBed } from '@angular/core/testing';
 
-import { CoreService } from './core.service';
+import { RedirectService } from './redirect.service';
 
-describe('CoreService', () => {
-  let service: CoreService;
+describe('RedirectService', () => {
+  let service: RedirectService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CoreService);
+    service = TestBed.inject(RedirectService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 });
-
-    // ARRANGE
-    // ARRANGE
-    // ARRANGE
-
-
-

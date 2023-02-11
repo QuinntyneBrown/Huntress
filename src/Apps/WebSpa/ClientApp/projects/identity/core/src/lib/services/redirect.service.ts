@@ -6,8 +6,10 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class CoreService {
+export class RedirectService {
 
-  constructor() { }
+  public redirectToLogin(): void {
+
+  }
 }
 

@@ -1,0 +1,11 @@
+:host {
+  display: grid;
+  place-items: start center;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 60px;
+
+  form {
+    margin-bottom: 30px;
+  }
+}

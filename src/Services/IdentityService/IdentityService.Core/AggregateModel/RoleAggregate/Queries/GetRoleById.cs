@@ -31,10 +31,5 @@ public class GetRoleByIdRequestHandler: IRequestHandler<GetRoleByIdRequest,GetRo
         return new () {
             Role = (await _context.Roles.AsNoTracking().SingleOrDefaultAsync(x => x.RoleId == request.RoleId)).ToDto()
         };
-
     }
-
 }
-
-
-

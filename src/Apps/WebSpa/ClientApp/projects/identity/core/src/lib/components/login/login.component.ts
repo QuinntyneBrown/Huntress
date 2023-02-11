@@ -3,15 +3,42 @@
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services';
+import { takeUntil } from 'rxjs';
+import { Destroyable } from '../../abstractions/destroyable';
+import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'id-login',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    MatInputModule
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent extends Destroyable {
+  constructor(
+    private readonly _authService: AuthService,
+  ) {
+    super();
+  }
 
+  public tryToLogin(credentials: any) {
+    this._authService.tryToLogin({
+      username: credentials.username,
+      password: credentials.password
+    })
+      .pipe(
+        takeUntil(this._destroyed$),
+      ).subscribe();
+  }
 }
 
