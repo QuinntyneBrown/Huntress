@@ -3,14 +3,14 @@
 
 import { TestBed } from '@angular/core/testing';
 
-import { CoreService } from './core.service';
+import { TelemetryHubClientService } from './telemetry-hub-client.service';
 
-describe('CoreService', () => {
-  let service: CoreService;
+describe('TelemetryHubClientService', () => {
+  let service: TelemetryHubClientService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CoreService);
+    service = TestBed.inject(TelemetryHubClientService);
   });
 
   it('should be created', () => {

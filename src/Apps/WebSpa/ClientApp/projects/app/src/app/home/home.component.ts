@@ -5,13 +5,13 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-landing',
+  selector: 'app-home',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class LandingComponent {
+export class HomeComponent {
 
 }
 
