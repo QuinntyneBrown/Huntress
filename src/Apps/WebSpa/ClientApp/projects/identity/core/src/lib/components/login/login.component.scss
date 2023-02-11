@@ -7,5 +7,9 @@
 
   form {
     margin-bottom: 30px;
+
+    mat-form-field {
+        display:block;
+    }
   }
 }

@@ -14,10 +14,15 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthGuard, BASE_URL, DEFAULT_PATH, LOGIN_PATH } from '@identity/core';
+
 
 
 bootstrapApplication(AppComponent, {
   providers: [
+    { provide: BASE_URL, useValue: '' },
+    { provide: DEFAULT_PATH, useValue: '/' },
+    { provide: LOGIN_PATH, useValue: '/login' },
     importProvidersFrom(
       HttpClientModule,
       TranslateModule.forRoot({
@@ -28,7 +33,8 @@ bootstrapApplication(AppComponent, {
         }
       }),
       RouterModule.forRoot([
-
+        { path: '', loadComponent: () => import('./app/landing/landing.component').then(m => m.LandingComponent), canActivate: [AuthGuard] },
+        { path: 'login', loadComponent: () => import('./app/login/login.component').then(m => m.LoginComponent) }
       ]), BrowserAnimationsModule,     
     )
   ]

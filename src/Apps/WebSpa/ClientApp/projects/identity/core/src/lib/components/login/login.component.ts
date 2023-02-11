@@ -7,7 +7,7 @@ import { AuthService } from '../../services';
 import { takeUntil } from 'rxjs';
 import { Destroyable } from '../../abstractions/destroyable';
 import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatInputModule } from '@angular/material/input';
 
@@ -30,6 +30,10 @@ export class LoginComponent extends Destroyable {
   ) {
     super();
   }
+
+  public form = new FormGroup({
+
+  });
 
   public tryToLogin(credentials: any) {
     this._authService.tryToLogin({
