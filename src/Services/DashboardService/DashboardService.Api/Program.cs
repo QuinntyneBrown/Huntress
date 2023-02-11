@@ -63,7 +63,7 @@ try
 
         if (args.Contains("seeddb"))
         {
-
+            context.Seed();
         }
 
         if (args.Contains("stop"))

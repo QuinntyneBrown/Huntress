@@ -5,8 +5,10 @@ namespace DashboardService.Core.AggregateModel.DashboardAggregate;
 
 public class Dashboard
 {
-    public Dashboard()
+    public Dashboard(string name, Guid? userId = null)
     {
+        Name = name;
+        UserId = userId;
         DashboardCards = new List<DashboardCard>();
     }
 
@@ -15,5 +17,3 @@ public class Dashboard
     public Guid? UserId { get; set; }
     public List<DashboardCard> DashboardCards { get; set; }
 }
-
-

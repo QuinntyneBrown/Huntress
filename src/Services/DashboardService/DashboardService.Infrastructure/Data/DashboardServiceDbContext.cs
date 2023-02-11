@@ -17,6 +17,8 @@ public class DashboardServiceDbContext: DbContext, IDashboardServiceDbContext
     {
         modelBuilder.HasDefaultSchema("Dashboard");
 
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(DashboardServiceDbContext).Assembly);
+
         base.OnModelCreating(modelBuilder);
     }
 

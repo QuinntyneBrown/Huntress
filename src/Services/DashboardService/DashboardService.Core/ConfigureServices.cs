@@ -11,10 +11,11 @@ public static class ConfigureServices
 {
     public static void AddCoreServices(this IServiceCollection services, IWebHostEnvironment webHostEnvironment, IConfiguration configuration)
     {
-        services.AddValidation(typeof(IDashboardServiceDbContext));
-        services.AddSecurity(webHostEnvironment, configuration);
-        services.AddMessagingUdpServices();
         services.AddHostedService<ServiceBusMessageConsumer>();
+        services.AddMessagingUdpServices();
+        services.AddMediatR(typeof(IDashboardServiceDbContext));
+        services.AddSecurity(webHostEnvironment, configuration);
+        services.AddValidation(typeof(IDashboardServiceDbContext));
     }
 
 }

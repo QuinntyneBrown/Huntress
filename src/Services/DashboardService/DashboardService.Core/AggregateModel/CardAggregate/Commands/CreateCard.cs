@@ -39,13 +39,9 @@ public class CreateCardRequestHandler: IRequestHandler<CreateCardRequest,CreateC
 
     public async Task<CreateCardResponse> Handle(CreateCardRequest request,CancellationToken cancellationToken)
     {
-        var card = new Card();
+        var card = new Card(request.Name, request.Description);
 
         _context.Cards.Add(card);
-
-        card.Name = request.Name;
-
-        card.Description = request.Description;
 
         await _context.SaveChangesAsync(cancellationToken);
 

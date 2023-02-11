@@ -13,9 +13,6 @@ public static class DashboardCardExtensions
             DashboardId = dashboardCard.DashboardId,
             CardId = dashboardCard.CardId,
             CardLayoutId = dashboardCard.CardLayoutId,
-            Dashboard = dashboardCard.Dashboard,
-            Card = dashboardCard.Card,
-            CardLayout = dashboardCard.CardLayout,
             Options = dashboardCard.Options,
         };
 

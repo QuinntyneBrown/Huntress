@@ -26,7 +26,7 @@ public class UserCreatedMessageHandler: IRequestHandler<UserCreatedMessage>
             Username = message.Username,
             Dashboards = new List<Dashboard>
             {
-                new Dashboard()
+                new Dashboard("Default")
                 {
 
                 }

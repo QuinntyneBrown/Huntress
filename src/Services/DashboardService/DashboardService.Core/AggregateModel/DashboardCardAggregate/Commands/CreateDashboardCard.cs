@@ -47,11 +47,11 @@ public class CreateDashboardCardRequestHandler: IRequestHandler<CreateDashboardC
         _context.DashboardCards.Add(dashboardCard);
 
         dashboardCard.DashboardId = request.DashboardId;
+        
         dashboardCard.CardId = request.CardId;
+        
         dashboardCard.CardLayoutId = request.CardLayoutId;
-        dashboardCard.Dashboard = request.Dashboard;
-        dashboardCard.Card = request.Card;
-        dashboardCard.CardLayout = request.CardLayout;
+        
         dashboardCard.Options = request.Options;
 
         await _context.SaveChangesAsync(cancellationToken);

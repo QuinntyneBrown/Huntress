@@ -33,13 +33,9 @@ public class CreateDashboardRequestHandler: IRequestHandler<CreateDashboardReque
 
     public async Task<CreateDashboardResponse> Handle(CreateDashboardRequest request,CancellationToken cancellationToken)
     {
-        var dashboard = new Dashboard();
+        var dashboard = new Dashboard(request.Name, request.UserId);
 
         _context.Dashboards.Add(dashboard);
-
-        dashboard.Name = request.Name;
-        dashboard.UserId = request.UserId;
-        dashboard.DashboardCards = request.DashboardCards;
 
         await _context.SaveChangesAsync(cancellationToken);
 

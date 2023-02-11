@@ -32,12 +32,9 @@ public class CreateCardLayoutRequestHandler: IRequestHandler<CreateCardLayoutReq
 
     public async Task<CreateCardLayoutResponse> Handle(CreateCardLayoutRequest request,CancellationToken cancellationToken)
     {
-        var cardLayout = new CardLayout();
+        var cardLayout = new CardLayout(request.Name, request.Description);
 
         _context.CardLayouts.Add(cardLayout);
-
-        cardLayout.Name = request.Name;
-        cardLayout.Description = request.Description;
 
         await _context.SaveChangesAsync(cancellationToken);
 
@@ -45,10 +42,5 @@ public class CreateCardLayoutRequestHandler: IRequestHandler<CreateCardLayoutReq
         {
             CardLayout = cardLayout.ToDto()
         };
-
     }
-
 }
-
-
-
