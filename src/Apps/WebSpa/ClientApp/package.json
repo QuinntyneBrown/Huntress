@@ -1,9 +1,11 @@
 {
-  "name": "client-app",
-  "version": "0.0.0",
+  "name": "huntress-apps",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --watch",
+    "start": "ng serve admin-app --watch",
+    "start:app": "ng serve app --watch",
+    "start:admin": "ng serve admin-app --watch",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "watch:dashboard": "ng build @dashboard/core --watch",
@@ -25,8 +27,6 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
     "@microsoft/signalr": "^7.0.2",
-    "@ngx-translate/core": "^14.0.0",
-    "@ngx-translate/http-loader": "^7.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
@@ -36,6 +36,8 @@
     "@angular-devkit/build-angular": "^15.0.5",
     "@angular/cli": "~15.0.0",
     "@angular/compiler-cli": "^15.0.0",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "@types/jest": "^29.4.0",
     "concurrently": "^7.6.0",
     "jasmine-core": "~4.5.0",

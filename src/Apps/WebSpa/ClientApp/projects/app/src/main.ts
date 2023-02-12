@@ -35,7 +35,7 @@ bootstrapApplication(AppComponent, {
         }
       }),
       RouterModule.forRoot([
-        { path: '', loadComponent: () => import('./app/home/home.component').then(m => m.HomeComponent), canActivate: [TelemetryHubConnectionGuard] },
+        { path: '', loadComponent: () => import('./app/home/home.component').then(m => m.HomeComponent), canActivate: [] },
         { path: 'login', loadComponent: () => import('./app/login/login.component').then(m => m.LoginComponent) }
       ]), BrowserAnimationsModule,     
     )

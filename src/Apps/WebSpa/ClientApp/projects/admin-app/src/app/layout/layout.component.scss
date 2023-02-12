@@ -1,0 +1,11 @@
+:host {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    place-items: start start;
+    box-sizing: border-box;
+  
+    main {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }

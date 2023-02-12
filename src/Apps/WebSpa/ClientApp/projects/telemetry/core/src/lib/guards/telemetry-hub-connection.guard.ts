@@ -1,6 +1,9 @@
 // Copyright (c) Quinntyne Brown. All Rights Reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { TelemetryHubClientService } from '../services';
@@ -20,3 +23,4 @@ export class TelemetryHubConnectionGuard implements CanActivate {
       return this._telemetryStoreService.connect();
   }  
 }
+

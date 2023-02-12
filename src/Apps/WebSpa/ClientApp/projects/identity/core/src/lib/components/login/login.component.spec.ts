@@ -1,6 +1,8 @@
 // Copyright (c) Quinntyne Brown. All Rights Reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+    // Test ID
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
@@ -24,5 +26,9 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+    // ARRANGE
+    // ACT
+    // ASSERT
 
 
