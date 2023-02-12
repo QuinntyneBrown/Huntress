@@ -10,7 +10,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\..\BuildingBlocks\Messaging\Messaging.Udp\Messaging.Udp.csproj" />
     <ProjectReference Include="..\DashboardService.Core\DashboardService.Core.csproj" />
   </ItemGroup>
 
