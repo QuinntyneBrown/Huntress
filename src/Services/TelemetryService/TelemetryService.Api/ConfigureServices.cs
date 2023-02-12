@@ -9,6 +9,14 @@ public static class ConfigureServices
 {
     public static void AddApiServices(this IServiceCollection services)
     {
+        services.AddCors(options => options.AddPolicy("CorsPolicy",
+            builder => builder
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .SetIsOriginAllowed(isOriginAllowed: _ => true)
+            .AllowCredentials()));
+
         services.AddSignalR();
         services.AddMessagingUdpServices();
         services.AddHostedService<ServiceBusMessageConsumer>();

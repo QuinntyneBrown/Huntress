@@ -4,4 +4,5 @@ namespace TelemetryService.Api;
 
 public class TelemetryHub: Hub<ITelemetryHub>
 {
+
 }

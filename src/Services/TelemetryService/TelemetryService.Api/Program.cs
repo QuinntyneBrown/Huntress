@@ -1,23 +1,15 @@
 using TelemetryService.Api;
 
+var builder = WebApplication.CreateBuilder(args);
 
-try
-{
+builder.Services.AddApiServices();
 
+var app = builder.Build();
 
-    var builder = WebApplication.CreateBuilder(args);
+app.MapGet("/", () => "Telemetry Api");
 
-    builder.Services.AddApiServices();
+app.UseCors("CorsPolicy");
 
-    var app = builder.Build();
+app.MapHub<TelemetryHub>("/hub");
 
-    app.MapGet("/", () => "Hello World!");
-
-    app.MapHub<TelemetryHub>("/hub");
-
-    app.Run();
-}
-catch(Exception e)
-{
-    throw e;
-}
+app.Run();

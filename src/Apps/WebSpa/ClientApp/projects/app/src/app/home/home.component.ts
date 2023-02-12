@@ -3,11 +3,12 @@
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TelemetryComponent } from '@telemetry/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TelemetryComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

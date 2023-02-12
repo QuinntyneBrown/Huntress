@@ -4,4 +4,4 @@
 const DOMAIN_NAME = 'IDENTITY';
 export const BASE_URL = `${DOMAIN_NAME}:BASE_URL`;
 export const LOGIN_PATH = `${DOMAIN_NAME}:LOGIN_PATH`;
-export const DEFAULT_PATH = `${DOMAIN_NAME}:DEFAULT_PATH`;
+export const HOME_PATH = `${DOMAIN_NAME}:HOME_PATH`;

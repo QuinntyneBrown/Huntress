@@ -3,17 +3,20 @@
 
 import { TestBed } from '@angular/core/testing';
 
-import { TelemetryHubConnectionGuard } from './telemetry-hub-connection.guard';
+import { TelemetryStoreService } from './telemetry-store.service';
 
-describe('TelemetryHubConnectionGuard', () => {
-  let guard: TelemetryHubConnectionGuard;
+describe('TelemetryStoreService', () => {
+  let service: TelemetryStoreService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(TelemetryHubConnectionGuard);
+    service = TestBed.inject(TelemetryStoreService);
   });
 
   it('should be created', () => {
-    expect(guard).toBeTruthy();
+    expect(service).toBeTruthy();
   });
 });
+
+    // ARRANGE
+

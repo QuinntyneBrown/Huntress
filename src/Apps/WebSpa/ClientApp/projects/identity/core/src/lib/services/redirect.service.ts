@@ -3,7 +3,7 @@
 
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { DEFAULT_PATH, LOGIN_PATH } from '../constants';
+import { HOME_PATH, LOGIN_PATH } from '../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class RedirectService {
 
   constructor(
     @Inject(LOGIN_PATH) private readonly _loginPath: string,
-    @Inject(DEFAULT_PATH) private readonly _defaultPath: string,
+    @Inject(HOME_PATH) private readonly _homePath: string,
     private readonly _router: Router
   ) { }
 
@@ -27,7 +27,7 @@ export class RedirectService {
       this._router.navigateByUrl(this.lastPath);
       this.lastPath = '';
     } else {
-      this._router.navigateByUrl(this._defaultPath);
+      this._router.navigateByUrl(this._homePath);
     }
   }
 }

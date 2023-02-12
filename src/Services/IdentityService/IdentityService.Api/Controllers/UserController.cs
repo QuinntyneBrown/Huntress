@@ -4,7 +4,6 @@
 using IdentityService.Core.AggregateModel.UserAggregate.Commands;
 using IdentityService.Core.AggregateModel.UserAggregate.Queries;
 using System.Net;
-using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
@@ -36,6 +35,19 @@ public class UserController
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(UpdateUserResponse), (int)HttpStatusCode.OK)]
     public async Task<ActionResult<UpdateUserResponse>> Update([FromBody]UpdateUserRequest  request,CancellationToken cancellationToken)
+    {
+        return await _mediator.Send(request, cancellationToken);
+    }
+
+    [SwaggerOperation(
+        Summary = "Authenticate",
+        Description = @"Authenticate"
+    )]
+    [HttpPost(Name = "authenticate")]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType(typeof(AuthenticateResponse), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult<AuthenticateResponse>> Create([FromBody] AuthenticateRequest request, CancellationToken cancellationToken)
     {
         return await _mediator.Send(request, cancellationToken);
     }

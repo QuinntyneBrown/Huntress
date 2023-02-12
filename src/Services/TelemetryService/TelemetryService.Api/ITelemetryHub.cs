@@ -2,5 +2,5 @@
 
 public interface ITelemetryHub
 {
-    Task Send(string message);
+    Task Telemetry(string message);
 }

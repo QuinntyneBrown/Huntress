@@ -43,7 +43,7 @@ public class ServiceBusMessageConsumer: BackgroundService
 
             if (message.MessageAttributes["MessageType"] == "TelemetryMessage")
             {
-                await _hubContext.Clients.All.Send(json);
+                await _hubContext.Clients.All.Telemetry(json);
             }
         }
     }

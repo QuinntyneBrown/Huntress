@@ -13,17 +13,15 @@ export class TelemetryHubClientService {
 
   private _hubConnection: HubConnection | undefined;
 
-  private _connect: Promise<any> | undefined;
+  private _connect: Promise<boolean> | undefined;
   
   public telemetry$ = new Subject<string>();
 
   constructor(
     @Inject(BASE_URL) private readonly _baseUrl:string
-  ) { 
+  ) { }
 
-  }
-
-  public connect(): Promise<any> {
+  public connect(): Promise<boolean> {
     
     if(this._connect) return this._connect;
 
@@ -37,11 +35,13 @@ export class TelemetryHubClientService {
       .withUrl(`${this._baseUrl}hub`, options)
       .build(); 
   
-      this._hubConnection.on("send", message => {
+      this._hubConnection.on("telemetry", message => {
         this.telemetry$.next(message);
       });
   
       this._hubConnection.start();
+
+      resolve(true);
 
     });
 
