@@ -43,11 +43,11 @@ public class UserController
         Summary = "Authenticate",
         Description = @"Authenticate"
     )]
-    [HttpPost(Name = "authenticate")]
+    [HttpPost("authenticate", Name = "authenticate")]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(AuthenticateResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<AuthenticateResponse>> Create([FromBody] AuthenticateRequest request, CancellationToken cancellationToken)
+    public async Task<ActionResult<AuthenticateResponse>> Authenticate([FromBody] AuthenticateRequest request, CancellationToken cancellationToken)
     {
         return await _mediator.Send(request, cancellationToken);
     }

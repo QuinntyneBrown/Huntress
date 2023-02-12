@@ -17,7 +17,7 @@ public class AuthenticateRequest: IRequest<AuthenticateResponse>
 
 public class AuthenticateResponse: ResponseBase
 {
-    public string Token { get; set; }
+    public string AccessToken { get; set; }
 }
 
 
@@ -31,11 +31,13 @@ public class AuthenticateRequestHandler: IRequestHandler<AuthenticateRequest,Aut
     public AuthenticateRequestHandler(
         ILogger<AuthenticateRequestHandler> logger,
         IIdentityServiceDbContext context,
-        IPasswordHasher passwordHasher)
+        IPasswordHasher passwordHasher,
+        ITokenProvider tokenProvider)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
         _passwordHasher = passwordHasher ?? throw new ArgumentNullException(nameof(passwordHasher));
+        _tokenProvider = tokenProvider ?? throw new ArgumentNullException(nameof(tokenProvider));
     }
 
     public async Task<AuthenticateResponse> Handle(AuthenticateRequest request,CancellationToken cancellationToken){
@@ -55,7 +57,7 @@ public class AuthenticateRequestHandler: IRequestHandler<AuthenticateRequest,Aut
 
             return new AuthenticateResponse
             {
-                Token = token
+                AccessToken = token
             };
         }
 

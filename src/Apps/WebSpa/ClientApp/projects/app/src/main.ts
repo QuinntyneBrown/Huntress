@@ -20,7 +20,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    { provide: IDENTITY_BASE_URL, useValue: 'https://localhost:7006/' },
+    { provide: IDENTITY_BASE_URL, useValue: 'http://localhost:5041/' },
     { provide: DASHBOARD_BASE_URL, useValue: 'https://localhost:7007/' },
     { provide: TELEMETRY_BASE_URL, useValue: 'https://localhost:7225/' },
     { provide: HOME_PATH, useValue: '/' },

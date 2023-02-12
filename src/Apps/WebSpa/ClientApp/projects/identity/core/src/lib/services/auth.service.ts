@@ -30,7 +30,8 @@ export class AuthService {
     return this._httpClient.post<any>(`${this._baseUrl}api/user/authenticate`, options)
     .pipe(
       tap(response => {
-        localStorage.setItem("accessToken", response.accessToken)
+        localStorage.setItem("accessToken", response.accessToken);
+        console.log(response.accessToken);
       }),
       tap(x => this._currentUserSubject.next({ username: options.username }))
     );
