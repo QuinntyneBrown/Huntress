@@ -2,7 +2,8 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 export type Content = {
-    name?:string;
-    slug?:string;
-    json?:any
+  contentId?: string;
+  name?:string;
+  slug?:string;
+  json?:any
 }
