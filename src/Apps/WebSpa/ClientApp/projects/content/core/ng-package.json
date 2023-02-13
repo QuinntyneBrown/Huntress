@@ -3,5 +3,6 @@
   "dest": "../../../dist/content/core",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": [ "./styles/*.*", "./assets/**/*.*" ]
 }
