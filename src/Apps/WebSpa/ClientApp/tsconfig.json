@@ -3,6 +3,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
+      "@content/core": [
+        "dist/content/core"
+      ],
       "@dashboard/core": [
         "dist/dashboard/core"
       ],

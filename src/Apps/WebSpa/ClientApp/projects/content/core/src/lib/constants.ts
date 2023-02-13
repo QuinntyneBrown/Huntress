@@ -1,0 +1,1 @@
+export const BASE_URL = "CONTENT_BASE_URL";

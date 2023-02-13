@@ -17,10 +17,6 @@ export class UserService {
     private readonly _client: HttpClient
   ) { }
 
-  public getCurrent(): Observable<User> {
-    return this._client.get<User>("");
-  }
-
   public get(): Observable<Array<User>> {
     return this._client.get<{ users: Array<User> }>(`${this._baseUrl}api/user`)
       .pipe(
@@ -43,7 +39,7 @@ export class UserService {
     return this._client.post<{ userId: string }>(`${this._baseUrl}api/user`, { user: options.user });
   }
 
-  public update(options: { user: User }): Observable<{ user: User }> {    
-    return this._client.post<{ user: User }>(`${this._baseUrl}api/user`, { user: options.user });
+  public update(options: { user: User }): Observable<{ userId: string }> {    
+    return this._client.post<{ userId: string }>(`${this._baseUrl}api/user`, { user: options.user });
   }
 }

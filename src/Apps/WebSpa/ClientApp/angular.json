@@ -262,6 +262,38 @@
           "builder": "@angular-builders/jest:run"
         }
       }
+    },
+    "@content/core": {
+      "projectType": "library",
+      "root": "projects/content/core",
+      "sourceRoot": "projects/content/core/src",
+      "prefix": "cms",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/content/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/content/core/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/content/core/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run"
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": true,
+          "style": "scss"
+        }
+      }
     }
   }
 }

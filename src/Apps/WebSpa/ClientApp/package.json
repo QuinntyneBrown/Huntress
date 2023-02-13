@@ -11,7 +11,8 @@
     "watch:dashboard": "ng build @dashboard/core --watch",
     "watch:identity": "ng build @identity/core --watch",
     "watch:telemetry": "ng build @telemetry/core --watch",
-    "watch:libs": "npm-run-all --parallel watch:dashboard watch:identity watch:telemetry",
+    "watch:content": "ng build @content/core --watch",
+    "watch:libs": "npm-run-all --parallel watch:dashboard watch:identity watch:telemetry watch:content",
     "test": "ng test"
   },
   "private": true,
