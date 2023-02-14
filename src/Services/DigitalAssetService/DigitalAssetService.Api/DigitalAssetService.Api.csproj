@@ -5,6 +5,10 @@
     <ProjectReference Include="..\DigitalAssetService.Infrastructure\DigitalAssetService.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>

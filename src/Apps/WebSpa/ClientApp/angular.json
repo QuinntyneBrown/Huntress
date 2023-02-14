@@ -294,6 +294,38 @@
           "style": "scss"
         }
       }
+    },
+    "global-styles": {
+      "projectType": "library",
+      "root": "projects/global-styles",
+      "sourceRoot": "projects/global-styles/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/global-styles/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/global-styles/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/global-styles/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run"
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": true,
+          "style": "scss"
+        }
+      }
     }
   }
 }

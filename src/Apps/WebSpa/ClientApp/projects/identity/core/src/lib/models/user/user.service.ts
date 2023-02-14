@@ -1,6 +1,9 @@
 // Copyright (c) Quinntyne Brown. All Rights Reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BASE_URL } from '../../constants';
@@ -47,3 +50,4 @@ export class UserService {
     return this._client.post<{ user: User }>(`${this._baseUrl}api/user`, { user: options.user });
   }
 }
+

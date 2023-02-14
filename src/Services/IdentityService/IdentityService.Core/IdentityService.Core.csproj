@@ -26,6 +26,7 @@
     <Folder Include="AggregateModel\UserAggregate\Commands\" />
     <Folder Include="AggregateModel\UserAggregate\Queries\" />
     <Folder Include="Messages\" />
+    <Folder Include="MessageHandlers\" />
   </ItemGroup>
 
   <PropertyGroup>

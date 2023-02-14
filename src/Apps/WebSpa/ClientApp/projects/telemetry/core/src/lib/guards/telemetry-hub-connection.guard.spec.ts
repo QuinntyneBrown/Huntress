@@ -23,5 +23,7 @@ describe('TelemetryHubConnectionGuard', () => {
 
     // ARRANGE
     // ARRANGE
+    // ARRANGE
+
 
 
