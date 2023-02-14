@@ -28,10 +28,10 @@ public class UserController
     }
 
     [SwaggerOperation(
-        Summary = "Update UserId",
-        Description = @"Update UserId"
+        Summary = "Update user",
+        Description = @"Update user"
     )]
-    [HttpPut(Name = "updateUserId")]
+    [HttpPut(Name = "updateUser")]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(UpdateUserResponse), (int)HttpStatusCode.OK)]
