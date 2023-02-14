@@ -4,7 +4,6 @@
 using DashboardService.Core.AggregateModel.DashboardAggregate.Commands;
 using DashboardService.Core.AggregateModel.DashboardAggregate.Queries;
 using System.Net;
-using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
@@ -54,6 +53,21 @@ public class DashboardController
     }
 
     [SwaggerOperation(
+        Summary = "Get Dashboards for current user.",
+        Description = @"Get Dashboards for current user."
+    )]
+    [HttpGet(Name = "getDashboardsByCurrentUser")]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType(typeof(GetDashboardsByCurrentUserResponse), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult<GetDashboardsByCurrentUserResponse>> GetByCurrentUser(CancellationToken cancellationToken)
+    {
+        _logger.LogInformation("Get dashboards by current user");
+
+        return await _mediator.Send(new GetDashboardsByCurrentUserRequest(), cancellationToken);
+    }
+
+    [SwaggerOperation(
         Summary = "Get Dashboards",
         Description = @"Get Dashboards"
     )]
@@ -70,7 +84,7 @@ public class DashboardController
         Summary = "Get DashboardId  by id",
         Description = @"Get DashboardId by id"
     )]
-    [HttpGet("{toDoId:guid}", Name = "getDashboardIdById")]
+    [HttpGet("{dashboardId:guid}", Name = "getDashboardIdById")]
     [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
@@ -93,7 +107,7 @@ public class DashboardController
         Summary = "Delete Dashboard",
         Description = @"Delete Dashboard"
     )]
-    [HttpDelete("{toDoId:guid}", Name = "deleteDashboard")]
+    [HttpDelete("{dashboardId:guid}", Name = "deleteDashboard")]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(DeleteDashboardResponse), (int)HttpStatusCode.OK)]

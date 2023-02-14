@@ -33,21 +33,14 @@ public class GetDashboardsByCurrentUserRequestHandler: IRequestHandler<GetDashbo
 
         _logger.LogInformation("Get Dashboards for current user");
 
-        var name = _httpContextAccessor!.HttpContext!.User.Identity!.Name;
-        
-        var user = _context.Users.Single(x => x.Username == name);
-
-        var dashboards = await _context.Dashboards.Where(x => x.UserId == user.UserId)
-            .Include(x => x.DashboardCards)
-            .Select(x => x.ToDto())
-            .ToListAsync();
-
-        return new GetDashboardsByCurrentUserResponse()
+        return new ()
         {
-            Dashboards = dashboards
+            Dashboards = await _context.Users
+            .Include(x => x.Dashboards)
+            .ThenInclude(x => x.DashboardCards)
+            .Where(x => x.Username == _httpContextAccessor!.HttpContext!.User.Identity!.Name)
+            .SelectMany(x => x.Dashboards.Select(x => x.ToDto()))
+            .ToListAsync()
         };
     }
 }
-
-
-
