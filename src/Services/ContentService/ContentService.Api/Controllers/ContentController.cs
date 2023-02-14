@@ -28,10 +28,10 @@ public class ContentController
     }
 
     [SwaggerOperation(
-        Summary = "Update ContentId",
-        Description = @"Update ContentId"
+        Summary = "Update Content",
+        Description = @"Update Content"
     )]
-    [HttpPut(Name = "updateContentId")]
+    [HttpPut(Name = "updateContent")]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(UpdateContentResponse), (int)HttpStatusCode.OK)]
@@ -65,6 +65,30 @@ public class ContentController
     {
         return await _mediator.Send(new GetContentsRequest(), cancellationToken);
     }
+
+    [SwaggerOperation(
+        Summary = "Get content by name",
+        Description = @"Get content by name"
+    )]
+    [HttpGet("name/{name:string}", Name = "getContentByName")]
+    [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType(typeof(GetContentByNameResponse), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult<GetContentByNameResponse>> GetById([FromRoute] string name, CancellationToken cancellationToken)
+    {
+        var request = new GetContentByNameRequest() { Name = name };
+
+        var response = await _mediator.Send(request, cancellationToken);
+
+        if (response.Content == null)
+        {
+            return new NotFoundObjectResult(request.Name);
+        }
+
+        return response;
+    }
+
 
     [SwaggerOperation(
         Summary = "Get ContentId  by id",
