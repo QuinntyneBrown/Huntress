@@ -21,7 +21,7 @@ public class UserCreatedMessageHandler: IRequestHandler<UserCreatedMessage>
     {
         _logger.LogInformation("Message Handled: {message}", message);
 
-        _context.Users.Add(new User()
+        _context.Users.Add(new ()
         {
             Username = message.Username,
             Dashboards = new List<Dashboard>

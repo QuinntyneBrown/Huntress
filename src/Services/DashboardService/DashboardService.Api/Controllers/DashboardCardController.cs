@@ -70,7 +70,7 @@ public class DashboardCardController
         Summary = "Get DashboardCardId  by id",
         Description = @"Get DashboardCardId by id"
     )]
-    [HttpGet("{toDoId:guid}", Name = "getDashboardCardIdById")]
+    [HttpGet("{dashboardCardId:guid}", Name = "getDashboardCardIdById")]
     [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
@@ -93,7 +93,7 @@ public class DashboardCardController
         Summary = "Delete DashboardCard",
         Description = @"Delete DashboardCard"
     )]
-    [HttpDelete("{toDoId:guid}", Name = "deleteDashboardCard")]
+    [HttpDelete("{dashboardCardId:guid}", Name = "deleteDashboardCard")]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(DeleteDashboardCardResponse), (int)HttpStatusCode.OK)]

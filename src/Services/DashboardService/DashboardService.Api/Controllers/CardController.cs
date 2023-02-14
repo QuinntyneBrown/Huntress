@@ -3,12 +3,11 @@
 
 using DashboardService.Core.AggregateModel.CardAggregate.Commands;
 using DashboardService.Core.AggregateModel.CardAggregate.Queries;
-using System.Net;
-using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Mime;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Net;
+using System.Net.Mime;
 
 namespace DashboardService.Api.Controllers;
 
@@ -28,14 +27,14 @@ public class CardController
     }
 
     [SwaggerOperation(
-        Summary = "Update CardId",
-        Description = @"Update CardId"
+        Summary = "Update Card",
+        Description = @"Update Card"
     )]
-    [HttpPut(Name = "updateCardId")]
+    [HttpPut(Name = "updateCard")]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(UpdateCardResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<UpdateCardResponse>> Update([FromBody]UpdateCardRequest  request,CancellationToken cancellationToken)
+    public async Task<ActionResult<UpdateCardResponse>> Update([FromBody]UpdateCardRequest request, CancellationToken cancellationToken)
     {
         return await _mediator.Send(request, cancellationToken);
     }

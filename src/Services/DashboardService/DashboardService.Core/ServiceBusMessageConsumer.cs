@@ -4,7 +4,6 @@
 using Messaging;
 using Messaging.Udp;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
 
 namespace DashboardService.Core;
 
@@ -19,7 +18,6 @@ public class ServiceBusMessageConsumer : BackgroundService
         IUdpClientFactory udpClientFactory,
         IMediator mediator)
     {
-
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _udpClientFactory = udpClientFactory ?? throw new ArgumentNullException(nameof(udpClientFactory));
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
@@ -37,7 +35,7 @@ public class ServiceBusMessageConsumer : BackgroundService
 
             var message = System.Text.Json.JsonSerializer.Deserialize<ServiceBusMessage>(json);
 
-            var messageType = message.MessageAttributes["MessageType"];
+            var messageType = message!.MessageAttributes["MessageType"];
 
             if (messageType == "")
             {

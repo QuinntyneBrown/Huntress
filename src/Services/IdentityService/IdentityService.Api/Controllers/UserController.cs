@@ -27,10 +27,10 @@ public class UserController
     }
 
     [SwaggerOperation(
-        Summary = "Update UserId",
-        Description = @"Update UserId"
+        Summary = "Update User",
+        Description = @"Update User"
     )]
-    [HttpPut(Name = "updateUserId")]
+    [HttpPut(Name = "updateUser")]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(UpdateUserResponse), (int)HttpStatusCode.OK)]
@@ -79,10 +79,23 @@ public class UserController
     }
 
     [SwaggerOperation(
+    Summary = "Get current user",
+    Description = @"Get current user"
+)]
+    [HttpGet(Name = "getcurrentuser")]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType(typeof(GetUsersResponse), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult<GetUsersResponse>> GetCurrentUser(CancellationToken cancellationToken)
+    {
+        return await _mediator.Send(new GetUsersRequest(), cancellationToken);
+    }
+
+    [SwaggerOperation(
         Summary = "Get UserId  by id",
         Description = @"Get UserId by id"
     )]
-    [HttpGet("{toDoId:guid}", Name = "getUserIdById")]
+    [HttpGet("{userId:guid}", Name = "getUserIdById")]
     [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
@@ -105,7 +118,7 @@ public class UserController
         Summary = "Delete User",
         Description = @"Delete User"
     )]
-    [HttpDelete("{toDoId:guid}", Name = "deleteUser")]
+    [HttpDelete("{userId:guid}", Name = "deleteUser")]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(DeleteUserResponse), (int)HttpStatusCode.OK)]

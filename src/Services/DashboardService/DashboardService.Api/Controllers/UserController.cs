@@ -70,7 +70,7 @@ public class UserController
         Summary = "Get UserId  by id",
         Description = @"Get UserId by id"
     )]
-    [HttpGet("{toDoId:guid}", Name = "getUserIdById")]
+    [HttpGet("{userId:guid}", Name = "getUserIdById")]
     [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
@@ -93,7 +93,7 @@ public class UserController
         Summary = "Delete User",
         Description = @"Delete User"
     )]
-    [HttpDelete("{toDoId:guid}", Name = "deleteUser")]
+    [HttpDelete("{userId:guid}", Name = "deleteUser")]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(DeleteUserResponse), (int)HttpStatusCode.OK)]
