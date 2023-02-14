@@ -9,7 +9,7 @@ public class GetDashboardsByCurrentUserRequest: IRequest<GetDashboardsByCurrentU
 
 public class GetDashboardsByCurrentUserResponse: ResponseBase
 {
-    public List<DashboardDto> Dashboards { get; set; }
+    public required List<DashboardDto> Dashboards { get; set; }
 }
 
 
@@ -47,7 +47,6 @@ public class GetDashboardsByCurrentUserRequestHandler: IRequestHandler<GetDashbo
             Dashboards = dashboards
         };
     }
-
 }
 
 
