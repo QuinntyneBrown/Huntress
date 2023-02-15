@@ -12,7 +12,7 @@
     "watch:identity": "ng build @identity/core --watch",
     "watch:telemetry": "ng build @telemetry/core --watch",
     "watch:content": "ng build @content/core --watch",
-    "watch:global-styles": "ng build global-styles --watch",
+    "watch:global-styles": "ng build @global/styles --watch",
     "watch:libs": "npm-run-all --parallel watch:dashboard watch:identity watch:telemetry watch:content watch:global-styles",
     "test": "ng test"
   },

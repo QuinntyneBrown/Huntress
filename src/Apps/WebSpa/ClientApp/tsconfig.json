@@ -9,6 +9,12 @@
       "@dashboard/core": [
         "dist/dashboard/core"
       ],
+      "@global/components": [
+        "dist/global/components"
+      ],
+      "@global/styles": [
+        "dist/global/styles"
+      ],
       "@identity/core": [
         "dist/identity/core"
       ],

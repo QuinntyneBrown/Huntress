@@ -34,7 +34,7 @@ bootstrapApplication(AppComponent, {
           loadComponent: () => import('./app/layout/layout.component').then(m => m.LayoutComponent),
           canActivate:[],
           children: [
-            { path: '', redirectTo: 'home', pathMatch: 'full'},
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', loadComponent: () => import('./app/home/home.component').then(m => m.HomeComponent), canActivate: [] }
           ]
         }        

@@ -2,8 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 /*
- * Public API Surface of global-styles
+ * Public API Surface of styles
  */
 
 export const EMPTY = '';
-

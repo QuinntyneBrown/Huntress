@@ -23,5 +23,4 @@ export class AppComponent {
     _translateService.setDefaultLang("en");
     _translateService.use(localStorage.getItem("currentLanguage") || "en");
   }
-
 }
