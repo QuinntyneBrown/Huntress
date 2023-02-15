@@ -10,6 +10,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BASE_URL as HTML_EDITOR_BASE_URL } from '@global/html-editor';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -18,6 +19,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 
 bootstrapApplication(AppComponent, {
   providers: [
+    { provide: HTML_EDITOR_BASE_URL, useValue: 'https://localhost:7250/' },
     importProvidersFrom(
       HttpClientModule,
       TranslateModule.forRoot({
