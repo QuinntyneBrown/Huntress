@@ -1,12 +1,12 @@
 // Copyright (c) Quinntyne Brown. All Rights Reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-import { Component, Injectable, OnDestroy } from '@angular/core';
+import { Component, forwardRef, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { AbstractControl, AsyncValidatorFn, ControlValueAccessor, FormArray, FormControlStatus, FormGroup, ValidationErrors, ValidatorFn, ɵGetProperty } from '@angular/forms';
-import { Observable, Subject } from 'rxjs';
 import { BaseControl } from '@global/core';
+import { BASE_URL } from './constants';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 
 @Component({
@@ -14,14 +14,26 @@ import { BaseControl } from '@global/core';
   standalone: true,
   imports: [CommonModule, CKEditorModule],
   templateUrl: './html-editor.component.html',
-  styleUrls: ['./html-editor.component.scss']
+  styleUrls: ['./html-editor.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => HtmlEditorComponent),
+      multi: true
+    }
+  ]
 })
 export class HtmlEditorComponent extends BaseControl {
   data: any;
 
+  constructor(
+    @Inject(BASE_URL) private readonly _baseUrl:string
+  ) {
+    super();
+  }
   readonly config = {
     removeDialogTabs: 'image:advanced;image:Link;link:advanced;link:upload',
-    filebrowserImageUploadUrl: "https://localhost:5001/api/digitalasset/upload?single=true"
+    filebrowserImageUploadUrl: `${this._baseUrl}api/digitalasset/upload?single=true`
   };
 
   handleChange($event: any) { this.registerOnChangeFn($event.editor.getData()); }
