@@ -326,6 +326,70 @@
           "style": "scss"
         }
       }
+    },
+    "@global/html-editor": {
+      "projectType": "library",
+      "root": "projects/global/html-editor",
+      "sourceRoot": "projects/global/html-editor/src",
+      "prefix": "g",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/global/html-editor/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/global/html-editor/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/global/html-editor/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run"
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": true,
+          "style": "scss"
+        }
+      }
+    },
+    "@global/core": {
+      "projectType": "library",
+      "root": "projects/global/core",
+      "sourceRoot": "projects/global/core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/global/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/global/core/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/global/core/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run"
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": true,
+          "style": "scss"
+        }
+      }
     }
   }
 }

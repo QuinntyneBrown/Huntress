@@ -12,6 +12,12 @@
       "@global/components": [
         "dist/global/components"
       ],
+      "@global/core": [
+        "dist/global/core"
+      ],
+      "@global/html-editor": [
+        "dist/global/html-editor"
+      ],
       "@global/styles": [
         "dist/global/styles"
       ],
