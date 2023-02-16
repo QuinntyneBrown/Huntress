@@ -10,12 +10,9 @@ public static class ConfigureServices
 {
     public static void AddCoreServices(this IServiceCollection services){
         services.AddHostedService<ServiceBusMessageConsumer>();
-
         services.AddMessagingUdpServices();
-
         services.AddValidation(typeof(ICustomerServiceDbContext));
-
-        services.AddMediatR(typeof(ICustomerServiceDbContext));
+        services.AddMediatR(configuration => configuration.RegisterServicesFromAssemblyContaining<ICustomerServiceDbContext>());
     }
 }
 

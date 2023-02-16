@@ -17,7 +17,7 @@ public class UserCreatedMessageHandler: IRequestHandler<UserCreatedMessage>
         _context = context;
     }
 
-    public async Task<Unit> Handle(UserCreatedMessage message,CancellationToken cancellationToken)
+    public async Task Handle(UserCreatedMessage message,CancellationToken cancellationToken)
     {
         _logger.LogInformation("Message Handled: {message}", message);
 
@@ -33,9 +33,7 @@ public class UserCreatedMessageHandler: IRequestHandler<UserCreatedMessage>
             }
         });
 
-        await _context.SaveChangesAsync(cancellationToken);
-        
-        return new();
+        await _context.SaveChangesAsync(cancellationToken);        
     }
 }
 

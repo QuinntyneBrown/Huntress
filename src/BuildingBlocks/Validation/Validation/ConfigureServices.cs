@@ -10,11 +10,6 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ConfigureServices
 {
-    public static void AddValidationServices(this IServiceCollection services, Type type)
-    {
-        services.AddValidation(type);
-    }
-
     public static void AddValidation(this IServiceCollection services, Type type)
     {
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));

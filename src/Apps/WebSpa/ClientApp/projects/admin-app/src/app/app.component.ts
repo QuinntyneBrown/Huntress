@@ -3,7 +3,10 @@
 
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { LocalStorageService } from '@global/core';
+import { HtmlEditorComponent } from '@global/html-editor';
 import { TranslateService } from '@ngx-translate/core';
 import { HeaderComponent } from './header/header.component';
 
@@ -15,12 +18,20 @@ import { HeaderComponent } from './header/header.component';
   imports: [
     CommonModule,
     RouterModule,
-    HeaderComponent
+    HeaderComponent,
+    HtmlEditorComponent,
+    ReactiveFormsModule
   ]
 })
 export class AppComponent {
-  constructor(private readonly _translateService: TranslateService) {
-    _translateService.setDefaultLang("en");
-    _translateService.use(localStorage.getItem("currentLanguage") || "en");
+  constructor(
+    private readonly _translateService: TranslateService,
+    private readonly _localStorageService: LocalStorageService
+    ) {
+      const currentLanguage = _localStorageService.get({ name: "currentLanguage"});       
+      _translateService.setDefaultLang("en");
+      _translateService.use(currentLanguage || "en");
   }
+
+  formControl = new FormControl('',[]);
 }

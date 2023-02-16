@@ -390,6 +390,41 @@
           "style": "scss"
         }
       }
+    },
+    "@global/list-detail": {
+      "projectType": "library",
+      "root": "projects/global/list-detail",
+      "sourceRoot": "projects/global/list-detail/src",
+      "prefix": "g",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/global/list-detail/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/global/list-detail/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/global/list-detail/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run"
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": true,
+          "style": "scss"
+        },
+        "@schematics/angular:directive": {
+          "standalone": true
+        }        
+      }
     }
   }
 }

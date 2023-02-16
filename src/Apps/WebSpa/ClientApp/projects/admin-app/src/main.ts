@@ -11,7 +11,10 @@ import { AppComponent } from './app/app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BASE_URL as HTML_EDITOR_BASE_URL } from '@global/html-editor';
-
+import { STORAGE_KEY } from '@global/core';
+import { AuthGuard, BASE_URL as IDENTITY_BASE_URL, HOME_PATH, LOGIN_PATH } from '@identity/core';
+import { BASE_URL as DASHBOARD_BASE_URL } from '@dashboard/core';
+import { BASE_URL as TELEMETRY_BASE_URL, TelemetryHubConnectionGuard } from '@telemetry/core';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -19,7 +22,13 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 
 bootstrapApplication(AppComponent, {
   providers: [
+    { provide: IDENTITY_BASE_URL, useValue: 'http://localhost:5041/' },
+    { provide: DASHBOARD_BASE_URL, useValue: 'https://localhost:7007/' },
+    { provide: TELEMETRY_BASE_URL, useValue: 'https://localhost:7225/' },
+    { provide: HOME_PATH, useValue: '/' },
+    { provide: LOGIN_PATH, useValue: '/login' },
     { provide: HTML_EDITOR_BASE_URL, useValue: 'https://localhost:7250/' },
+    { provide: STORAGE_KEY, useValue: 'huntress-admin-app' },
     importProvidersFrom(
       HttpClientModule,
       TranslateModule.forRoot({

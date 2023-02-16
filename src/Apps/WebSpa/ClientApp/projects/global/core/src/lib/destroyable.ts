@@ -1,3 +1,6 @@
+// Copyright (c) Quinntyne Brown. All Rights Reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 import { Injectable, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -11,4 +14,5 @@ export class Destroyable implements OnDestroy {
     this._destroyed$.complete();
   }
 }
+
 

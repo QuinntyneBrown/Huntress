@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using ContentService.Core.Messages;
-using MediatR;
 
 namespace ContentService.Core.MessageHandler;
 
@@ -19,14 +18,8 @@ public class UserCreatedMessageHandler: IRequestHandler<UserCreatedMessage>
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<Unit> Handle(UserCreatedMessage message,CancellationToken cancellationToken)
+    public async Task Handle(UserCreatedMessage message,CancellationToken cancellationToken)
     {
         _logger.LogInformation("Message Handled: {message}", message);
-
-        return new();
-
     }
-
 }
-
-

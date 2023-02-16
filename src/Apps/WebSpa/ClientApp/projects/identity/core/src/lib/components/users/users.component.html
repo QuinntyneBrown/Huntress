@@ -1,1 +1,4 @@
-<p>users works!</p>
+<div gListDetail *ngIf="vm$ | async as vm">
+    <id-user-list [users]="vm.users" (select)="handleSelect($event)"></id-user-list>
+    <id-user-detail [user]="vm.selected" (save)="handleSave($event)"></id-user-detail>
+</div>

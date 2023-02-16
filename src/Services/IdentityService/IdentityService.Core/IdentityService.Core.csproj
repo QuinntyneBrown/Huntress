@@ -1,11 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.4.0" />
-    <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="FluentValidation" Version="11.4.0" />    
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     <PackageReference Include="SerilogTimings" Version="3.0.1" />
   </ItemGroup>
@@ -16,17 +14,6 @@
     <ProjectReference Include="..\..\..\BuildingBlocks\Security\Security\Security.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Telemetry\Telemetry\Telemetry.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Validation\Validation\Validation.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="AggregateModel\PrivilegeAggregate\Commands\" />
-    <Folder Include="AggregateModel\PrivilegeAggregate\Queries\" />
-    <Folder Include="AggregateModel\RoleAggregate\Commands\" />
-    <Folder Include="AggregateModel\RoleAggregate\Queries\" />
-    <Folder Include="AggregateModel\UserAggregate\Commands\" />
-    <Folder Include="AggregateModel\UserAggregate\Queries\" />
-    <Folder Include="Messages\" />
-    <Folder Include="MessageHandlers\" />
   </ItemGroup>
 
   <PropertyGroup>

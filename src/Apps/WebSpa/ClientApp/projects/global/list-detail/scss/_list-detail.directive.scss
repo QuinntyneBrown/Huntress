@@ -1,0 +1,54 @@
+@use 'dist/global/styles/scss/breakpoints';
+
+
+.g-list-detail-container,
+.g-list-detail-container--list-view.g-list-detail-container{
+  & > *:nth-child(1),
+  & > *:nth-child(2) {
+    display: grid;
+    padding: 40px 20px;
+  }
+
+  & > *:nth-child(1) {
+    background-color: rgb(240,240,240);
+  }
+}
+
+.g-list-detail-container {
+  display: block;
+  height: 100%;
+  & > *:nth-child(1) {
+    display: none;
+  }
+}
+
+.g-list-detail-container--list-view.g-list-detail-container {
+  & > *:nth-child(1) {
+    display: block;
+  }
+
+  & > *:nth-child(2) {
+    display: none;
+  }
+}
+
+@media screen and (min-width: breakpoints.$screen-lg-min) {
+  .g-list-detail-container,
+  .g-list-detail-container--list-view.g-list-detail-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+
+    & > *:nth-child(1),
+    & > *:nth-child(2) {
+      display: block;
+      overflow: auto;
+      padding: 40px 20px;
+      box-sizing: border-box;
+
+      mat-icon.g-back {
+        display: none;
+      }
+    }
+  }
+}

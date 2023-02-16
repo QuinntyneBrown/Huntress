@@ -18,6 +18,9 @@
       "@global/html-editor": [
         "dist/global/html-editor"
       ],
+      "@global/list-detail": [
+        "dist/global/list-detail"
+      ],
       "@global/styles": [
         "dist/global/styles"
       ],

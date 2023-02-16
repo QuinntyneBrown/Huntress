@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services';
 import { takeUntil } from 'rxjs';
-import { Destroyable } from '../../abstractions/destroyable';
 import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatInputModule } from '@angular/material/input';
+import { Destroyable } from '@global/core';
 
 @Component({
   selector: 'id-login',
@@ -49,5 +49,6 @@ export class LoginComponent extends Destroyable {
       ).subscribe();
   }
 }
+
 
 
