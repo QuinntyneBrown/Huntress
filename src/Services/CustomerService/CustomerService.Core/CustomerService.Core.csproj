@@ -2,6 +2,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\Messaging\Messaging.Udp\Messaging.Udp.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Security\Security\Security.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Templating\Templating\Templating.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Validation\Validation\Validation.csproj" />
   </ItemGroup>
 

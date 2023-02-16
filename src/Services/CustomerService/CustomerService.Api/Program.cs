@@ -16,7 +16,7 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
-    builder.Services.AddCoreServices();
+    builder.Services.AddCoreServices(builder.Environment, builder.Configuration);
 
     builder.Services.AddInfrastructureServices();
 

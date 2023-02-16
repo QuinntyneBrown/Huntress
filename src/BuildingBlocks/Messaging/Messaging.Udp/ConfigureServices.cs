@@ -8,8 +8,8 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ConfigureServices { 
 
-    public static void AddMessagingUdpServices(this IServiceCollection services) {
-        services.AddSingleton<IMessagingClient,MessagingClient>();
+    public static void AddMessagingUdpServices(this IServiceCollection services) 
+    {
         services.AddSingleton<IServiceBusMessageSender, ServiceBusMessageSender>();
         services.AddSingleton<IServiceBusMessageListener, ServiceBusMessageListener>();
         services.AddSingleton<IUdpClientFactory, UdpClientFactory>();
