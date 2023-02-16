@@ -16,7 +16,7 @@ namespace DigitalAssetService.Core.AggregateModel.DigitalAssetAggregate.Commands
 
 public class UploadDigitalAssetsRequestValidator: AbstractValidator<UploadDigitalAssetRequest> { }
 
-public class UploadDigitalAssetRequest: IRequest<UploadDigitalAssetsResponse> { }
+public class UploadDigitalAssetsRequest: IRequest<UploadDigitalAssetsResponse> { }
 
 
 public class UploadDigitalAssetsResponse: ResponseBase
@@ -25,7 +25,7 @@ public class UploadDigitalAssetsResponse: ResponseBase
 }
 
 
-public class UploadDigitalAssetRequestHandler: IRequestHandler<UploadDigitalAssetRequest,UploadDigitalAssetsResponse>
+public class UploadDigitalAssetRequestHandler: IRequestHandler<UploadDigitalAssetsRequest, UploadDigitalAssetsResponse>
 {
     private readonly ILogger<UploadDigitalAssetRequestHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor;
@@ -40,7 +40,7 @@ public class UploadDigitalAssetRequestHandler: IRequestHandler<UploadDigitalAsse
         _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
     }
 
-    public async Task<UploadDigitalAssetsResponse> Handle(UploadDigitalAssetRequest request,CancellationToken cancellationToken){
+    public async Task<UploadDigitalAssetsResponse> Handle(UploadDigitalAssetsRequest request,CancellationToken cancellationToken){
         var httpContext = _httpContextAccessor.HttpContext;
         var defaultFormOptions = new FormOptions();
         var digitalAssets = new List<DigitalAsset>();

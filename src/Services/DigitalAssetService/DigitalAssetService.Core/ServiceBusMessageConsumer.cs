@@ -6,6 +6,8 @@ using Messaging;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.Text;
+using Messaging.Udp;
 
 namespace DigitalAssetService.Core;
 
@@ -15,40 +17,40 @@ public class ServiceBusMessageConsumer: BackgroundService
 
     private readonly IMediator _mediator;
 
-    private readonly IMessagingClient _messagingClient;
+    private readonly IUdpClientFactory _udpClientFactory;
 
-    public ServiceBusMessageConsumer(ILogger<ServiceBusMessageConsumer> logger,IMediator mediator,IMessagingClient messagingClient){
+    private readonly string[] _supportedMessageTypes = new string[] { };
+
+    public ServiceBusMessageConsumer(ILogger<ServiceBusMessageConsumer> logger,IMediator mediator,IUdpClientFactory udpClientFactory){
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-        _messagingClient = messagingClient ?? throw new ArgumentNullException(nameof(messagingClient));
+        _udpClientFactory = udpClientFactory ?? throw new ArgumentNullException(nameof(udpClientFactory));
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        await _messagingClient.StartAsync(stoppingToken);
+        var client = _udpClientFactory.Create();
 
         while(!stoppingToken.IsCancellationRequested) {
 
-            try
+            var result = await client.ReceiveAsync(stoppingToken);
+
+            var json = Encoding.UTF8.GetString(result.Buffer);
+
+            var message = System.Text.Json.JsonSerializer.Deserialize<ServiceBusMessage>(json)!;
+
+            var messageType = message.MessageAttributes["MessageType"];
+
+            if(_supportedMessageTypes.Contains(messageType))
             {
-                var message = await _messagingClient.ReceiveAsync(new ReceiveRequest());
-
-                var messageType = message.MessageAttributes["MessageType"];
-
                 var type = Type.GetType($"DigitalAssetService.Core.Messages.{messageType}");
 
-                var request = JsonConvert.DeserializeObject(message.Body, type!) as IRequest;
+                var request = (IRequest)System.Text.Json.JsonSerializer.Deserialize(message.Body, type!)!;
 
-                await _mediator.Send(request!);
-
-                await Task.Delay(100);
+                await _mediator.Send(request, stoppingToken);
             }
-            catch(Exception exception)
-            {
-                _logger.LogError(exception.Message);
 
-                continue;
-            }
+            await Task.Delay(300);
         }
     }
 

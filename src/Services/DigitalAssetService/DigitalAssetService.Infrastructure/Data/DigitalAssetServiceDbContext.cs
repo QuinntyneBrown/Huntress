@@ -14,6 +14,13 @@ public class DigitalAssetServiceDbContext: DbContext, IDigitalAssetServiceDbCont
     }
 
     public DbSet<DigitalAsset> DigitalAssets { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.HasDefaultSchema("DigitalAssets");
+
+        base.OnModelCreating(modelBuilder);
+    }
 }
 
 
