@@ -14,7 +14,7 @@ using Microsoft.Net.Http.Headers;
 
 namespace DigitalAssetService.Core.AggregateModel.DigitalAssetAggregate.Commands;
 
-public class UploadDigitalAssetsRequestValidator: AbstractValidator<UploadDigitalAssetRequest> { }
+public class UploadDigitalAssetsRequestValidator: AbstractValidator<UploadDigitalAssetsRequest> { }
 
 public class UploadDigitalAssetsRequest: IRequest<UploadDigitalAssetsResponse> { }
 
