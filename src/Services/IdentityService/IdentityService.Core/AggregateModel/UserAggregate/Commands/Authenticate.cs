@@ -6,22 +6,22 @@ using SerilogTimings;
 
 namespace IdentityService.Core.AggregateModel.UserAggregate.Commands;
 
-public class AuthenticateRequestValidator: AbstractValidator<AuthenticateRequest> { }
+public class AuthenticateRequestValidator : AbstractValidator<AuthenticateRequest> { }
 
-public class AuthenticateRequest: IRequest<AuthenticateResponse>
+public class AuthenticateRequest : IRequest<AuthenticateResponse>
 {
     public string Username { get; set; }
     public string Password { get; set; }
 }
 
 
-public class AuthenticateResponse: ResponseBase
+public class AuthenticateResponse : ResponseBase
 {
     public string AccessToken { get; set; }
 }
 
 
-public class AuthenticateRequestHandler: IRequestHandler<AuthenticateRequest,AuthenticateResponse>
+public class AuthenticateRequestHandler : IRequestHandler<AuthenticateRequest, AuthenticateResponse>
 {
     private readonly ILogger<AuthenticateRequestHandler> _logger;
     private readonly IIdentityServiceDbContext _context;
@@ -40,7 +40,8 @@ public class AuthenticateRequestHandler: IRequestHandler<AuthenticateRequest,Aut
         _tokenProvider = tokenProvider ?? throw new ArgumentNullException(nameof(tokenProvider));
     }
 
-    public async Task<AuthenticateResponse> Handle(AuthenticateRequest request,CancellationToken cancellationToken){
+    public async Task<AuthenticateResponse> Handle(AuthenticateRequest request, CancellationToken cancellationToken)
+    {
 
         using (Operation.Time("Users.Authenticate"))
         {
@@ -70,7 +71,7 @@ public class AuthenticateRequestHandler: IRequestHandler<AuthenticateRequest,Aut
         }
     }
 
-    
+
 }
 
 

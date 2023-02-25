@@ -5,9 +5,9 @@ using MediatR;
 
 namespace OtpService.Core.AggregateModel.UserAggregate.Commands;
 
-public class CreateUserRequestValidator: AbstractValidator<CreateUserRequest> { }
+public class CreateUserRequestValidator : AbstractValidator<CreateUserRequest> { }
 
-public class CreateUserRequest: IRequest<CreateUserResponse>
+public class CreateUserRequest : IRequest<CreateUserResponse>
 {
     public Guid UserId { get; set; }
     public string Username { get; set; }
@@ -20,18 +20,19 @@ public class CreateUserResponse
 }
 
 
-public class CreateUserRequestHandler: IRequestHandler<CreateUserRequest,CreateUserResponse>
+public class CreateUserRequestHandler : IRequestHandler<CreateUserRequest, CreateUserResponse>
 {
     private readonly ILogger<CreateUserRequestHandler> _logger;
 
     private readonly IOtpServiceDbContext _context;
 
-    public CreateUserRequestHandler(ILogger<CreateUserRequestHandler> logger,IOtpServiceDbContext context){
+    public CreateUserRequestHandler(ILogger<CreateUserRequestHandler> logger, IOtpServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<CreateUserResponse> Handle(CreateUserRequest request,CancellationToken cancellationToken)
+    public async Task<CreateUserResponse> Handle(CreateUserRequest request, CancellationToken cancellationToken)
     {
         var user = new User();
 
@@ -41,7 +42,7 @@ public class CreateUserRequestHandler: IRequestHandler<CreateUserRequest,CreateU
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             User = user.ToDto()
         };

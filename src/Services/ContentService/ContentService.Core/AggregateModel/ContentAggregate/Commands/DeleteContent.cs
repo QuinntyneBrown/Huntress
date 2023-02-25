@@ -3,32 +3,33 @@
 
 namespace ContentService.Core.AggregateModel.ContentAggregate.Commands;
 
-public class DeleteContentRequestValidator: AbstractValidator<DeleteContentRequest> { }
+public class DeleteContentRequestValidator : AbstractValidator<DeleteContentRequest> { }
 
-public class DeleteContentRequest: IRequest<DeleteContentResponse>
+public class DeleteContentRequest : IRequest<DeleteContentResponse>
 {
     public Guid ContentId { get; set; }
 }
 
 
-public class DeleteContentResponse: ResponseBase
+public class DeleteContentResponse : ResponseBase
 {
     public ContentDto Content { get; set; }
 }
 
 
-public class DeleteContentRequestHandler: IRequestHandler<DeleteContentRequest,DeleteContentResponse>
+public class DeleteContentRequestHandler : IRequestHandler<DeleteContentRequest, DeleteContentResponse>
 {
     private readonly ILogger<DeleteContentRequestHandler> _logger;
 
     private readonly IContentServiceDbContext _context;
 
-    public DeleteContentRequestHandler(ILogger<DeleteContentRequestHandler> logger,IContentServiceDbContext context){
+    public DeleteContentRequestHandler(ILogger<DeleteContentRequestHandler> logger, IContentServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<DeleteContentResponse> Handle(DeleteContentRequest request,CancellationToken cancellationToken)
+    public async Task<DeleteContentResponse> Handle(DeleteContentRequest request, CancellationToken cancellationToken)
     {
         var content = await _context.Contents.FindAsync(request.ContentId);
 
@@ -36,7 +37,7 @@ public class DeleteContentRequestHandler: IRequestHandler<DeleteContentRequest,D
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             Content = content.ToDto()
         };

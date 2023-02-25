@@ -14,7 +14,7 @@ public static class PrivilegeExtensions
 
     }
 
-    public async static Task<List<PrivilegeDto>> ToDtosAsync(this IQueryable<Privilege> privileges,CancellationToken cancellationToken)
+    public async static Task<List<PrivilegeDto>> ToDtosAsync(this IQueryable<Privilege> privileges, CancellationToken cancellationToken)
     {
         return await privileges.Select(x => x.ToDto()).ToListAsync(cancellationToken);
     }

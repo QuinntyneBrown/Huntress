@@ -5,20 +5,20 @@ using ContentService.Core.Messages;
 
 namespace ContentService.Core.MessageHandler;
 
-public class UserCreatedMessageHandler: IRequestHandler<UserCreatedMessage>
+public class UserCreatedMessageHandler : IRequestHandler<UserCreatedMessage>
 {
     private readonly ILogger<UserCreatedMessageHandler> _logger;
     private readonly IContentServiceDbContext _context;
 
     public UserCreatedMessageHandler(
-        ILogger<UserCreatedMessageHandler> logger, 
+        ILogger<UserCreatedMessageHandler> logger,
         IContentServiceDbContext context)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task Handle(UserCreatedMessage message,CancellationToken cancellationToken)
+    public async Task Handle(UserCreatedMessage message, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Message Handled: {message}", message);
     }

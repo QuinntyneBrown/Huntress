@@ -3,32 +3,34 @@
 
 namespace DigitalAssetService.Core.AggregateModel.DigitalAssetAggregate.Queries;
 
-public class GetDigitalAssetByIdRequest: IRequest<GetDigitalAssetByIdResponse>
+public class GetDigitalAssetByIdRequest : IRequest<GetDigitalAssetByIdResponse>
 {
     public Guid DigitalAssetId { get; set; }
 }
 
 
-public class GetDigitalAssetByIdResponse: ResponseBase
+public class GetDigitalAssetByIdResponse : ResponseBase
 {
     public DigitalAssetDto DigitalAsset { get; set; }
 }
 
 
-public class GetDigitalAssetByIdRequestHandler: IRequestHandler<GetDigitalAssetByIdRequest,GetDigitalAssetByIdResponse>
+public class GetDigitalAssetByIdRequestHandler : IRequestHandler<GetDigitalAssetByIdRequest, GetDigitalAssetByIdResponse>
 {
     private readonly ILogger<GetDigitalAssetByIdRequestHandler> _logger;
 
     private readonly IDigitalAssetServiceDbContext _context;
 
-    public GetDigitalAssetByIdRequestHandler(ILogger<GetDigitalAssetByIdRequestHandler> logger,IDigitalAssetServiceDbContext context){
+    public GetDigitalAssetByIdRequestHandler(ILogger<GetDigitalAssetByIdRequestHandler> logger, IDigitalAssetServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<GetDigitalAssetByIdResponse> Handle(GetDigitalAssetByIdRequest request,CancellationToken cancellationToken)
+    public async Task<GetDigitalAssetByIdResponse> Handle(GetDigitalAssetByIdRequest request, CancellationToken cancellationToken)
     {
-        return new () {
+        return new()
+        {
             DigitalAsset = (await _context.DigitalAssets.AsNoTracking().SingleOrDefaultAsync(x => x.DigitalAssetId == request.DigitalAssetId)).ToDto()
         };
 

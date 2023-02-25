@@ -7,11 +7,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CustomerService.Infrastructure.Data;
 
-public class CustomerServiceDbContext: DbContext, ICustomerServiceDbContext
+public class CustomerServiceDbContext : DbContext, ICustomerServiceDbContext
 {
     public CustomerServiceDbContext(DbContextOptions<CustomerServiceDbContext> options)
-        :base(options)
+        : base(options)
     { }
 
     public DbSet<Customer> Customers { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.HasDefaultSchema("Customers");
+
+        base.OnModelCreating(modelBuilder);
+    }
 }

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Telemetry;
 
-public class TelemetryProducer: BackgroundService
+public class TelemetryProducer : BackgroundService
 {
     private readonly ILogger<TelemetryProducer> _logger;
     private readonly IServiceBusMessageSender _serviceBusMessageSender;

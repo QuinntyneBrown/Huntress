@@ -22,7 +22,8 @@ public class ContentController
 
     private readonly ILogger<ContentController> _logger;
 
-    public ContentController(IMediator mediator,ILogger<ContentController> logger){
+    public ContentController(IMediator mediator, ILogger<ContentController> logger)
+    {
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
@@ -35,7 +36,7 @@ public class ContentController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(UpdateContentResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<UpdateContentResponse>> Update([FromBody]UpdateContentRequest  request,CancellationToken cancellationToken)
+    public async Task<ActionResult<UpdateContentResponse>> Update([FromBody] UpdateContentRequest request, CancellationToken cancellationToken)
     {
         return await _mediator.Send(request, cancellationToken);
     }
@@ -48,7 +49,7 @@ public class ContentController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(CreateContentResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<CreateContentResponse>> Create([FromBody]CreateContentRequest  request,CancellationToken cancellationToken)
+    public async Task<ActionResult<CreateContentResponse>> Create([FromBody] CreateContentRequest request, CancellationToken cancellationToken)
     {
         return await _mediator.Send(request, cancellationToken);
     }
@@ -99,9 +100,9 @@ public class ContentController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(GetContentByIdResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<GetContentByIdResponse>> GetById([FromRoute]Guid contentId,CancellationToken cancellationToken)
+    public async Task<ActionResult<GetContentByIdResponse>> GetById([FromRoute] Guid contentId, CancellationToken cancellationToken)
     {
-        var request = new GetContentByIdRequest(){ContentId = contentId};
+        var request = new GetContentByIdRequest() { ContentId = contentId };
 
         var response = await _mediator.Send(request, cancellationToken);
 
@@ -121,9 +122,9 @@ public class ContentController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(DeleteContentResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<DeleteContentResponse>> Delete([FromRoute]Guid contentId,CancellationToken cancellationToken)
+    public async Task<ActionResult<DeleteContentResponse>> Delete([FromRoute] Guid contentId, CancellationToken cancellationToken)
     {
-        var request = new DeleteContentRequest() {ContentId = contentId };
+        var request = new DeleteContentRequest() { ContentId = contentId };
 
         return await _mediator.Send(request, cancellationToken);
     }

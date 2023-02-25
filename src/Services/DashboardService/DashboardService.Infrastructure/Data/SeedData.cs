@@ -1,6 +1,4 @@
-﻿using Security;
-
-namespace DashboardService.Infrastructure.Data;
+﻿namespace DashboardService.Infrastructure.Data;
 
 public static class SeedData
 {

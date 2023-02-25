@@ -8,9 +8,9 @@ using Newtonsoft.Json.Linq;
 
 namespace DashboardService.Core.AggregateModel.DashboardCardAggregate.Commands;
 
-public class UpdateDashboardCardRequestValidator: AbstractValidator<UpdateDashboardCardRequest> { }
+public class UpdateDashboardCardRequestValidator : AbstractValidator<UpdateDashboardCardRequest> { }
 
-public class UpdateDashboardCardRequest: IRequest<UpdateDashboardCardResponse>
+public class UpdateDashboardCardRequest : IRequest<UpdateDashboardCardResponse>
 {
     public Guid DashboardCardId { get; set; }
     public Guid DashboardId { get; set; }
@@ -23,24 +23,25 @@ public class UpdateDashboardCardRequest: IRequest<UpdateDashboardCardResponse>
 }
 
 
-public class UpdateDashboardCardResponse: ResponseBase
+public class UpdateDashboardCardResponse : ResponseBase
 {
     public DashboardCardDto DashboardCard { get; set; }
 }
 
 
-public class UpdateDashboardCardRequestHandler: IRequestHandler<UpdateDashboardCardRequest,UpdateDashboardCardResponse>
+public class UpdateDashboardCardRequestHandler : IRequestHandler<UpdateDashboardCardRequest, UpdateDashboardCardResponse>
 {
     private readonly ILogger<UpdateDashboardCardRequestHandler> _logger;
 
     private readonly IDashboardServiceDbContext _context;
 
-    public UpdateDashboardCardRequestHandler(ILogger<UpdateDashboardCardRequestHandler> logger,IDashboardServiceDbContext context){
+    public UpdateDashboardCardRequestHandler(ILogger<UpdateDashboardCardRequestHandler> logger, IDashboardServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<UpdateDashboardCardResponse> Handle(UpdateDashboardCardRequest request,CancellationToken cancellationToken)
+    public async Task<UpdateDashboardCardResponse> Handle(UpdateDashboardCardRequest request, CancellationToken cancellationToken)
     {
         var dashboardCard = await _context.DashboardCards.SingleAsync(x => x.DashboardCardId == request.DashboardCardId);
 
@@ -52,7 +53,7 @@ public class UpdateDashboardCardRequestHandler: IRequestHandler<UpdateDashboardC
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             DashboardCard = dashboardCard.ToDto()
         };

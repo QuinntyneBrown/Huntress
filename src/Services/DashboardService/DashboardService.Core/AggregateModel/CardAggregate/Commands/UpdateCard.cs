@@ -3,9 +3,9 @@
 
 namespace DashboardService.Core.AggregateModel.CardAggregate.Commands;
 
-public class UpdateCardRequestValidator: AbstractValidator<UpdateCardRequest> { }
+public class UpdateCardRequestValidator : AbstractValidator<UpdateCardRequest> { }
 
-public class UpdateCardRequest: IRequest<UpdateCardResponse>
+public class UpdateCardRequest : IRequest<UpdateCardResponse>
 {
     public Guid CardId { get; set; }
     public string Name { get; set; }
@@ -13,24 +13,25 @@ public class UpdateCardRequest: IRequest<UpdateCardResponse>
 }
 
 
-public class UpdateCardResponse: ResponseBase
+public class UpdateCardResponse : ResponseBase
 {
     public CardDto Card { get; set; }
 }
 
 
-public class UpdateCardRequestHandler: IRequestHandler<UpdateCardRequest,UpdateCardResponse>
+public class UpdateCardRequestHandler : IRequestHandler<UpdateCardRequest, UpdateCardResponse>
 {
     private readonly ILogger<UpdateCardRequestHandler> _logger;
 
     private readonly IDashboardServiceDbContext _context;
 
-    public UpdateCardRequestHandler(ILogger<UpdateCardRequestHandler> logger,IDashboardServiceDbContext context){
+    public UpdateCardRequestHandler(ILogger<UpdateCardRequestHandler> logger, IDashboardServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<UpdateCardResponse> Handle(UpdateCardRequest request,CancellationToken cancellationToken)
+    public async Task<UpdateCardResponse> Handle(UpdateCardRequest request, CancellationToken cancellationToken)
     {
         var card = await _context.Cards.SingleAsync(x => x.CardId == request.CardId);
 
@@ -40,7 +41,7 @@ public class UpdateCardRequestHandler: IRequestHandler<UpdateCardRequest,UpdateC
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             Card = card.ToDto()
         };

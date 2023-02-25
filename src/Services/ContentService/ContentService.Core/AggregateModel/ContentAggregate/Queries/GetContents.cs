@@ -3,28 +3,30 @@
 
 namespace ContentService.Core.AggregateModel.ContentAggregate.Queries;
 
-public class GetContentsRequest: IRequest<GetContentsResponse> { }
+public class GetContentsRequest : IRequest<GetContentsResponse> { }
 
-public class GetContentsResponse: ResponseBase
+public class GetContentsResponse : ResponseBase
 {
     public List<ContentDto> Contents { get; set; }
 }
 
 
-public class GetContentsRequestHandler: IRequestHandler<GetContentsRequest,GetContentsResponse>
+public class GetContentsRequestHandler : IRequestHandler<GetContentsRequest, GetContentsResponse>
 {
     private readonly ILogger<GetContentsRequestHandler> _logger;
 
     private readonly IContentServiceDbContext _context;
 
-    public GetContentsRequestHandler(ILogger<GetContentsRequestHandler> logger,IContentServiceDbContext context){
+    public GetContentsRequestHandler(ILogger<GetContentsRequestHandler> logger, IContentServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<GetContentsResponse> Handle(GetContentsRequest request,CancellationToken cancellationToken)
+    public async Task<GetContentsResponse> Handle(GetContentsRequest request, CancellationToken cancellationToken)
     {
-        return new () {
+        return new()
+        {
             Contents = await _context.Contents.AsNoTracking().ToDtosAsync(cancellationToken)
         };
 

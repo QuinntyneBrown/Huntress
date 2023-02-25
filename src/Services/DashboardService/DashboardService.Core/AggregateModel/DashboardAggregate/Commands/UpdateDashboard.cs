@@ -5,9 +5,9 @@ using DashboardService.Core.AggregateModel.DashboardCardAggregate;
 
 namespace DashboardService.Core.AggregateModel.DashboardAggregate.Commands;
 
-public class UpdateDashboardRequestValidator: AbstractValidator<UpdateDashboardRequest> { }
+public class UpdateDashboardRequestValidator : AbstractValidator<UpdateDashboardRequest> { }
 
-public class UpdateDashboardRequest: IRequest<UpdateDashboardResponse>
+public class UpdateDashboardRequest : IRequest<UpdateDashboardResponse>
 {
     public Guid DashboardId { get; set; }
     public string Name { get; set; }
@@ -16,24 +16,25 @@ public class UpdateDashboardRequest: IRequest<UpdateDashboardResponse>
 }
 
 
-public class UpdateDashboardResponse: ResponseBase
+public class UpdateDashboardResponse : ResponseBase
 {
     public DashboardDto Dashboard { get; set; }
 }
 
 
-public class UpdateDashboardRequestHandler: IRequestHandler<UpdateDashboardRequest,UpdateDashboardResponse>
+public class UpdateDashboardRequestHandler : IRequestHandler<UpdateDashboardRequest, UpdateDashboardResponse>
 {
     private readonly ILogger<UpdateDashboardRequestHandler> _logger;
 
     private readonly IDashboardServiceDbContext _context;
 
-    public UpdateDashboardRequestHandler(ILogger<UpdateDashboardRequestHandler> logger,IDashboardServiceDbContext context){
+    public UpdateDashboardRequestHandler(ILogger<UpdateDashboardRequestHandler> logger, IDashboardServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<UpdateDashboardResponse> Handle(UpdateDashboardRequest request,CancellationToken cancellationToken)
+    public async Task<UpdateDashboardResponse> Handle(UpdateDashboardRequest request, CancellationToken cancellationToken)
     {
         var dashboard = await _context.Dashboards.SingleAsync(x => x.DashboardId == request.DashboardId);
 
@@ -43,7 +44,7 @@ public class UpdateDashboardRequestHandler: IRequestHandler<UpdateDashboardReque
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             Dashboard = dashboard.ToDto()
         };

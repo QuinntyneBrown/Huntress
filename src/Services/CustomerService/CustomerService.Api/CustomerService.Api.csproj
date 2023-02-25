@@ -12,7 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\Messaging\Messaging.Udp\Messaging.Udp.csproj" />
-    <ProjectReference Include="..\\CustomerService.Infrastructure\\CustomerService.Infrastructure.csproj" />    
+    <ProjectReference Include="..\\CustomerService.Infrastructure\\CustomerService.Infrastructure.csproj" />
+    <ProjectReference Include="..\CustomerService.Infrastructure\CustomerService.Infrastructure.csproj" />    
   </ItemGroup>
 
   <PropertyGroup>

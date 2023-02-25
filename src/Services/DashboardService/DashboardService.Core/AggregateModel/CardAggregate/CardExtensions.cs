@@ -16,7 +16,7 @@ public static class CardExtensions
 
     }
 
-    public async static Task<List<CardDto>> ToDtosAsync(this IQueryable<Card> cards,CancellationToken cancellationToken)
+    public async static Task<List<CardDto>> ToDtosAsync(this IQueryable<Card> cards, CancellationToken cancellationToken)
     {
         return await cards.Select(x => x.ToDto()).ToListAsync(cancellationToken);
     }

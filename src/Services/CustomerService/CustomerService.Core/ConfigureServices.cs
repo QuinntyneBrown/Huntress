@@ -16,6 +16,6 @@ public static class ConfigureServices
         services.AddMediatR(configuration => configuration.RegisterServicesFromAssemblyContaining<ICustomerServiceDbContext>());
         services.AddSecurity(webHostEnvironment, configuration);
         services.AddValidation(typeof(ICustomerServiceDbContext));
-        
+
     }
 }

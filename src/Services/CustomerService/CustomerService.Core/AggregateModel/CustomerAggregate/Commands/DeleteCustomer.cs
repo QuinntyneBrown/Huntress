@@ -3,9 +3,9 @@
 
 namespace CustomerService.Core.AggregateModel.CustomerAggregate.Commands;
 
-public class DeleteCustomerRequestValidator: AbstractValidator<DeleteCustomerRequest> { }
+public class DeleteCustomerRequestValidator : AbstractValidator<DeleteCustomerRequest> { }
 
-public class DeleteCustomerRequest: IRequest<DeleteCustomerResponse>
+public class DeleteCustomerRequest : IRequest<DeleteCustomerResponse>
 {
     public Guid CustomerId { get; set; }
 }
@@ -17,18 +17,19 @@ public class DeleteCustomerResponse
 }
 
 
-public class DeleteCustomerRequestHandler: IRequestHandler<DeleteCustomerRequest,DeleteCustomerResponse>
+public class DeleteCustomerRequestHandler : IRequestHandler<DeleteCustomerRequest, DeleteCustomerResponse>
 {
     private readonly ILogger<DeleteCustomerRequestHandler> _logger;
 
     private readonly ICustomerServiceDbContext _context;
 
-    public DeleteCustomerRequestHandler(ILogger<DeleteCustomerRequestHandler> logger,ICustomerServiceDbContext context){
+    public DeleteCustomerRequestHandler(ILogger<DeleteCustomerRequestHandler> logger, ICustomerServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<DeleteCustomerResponse> Handle(DeleteCustomerRequest request,CancellationToken cancellationToken)
+    public async Task<DeleteCustomerResponse> Handle(DeleteCustomerRequest request, CancellationToken cancellationToken)
     {
         var customer = await _context.Customers.FindAsync(request.CustomerId);
 
@@ -36,7 +37,7 @@ public class DeleteCustomerRequestHandler: IRequestHandler<DeleteCustomerRequest
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             Customer = customer.ToDto()
         };

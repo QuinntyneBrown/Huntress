@@ -3,9 +3,9 @@
 
 namespace OtpService.Core.AggregateModel.UserAggregate.Commands;
 
-public class DeleteUserRequestValidator: AbstractValidator<DeleteUserRequest> { }
+public class DeleteUserRequestValidator : AbstractValidator<DeleteUserRequest> { }
 
-public class DeleteUserRequest: IRequest<DeleteUserResponse>
+public class DeleteUserRequest : IRequest<DeleteUserResponse>
 {
     public Guid UserId { get; set; }
 }
@@ -17,18 +17,19 @@ public class DeleteUserResponse
 }
 
 
-public class DeleteUserRequestHandler: IRequestHandler<DeleteUserRequest,DeleteUserResponse>
+public class DeleteUserRequestHandler : IRequestHandler<DeleteUserRequest, DeleteUserResponse>
 {
     private readonly ILogger<DeleteUserRequestHandler> _logger;
 
     private readonly IOtpServiceDbContext _context;
 
-    public DeleteUserRequestHandler(ILogger<DeleteUserRequestHandler> logger,IOtpServiceDbContext context){
+    public DeleteUserRequestHandler(ILogger<DeleteUserRequestHandler> logger, IOtpServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<DeleteUserResponse> Handle(DeleteUserRequest request,CancellationToken cancellationToken)
+    public async Task<DeleteUserResponse> Handle(DeleteUserRequest request, CancellationToken cancellationToken)
     {
         var user = await _context.Users.FindAsync(request.UserId);
 
@@ -36,7 +37,7 @@ public class DeleteUserRequestHandler: IRequestHandler<DeleteUserRequest,DeleteU
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             User = user.ToDto()
         };

@@ -3,28 +3,30 @@
 
 namespace DashboardService.Core.AggregateModel.DashboardAggregate.Queries;
 
-public class GetDashboardsRequest: IRequest<GetDashboardsResponse> { }
+public class GetDashboardsRequest : IRequest<GetDashboardsResponse> { }
 
-public class GetDashboardsResponse: ResponseBase
+public class GetDashboardsResponse : ResponseBase
 {
     public List<DashboardDto> Dashboards { get; set; }
 }
 
 
-public class GetDashboardsRequestHandler: IRequestHandler<GetDashboardsRequest,GetDashboardsResponse>
+public class GetDashboardsRequestHandler : IRequestHandler<GetDashboardsRequest, GetDashboardsResponse>
 {
     private readonly ILogger<GetDashboardsRequestHandler> _logger;
 
     private readonly IDashboardServiceDbContext _context;
 
-    public GetDashboardsRequestHandler(ILogger<GetDashboardsRequestHandler> logger,IDashboardServiceDbContext context){
+    public GetDashboardsRequestHandler(ILogger<GetDashboardsRequestHandler> logger, IDashboardServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<GetDashboardsResponse> Handle(GetDashboardsRequest request,CancellationToken cancellationToken)
+    public async Task<GetDashboardsResponse> Handle(GetDashboardsRequest request, CancellationToken cancellationToken)
     {
-        return new () {
+        return new()
+        {
             Dashboards = await _context.Dashboards.AsNoTracking().ToDtosAsync(cancellationToken)
         };
 

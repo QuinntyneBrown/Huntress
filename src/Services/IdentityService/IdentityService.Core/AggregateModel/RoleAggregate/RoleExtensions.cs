@@ -17,7 +17,7 @@ public static class RoleExtensions
 
     }
 
-    public async static Task<List<RoleDto>> ToDtosAsync(this IQueryable<Role> roles,CancellationToken cancellationToken)
+    public async static Task<List<RoleDto>> ToDtosAsync(this IQueryable<Role> roles, CancellationToken cancellationToken)
     {
         return await roles.Select(x => x.ToDto()).ToListAsync(cancellationToken);
     }

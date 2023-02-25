@@ -3,32 +3,33 @@
 
 namespace IdentityService.Core.AggregateModel.PrivilegeAggregate.Commands;
 
-public class CreatePrivilegeRequestValidator: AbstractValidator<CreatePrivilegeRequest> { }
+public class CreatePrivilegeRequestValidator : AbstractValidator<CreatePrivilegeRequest> { }
 
-public class CreatePrivilegeRequest: IRequest<CreatePrivilegeResponse>
+public class CreatePrivilegeRequest : IRequest<CreatePrivilegeResponse>
 {
     public Guid PrivilegeId { get; set; }
 }
 
 
-public class CreatePrivilegeResponse: ResponseBase
+public class CreatePrivilegeResponse : ResponseBase
 {
     public PrivilegeDto Privilege { get; set; }
 }
 
 
-public class CreatePrivilegeRequestHandler: IRequestHandler<CreatePrivilegeRequest,CreatePrivilegeResponse>
+public class CreatePrivilegeRequestHandler : IRequestHandler<CreatePrivilegeRequest, CreatePrivilegeResponse>
 {
     private readonly ILogger<CreatePrivilegeRequestHandler> _logger;
 
     private readonly IIdentityServiceDbContext _context;
 
-    public CreatePrivilegeRequestHandler(ILogger<CreatePrivilegeRequestHandler> logger,IIdentityServiceDbContext context){
+    public CreatePrivilegeRequestHandler(ILogger<CreatePrivilegeRequestHandler> logger, IIdentityServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<CreatePrivilegeResponse> Handle(CreatePrivilegeRequest request,CancellationToken cancellationToken)
+    public async Task<CreatePrivilegeResponse> Handle(CreatePrivilegeRequest request, CancellationToken cancellationToken)
     {
         var privilege = new Privilege();
 

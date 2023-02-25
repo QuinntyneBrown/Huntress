@@ -5,9 +5,10 @@ using MediatR;
 
 namespace ContentService.Core.Messages;
 
-public class UserCreatedMessage: IRequest
+public class UserCreatedMessage : IRequest
 {
-    public UserCreatedMessage(){
+    public UserCreatedMessage()
+    {
     }
 
     public Guid UserId { get; set; }

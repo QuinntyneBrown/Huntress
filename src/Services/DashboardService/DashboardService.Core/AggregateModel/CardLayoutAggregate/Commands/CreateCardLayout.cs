@@ -3,9 +3,9 @@
 
 namespace DashboardService.Core.AggregateModel.CardLayoutAggregate.Commands;
 
-public class CreateCardLayoutRequestValidator: AbstractValidator<CreateCardLayoutRequest> { }
+public class CreateCardLayoutRequestValidator : AbstractValidator<CreateCardLayoutRequest> { }
 
-public class CreateCardLayoutRequest: IRequest<CreateCardLayoutResponse>
+public class CreateCardLayoutRequest : IRequest<CreateCardLayoutResponse>
 {
     public Guid CardLayoutId { get; set; }
     public string Name { get; set; }
@@ -13,24 +13,25 @@ public class CreateCardLayoutRequest: IRequest<CreateCardLayoutResponse>
 }
 
 
-public class CreateCardLayoutResponse: ResponseBase
+public class CreateCardLayoutResponse : ResponseBase
 {
     public CardLayoutDto CardLayout { get; set; }
 }
 
 
-public class CreateCardLayoutRequestHandler: IRequestHandler<CreateCardLayoutRequest,CreateCardLayoutResponse>
+public class CreateCardLayoutRequestHandler : IRequestHandler<CreateCardLayoutRequest, CreateCardLayoutResponse>
 {
     private readonly ILogger<CreateCardLayoutRequestHandler> _logger;
 
     private readonly IDashboardServiceDbContext _context;
 
-    public CreateCardLayoutRequestHandler(ILogger<CreateCardLayoutRequestHandler> logger,IDashboardServiceDbContext context){
+    public CreateCardLayoutRequestHandler(ILogger<CreateCardLayoutRequestHandler> logger, IDashboardServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<CreateCardLayoutResponse> Handle(CreateCardLayoutRequest request,CancellationToken cancellationToken)
+    public async Task<CreateCardLayoutResponse> Handle(CreateCardLayoutRequest request, CancellationToken cancellationToken)
     {
         var cardLayout = new CardLayout(request.Name, request.Description);
 
@@ -38,7 +39,7 @@ public class CreateCardLayoutRequestHandler: IRequestHandler<CreateCardLayoutReq
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             CardLayout = cardLayout.ToDto()
         };

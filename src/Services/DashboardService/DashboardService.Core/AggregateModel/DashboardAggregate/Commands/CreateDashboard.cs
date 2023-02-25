@@ -3,9 +3,9 @@
 
 namespace DashboardService.Core.AggregateModel.DashboardAggregate.Commands;
 
-public class CreateDashboardRequestValidator: AbstractValidator<CreateDashboardRequest> { }
+public class CreateDashboardRequestValidator : AbstractValidator<CreateDashboardRequest> { }
 
-public class CreateDashboardRequest: IRequest<CreateDashboardResponse>
+public class CreateDashboardRequest : IRequest<CreateDashboardResponse>
 {
     public Guid DashboardId { get; set; }
     public string Name { get; set; }
@@ -14,24 +14,24 @@ public class CreateDashboardRequest: IRequest<CreateDashboardResponse>
 }
 
 
-public class CreateDashboardResponse: ResponseBase
+public class CreateDashboardResponse : ResponseBase
 {
     public DashboardDto Dashboard { get; set; }
 }
 
 
-public class CreateDashboardRequestHandler: IRequestHandler<CreateDashboardRequest,CreateDashboardResponse>
+public class CreateDashboardRequestHandler : IRequestHandler<CreateDashboardRequest, CreateDashboardResponse>
 {
     private readonly ILogger<CreateDashboardRequestHandler> _logger;
-
     private readonly IDashboardServiceDbContext _context;
 
-    public CreateDashboardRequestHandler(ILogger<CreateDashboardRequestHandler> logger,IDashboardServiceDbContext context){
+    public CreateDashboardRequestHandler(ILogger<CreateDashboardRequestHandler> logger, IDashboardServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<CreateDashboardResponse> Handle(CreateDashboardRequest request,CancellationToken cancellationToken)
+    public async Task<CreateDashboardResponse> Handle(CreateDashboardRequest request, CancellationToken cancellationToken)
     {
         var dashboard = new Dashboard(request.Name, request.UserId);
 
@@ -39,14 +39,9 @@ public class CreateDashboardRequestHandler: IRequestHandler<CreateDashboardReque
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             Dashboard = dashboard.ToDto()
         };
-
     }
-
 }
-
-
-

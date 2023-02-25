@@ -22,20 +22,21 @@ public class CardLayoutController
 
     private readonly ILogger<CardLayoutController> _logger;
 
-    public CardLayoutController(IMediator mediator,ILogger<CardLayoutController> logger){
+    public CardLayoutController(IMediator mediator, ILogger<CardLayoutController> logger)
+    {
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
     [SwaggerOperation(
-        Summary = "Update CardLayoutId",
-        Description = @"Update CardLayoutId"
+        Summary = "Update CardLayout",
+        Description = @"Update CardLayout"
     )]
-    [HttpPut(Name = "updateCardLayoutId")]
+    [HttpPut(Name = "updateCardLayout")]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(UpdateCardLayoutResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<UpdateCardLayoutResponse>> Update([FromBody]UpdateCardLayoutRequest  request,CancellationToken cancellationToken)
+    public async Task<ActionResult<UpdateCardLayoutResponse>> Update([FromBody] UpdateCardLayoutRequest request, CancellationToken cancellationToken)
     {
         return await _mediator.Send(request, cancellationToken);
     }
@@ -48,7 +49,7 @@ public class CardLayoutController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(CreateCardLayoutResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<CreateCardLayoutResponse>> Create([FromBody]CreateCardLayoutRequest  request,CancellationToken cancellationToken)
+    public async Task<ActionResult<CreateCardLayoutResponse>> Create([FromBody] CreateCardLayoutRequest request, CancellationToken cancellationToken)
     {
         return await _mediator.Send(request, cancellationToken);
     }
@@ -75,9 +76,9 @@ public class CardLayoutController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(GetCardLayoutByIdResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<GetCardLayoutByIdResponse>> GetById([FromRoute]Guid cardLayoutId,CancellationToken cancellationToken)
+    public async Task<ActionResult<GetCardLayoutByIdResponse>> GetById([FromRoute] Guid cardLayoutId, CancellationToken cancellationToken)
     {
-        var request = new GetCardLayoutByIdRequest(){CardLayoutId = cardLayoutId};
+        var request = new GetCardLayoutByIdRequest() { CardLayoutId = cardLayoutId };
 
         var response = await _mediator.Send(request, cancellationToken);
 
@@ -97,9 +98,9 @@ public class CardLayoutController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(DeleteCardLayoutResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<DeleteCardLayoutResponse>> Delete([FromRoute]Guid cardLayoutId,CancellationToken cancellationToken)
+    public async Task<ActionResult<DeleteCardLayoutResponse>> Delete([FromRoute] Guid cardLayoutId, CancellationToken cancellationToken)
     {
-        var request = new DeleteCardLayoutRequest() {CardLayoutId = cardLayoutId };
+        var request = new DeleteCardLayoutRequest() { CardLayoutId = cardLayoutId };
 
         return await _mediator.Send(request, cancellationToken);
     }

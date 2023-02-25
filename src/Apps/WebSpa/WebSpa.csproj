@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\projects\global\core\src\lib\" />
-    <Folder Include="ClientApp\projects\identity\core\src\lib\components\" />
     <Folder Include="ClientApp\projects\identity\core\src\lib\models\" />
     <Folder Include="ClientApp\projects\identity\core\src\lib\services\" />
   </ItemGroup>

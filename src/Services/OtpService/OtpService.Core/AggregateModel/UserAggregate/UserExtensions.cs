@@ -15,7 +15,7 @@ public static class UserExtensions
 
     }
 
-    public async static Task<List<UserDto>> ToDtosAsync(this IQueryable<User> users,CancellationToken cancellationToken)
+    public async static Task<List<UserDto>> ToDtosAsync(this IQueryable<User> users, CancellationToken cancellationToken)
     {
         return await users.Select(x => x.ToDto()).ToListAsync(cancellationToken);
     }

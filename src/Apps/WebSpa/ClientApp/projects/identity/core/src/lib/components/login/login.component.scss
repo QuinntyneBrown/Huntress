@@ -1,3 +1,5 @@
+@use '../dist/global/styles/scss/index.scss';
+
 :host {
   display: grid;
   place-items: start center;

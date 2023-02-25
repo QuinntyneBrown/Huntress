@@ -9,7 +9,8 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ConfigureServices
 {
-    public static void AddInfrastructureServices(this IServiceCollection services, string connectionString){
+    public static void AddInfrastructureServices(this IServiceCollection services, string connectionString)
+    {
 
         services.AddScoped<IContentServiceDbContext, ContentServiceDbContext>();
         services.AddDbContext<ContentServiceDbContext>(options =>

@@ -7,22 +7,23 @@ using System.Net.Sockets;
 
 namespace Messaging.Udp;
 
-public class ServiceBusMessageListener: Observable<IServiceBusMessage>, IServiceBusMessageListener
+public class ServiceBusMessageListener : Observable<IServiceBusMessage>, IServiceBusMessageListener
 {
     private readonly ILogger<ServiceBusMessageListener> _logger;
     private readonly UdpClient _client;
-    
+
     public ServiceBusMessageListener(
         ILogger<ServiceBusMessageListener> logger,
         IUdpClientFactory udpClientFactory
-        ){
+        )
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _client = udpClientFactory.Create();
     }
 
     public async Task StartAsync(CancellationToken cancellationToken = default)
     {
-        while(!cancellationToken.IsCancellationRequested)
+        while (!cancellationToken.IsCancellationRequested)
         {
             var result = await _client.ReceiveAsync(cancellationToken);
 
@@ -33,7 +34,7 @@ public class ServiceBusMessageListener: Observable<IServiceBusMessage>, IService
             Broadcast(serviceBusMessage);
 
             await Task.Delay(300);
-        }        
+        }
     }
 }
 

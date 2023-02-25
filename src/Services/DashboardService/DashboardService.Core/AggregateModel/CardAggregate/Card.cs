@@ -7,7 +7,7 @@ public class Card
 {
     public Card(string name, string description)
     {
-        Name = name; 
+        Name = name;
         Description = description;
     }
 

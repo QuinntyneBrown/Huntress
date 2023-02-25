@@ -3,9 +3,9 @@
 
 namespace CustomerService.Core.AggregateModel.CustomerAggregate.Commands;
 
-public class UpdateCustomerRequestValidator: AbstractValidator<UpdateCustomerRequest> { }
+public class UpdateCustomerRequestValidator : AbstractValidator<UpdateCustomerRequest> { }
 
-public class UpdateCustomerRequest: IRequest<UpdateCustomerResponse>
+public class UpdateCustomerRequest : IRequest<UpdateCustomerResponse>
 {
     public Guid CustomerId { get; set; }
     public string FirstName { get; set; }
@@ -21,18 +21,19 @@ public class UpdateCustomerResponse
 }
 
 
-public class UpdateCustomerRequestHandler: IRequestHandler<UpdateCustomerRequest,UpdateCustomerResponse>
+public class UpdateCustomerRequestHandler : IRequestHandler<UpdateCustomerRequest, UpdateCustomerResponse>
 {
     private readonly ILogger<UpdateCustomerRequestHandler> _logger;
 
     private readonly ICustomerServiceDbContext _context;
 
-    public UpdateCustomerRequestHandler(ILogger<UpdateCustomerRequestHandler> logger,ICustomerServiceDbContext context){
+    public UpdateCustomerRequestHandler(ILogger<UpdateCustomerRequestHandler> logger, ICustomerServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<UpdateCustomerResponse> Handle(UpdateCustomerRequest request,CancellationToken cancellationToken)
+    public async Task<UpdateCustomerResponse> Handle(UpdateCustomerRequest request, CancellationToken cancellationToken)
     {
         var customer = await _context.Customers.SingleAsync(x => x.CustomerId == request.CustomerId);
 
@@ -44,7 +45,7 @@ public class UpdateCustomerRequestHandler: IRequestHandler<UpdateCustomerRequest
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             Customer = customer.ToDto()
         };

@@ -16,7 +16,7 @@ public static class CardLayoutExtensions
 
     }
 
-    public async static Task<List<CardLayoutDto>> ToDtosAsync(this IQueryable<CardLayout> cardLayouts,CancellationToken cancellationToken)
+    public async static Task<List<CardLayoutDto>> ToDtosAsync(this IQueryable<CardLayout> cardLayouts, CancellationToken cancellationToken)
     {
         return await cardLayouts.Select(x => x.ToDto()).ToListAsync(cancellationToken);
     }

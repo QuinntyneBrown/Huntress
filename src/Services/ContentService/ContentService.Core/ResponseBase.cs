@@ -5,7 +5,8 @@ namespace ContentService.Core;
 
 public class ResponseBase
 {
-    public ResponseBase(){
+    public ResponseBase()
+    {
         Errors = new List<string>();
     }
 

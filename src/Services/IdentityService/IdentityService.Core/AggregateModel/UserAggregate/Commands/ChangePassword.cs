@@ -3,7 +3,8 @@
 
 namespace IdentityService.Core.AggregateModel.UserAggregate.Commands;
 
-public class ChangePasswordRequestValidator: AbstractValidator<ChangePasswordRequest> {
+public class ChangePasswordRequestValidator : AbstractValidator<ChangePasswordRequest>
+{
     public ChangePasswordRequestValidator()
     {
         RuleFor(x => x.OldPassword).NotNull();
@@ -11,31 +12,33 @@ public class ChangePasswordRequestValidator: AbstractValidator<ChangePasswordReq
     }
 }
 
-public class ChangePasswordRequest: IRequest<ChangePasswordResponse>
+public class ChangePasswordRequest : IRequest<ChangePasswordResponse>
 {
     public string OldPassword { get; set; }
     public string NewPassword { get; set; }
 }
 
 
-public class ChangePasswordResponse: ResponseBase
+public class ChangePasswordResponse : ResponseBase
 {
     public string Token { get; set; }
 }
 
 
-public class ChangePasswordRequestHandler: IRequestHandler<ChangePasswordRequest,ChangePasswordResponse>
+public class ChangePasswordRequestHandler : IRequestHandler<ChangePasswordRequest, ChangePasswordResponse>
 {
     private readonly ILogger<ChangePasswordRequestHandler> _logger;
 
     private readonly IIdentityServiceDbContext _context;
 
-    public ChangePasswordRequestHandler(ILogger<ChangePasswordRequestHandler> logger,IIdentityServiceDbContext context){
+    public ChangePasswordRequestHandler(ILogger<ChangePasswordRequestHandler> logger, IIdentityServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<ChangePasswordResponse> Handle(ChangePasswordRequest request,CancellationToken cancellationToken){
+    public async Task<ChangePasswordResponse> Handle(ChangePasswordRequest request, CancellationToken cancellationToken)
+    {
 
         throw new NotImplementedException();
     }

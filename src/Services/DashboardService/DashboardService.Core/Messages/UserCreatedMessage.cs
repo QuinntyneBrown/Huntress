@@ -3,7 +3,7 @@
 
 namespace DashboardService.Core.Messages;
 
-public class UserCreatedMessage: IRequest
+public class UserCreatedMessage : IRequest
 {
     public string Username { get; set; } = null!;
 }

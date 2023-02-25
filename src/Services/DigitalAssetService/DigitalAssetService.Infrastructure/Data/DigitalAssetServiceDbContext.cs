@@ -7,9 +7,9 @@ using DigitalAssetService.Core.AggregateModel.DigitalAssetAggregate;
 
 namespace DigitalAssetService.Infrastructure.Data;
 
-public class DigitalAssetServiceDbContext: DbContext, IDigitalAssetServiceDbContext
+public class DigitalAssetServiceDbContext : DbContext, IDigitalAssetServiceDbContext
 {
-    public DigitalAssetServiceDbContext(DbContextOptions<DigitalAssetServiceDbContext> options)    : base(options)
+    public DigitalAssetServiceDbContext(DbContextOptions<DigitalAssetServiceDbContext> options) : base(options)
     {
     }
 

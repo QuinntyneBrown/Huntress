@@ -13,7 +13,7 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<IdentitySe
     {
         var builder = new DbContextOptionsBuilder<IdentityServiceDbContext>();
 
-        builder.UseSqlServer("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=IdentityService;Integrated Security=SSPI;");
+        builder.UseSqlServer("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Huntress;Integrated Security=SSPI;");
 
         return new IdentityServiceDbContext(builder.Options);
     }

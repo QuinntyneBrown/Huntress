@@ -22,7 +22,8 @@ public class PrivilegeController
 
     private readonly ILogger<PrivilegeController> _logger;
 
-    public PrivilegeController(IMediator mediator,ILogger<PrivilegeController> logger){
+    public PrivilegeController(IMediator mediator, ILogger<PrivilegeController> logger)
+    {
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
@@ -35,7 +36,7 @@ public class PrivilegeController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(UpdatePrivilegeResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<UpdatePrivilegeResponse>> Update([FromBody]UpdatePrivilegeRequest  request,CancellationToken cancellationToken)
+    public async Task<ActionResult<UpdatePrivilegeResponse>> Update([FromBody] UpdatePrivilegeRequest request, CancellationToken cancellationToken)
     {
         return await _mediator.Send(request, cancellationToken);
     }
@@ -48,7 +49,7 @@ public class PrivilegeController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(CreatePrivilegeResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<CreatePrivilegeResponse>> Create([FromBody]CreatePrivilegeRequest  request,CancellationToken cancellationToken)
+    public async Task<ActionResult<CreatePrivilegeResponse>> Create([FromBody] CreatePrivilegeRequest request, CancellationToken cancellationToken)
     {
         return await _mediator.Send(request, cancellationToken);
     }
@@ -75,9 +76,9 @@ public class PrivilegeController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(GetPrivilegeByIdResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<GetPrivilegeByIdResponse>> GetById([FromRoute]Guid privilegeId,CancellationToken cancellationToken)
+    public async Task<ActionResult<GetPrivilegeByIdResponse>> GetById([FromRoute] Guid privilegeId, CancellationToken cancellationToken)
     {
-        var request = new GetPrivilegeByIdRequest(){PrivilegeId = privilegeId};
+        var request = new GetPrivilegeByIdRequest() { PrivilegeId = privilegeId };
 
         var response = await _mediator.Send(request, cancellationToken);
 
@@ -97,9 +98,9 @@ public class PrivilegeController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(DeletePrivilegeResponse), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<DeletePrivilegeResponse>> Delete([FromRoute]Guid privilegeId,CancellationToken cancellationToken)
+    public async Task<ActionResult<DeletePrivilegeResponse>> Delete([FromRoute] Guid privilegeId, CancellationToken cancellationToken)
     {
-        var request = new DeletePrivilegeRequest() {PrivilegeId = privilegeId };
+        var request = new DeletePrivilegeRequest() { PrivilegeId = privilegeId };
 
         return await _mediator.Send(request, cancellationToken);
     }

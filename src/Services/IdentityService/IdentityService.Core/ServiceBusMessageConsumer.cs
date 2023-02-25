@@ -41,7 +41,7 @@ public class ServiceBusMessageConsumer : BackgroundService
 
             var messageType = message.MessageAttributes["MessageType"];
 
-            if(_supportedMessageTypes.Contains(messageType))
+            if (_supportedMessageTypes.Contains(messageType))
             {
                 var type = Type.GetType($"IdentityService.Core.Messages.{messageType}");
 

@@ -6,9 +6,10 @@ using Messaging.Udp;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public static class ConfigureServices { 
+public static class ConfigureServices
+{
 
-    public static void AddMessagingUdpServices(this IServiceCollection services) 
+    public static void AddMessagingUdpServices(this IServiceCollection services)
     {
         services.AddSingleton<IServiceBusMessageSender, ServiceBusMessageSender>();
         services.AddSingleton<IServiceBusMessageListener, ServiceBusMessageListener>();

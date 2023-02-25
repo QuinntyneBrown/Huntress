@@ -9,15 +9,14 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ConfigureServices
 {
-    public static void AddInfrastructureServices(this IServiceCollection services){
+    public static void AddInfrastructureServices(this IServiceCollection services, string connectionString)
+    {
 
         services.AddTransient<ICustomerServiceDbContext, CustomerServiceDbContext>();
 
         services.AddDbContext<CustomerServiceDbContext>(options =>
         {
-            options.UseInMemoryDatabase(nameof(CustomerService))
-            .LogTo(Console.WriteLine)
-            .EnableSensitiveDataLogging();
+            options.UseSqlServer(connectionString, builder => builder.MigrationsAssembly("CustomerService.Infrastructure"));
         });
     }
 

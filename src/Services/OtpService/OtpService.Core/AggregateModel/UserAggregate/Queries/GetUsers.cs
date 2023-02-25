@@ -3,7 +3,7 @@
 
 namespace OtpService.Core.AggregateModel.UserAggregate.Queries;
 
-public class GetUsersRequest: IRequest<GetUsersResponse> { }
+public class GetUsersRequest : IRequest<GetUsersResponse> { }
 
 public class GetUsersResponse
 {
@@ -11,20 +11,22 @@ public class GetUsersResponse
 }
 
 
-public class GetUsersRequestHandler: IRequestHandler<GetUsersRequest,GetUsersResponse>
+public class GetUsersRequestHandler : IRequestHandler<GetUsersRequest, GetUsersResponse>
 {
     private readonly ILogger<GetUsersRequestHandler> _logger;
 
     private readonly IOtpServiceDbContext _context;
 
-    public GetUsersRequestHandler(ILogger<GetUsersRequestHandler> logger,IOtpServiceDbContext context){
+    public GetUsersRequestHandler(ILogger<GetUsersRequestHandler> logger, IOtpServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<GetUsersResponse> Handle(GetUsersRequest request,CancellationToken cancellationToken)
+    public async Task<GetUsersResponse> Handle(GetUsersRequest request, CancellationToken cancellationToken)
     {
-        return new () {
+        return new()
+        {
             Users = await _context.Users.AsNoTracking().ToDtosAsync(cancellationToken)
         };
 

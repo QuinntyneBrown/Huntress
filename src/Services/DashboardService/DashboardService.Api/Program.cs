@@ -49,12 +49,7 @@ try
         var context = scope.ServiceProvider.GetRequiredService<DashboardServiceDbContext>();
 
         if (args.Contains("ci"))
-            args = new string[4] { "dropdb", "migratedb", "seeddb", "stop" };
-
-        if (args.Contains("dropdb"))
-        {
-            context.Database.EnsureDeleted();
-        }
+            args = new string[3] { "migratedb", "seeddb", "stop" };
 
         if (args.Contains("migratedb"))
         {

@@ -3,9 +3,9 @@
 
 namespace CustomerService.Core.AggregateModel.CustomerAggregate.Commands;
 
-public class CreateCustomerRequestValidator: AbstractValidator<CreateCustomerRequest> { }
+public class CreateCustomerRequestValidator : AbstractValidator<CreateCustomerRequest> { }
 
-public class CreateCustomerRequest: IRequest<CreateCustomerResponse>
+public class CreateCustomerRequest : IRequest<CreateCustomerResponse>
 {
     public Guid CustomerId { get; set; }
     public string FirstName { get; set; }
@@ -15,24 +15,25 @@ public class CreateCustomerRequest: IRequest<CreateCustomerResponse>
 }
 
 
-public class CreateCustomerResponse: ResponseBase
+public class CreateCustomerResponse : ResponseBase
 {
     public CustomerDto Customer { get; set; }
 }
 
 
-public class CreateCustomerRequestHandler: IRequestHandler<CreateCustomerRequest,CreateCustomerResponse>
+public class CreateCustomerRequestHandler : IRequestHandler<CreateCustomerRequest, CreateCustomerResponse>
 {
     private readonly ILogger<CreateCustomerRequestHandler> _logger;
 
     private readonly ICustomerServiceDbContext _context;
 
-    public CreateCustomerRequestHandler(ILogger<CreateCustomerRequestHandler> logger,ICustomerServiceDbContext context){
+    public CreateCustomerRequestHandler(ILogger<CreateCustomerRequestHandler> logger, ICustomerServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<CreateCustomerResponse> Handle(CreateCustomerRequest request,CancellationToken cancellationToken)
+    public async Task<CreateCustomerResponse> Handle(CreateCustomerRequest request, CancellationToken cancellationToken)
     {
         var customer = new Customer();
 
@@ -45,7 +46,7 @@ public class CreateCustomerRequestHandler: IRequestHandler<CreateCustomerRequest
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             Customer = customer.ToDto()
         };

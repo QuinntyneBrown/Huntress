@@ -11,7 +11,7 @@ using Messaging.Udp;
 
 namespace DigitalAssetService.Core;
 
-public class ServiceBusMessageConsumer: BackgroundService
+public class ServiceBusMessageConsumer : BackgroundService
 {
     private readonly ILogger<ServiceBusMessageConsumer> _logger;
 
@@ -21,7 +21,8 @@ public class ServiceBusMessageConsumer: BackgroundService
 
     private readonly string[] _supportedMessageTypes = new string[] { };
 
-    public ServiceBusMessageConsumer(ILogger<ServiceBusMessageConsumer> logger,IMediator mediator,IUdpClientFactory udpClientFactory){
+    public ServiceBusMessageConsumer(ILogger<ServiceBusMessageConsumer> logger, IMediator mediator, IUdpClientFactory udpClientFactory)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         _udpClientFactory = udpClientFactory ?? throw new ArgumentNullException(nameof(udpClientFactory));
@@ -31,7 +32,8 @@ public class ServiceBusMessageConsumer: BackgroundService
     {
         var client = _udpClientFactory.Create();
 
-        while(!stoppingToken.IsCancellationRequested) {
+        while (!stoppingToken.IsCancellationRequested)
+        {
 
             var result = await client.ReceiveAsync(stoppingToken);
 
@@ -41,7 +43,7 @@ public class ServiceBusMessageConsumer: BackgroundService
 
             var messageType = message.MessageAttributes["MessageType"];
 
-            if(_supportedMessageTypes.Contains(messageType))
+            if (_supportedMessageTypes.Contains(messageType))
             {
                 var type = Type.GetType($"DigitalAssetService.Core.Messages.{messageType}");
 

@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ContentService.Infrastructure.Data;
 
-public class ContentServiceDbContext: DbContext, IContentServiceDbContext
+public class ContentServiceDbContext : DbContext, IContentServiceDbContext
 {
-    public ContentServiceDbContext(DbContextOptions<ContentServiceDbContext> options)    
+    public ContentServiceDbContext(DbContextOptions<ContentServiceDbContext> options)
         : base(options)
     {
     }

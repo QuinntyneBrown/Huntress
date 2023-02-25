@@ -11,7 +11,7 @@ namespace IdentityService.Core;
 public interface IIdentityServiceDbContext
 {
     public DbSet<Privilege> Privileges { get; }
-    public DbSet<Role> Roles { get;  }
+    public DbSet<Role> Roles { get; }
     public DbSet<User> Users { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 

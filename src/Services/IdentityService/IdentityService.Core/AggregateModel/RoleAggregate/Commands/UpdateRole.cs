@@ -6,9 +6,9 @@ using IdentityService.Core.AggregateModel.UserAggregate;
 
 namespace IdentityService.Core.AggregateModel.RoleAggregate.Commands;
 
-public class UpdateRoleRequestValidator: AbstractValidator<UpdateRoleRequest> { }
+public class UpdateRoleRequestValidator : AbstractValidator<UpdateRoleRequest> { }
 
-public class UpdateRoleRequest: IRequest<UpdateRoleResponse>
+public class UpdateRoleRequest : IRequest<UpdateRoleResponse>
 {
     public Guid RoleId { get; set; }
     public string Name { get; set; }
@@ -17,24 +17,25 @@ public class UpdateRoleRequest: IRequest<UpdateRoleResponse>
 }
 
 
-public class UpdateRoleResponse: ResponseBase
+public class UpdateRoleResponse : ResponseBase
 {
     public RoleDto Role { get; set; }
 }
 
 
-public class UpdateRoleRequestHandler: IRequestHandler<UpdateRoleRequest,UpdateRoleResponse>
+public class UpdateRoleRequestHandler : IRequestHandler<UpdateRoleRequest, UpdateRoleResponse>
 {
     private readonly ILogger<UpdateRoleRequestHandler> _logger;
 
     private readonly IIdentityServiceDbContext _context;
 
-    public UpdateRoleRequestHandler(ILogger<UpdateRoleRequestHandler> logger,IIdentityServiceDbContext context){
+    public UpdateRoleRequestHandler(ILogger<UpdateRoleRequestHandler> logger, IIdentityServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<UpdateRoleResponse> Handle(UpdateRoleRequest request,CancellationToken cancellationToken)
+    public async Task<UpdateRoleResponse> Handle(UpdateRoleRequest request, CancellationToken cancellationToken)
     {
         var role = await _context.Roles.SingleAsync(x => x.RoleId == request.RoleId);
 
@@ -45,7 +46,7 @@ public class UpdateRoleRequestHandler: IRequestHandler<UpdateRoleRequest,UpdateR
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             Role = role.ToDto()
         };

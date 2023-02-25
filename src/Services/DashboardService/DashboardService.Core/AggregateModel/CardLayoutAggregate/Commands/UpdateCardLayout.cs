@@ -3,9 +3,9 @@
 
 namespace DashboardService.Core.AggregateModel.CardLayoutAggregate.Commands;
 
-public class UpdateCardLayoutRequestValidator: AbstractValidator<UpdateCardLayoutRequest> { }
+public class UpdateCardLayoutRequestValidator : AbstractValidator<UpdateCardLayoutRequest> { }
 
-public class UpdateCardLayoutRequest: IRequest<UpdateCardLayoutResponse>
+public class UpdateCardLayoutRequest : IRequest<UpdateCardLayoutResponse>
 {
     public Guid CardLayoutId { get; set; }
     public string Name { get; set; }
@@ -13,24 +13,25 @@ public class UpdateCardLayoutRequest: IRequest<UpdateCardLayoutResponse>
 }
 
 
-public class UpdateCardLayoutResponse: ResponseBase
+public class UpdateCardLayoutResponse : ResponseBase
 {
     public CardLayoutDto CardLayout { get; set; }
 }
 
 
-public class UpdateCardLayoutRequestHandler: IRequestHandler<UpdateCardLayoutRequest,UpdateCardLayoutResponse>
+public class UpdateCardLayoutRequestHandler : IRequestHandler<UpdateCardLayoutRequest, UpdateCardLayoutResponse>
 {
     private readonly ILogger<UpdateCardLayoutRequestHandler> _logger;
 
     private readonly IDashboardServiceDbContext _context;
 
-    public UpdateCardLayoutRequestHandler(ILogger<UpdateCardLayoutRequestHandler> logger,IDashboardServiceDbContext context){
+    public UpdateCardLayoutRequestHandler(ILogger<UpdateCardLayoutRequestHandler> logger, IDashboardServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<UpdateCardLayoutResponse> Handle(UpdateCardLayoutRequest request,CancellationToken cancellationToken)
+    public async Task<UpdateCardLayoutResponse> Handle(UpdateCardLayoutRequest request, CancellationToken cancellationToken)
     {
         var cardLayout = await _context.CardLayouts.SingleAsync(x => x.CardLayoutId == request.CardLayoutId);
 
@@ -40,7 +41,7 @@ public class UpdateCardLayoutRequestHandler: IRequestHandler<UpdateCardLayoutReq
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             CardLayout = cardLayout.ToDto()
         };

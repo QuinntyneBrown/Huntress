@@ -3,7 +3,8 @@
 
 namespace DigitalAssetService.Core.AggregateModel.DigitalAssetAggregate;
 
-public class DigitalAsset {
+public class DigitalAsset
+{
     public Guid DigitalAssetId { get; set; }
     public string Name { get; set; }
     public byte[] Bytes { get; set; }

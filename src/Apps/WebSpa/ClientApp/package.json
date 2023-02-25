@@ -13,7 +13,8 @@
     "watch:telemetry": "ng build @telemetry/core --watch",
     "watch:content": "ng build @content/core --watch",
     "watch:global-styles": "ng build @global/styles --watch",
-    "watch:libs": "npm-run-all --parallel watch:dashboard watch:identity watch:telemetry watch:content watch:global-styles",
+    "watch:global-list-detail": "ng build @global/list-detail --watch",
+    "watch:libs": "npm-run-all --parallel watch:dashboard watch:identity watch:telemetry watch:content watch:global-styles watch:global-list-detail",
     "test": "ng test"
   },
   "private": true,
@@ -29,6 +30,7 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
     "@microsoft/signalr": "^7.0.2",
+    "@ngrx/component": "^15.3.0",
     "@ngrx/component-store": "^15.2.1",
     "ckeditor4-angular": "^3.2.1",
     "rxjs": "~7.5.0",

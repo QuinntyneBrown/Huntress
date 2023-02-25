@@ -2,7 +2,7 @@
 
 namespace TelemetryService.Api;
 
-public class TelemetryHub: Hub<ITelemetryHub>
+public class TelemetryHub : Hub<ITelemetryHub>
 {
 
 }

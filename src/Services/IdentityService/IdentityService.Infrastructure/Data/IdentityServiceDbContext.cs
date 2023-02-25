@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.Infrastructure.Data;
 
-public class IdentityServiceDbContext: DbContext, IIdentityServiceDbContext
+public class IdentityServiceDbContext : DbContext, IIdentityServiceDbContext
 {
     public IdentityServiceDbContext(DbContextOptions<IdentityServiceDbContext> options)
-        :base(options)
+        : base(options)
     {
 
     }

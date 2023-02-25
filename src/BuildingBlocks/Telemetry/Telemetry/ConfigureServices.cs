@@ -7,7 +7,8 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ConfigureServices
 {
-    public static void AddTelemetryServices(this IServiceCollection services){ 
+    public static void AddTelemetryServices(this IServiceCollection services)
+    {
         services.AddHostedService<TelemetryProducer>();
     }
 }

@@ -7,5 +7,5 @@ namespace Messaging.Udp;
 
 public interface IUdpClientFactory
 {
-     UdpClient Create();
+    UdpClient Create();
 }

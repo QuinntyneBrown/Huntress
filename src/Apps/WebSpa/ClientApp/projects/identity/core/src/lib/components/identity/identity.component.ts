@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'id-identity',
+  selector: 'idp-identity',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './identity.component.html',

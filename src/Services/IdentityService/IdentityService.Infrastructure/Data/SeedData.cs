@@ -7,7 +7,7 @@ public static class SeedData
 {
     public static void Seed(this IdentityServiceDbContext context)
     {
-        if(context.Users.SingleOrDefault(x => x.Username == "quinntynebrown@gmail.com") == null)
+        if (context.Users.SingleOrDefault(x => x.Username == "quinntynebrown@gmail.com") == null)
         {
             var passwordHasher = new PasswordHasher();
 

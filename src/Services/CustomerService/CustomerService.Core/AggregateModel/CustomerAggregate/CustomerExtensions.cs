@@ -18,7 +18,7 @@ public static class CustomerExtensions
 
     }
 
-    public async static Task<List<CustomerDto>> ToDtosAsync(this IQueryable<Customer> customers,CancellationToken cancellationToken)
+    public async static Task<List<CustomerDto>> ToDtosAsync(this IQueryable<Customer> customers, CancellationToken cancellationToken)
     {
         return await customers.Select(x => x.ToDto()).ToListAsync(cancellationToken);
     }

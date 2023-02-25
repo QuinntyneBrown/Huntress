@@ -7,18 +7,18 @@ using System.Data;
 
 namespace EventSourcing;
 
-public class DbConnectionProvider: IDbConnectionProvider
+public class DbConnectionProvider : IDbConnectionProvider
 {
-	public DbConnectionProviderOptions DbConnectionProviderOptions { get; set; }
+    public DbConnectionProviderOptions DbConnectionProviderOptions { get; set; }
 
-	public DbConnectionProvider(IOptions<DbConnectionProviderOptions> dbConnectionProviderOptionsAccessor)
-	{
-		DbConnectionProviderOptions = dbConnectionProviderOptionsAccessor.Value;
-	}
+    public DbConnectionProvider(IOptions<DbConnectionProviderOptions> dbConnectionProviderOptionsAccessor)
+    {
+        DbConnectionProviderOptions = dbConnectionProviderOptionsAccessor.Value;
+    }
 
-	public IDbConnection Get()
-	{
-		return new SqlConnection(DbConnectionProviderOptions.ConnectionString);
-	}
+    public IDbConnection Get()
+    {
+        return new SqlConnection(DbConnectionProviderOptions.ConnectionString);
+    }
 }
 

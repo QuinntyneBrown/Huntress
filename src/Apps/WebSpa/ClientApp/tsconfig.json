@@ -9,6 +9,9 @@
       "@dashboard/core": [
         "dist/dashboard/core"
       ],
+      "@digital-assets/core": [
+        "dist/digital-assets/core"
+      ],
       "@global/components": [
         "dist/global/components"
       ],
@@ -26,6 +29,9 @@
       ],
       "@identity/core": [
         "dist/identity/core"
+      ],
+      "@otp/core": [
+        "dist/otp/core"
       ],
       "@telemetry/core": [
         "dist/telemetry/core"

@@ -3,32 +3,34 @@
 
 namespace DashboardService.Core.AggregateModel.CardLayoutAggregate.Queries;
 
-public class GetCardLayoutByIdRequest: IRequest<GetCardLayoutByIdResponse>
+public class GetCardLayoutByIdRequest : IRequest<GetCardLayoutByIdResponse>
 {
     public Guid CardLayoutId { get; set; }
 }
 
 
-public class GetCardLayoutByIdResponse: ResponseBase
+public class GetCardLayoutByIdResponse : ResponseBase
 {
     public CardLayoutDto CardLayout { get; set; }
 }
 
 
-public class GetCardLayoutByIdRequestHandler: IRequestHandler<GetCardLayoutByIdRequest,GetCardLayoutByIdResponse>
+public class GetCardLayoutByIdRequestHandler : IRequestHandler<GetCardLayoutByIdRequest, GetCardLayoutByIdResponse>
 {
     private readonly ILogger<GetCardLayoutByIdRequestHandler> _logger;
 
     private readonly IDashboardServiceDbContext _context;
 
-    public GetCardLayoutByIdRequestHandler(ILogger<GetCardLayoutByIdRequestHandler> logger,IDashboardServiceDbContext context){
+    public GetCardLayoutByIdRequestHandler(ILogger<GetCardLayoutByIdRequestHandler> logger, IDashboardServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<GetCardLayoutByIdResponse> Handle(GetCardLayoutByIdRequest request,CancellationToken cancellationToken)
+    public async Task<GetCardLayoutByIdResponse> Handle(GetCardLayoutByIdRequest request, CancellationToken cancellationToken)
     {
-        return new () {
+        return new()
+        {
             CardLayout = (await _context.CardLayouts.AsNoTracking().SingleOrDefaultAsync(x => x.CardLayoutId == request.CardLayoutId)).ToDto()
         };
 

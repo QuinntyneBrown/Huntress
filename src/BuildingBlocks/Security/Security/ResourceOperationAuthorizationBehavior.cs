@@ -20,7 +20,7 @@ public class ResourceOperationAuthorizationBehavior<TRequest, TResponse> : IPipe
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task<TResponse> Handle(TRequest request,  RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         if (Attribute.GetCustomAttribute(request.GetType(), typeof(AuthorizeResourceOperationAttribute)) is AuthorizeResourceOperationAttribute attribute)
         {

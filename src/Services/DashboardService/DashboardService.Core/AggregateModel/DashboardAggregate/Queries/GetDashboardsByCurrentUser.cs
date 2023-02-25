@@ -5,15 +5,15 @@ using Microsoft.AspNetCore.Http;
 
 namespace DashboardService.Core.AggregateModel.DashboardAggregate.Queries;
 
-public class GetDashboardsByCurrentUserRequest: IRequest<GetDashboardsByCurrentUserResponse> { }
+public class GetDashboardsByCurrentUserRequest : IRequest<GetDashboardsByCurrentUserResponse> { }
 
-public class GetDashboardsByCurrentUserResponse: ResponseBase
+public class GetDashboardsByCurrentUserResponse : ResponseBase
 {
     public required List<DashboardDto> Dashboards { get; set; }
 }
 
 
-public class GetDashboardsByCurrentUserRequestHandler: IRequestHandler<GetDashboardsByCurrentUserRequest,GetDashboardsByCurrentUserResponse>
+public class GetDashboardsByCurrentUserRequestHandler : IRequestHandler<GetDashboardsByCurrentUserRequest, GetDashboardsByCurrentUserResponse>
 {
     private readonly ILogger<GetDashboardsByCurrentUserRequestHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor;
@@ -29,11 +29,12 @@ public class GetDashboardsByCurrentUserRequestHandler: IRequestHandler<GetDashbo
         _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
     }
 
-    public async Task<GetDashboardsByCurrentUserResponse> Handle(GetDashboardsByCurrentUserRequest request,CancellationToken cancellationToken){
+    public async Task<GetDashboardsByCurrentUserResponse> Handle(GetDashboardsByCurrentUserRequest request, CancellationToken cancellationToken)
+    {
 
         _logger.LogInformation("Get Dashboards for current user");
 
-        return new ()
+        return new()
         {
             Dashboards = await _context.Users
             .Include(x => x.Dashboards)

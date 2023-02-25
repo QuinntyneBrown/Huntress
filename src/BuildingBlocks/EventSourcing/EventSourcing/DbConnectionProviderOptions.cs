@@ -5,6 +5,6 @@ namespace EventSourcing;
 
 public class DbConnectionProviderOptions
 {
-	public string ConnectionString { get; set; } = null!;
+    public string ConnectionString { get; set; } = null!;
 }
 

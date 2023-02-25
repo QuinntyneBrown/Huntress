@@ -3,15 +3,18 @@
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LoginComponent as IdentityLoginComponent } from '@identity/core';
+import { createViewModel } from './login.view-model';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IdentityLoginComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
 
-}
+  public vm$ = createViewModel();
 
+}

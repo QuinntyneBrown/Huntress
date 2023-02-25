@@ -18,7 +18,7 @@ public static class DashboardCardExtensions
 
     }
 
-    public async static Task<List<DashboardCardDto>> ToDtosAsync(this IQueryable<DashboardCard> dashboardCards,CancellationToken cancellationToken)
+    public async static Task<List<DashboardCardDto>> ToDtosAsync(this IQueryable<DashboardCard> dashboardCards, CancellationToken cancellationToken)
     {
         return await dashboardCards.Select(x => x.ToDto()).ToListAsync(cancellationToken);
     }

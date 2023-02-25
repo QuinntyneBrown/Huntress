@@ -89,7 +89,7 @@
       "projectType": "library",
       "root": "projects/identity/core",
       "sourceRoot": "projects/identity/core/src",
-      "prefix": "id",
+      "prefix": "idp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -423,7 +423,71 @@
         },
         "@schematics/angular:directive": {
           "standalone": true
-        }        
+        }
+      }
+    },
+    "@otp/core": {
+      "projectType": "library",
+      "root": "projects/otp/core",
+      "sourceRoot": "projects/otp/core/src",
+      "prefix": "otp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/otp/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/otp/core/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/otp/core/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run"
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": true,
+          "style": "scss"
+        }
+      }
+    },
+    "@digital-assets/core": {
+      "projectType": "library",
+      "root": "projects/digital-assets/core",
+      "sourceRoot": "projects/digital-assets/core/src",
+      "prefix": "da",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/digital-assets/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/digital-assets/core/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/digital-assets/core/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run"
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": true,
+          "style": "scss"
+        }
       }
     }
   }

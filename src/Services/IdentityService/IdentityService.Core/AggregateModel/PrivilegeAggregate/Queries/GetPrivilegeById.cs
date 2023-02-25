@@ -3,32 +3,34 @@
 
 namespace IdentityService.Core.AggregateModel.PrivilegeAggregate.Queries;
 
-public class GetPrivilegeByIdRequest: IRequest<GetPrivilegeByIdResponse>
+public class GetPrivilegeByIdRequest : IRequest<GetPrivilegeByIdResponse>
 {
     public Guid PrivilegeId { get; set; }
 }
 
 
-public class GetPrivilegeByIdResponse: ResponseBase
+public class GetPrivilegeByIdResponse : ResponseBase
 {
     public PrivilegeDto Privilege { get; set; }
 }
 
 
-public class GetPrivilegeByIdRequestHandler: IRequestHandler<GetPrivilegeByIdRequest,GetPrivilegeByIdResponse>
+public class GetPrivilegeByIdRequestHandler : IRequestHandler<GetPrivilegeByIdRequest, GetPrivilegeByIdResponse>
 {
     private readonly ILogger<GetPrivilegeByIdRequestHandler> _logger;
 
     private readonly IIdentityServiceDbContext _context;
 
-    public GetPrivilegeByIdRequestHandler(ILogger<GetPrivilegeByIdRequestHandler> logger,IIdentityServiceDbContext context){
+    public GetPrivilegeByIdRequestHandler(ILogger<GetPrivilegeByIdRequestHandler> logger, IIdentityServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<GetPrivilegeByIdResponse> Handle(GetPrivilegeByIdRequest request,CancellationToken cancellationToken)
+    public async Task<GetPrivilegeByIdResponse> Handle(GetPrivilegeByIdRequest request, CancellationToken cancellationToken)
     {
-        return new () {
+        return new()
+        {
             Privilege = (await _context.Privileges.AsNoTracking().SingleOrDefaultAsync(x => x.PrivilegeId == request.PrivilegeId)).ToDto()
         };
 

@@ -9,7 +9,7 @@ using Dapper;
 
 namespace EventSourcing;
 
-public class EventStore: IEventStore
+public class EventStore : IEventStore
 {
     private readonly IDbConnection _connection;
 

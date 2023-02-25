@@ -4,14 +4,13 @@
 using IdentityService.Core;
 using IdentityService.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ConfigureServices
 {
-    public static void AddInfrastructureServices(this IServiceCollection services, string connectionString){
+    public static void AddInfrastructureServices(this IServiceCollection services, string connectionString)
+    {
 
         services.AddScoped<IIdentityServiceDbContext, IdentityServiceDbContext>();
         services.AddDbContext<IdentityServiceDbContext>(options =>

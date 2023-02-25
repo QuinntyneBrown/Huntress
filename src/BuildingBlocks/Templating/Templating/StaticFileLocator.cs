@@ -6,9 +6,9 @@ using System.Reflection;
 
 namespace Templating;
 
-public class StaticFileLocator
+public class StaticFileLocator: IStaticFileLocator
 {
-    public static string GetAsString(string name)
+    public string GetAsString(string name)
     {
         var fullName = default(string);
         var assembly = default(Assembly);
@@ -50,10 +50,10 @@ public class StaticFileLocator
         }
         catch (Exception exception)
         {
-            throw exception;
+            throw;
         }
     }
-    public static byte[] Get(string name)
+    public byte[] Get(string name)
     {
         var fullName = default(string);
         var assembly = default(Assembly);
@@ -94,32 +94,7 @@ public class StaticFileLocator
         }
         catch (Exception exception)
         {
-            throw exception;
-        }
-    }
-}
-
-public static class StringListExtensions
-{
-    public static string SingleOrDefaultResourceName(this string[] collection, string name)
-    {
-        try
-        {
-            string result = null;
-
-            if (collection.Length == 0) return null;
-
-            result = collection.SingleOrDefault(x => x.EndsWith(name));
-
-            if (result != null)
-                return result;
-
-            return collection.SingleOrDefault(x => x.EndsWith($".{name}.txt"));
-
-        }
-        catch (Exception e)
-        {
-            throw e;
+            throw;
         }
     }
 }

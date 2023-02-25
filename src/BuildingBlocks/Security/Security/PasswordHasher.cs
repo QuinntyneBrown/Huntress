@@ -9,7 +9,7 @@ public class PasswordHasher : IPasswordHasher
 {
     public PasswordHasher()
     {
-        
+
     }
 
     public string HashPassword(Byte[] salt, string password)

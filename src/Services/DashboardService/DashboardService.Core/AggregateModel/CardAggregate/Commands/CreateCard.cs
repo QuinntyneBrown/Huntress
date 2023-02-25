@@ -3,7 +3,8 @@
 
 namespace DashboardService.Core.AggregateModel.CardAggregate.Commands;
 
-public class CreateCardRequestValidator: AbstractValidator<CreateCardRequest> {
+public class CreateCardRequestValidator : AbstractValidator<CreateCardRequest>
+{
 
     public CreateCardRequestValidator()
     {
@@ -12,7 +13,7 @@ public class CreateCardRequestValidator: AbstractValidator<CreateCardRequest> {
     }
 }
 
-public class CreateCardRequest: IRequest<CreateCardResponse>
+public class CreateCardRequest : IRequest<CreateCardResponse>
 {
     public Guid CardId { get; set; }
     public string Name { get; set; }
@@ -20,24 +21,25 @@ public class CreateCardRequest: IRequest<CreateCardResponse>
 }
 
 
-public class CreateCardResponse: ResponseBase
+public class CreateCardResponse : ResponseBase
 {
     public CardDto Card { get; set; }
 }
 
 
-public class CreateCardRequestHandler: IRequestHandler<CreateCardRequest,CreateCardResponse>
+public class CreateCardRequestHandler : IRequestHandler<CreateCardRequest, CreateCardResponse>
 {
     private readonly ILogger<CreateCardRequestHandler> _logger;
 
     private readonly IDashboardServiceDbContext _context;
 
-    public CreateCardRequestHandler(ILogger<CreateCardRequestHandler> logger,IDashboardServiceDbContext context){
+    public CreateCardRequestHandler(ILogger<CreateCardRequestHandler> logger, IDashboardServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<CreateCardResponse> Handle(CreateCardRequest request,CancellationToken cancellationToken)
+    public async Task<CreateCardResponse> Handle(CreateCardRequest request, CancellationToken cancellationToken)
     {
         var card = new Card(request.Name, request.Description);
 
@@ -45,7 +47,7 @@ public class CreateCardRequestHandler: IRequestHandler<CreateCardRequest,CreateC
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ()
+        return new()
         {
             Card = card.ToDto()
         };

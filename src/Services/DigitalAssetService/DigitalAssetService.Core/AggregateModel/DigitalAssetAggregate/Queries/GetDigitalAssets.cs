@@ -3,28 +3,30 @@
 
 namespace DigitalAssetService.Core.AggregateModel.DigitalAssetAggregate.Queries;
 
-public class GetDigitalAssetsRequest: IRequest<GetDigitalAssetsResponse> { }
+public class GetDigitalAssetsRequest : IRequest<GetDigitalAssetsResponse> { }
 
-public class GetDigitalAssetsResponse: ResponseBase
+public class GetDigitalAssetsResponse : ResponseBase
 {
     public List<DigitalAssetDto> DigitalAssets { get; set; }
 }
 
 
-public class GetDigitalAssetsRequestHandler: IRequestHandler<GetDigitalAssetsRequest,GetDigitalAssetsResponse>
+public class GetDigitalAssetsRequestHandler : IRequestHandler<GetDigitalAssetsRequest, GetDigitalAssetsResponse>
 {
     private readonly ILogger<GetDigitalAssetsRequestHandler> _logger;
 
     private readonly IDigitalAssetServiceDbContext _context;
 
-    public GetDigitalAssetsRequestHandler(ILogger<GetDigitalAssetsRequestHandler> logger,IDigitalAssetServiceDbContext context){
+    public GetDigitalAssetsRequestHandler(ILogger<GetDigitalAssetsRequestHandler> logger, IDigitalAssetServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<GetDigitalAssetsResponse> Handle(GetDigitalAssetsRequest request,CancellationToken cancellationToken)
+    public async Task<GetDigitalAssetsResponse> Handle(GetDigitalAssetsRequest request, CancellationToken cancellationToken)
     {
-        return new () {
+        return new()
+        {
             //DigitalAssets = await _context.DigitalAssets.AsNoTracking().ToDtosAsync(cancellationToken)
         };
 

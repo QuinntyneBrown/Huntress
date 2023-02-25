@@ -3,7 +3,7 @@
 
 namespace OtpService.Core.AggregateModel.UserAggregate.Queries;
 
-public class GetUserByIdRequest: IRequest<GetUserByIdResponse>
+public class GetUserByIdRequest : IRequest<GetUserByIdResponse>
 {
     public Guid UserId { get; set; }
 }
@@ -15,20 +15,22 @@ public class GetUserByIdResponse
 }
 
 
-public class GetUserByIdRequestHandler: IRequestHandler<GetUserByIdRequest,GetUserByIdResponse>
+public class GetUserByIdRequestHandler : IRequestHandler<GetUserByIdRequest, GetUserByIdResponse>
 {
     private readonly ILogger<GetUserByIdRequestHandler> _logger;
 
     private readonly IOtpServiceDbContext _context;
 
-    public GetUserByIdRequestHandler(ILogger<GetUserByIdRequestHandler> logger,IOtpServiceDbContext context){
+    public GetUserByIdRequestHandler(ILogger<GetUserByIdRequestHandler> logger, IOtpServiceDbContext context)
+    {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task<GetUserByIdResponse> Handle(GetUserByIdRequest request,CancellationToken cancellationToken)
+    public async Task<GetUserByIdResponse> Handle(GetUserByIdRequest request, CancellationToken cancellationToken)
     {
-        return new () {
+        return new()
+        {
             User = (await _context.Users.AsNoTracking().SingleOrDefaultAsync(x => x.UserId == request.UserId)).ToDto()
         };
 

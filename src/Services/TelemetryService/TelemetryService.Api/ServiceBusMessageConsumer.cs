@@ -9,7 +9,7 @@ using System.Net.Sockets;
 
 namespace TelemetryService.Api;
 
-public class ServiceBusMessageConsumer: BackgroundService
+public class ServiceBusMessageConsumer : BackgroundService
 {
     private readonly ILogger<ServiceBusMessageConsumer> _logger;
 
@@ -20,7 +20,7 @@ public class ServiceBusMessageConsumer: BackgroundService
     private readonly IHubContext<TelemetryHub, ITelemetryHub> _hubContext;
 
     public ServiceBusMessageConsumer(
-        ILogger<ServiceBusMessageConsumer> logger, 
+        ILogger<ServiceBusMessageConsumer> logger,
         IUdpClientFactory udpClientFactory,
         IHubContext<TelemetryHub, ITelemetryHub> hubContext)
     {
@@ -33,7 +33,8 @@ public class ServiceBusMessageConsumer: BackgroundService
     {
         _client = _udpClientFactory.Create();
 
-        while(!stoppingToken.IsCancellationRequested) {
+        while (!stoppingToken.IsCancellationRequested)
+        {
 
             var result = await _client.ReceiveAsync(stoppingToken);
 

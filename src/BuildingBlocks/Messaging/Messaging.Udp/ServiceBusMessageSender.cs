@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace Messaging.Udp;
 
-public class ServiceBusMessageSender: IServiceBusMessageSender
+public class ServiceBusMessageSender : IServiceBusMessageSender
 {
     private readonly ILogger<ServiceBusMessageSender> _logger;
     private readonly UdpClient _client;
@@ -28,7 +28,7 @@ public class ServiceBusMessageSender: IServiceBusMessageSender
         var serviceBusMessage = new ServiceBusMessage(new Dictionary<string, string>()
         {
             { "MessageType", messageType }
-        
+
         }, JsonSerializer.Serialize(message));
 
         var json = JsonSerializer.Serialize(serviceBusMessage);

@@ -15,7 +15,7 @@ Log.Logger = new LoggerConfiguration()
 try
 {
     Log.Information("Starting web host");
-    
+
     var builder = WebApplication.CreateBuilder(args);
 
     builder.Services.AddCoreServices(builder.Environment, builder.Configuration);
