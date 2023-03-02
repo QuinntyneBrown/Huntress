@@ -26,10 +26,7 @@ export class AuthService {
     private readonly _redirectService: RedirectService
   ) { }
 
-  public authorize(
-    route = inject(ActivatedRoute).snapshot,
-    state = inject(Router).routerState.snapshot) 
-    {
+  public authorize(state = inject(Router).routerState.snapshot) {
     
     const token = this._localStorageService.get({ name: ACCESS_TOKEN_KEY });
     

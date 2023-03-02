@@ -10,9 +10,9 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthGuard, BASE_URL as IDENTITY_BASE_URL, HOME_PATH, LOGIN_PATH } from '@identity/core';
+import { BASE_URL as IDENTITY_BASE_URL, HOME_PATH, LOGIN_PATH } from '@identity/core';
 import { BASE_URL as DASHBOARD_BASE_URL } from '@dashboard/core';
-import { BASE_URL as TELEMETRY_BASE_URL, TelemetryHubConnectionGuard } from '@telemetry/core';
+import { BASE_URL as TELEMETRY_BASE_URL } from '@telemetry/core';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);

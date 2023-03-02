@@ -236,6 +236,9 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "quinn": {
+
             }
           },
           "defaultConfiguration": "production"
@@ -247,6 +250,9 @@
               "browserTarget": "admin-app:build:production"
             },
             "development": {
+              "browserTarget": "admin-app:build:development"
+            },
+            "quinn": {
               "browserTarget": "admin-app:build:development"
             }
           },
