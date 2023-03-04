@@ -5,12 +5,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader } from '@ngx-translate/core';
 import { TranslateModule  } from '@ngx-translate/core';
 import { TranslateHttpLoader  } from '@ngx-translate/http-loader';
-import { importProvidersFrom } from '@angular/core';
+import { importProvidersFrom, inject } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BASE_URL as IDENTITY_BASE_URL, HOME_PATH, LOGIN_PATH } from '@identity/core';
+import { AuthService, BASE_URL as IDENTITY_BASE_URL, HOME_PATH, LOGIN_PATH } from '@identity/core';
 import { BASE_URL as DASHBOARD_BASE_URL } from '@dashboard/core';
 import { BASE_URL as TELEMETRY_BASE_URL } from '@telemetry/core';
 
@@ -26,6 +26,7 @@ bootstrapApplication(AppComponent, {
     { provide: HOME_PATH, useValue: '/' },
     { provide: LOGIN_PATH, useValue: '/login' },
     importProvidersFrom(
+      BrowserAnimationsModule,
       HttpClientModule,
       TranslateModule.forRoot({
         loader: {
@@ -35,9 +36,9 @@ bootstrapApplication(AppComponent, {
         }
       }),
       RouterModule.forRoot([
-        { path: '', loadComponent: () => import('./app/home/home.component').then(m => m.HomeComponent), canActivate: [] },
+        { path: '', loadComponent: () => import('./app/home/home.component').then(m => m.HomeComponent), canActivate: [() => inject(AuthService).authorize()] },
         { path: 'login', loadComponent: () => import('./app/login/login.component').then(m => m.LoginComponent) }
-      ]), BrowserAnimationsModule,     
+      ])          
     )
   ]
 }).catch((err) => console.error(err));

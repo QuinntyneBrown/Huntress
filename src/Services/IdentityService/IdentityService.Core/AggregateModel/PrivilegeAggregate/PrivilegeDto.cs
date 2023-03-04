@@ -10,7 +10,7 @@ public class PrivilegeDto
     public Guid PrivilegeId { get; set; }
     public Guid? RoleId { get; init; }
     public AccessRight AccessRight { get; init; }
-    public string Aggregate { get; init; }
+    public string? Aggregate { get; init; }
 }
 
 
