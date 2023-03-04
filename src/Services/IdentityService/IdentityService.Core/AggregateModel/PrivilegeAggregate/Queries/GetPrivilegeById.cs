@@ -11,7 +11,7 @@ public class GetPrivilegeByIdRequest : IRequest<GetPrivilegeByIdResponse>
 
 public class GetPrivilegeByIdResponse : ResponseBase
 {
-    public PrivilegeDto Privilege { get; set; }
+    public required PrivilegeDto Privilege { get; set; }
 }
 
 

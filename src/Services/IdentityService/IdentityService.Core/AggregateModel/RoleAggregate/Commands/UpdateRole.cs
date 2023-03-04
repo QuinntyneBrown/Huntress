@@ -1,25 +1,26 @@
 // Copyright (c) Quinntyne Brown. All Rights Reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using IdentityService.Core.AggregateModel.PrivilegeAggregate;
-using IdentityService.Core.AggregateModel.UserAggregate;
-
 namespace IdentityService.Core.AggregateModel.RoleAggregate.Commands;
 
-public class UpdateRoleRequestValidator : AbstractValidator<UpdateRoleRequest> { }
+public class UpdateRoleRequestValidator : AbstractValidator<UpdateRoleRequest> {
+    public UpdateRoleRequestValidator()
+    {
+        RuleFor(x => x.RoleId).NotNull().NotEmpty();
+        RuleFor(x => x.Name).NotNull().NotEmpty();
+    }
+}
 
 public class UpdateRoleRequest : IRequest<UpdateRoleResponse>
 {
     public Guid RoleId { get; set; }
-    public string Name { get; set; }
-    public List<UserDto> Users { get; set; }
-    public List<PrivilegeDto> Privileges { get; set; }
+    public required string Name { get; set; }
 }
 
 
 public class UpdateRoleResponse : ResponseBase
 {
-    public RoleDto Role { get; set; }
+    public required RoleDto Role { get; set; }
 }
 
 
@@ -39,10 +40,7 @@ public class UpdateRoleRequestHandler : IRequestHandler<UpdateRoleRequest, Updat
     {
         var role = await _context.Roles.SingleAsync(x => x.RoleId == request.RoleId);
 
-        role.RoleId = request.RoleId;
         role.Name = request.Name;
-        //role.Users = request.Users.Select(x => x.ToDto);
-        //role.Privileges = request.Privileges;
 
         await _context.SaveChangesAsync(cancellationToken);
 
@@ -50,10 +48,5 @@ public class UpdateRoleRequestHandler : IRequestHandler<UpdateRoleRequest, Updat
         {
             Role = role.ToDto()
         };
-
     }
-
 }
-
-
-

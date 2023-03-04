@@ -22,12 +22,10 @@ public class UpdatePrivilegeRequest : IRequest<UpdatePrivilegeResponse>
     public string? Aggregate { get; init; }
 }
 
-
 public class UpdatePrivilegeResponse : ResponseBase
 {
     public required PrivilegeDto Privilege { get; set; }
 }
-
 
 public class UpdatePrivilegeRequestHandler : IRequestHandler<UpdatePrivilegeRequest, UpdatePrivilegeResponse>
 {
@@ -46,6 +44,9 @@ public class UpdatePrivilegeRequestHandler : IRequestHandler<UpdatePrivilegeRequ
         var privilege = await _context.Privileges.SingleAsync(x => x.PrivilegeId == request.PrivilegeId);
 
         privilege.PrivilegeId = request.PrivilegeId;
+        privilege.RoleId = request.RoleId;
+        privilege.AccessRight = request.AccessRight;
+        privilege.Aggregate = request.Aggregate;
 
         await _context.SaveChangesAsync(cancellationToken);
 
@@ -53,6 +54,5 @@ public class UpdatePrivilegeRequestHandler : IRequestHandler<UpdatePrivilegeRequ
         {
             Privilege = privilege.ToDto()
         };
-
     }
 }

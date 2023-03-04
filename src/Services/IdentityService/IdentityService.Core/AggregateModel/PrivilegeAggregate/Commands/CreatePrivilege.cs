@@ -1,19 +1,23 @@
 // Copyright (c) Quinntyne Brown. All Rights Reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using Security;
+
 namespace IdentityService.Core.AggregateModel.PrivilegeAggregate.Commands;
 
 public class CreatePrivilegeRequestValidator : AbstractValidator<CreatePrivilegeRequest> { }
 
 public class CreatePrivilegeRequest : IRequest<CreatePrivilegeResponse>
 {
-    public Guid PrivilegeId { get; set; }
+    public Guid? RoleId { get; init; }
+    public AccessRight AccessRight { get; init; }
+    public string? Aggregate { get; init; }
 }
 
 
 public class CreatePrivilegeResponse : ResponseBase
 {
-    public PrivilegeDto Privilege { get; set; }
+    public required PrivilegeDto Privilege { get; set; }
 }
 
 
@@ -31,7 +35,12 @@ public class CreatePrivilegeRequestHandler : IRequestHandler<CreatePrivilegeRequ
 
     public async Task<CreatePrivilegeResponse> Handle(CreatePrivilegeRequest request, CancellationToken cancellationToken)
     {
-        var privilege = new Privilege();
+        var privilege = new Privilege()
+        {
+            RoleId = request.RoleId,
+            AccessRight = request.AccessRight,
+            Aggregate = request.Aggregate,
+        };
 
         _context.Privileges.Add(privilege);
 

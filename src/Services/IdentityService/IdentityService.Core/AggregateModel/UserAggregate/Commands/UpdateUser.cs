@@ -1,8 +1,6 @@
 // Copyright (c) Quinntyne Brown. All Rights Reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using Kernel;
-
 namespace IdentityService.Core.AggregateModel.UserAggregate.Commands;
 
 public class UpdateUserRequestValidator : AbstractValidator<UpdateUserRequest> { }
@@ -14,7 +12,7 @@ public class UpdateUserRequest : IRequest<UpdateUserResponse>
 
 public class UpdateUserResponse : ResponseBase
 {
-    public UserDto User { get; set; }
+    public required UserDto User { get; set; }
 }
 
 
@@ -39,7 +37,7 @@ public class UpdateUserRequestHandler : IRequestHandler<UpdateUserRequest, Updat
 
         return new()
         {
-            //User = user.ToDto()
+            User = null
         };
 
     }

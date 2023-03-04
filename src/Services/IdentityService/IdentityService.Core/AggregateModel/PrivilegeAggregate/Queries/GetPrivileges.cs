@@ -7,7 +7,7 @@ public class GetPrivilegesRequest : IRequest<GetPrivilegesResponse> { }
 
 public class GetPrivilegesResponse : ResponseBase
 {
-    public List<PrivilegeDto> Privileges { get; set; }
+    public required List<PrivilegeDto> Privileges { get; set; }
 }
 
 

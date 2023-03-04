@@ -6,18 +6,26 @@ using SerilogTimings;
 
 namespace IdentityService.Core.AggregateModel.UserAggregate.Commands;
 
-public class AuthenticateRequestValidator : AbstractValidator<AuthenticateRequest> { }
+public class AuthenticateRequestValidator : AbstractValidator<AuthenticateRequest> 
+{
+    public AuthenticateRequestValidator()
+    {
+        RuleFor(x => x.Username).NotEmpty().NotNull();
+        RuleFor(x => x.Password).NotEmpty().NotNull();
+    }
+
+}
 
 public class AuthenticateRequest : IRequest<AuthenticateResponse>
 {
-    public string Username { get; set; }
-    public string Password { get; set; }
+    public required string Username { get; set; }
+    public required string Password { get; set; }
 }
 
 
 public class AuthenticateResponse : ResponseBase
 {
-    public string AccessToken { get; set; }
+    public required string AccessToken { get; set; }
 }
 
 
@@ -70,9 +78,4 @@ public class AuthenticateRequestHandler : IRequestHandler<AuthenticateRequest, A
             return user.Password == transformedPassword;
         }
     }
-
-
 }
-
-
-
