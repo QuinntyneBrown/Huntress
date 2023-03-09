@@ -236,9 +236,6 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
-            },
-            "quinn": {
-
             }
           },
           "defaultConfiguration": "production"

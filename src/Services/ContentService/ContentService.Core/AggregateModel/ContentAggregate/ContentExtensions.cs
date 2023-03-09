@@ -9,7 +9,11 @@ public static class ContentExtensions
     {
         return new ContentDto
         {
-
+            ContentId = content.ContentId,
+            Name = content.Name,
+            JsonSchemaModelId = content.JsonSchemaModelId,
+            Slug = content.Slug,
+            Json = content.Json
         };
     }
 

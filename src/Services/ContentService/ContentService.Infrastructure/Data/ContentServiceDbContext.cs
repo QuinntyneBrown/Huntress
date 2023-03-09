@@ -3,6 +3,8 @@
 
 using ContentService.Core;
 using ContentService.Core.AggregateModel.ContentAggregate;
+using ContentService.Core.AggregateModel.JsonPropertyModelAggregate;
+using ContentService.Core.AggregateModel.JsonSchemaModelAggregate;
 using ContentService.Core.AggregateModel.UserAggregate;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,8 +18,9 @@ public class ContentServiceDbContext : DbContext, IContentServiceDbContext
     }
 
     public DbSet<Content> Contents { get; set; }
-
     public DbSet<User> Users { get; set; }
+    public DbSet<JsonSchemaModel> JsonSchemaModels { get; set; }
+    public DbSet<JsonPropertyModel> JsonPropertyModels { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

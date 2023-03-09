@@ -11,6 +11,7 @@ public class Content
     public Guid? UserId { get; set; }
     public string Name { get; set; }
     public string Slug { get; set; }
+    public Guid JsonSchemaModelId { get; set; }
     public JObject Json { get; set; }
 
     public Content(string name, string slug, JObject json)

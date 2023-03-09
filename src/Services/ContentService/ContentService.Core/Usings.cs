@@ -5,3 +5,5 @@ global using FluentValidation;
 global using Security;
 global using Kernel;
 global using ContentService.Core.AggregateModel.ContentAggregate;
+global using ContentService.Core.AggregateModel.JsonPropertyModelAggregate;
+global using ContentService.Core.AggregateModel.JsonSchemaModelAggregate;
